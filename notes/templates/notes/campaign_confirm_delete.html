@@ -1,0 +1,14 @@
+{% extends 'navbarbase.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block heading %}
+    <h1>Add new Loot</h1>
+{% endblock %}
+
+{% block content %}
+
+    <form method="post">{% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <input class="btn btn-primary" type="submit" value="Confirm">
+    </form>{% endblock %}

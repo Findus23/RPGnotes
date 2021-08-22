@@ -1,0 +1,49 @@
+{% extends "navbarbase.html" %}
+
+{% block heading %}
+    <h1>Loot</h1>
+{% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Item</td>
+            <td>Quantity</td>
+            <td>Total Value</td>
+            <td>Owner</td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for l in loot %}
+            <tr data-bs-toggle="collapse" class="collapse-button collapsed"
+                data-bs-target="#row-{{ l.id }}"
+                aria-expanded="false"
+                aria-controls="row-{{ l.id }}">
+                <td>{{ l.name }}</td>
+                <td>{{ l.quantity }}</td>
+                <td>{{ l.value_gold }}</td>
+                <td>{{ l.owner.first_name }}</td>
+                <td>
+                    <svg class="chev" viewBox="0 0 640 1024" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M512 320L320 512 128 320 0 448l320 320 320-320L512 320z"/>
+                    </svg>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="collapse-cell">
+                    <div class="collapse" id="row-{{ l.id }}">
+                        <h3>{{ l.name }} <a href="{% url "lootedit" l.campaign.slug l.id %}">edit</a></h3>
+                        {{ l.description_html|safe }}
+                        <p>Value each: {{ l.value_per_unit|floatformat:-2 }} Gold</p>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url "lootadd" loot.0.campaign.slug %}" class="btn btn-primary">Add Loot</a>
+
+{% endblock %}
+

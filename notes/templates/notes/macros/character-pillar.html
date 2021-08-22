@@ -1,0 +1,25 @@
+{% load thumbutils %}
+{% load thumbnail %}
+<li class="nav-item">
+    <div class="side-card">
+        <div class="image-col">
+            {% if character.image %}
+                {% thumbnail character.image "48x48" crop="center" as im %}
+                    <img class="rounded-circle" src="{{ im.url }}" width="{{ im.width }}"
+                         height="{{ im.height }}"
+                         srcset="{{ im.url|srcset }}">
+                {% endthumbnail %}
+            {% else %}
+                <div class="avatar"
+                     style="background: #{{ character.color }};color:{{ character.text_color }}">{{ character.initials }}</div>
+            {% endif %}
+        </div>
+        <div class="text-col">
+            <a class="stretched-link"
+               href="{{ character.get_absolute_url }}">
+                {{ character.name }}
+            </a>
+            <div>{{ character.subtitle }}</div>
+        </div>
+    </div>
+</li>

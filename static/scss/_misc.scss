@@ -1,0 +1,54 @@
+.collapse-cell {
+  padding: 0 !important;
+  border: none !important;
+}
+
+.chev {
+  transition: transform .2s;
+  width: 13px;
+  height: auto;
+}
+
+tr.collapsed .chev {
+  transform: rotate(90deg);
+}
+
+tr.collapse-button:not(.collapsed) {
+  background: darkgray;
+}
+
+.avatar {
+  display: block;
+  font-size: 1em;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  border-radius: 50%;
+  vertical-align: middle;
+  color: white;
+  font-family: sans-serif;
+}
+
+.side-card {
+  display: flex;
+  position: relative;
+
+  > div {
+    padding: 0.5rem;
+
+  }
+
+  .text-col {
+    a {
+      text-decoration: none;
+      &:focus,&:active,&:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+
+}
+.character-heading {
+  border-bottom: solid 2px;
+}

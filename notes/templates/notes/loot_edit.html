@@ -1,0 +1,26 @@
+{% extends 'navbarbase.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block heading %}
+    {% if edit %}
+        <h1>Edit "{{ object.name }}"</h1>
+    {% else %}
+        <h1>Add new</h1>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class="btn btn-primary" value="Update">
+    </form>
+{% endblock %}
+
+{#{% block extra_head %}#}
+{#    <script src="{% static "libs/codemirror.js" %}"></script>#}
+{#    <script src="{% static "libs/markdown.js" %}"></script>#}
+{#    <script src="{% static "libs/tagify.min.js" %}"></script>#}
+{#{% endblock %}#}

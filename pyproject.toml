@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "rpgnotes"
+version = "0.1.0"
+description = ""
+authors = ["Lukas Winkler <git@lw1.at>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^3.2.6"
+psycopg2 = "^2.9.1"
+django-simple-history = "^3.0.0"
+django-bootstrap5 = "^2.1.2"
+Markdown = "^3.3.4"
+bleach = "^4.0.0"
+bleach-allowlist = "^1.0.3"
+Pillow = "^8.3.1"
+sorl-thumbnail = "^12.7.0"
+libsass = "^0.21.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

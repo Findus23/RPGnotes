@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+
+{% block mainpage %}
+    <h1>Add new campaign</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class="btn btn-primary" value="Update">
+    </form>
+{% endblock %}
+
+{#{% block extra_head %}#}
+{#    <script src="{% static "libs/codemirror.js" %}"></script>#}
+{#    <script src="{% static "libs/markdown.js" %}"></script>#}
+{#    <script src="{% static "libs/tagify.min.js" %}"></script>#}
+{#{% endblock %}#}
