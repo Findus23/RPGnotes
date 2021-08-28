@@ -1,10 +1,13 @@
 from django.contrib import admin
-
 # Register your models here.
-from notes.models import Character, Campaign, Faction, Location, Loot
+from simple_history.admin import SimpleHistoryAdmin
 
-admin.site.register(Campaign)
-admin.site.register(Character)
-admin.site.register(Faction)
-admin.site.register(Location)
-admin.site.register(Loot)
+from notes.models import Character, Campaign, Faction, Location, Loot, IngameDay, Session
+
+admin.site.register(Campaign, SimpleHistoryAdmin)
+admin.site.register(Character, SimpleHistoryAdmin)
+admin.site.register(Faction, SimpleHistoryAdmin)
+admin.site.register(Location, SimpleHistoryAdmin)
+admin.site.register(Loot, SimpleHistoryAdmin)
+admin.site.register(IngameDay, SimpleHistoryAdmin)
+admin.site.register(Session, SimpleHistoryAdmin)

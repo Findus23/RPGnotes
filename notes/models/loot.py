@@ -17,6 +17,9 @@ class Loot(DescriptionModel):
     last_modified = models.DateTimeField(auto_now=True)
     history = HistoricalRecords()
 
+    class Meta:
+        ordering = ["name"]
+
     @property
     def value_per_unit(self):
         return self.value_gold / self.quantity

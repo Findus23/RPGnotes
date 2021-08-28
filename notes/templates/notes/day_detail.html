@@ -1,0 +1,42 @@
+{% extends "navbarbase.html" %}
+{% load thumbutils %}
+{% load thumbnail %}
+{% load humanize %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-4">
+            <ul class="nav nav-pills flex-column">
+                {% for d in days %}
+                    <li class="nav-item">
+                        <a href="{% url "daydetail" day.campaign.slug d.day %}"
+                           class="nav-link {% if d.id == day.id %}active{% endif %}">
+                            {{ d.prettyname }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <a class="btn btn-primary add-button" href="{% url "dayadd" day.campaign.slug %}">Add Day</a>
+        </div>
+        <div class="col-8">
+            <div class="day-heading">
+                <h1>
+                    {{ day.prettyname }}
+                    <a href="{% url "dayedit" day.campaign.slug day.day %}">
+                        edit
+                    </a>
+                </h1>
+            </div>
+            {{ day.description_html|safe }}
+            <dl>
+                <dt>Sessions:</dt>
+                <dd>{{ day.sessions.all|join:", " }}</dd>
+            </dl>
+
+            <div>
+                <small>Last updated: {{ day.last_modified|naturaltime }}
+                    by {{ day.history.first.history_user }} </small>
+            </div>
+        </div>
+    </div>
+{% endblock %}

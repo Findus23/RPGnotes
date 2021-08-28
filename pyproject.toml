@@ -16,6 +16,7 @@ bleach-allowlist = "^1.0.3"
 Pillow = "^8.3.1"
 sorl-thumbnail = "^12.7.0"
 libsass = "^0.21.0"
+django-debug-toolbar = "^3.2.2"
 
 [tool.poetry.dev-dependencies]
 

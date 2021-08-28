@@ -5,12 +5,12 @@
         <div class="image-col">
             {% if character.image %}
                 {% thumbnail character.image "48x48" crop="center" as im %}
-                    <img class="rounded-circle" src="{{ im.url }}" width="{{ im.width }}"
+                    <img class="avatar avatar-image rounded-circle" src="{{ im.url }}" width="{{ im.width }}"
                          height="{{ im.height }}"
                          srcset="{{ im.url|srcset }}">
                 {% endthumbnail %}
             {% else %}
-                <div class="avatar"
+                <div class="avatar avatar-text"
                      style="background: #{{ character.color }};color:{{ character.text_color }}">{{ character.initials }}</div>
             {% endif %}
         </div>

@@ -1,4 +1,7 @@
 {% extends "navbarbase.html" %}
+{% load thumbutils %}
+{% load thumbnail %}
+{% load humanize %}
 
 {% block content %}
     <div class="row">
@@ -17,6 +20,19 @@
         </div>
         <div class="col-8">
             <div class="character-heading" style="border-bottom-color: #{{ character.color }}">
+                {% if character.image %}
+                    {% thumbnail character.image "150x150" crop="center" as im %}
+                        <a href="{{ character.image.url }}" target="_blank">
+                            <img class="avatar avatar-image avatar-large rounded-circle" src="{{ im.url }}" width="{{ im.width }}"
+                             height="{{ im.height }}"
+                             srcset="{{ im.url|srcset }}">
+                        </a>
+                    {% endthumbnail %}
+                {% else %}
+                    <div class="avatar avatar-text avatar-large"
+                         style="background: #{{ character.color }};color:{{ character.text_color }}">{{ character.initials }}</div>
+                {% endif %}
+
                 <h1>
                     {{ character.name }}
                     <a href="{% url "characteredit" character.campaign.slug character.slug %}">
@@ -32,6 +48,10 @@
                 {% endif %}
             </dl>
             {{ character.description_html|safe }}
+
+            <div>
+                <small>Last updated: {{ character.last_modified|naturaltime }} by {{ character.history.first.history_user }} </small>
+            </div>
         </div>
     </div>
 {% endblock %}

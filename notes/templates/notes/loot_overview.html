@@ -1,4 +1,5 @@
 {% extends "navbarbase.html" %}
+{% load formatters %}
 
 {% block heading %}
     <h1>Loot</h1>
@@ -22,7 +23,7 @@
                 aria-controls="row-{{ l.id }}">
                 <td>{{ l.name }}</td>
                 <td>{{ l.quantity }}</td>
-                <td>{{ l.value_gold }}</td>
+                <td>{{ l.value_gold|format_money_html }}</td>
                 <td>{{ l.owner.first_name }}</td>
                 <td>
                     <svg class="chev" viewBox="0 0 640 1024" xmlns="http://www.w3.org/2000/svg">
@@ -35,14 +36,17 @@
                     <div class="collapse" id="row-{{ l.id }}">
                         <h3>{{ l.name }} <a href="{% url "lootedit" l.campaign.slug l.id %}">edit</a></h3>
                         {{ l.description_html|safe }}
-                        <p>Value each: {{ l.value_per_unit|floatformat:-2 }} Gold</p>
+                        <p>Value each: {{ l.value_per_unit|format_money_html }}</p>
                     </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
+    <dl>
+        <dd>Total value:</dd>
+        <dt>{{ total_value|format_money_html }}</dt>
+    </dl>
     <a href="{% url "lootadd" loot.0.campaign.slug %}" class="btn btn-primary">Add Loot</a>
 
 {% endblock %}

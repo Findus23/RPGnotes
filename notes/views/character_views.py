@@ -30,12 +30,16 @@ class CharacterDetailView(generic.DetailView):
         data["player_characters"] = Character.objects.filter(
             campaign__slug=self.kwargs['campslug'],
             player__isnull=False
-        )
-        data["npcs"] = Character.objects.filter(campaign__slug=self.kwargs['campslug'], player__isnull=True)
+        ).select_related()
+        data["npcs"] = Character.objects.filter(
+            campaign__slug=self.kwargs['campslug'], player__isnull=True
+        ).select_related()
         return data
 
     def get_object(self, queryset=None):
-        return Character.objects.get(campaign__slug=self.kwargs['campslug'], slug=self.kwargs['charslug'])
+        return Character.objects.get(
+            campaign__slug=self.kwargs['campslug'], slug=self.kwargs['charslug']
+        )
 
 
 class CharacterCreateView(generic.CreateView):

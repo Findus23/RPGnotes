@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
@@ -12,6 +13,12 @@ class LootListView(generic.ListView):
 
     def get_queryset(self):
         return Loot.objects.filter(campaign__slug=self.kwargs['campslug'])
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['total_value'] = self.get_queryset().aggregate(Sum("value_gold"))["value_gold__sum"]
+        print(data['total_value'])
+        return data
 
 
 class LootDetailView(generic.DetailView):
@@ -28,7 +35,8 @@ class LootCreateView(generic.CreateView):
         form.instance.campaign = Campaign.objects.get(slug=self.kwargs['campslug'])
         return super().form_valid(form)
 
-    success_url = reverse_lazy('lootlist')
+    def get_success_url(self):
+        return reverse("lootlist", kwargs={"campslug": self.kwargs.get("campslug")})
 
 
 class LootEditView(generic.UpdateView):
@@ -39,6 +47,7 @@ class LootEditView(generic.UpdateView):
 
     def get_success_url(self):
         return reverse("lootlist", kwargs={"campslug": self.kwargs.get("campslug")})
+
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data['edit'] = True
@@ -46,6 +55,7 @@ class LootEditView(generic.UpdateView):
 
 
 class LootDeleteView(generic.DeleteView):
-    template_name = "notes/loot_confirm_delete.html"
+    template_name = "notes/campaign_confirm_delete.html"
     model = Loot
-    success_url = reverse_lazy('lootlist')
+    def get_success_url(self):
+        return reverse("lootlist", kwargs={"campslug": self.kwargs.get("campslug")})

@@ -1,0 +1,27 @@
+
+.avatar {
+  display: block;
+
+  &.avatar-text {
+    font-size: 1rem;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    border-radius: 50%;
+    vertical-align: middle;
+    color: white;
+    font-family: sans-serif;
+
+    &.avatar-large {
+      font-size: 2.5rem;
+    }
+  }
+
+  &.avatar-large {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    margin: 1rem auto;
+  }
+}

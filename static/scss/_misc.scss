@@ -17,18 +17,6 @@ tr.collapse-button:not(.collapsed) {
   background: darkgray;
 }
 
-.avatar {
-  display: block;
-  font-size: 1em;
-  width: 48px;
-  height: 48px;
-  line-height: 48px;
-  text-align: center;
-  border-radius: 50%;
-  vertical-align: middle;
-  color: white;
-  font-family: sans-serif;
-}
 
 .side-card {
   display: flex;
@@ -42,13 +30,43 @@ tr.collapse-button:not(.collapsed) {
   .text-col {
     a {
       text-decoration: none;
-      &:focus,&:active,&:hover{
+
+      &:focus, &:active, &:hover {
         text-decoration: underline;
       }
     }
   }
 
 }
+
 .character-heading {
   border-bottom: solid 2px;
+}
+
+.cp:after {
+  background: #B87333;
+}
+
+.sp:after {
+  background: #CFD0D1;
+}
+
+.gp:after {
+  background: #FFD700;
+}
+
+.pp:after {
+  background: #B7B4AE;
+}
+
+.cp, .sp, .gp, .pp {
+  &:after {
+    content: "";
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: 0 5px;
+  }
 }
