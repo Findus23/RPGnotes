@@ -26,7 +26,7 @@ lxml = ["lxml"]
 
 [[package]]
 name = "bleach"
-version = "4.0.0"
+version = "4.1.0"
 description = "An easy safelist-based HTML-sanitizing tool."
 category = "main"
 optional = false
@@ -93,6 +93,32 @@ description = "Store model history and view/revert changes from admin site."
 category = "main"
 optional = false
 python-versions = ">=3.6"
+
+[[package]]
+name = "django-tenant-users"
+version = "0.3.12"
+description = "A Django app to extend django-tenants to incorporate global multi-tenant users"
+category = "main"
+optional = false
+python-versions = "^3.6.2"
+develop = false
+
+[package.source]
+type = "git"
+url = "https://github.com/Corvia/django-tenant-users.git"
+reference = "master"
+resolved_reference = "6a50750e9fd8411e698acbcaa70676a09f141d99"
+
+[[package]]
+name = "django-tenants"
+version = "3.3.2"
+description = "Tenant support for Django using PostgreSQL schemas."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=2.1,<4.0"
 
 [[package]]
 name = "libsass"
@@ -202,7 +228,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "de84127badac66220a787600d18455d7cf562aba0c81c05d7219f39f54a97cf9"
+content-hash = "efbcfa2f67a6955f114171ea17e50bf2d5da52108aaf0c335bb29fe87cb40451"
 
 [metadata.files]
 asgiref = [
@@ -215,8 +241,8 @@ beautifulsoup4 = [
     {file = "beautifulsoup4-4.9.3.tar.gz", hash = "sha256:84729e322ad1d5b4d25f805bfa05b902dd96450f43842c4e99067d5e1369eb25"},
 ]
 bleach = [
-    {file = "bleach-4.0.0-py2.py3-none-any.whl", hash = "sha256:c1685a132e6a9a38bf93752e5faab33a9517a6c0bb2f37b785e47bf253bdb51d"},
-    {file = "bleach-4.0.0.tar.gz", hash = "sha256:ffa9221c6ac29399cc50fcc33473366edd0cf8d5e2cbbbb63296dc327fb67cc8"},
+    {file = "bleach-4.1.0-py2.py3-none-any.whl", hash = "sha256:4d2651ab93271d1129ac9cbc679f524565cc8a1b791909c4a51eac4446a15994"},
+    {file = "bleach-4.1.0.tar.gz", hash = "sha256:0900d8b37eba61a802ee40ac0061f8c2b5dee29c1927dd1d233e075ebf5a71da"},
 ]
 bleach-allowlist = [
     {file = "bleach-allowlist-1.0.3.tar.gz", hash = "sha256:56e22086079a0e6a3100ae99e4dbaf20eb2585486598eb0e994008a11428da9b"},
@@ -237,6 +263,10 @@ django-debug-toolbar = [
 django-simple-history = [
     {file = "django-simple-history-3.0.0.tar.gz", hash = "sha256:66fe76c560054be393c52b1799661e104fbe372918d37d151e5d41c676158118"},
     {file = "django_simple_history-3.0.0-py2.py3-none-any.whl", hash = "sha256:a312adfe8fbec4c450b08e641b11249a8a589a7e7d1ba2404764b8b5bed53552"},
+]
+django-tenant-users = []
+django-tenants = [
+    {file = "django-tenants-3.3.2.tar.gz", hash = "sha256:e3897662bb88007216ef6e3dde4467db394d4f1a4430b10aebc3ec9e58e8e20f"},
 ]
 libsass = [
     {file = "libsass-0.21.0-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:06c8776417fe930714bdc930a3d7e795ae3d72be6ac883ff72a1b8f7c49e5ffb"},

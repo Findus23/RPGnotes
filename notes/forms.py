@@ -1,12 +1,7 @@
 from django.forms import ModelForm, ModelMultipleChoiceField, CheckboxSelectMultiple
 
-from notes.models import Campaign, Loot, Character, IngameDay, Session
+from notes.models import  Loot, Character, IngameDay, Session
 
-
-class CampaignForm(ModelForm):
-    class Meta:
-        model = Campaign
-        fields = "__all__"
 
 
 class LootForm(ModelForm):

@@ -2,12 +2,10 @@ from django.conf import settings
 from django.db import models
 from simple_history.models import HistoricalRecords
 
-from notes.models import Campaign, DescriptionModel
+from notes.models import DescriptionModel
 
 
 class Loot(DescriptionModel):
-    campaign = models.ForeignKey(Campaign, on_delete=models.PROTECT)
-
     name = models.CharField(max_length=1000)
     quantity = models.PositiveSmallIntegerField()
     value_gold = models.DecimalField("Value (Gold)", max_digits=7, decimal_places=2)

@@ -34,7 +34,7 @@
             <tr>
                 <td colspan="5" class="collapse-cell">
                     <div class="collapse" id="row-{{ l.id }}">
-                        <h3>{{ l.name }} <a href="{% url "lootedit" l.campaign.slug l.id %}">edit</a></h3>
+                        <h3>{{ l.name }} <a href="{% url "lootedit" l.id %}">edit</a></h3>
                         {{ l.description_html|safe }}
                         <p>Value each: {{ l.value_per_unit|format_money_html }}</p>
                     </div>
@@ -47,7 +47,7 @@
         <dd>Total value:</dd>
         <dt>{{ total_value|format_money_html }}</dt>
     </dl>
-    <a href="{% url "lootadd" loot.0.campaign.slug %}" class="btn btn-primary">Add Loot</a>
+    <a href="{% url "lootadd" %}" class="btn btn-primary">Add Loot</a>
 
 {% endblock %}
 

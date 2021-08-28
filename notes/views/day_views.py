@@ -3,11 +3,13 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from notes.forms import DayForm
-from notes.models import Session, Campaign, IngameDay
+from notes.models import IngameDay
 
 
 def list_day_redirect(request, *args, **kwargs):
     latest_day: IngameDay = IngameDay.objects.first()
+    if not latest_day:
+        return redirect("dayadd")
     return redirect(latest_day)
 
 
@@ -31,10 +33,6 @@ class DayCreateView(generic.CreateView):
     form_class = DayForm
     context_object_name = "object"
 
-    def form_valid(self, form):
-        form.instance.campaign = Campaign.objects.get(slug=self.kwargs['campslug'])
-        return super().form_valid(form)
-
 
 class DayEditView(generic.UpdateView):
     template_name = "notes/loot_edit.html"
@@ -46,13 +44,14 @@ class DayEditView(generic.UpdateView):
         data['edit'] = True
         return data
 
-    def get_object(self, queryset=None):
-        return IngameDay.objects.get(campaign__slug=self.kwargs['campslug'], day=self.kwargs['day'])
+    # def get_object(self, queryset=None):
+    #     return IngameDay.objects.get(campaign__slug=self.kwargs['campslug'], day=self.kwargs['day'])
+
 
 class DayDeleteView(generic.DeleteView):
     template_name = "notes/campaign_confirm_delete.html"
     model = IngameDay
     success_url = reverse_lazy('daylist')
 
-    def get_object(self, queryset=None):
-        return IngameDay.objects.get(campaign__slug=self.kwargs['campslug'], day=self.kwargs['day'])
+    # def get_object(self, queryset=None):
+    #     return IngameDay.objects.get(campaign__slug=self.kwargs['campslug'], day=self.kwargs['day'])

@@ -16,7 +16,7 @@
                     {% include "notes/macros/character-pillar.html" with character=c %}
                 {% endfor %}
             </ul>
-            <a class="btn btn-primary" href="{% url "characteradd" character.campaign.slug %}">Add Character</a>
+            <a class="btn btn-primary" href="{% url "characteradd" %}">Add Character</a>
         </div>
         <div class="col-8">
             <div class="character-heading" style="border-bottom-color: #{{ character.color }}">
@@ -35,7 +35,7 @@
 
                 <h1>
                     {{ character.name }}
-                    <a href="{% url "characteredit" character.campaign.slug character.slug %}">
+                    <a href="{% url "characteredit" character.slug %}">
                         edit
                     </a>
                 </h1>

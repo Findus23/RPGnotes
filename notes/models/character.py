@@ -24,7 +24,7 @@ class Character(BaseModel, DescriptionModel):
         ordering = ["name"]
 
     def get_absolute_url(self):
-        return reverse('characterdetail', args=[self.campaign.slug, self.slug])
+        return reverse('characterdetail', args=[self.slug])
 
     def initials(self):
         return "".join([word[0] for word in self.name.split()][:2]).upper()

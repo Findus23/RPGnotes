@@ -6,7 +6,7 @@
     {% if edit %}
         <h1>Edit "{{ object.name }}"</h1>
         {% if request.resolver_match.view_name %}
-            <a class="btn btn-danger" href="{% url "lootdelete" object.campaign.slug object.id %}">Delete</a>
+            <a class="btn btn-danger" href="{% url "lootdelete" object.id %}">Delete</a>
         {% endif %}
     {% else %}
         <h1>Add new</h1>

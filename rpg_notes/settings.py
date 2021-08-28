@@ -25,22 +25,57 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
-    'notes.apps.NotesConfig',
-    'django.contrib.admin',
+DATABASE_ROUTERS = (
+    'django_tenants.routers.TenantSyncRouter',
+)
+SHARED_APPS = (
+    'django_tenants',  # mandatory
+    'campaigns',  # you must list the app where your tenant model resides in
+    'users',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'tenant_users.permissions',  # Defined in both shared apps and tenant apps
+    'tenant_users.tenants',  # defined only in shared apps
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.admin',
     'django.contrib.humanize',
-    'simple_history',
+    'django.contrib.staticfiles',
     'django_bootstrap5',
     'sorl.thumbnail',
     'debug_toolbar'
-]
+)
+
+TENANT_APPS = (
+    # The following Django contrib apps must be in TENANT_APPS
+    'django.contrib.auth',  # Defined in both shared apps and tenant apps
+    'django.contrib.contenttypes',  # Defined in both shared apps and tenant apps
+    'tenant_users.permissions',  # Defined in both shared apps and tenant apps
+    'django.contrib.admin',
+
+    'notes',
+    'simple_history',
+
+)
+
+INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
+
+TENANT_MODEL = "campaigns.Campaign"
+
+TENANT_DOMAIN_MODEL = "campaigns.Domain"
+
+TENANT_USERS_DOMAIN = "test.localhost"
+
+AUTH_USER_MODEL = 'users.TenantUser'
+
+AUTHENTICATION_BACKENDS = (
+    'tenant_users.permissions.backend.UserBackend',
+)
+
+SESSION_COOKIE_DOMAIN = '.test.localhost'
 
 MIDDLEWARE = [
+    'django_tenants.middleware.main.TenantMainMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -61,6 +96,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.request',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

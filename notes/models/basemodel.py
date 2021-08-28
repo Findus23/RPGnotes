@@ -1,17 +1,13 @@
 from django.db import models
 from django.utils.text import slugify
 
-from notes.models import Campaign
-
 
 class BaseModel(models.Model):
-    campaign = models.ForeignKey(Campaign, on_delete=models.PROTECT)
     name = models.CharField(max_length=1000)
-    slug = models.SlugField(editable=False)
+    slug = models.SlugField(editable=False, unique=True)
 
     class Meta:
         abstract = True
-        unique_together = ["campaign", "slug"]
 
     def save(self, *args, **kwargs):
         if not self.id:

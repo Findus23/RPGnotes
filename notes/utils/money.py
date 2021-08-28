@@ -13,7 +13,8 @@ currencies_HTML = [
     "<span class='pp'>PP</span>"
 ]
 
-use_platinum=False
+use_platinum = False
+
 
 def digitize(n):
     print("n", n)
@@ -33,6 +34,8 @@ def digitize(n):
 
 
 def format_money(money: Decimal, html=False) -> str:
+    if not money:
+        return ""
     currencies = currencies_HTML if html else currencies_text
     output = []
     cp = round(money / copper, ndigits=0)

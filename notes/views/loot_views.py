@@ -3,7 +3,7 @@ from django.urls import reverse_lazy, reverse
 from django.views import generic
 
 from notes.forms import LootForm
-from notes.models import Loot, Campaign
+from notes.models import Loot
 
 
 class LootListView(generic.ListView):
@@ -11,8 +11,8 @@ class LootListView(generic.ListView):
     model = Loot
     context_object_name = "loot"
 
-    def get_queryset(self):
-        return Loot.objects.filter(campaign__slug=self.kwargs['campslug'])
+    # def get_queryset(self):
+    #     return Loot.objects.filter(campaign__slug=self.kwargs['campslug'])
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
@@ -31,12 +31,8 @@ class LootCreateView(generic.CreateView):
     model = Loot
     form_class = LootForm
 
-    def form_valid(self, form):
-        form.instance.campaign = Campaign.objects.get(slug=self.kwargs['campslug'])
-        return super().form_valid(form)
+    success_url = reverse_lazy("lootlist")
 
-    def get_success_url(self):
-        return reverse("lootlist", kwargs={"campslug": self.kwargs.get("campslug")})
 
 
 class LootEditView(generic.UpdateView):
@@ -45,8 +41,7 @@ class LootEditView(generic.UpdateView):
     form_class = LootForm
     context_object_name = "object"
 
-    def get_success_url(self):
-        return reverse("lootlist", kwargs={"campslug": self.kwargs.get("campslug")})
+    success_url = reverse_lazy("lootlist")
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
@@ -57,5 +52,5 @@ class LootEditView(generic.UpdateView):
 class LootDeleteView(generic.DeleteView):
     template_name = "notes/campaign_confirm_delete.html"
     model = Loot
-    def get_success_url(self):
-        return reverse("lootlist", kwargs={"campslug": self.kwargs.get("campslug")})
+
+    success_url = reverse_lazy("lootlist")
