@@ -2,6 +2,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.views import generic
+from rules.contrib.views import LoginRequiredMixin
 from tenant_users.tenants.tasks import provision_tenant
 
 from campaigns.forms import CampaignForm
@@ -9,7 +10,7 @@ from campaigns.models import Campaign
 from users.models import TenantUser
 
 
-class CampaignListView(generic.ListView):
+class CampaignListView(LoginRequiredMixin, generic.ListView):
     template_name = "campaigns/campaign_overview.html"
     model = Campaign
     context_object_name = "campaigns"
@@ -19,7 +20,7 @@ class CampaignListView(generic.ListView):
         return current_user.tenants.all()
 
 
-class CampaignCreateView(generic.FormView):
+class CampaignCreateView(LoginRequiredMixin, generic.FormView):
     template_name = "campaigns/campaign_edit.html"
     form_class = CampaignForm
 
@@ -32,7 +33,7 @@ class CampaignCreateView(generic.FormView):
         return redirect("http://" + fqdn)
 
 
-class CampaignDetailView(generic.DetailView):
+class CampaignDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = "campaigns/campaign_detail.html"
     model = Campaign
     slug_url_kwarg = "campslug"
@@ -41,7 +42,7 @@ class CampaignDetailView(generic.DetailView):
         return self.request.tenant
 
 
-class CampaignEditView(generic.UpdateView):
+class CampaignEditView(LoginRequiredMixin, generic.UpdateView):
     template_name = "campaigns/campaign_edit.html"
     model = Campaign
     fields = ["name"]
@@ -51,7 +52,7 @@ class CampaignEditView(generic.UpdateView):
         return self.request.tenant
 
 
-class CampaignDeleteView(generic.DeleteView):
+class CampaignDeleteView(LoginRequiredMixin, generic.DeleteView):
     """
     broken at the moment
     """

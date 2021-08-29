@@ -8,7 +8,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url "campaigndetail" %}">Home</a>
                     </li>
@@ -22,6 +22,9 @@
                         <a class="nav-link" href="{% url "lootlist" %}">Loot</a>
                     </li>
                 </ul>
+                <span class="navbar-text">
+        {{ user }}
+      </span>
             </div>
         </div>
     </nav>

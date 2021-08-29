@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from simple_history.models import HistoricalRecords
@@ -6,11 +5,12 @@ from sorl.thumbnail import ImageField
 
 from notes.models import Faction, Location, BaseModel, DescriptionModel
 from notes.utils.colors import get_random_color, is_bright_color
+from rpg_notes.settings import AUTH_USER_MODEL
 
 
 class Character(BaseModel, DescriptionModel):
     subtitle = models.CharField(max_length=100, blank=True)
-    player = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True)
+    player = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True)
     faction = models.ForeignKey(Faction, on_delete=models.PROTECT, blank=True, null=True)
     location = models.ForeignKey(Location, on_delete=models.PROTECT, blank=True, null=True)
     color = models.CharField(max_length=6, default=get_random_color)
