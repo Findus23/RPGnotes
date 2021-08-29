@@ -55,7 +55,10 @@ TENANT_APPS = (
     'tenant_users.permissions',  # Defined in both shared apps and tenant apps
     'django.contrib.admin',
 
-    'notes',
+    'characters',
+    'loot',
+    'days',
+    'common',
     'simple_history',
 
 )

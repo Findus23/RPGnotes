@@ -3,13 +3,16 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from notes import views
+from common import views
 from rpg_notes import settings
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
-    path('', include("notes.urls"))
+    path('character/', include("characters.urls")),
+    path('day/', include("days.urls")),
+    path('loot/', include("loot.urls")),
+    path('', include("campaigns.urls"))
 ]
 
 if settings.DEBUG:
