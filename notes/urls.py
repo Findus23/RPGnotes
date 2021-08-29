@@ -1,13 +1,12 @@
 from django.urls import path
 
 from notes import views
+from campaigns import views as campaign_views
 
 urlpatterns = [
-    # path("", views.CampaignListView.as_view(), name="campaignlist"),
-    # path("c/add", views.CampaignCreateView.as_view(), name="campaigncreate"),
-    # path("c/<slug:campslug>", views.CampaignDetailView.as_view(), name="campaigndetail"),
-    # path("c/<slug:campslug>/edit", views.CampaignEditView.as_view(), name="campaignedit"),
-    # path("c/<slug:campslug>/delete", views.CampaignDeleteView.as_view(), name="campaigndelete"),
+    path("", campaign_views.CampaignDetailView.as_view(), name="campaigndetail"),
+    path("edit", campaign_views.CampaignEditView.as_view(), name="campaignedit"),
+    path("delete", campaign_views.CampaignDeleteView.as_view(), name="campaigndelete"),
     path("loot", views.LootListView.as_view(), name="lootlist"),
     path("loot/<int:pk>/edit", views.LootEditView.as_view(), name="lootedit"),
     path("loot/<int:pk>/delete", views.LootDeleteView.as_view(), name="lootdelete"),

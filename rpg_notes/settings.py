@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+from django_tenants.files.storage import TenantFileSystemStorage
+
 from .secrets import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -74,6 +76,8 @@ AUTHENTICATION_BACKENDS = (
 
 SESSION_COOKIE_DOMAIN = '.test.localhost'
 
+DEFAULT_FILE_STORAGE = "django_tenants.files.storage.TenantFileSystemStorage"
+
 MIDDLEWARE = [
     'django_tenants.middleware.main.TenantMainMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -88,11 +92,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'rpg_notes.urls'
+PUBLIC_SCHEMA_URLCONF = 'rpg_notes.urls_public'
 
+TEMPLATES_DIR=BASE_DIR / 'templates'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
