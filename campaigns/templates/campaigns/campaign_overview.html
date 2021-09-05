@@ -2,7 +2,7 @@
 
 {% block mainpage %}
     {% for campaign in campaigns %}
-        <h2><a href="">{{ campaign.name }}</a></h2>
+        <h2><a href="{{ campaign.get_absolute_url }}">{{ campaign.name }}</a></h2>
     {% endfor %}
     <a href="{% url "campaigncreate" %}" class="btn btn-secondary">create Campaign</a>
 {% endblock %}

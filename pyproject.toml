@@ -19,6 +19,7 @@ libsass = "^0.21.0"
 django-debug-toolbar = "^3.2.2"
 django-tenants = "^3.3.2"
 django-tenant-users = {git = "https://github.com/Corvia/django-tenant-users.git"}
+django-axes = "^5.23.0"
 
 [tool.poetry.dev-dependencies]
 

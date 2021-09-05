@@ -45,7 +45,8 @@ SHARED_APPS = (
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'sorl.thumbnail',
-    'debug_toolbar'
+    'debug_toolbar',
+    'axes'
 )
 
 TENANT_APPS = (
@@ -74,6 +75,7 @@ TENANT_USERS_DOMAIN = "test.localhost"
 AUTH_USER_MODEL = 'users.TenantUser'
 
 AUTHENTICATION_BACKENDS = (
+    'axes.backends.AxesBackend',
     'tenant_users.permissions.backend.UserBackend',
 )
 
@@ -91,7 +93,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'simple_history.middleware.HistoryRequestMiddleware'
+    'simple_history.middleware.HistoryRequestMiddleware',
+    'axes.middleware.AxesMiddleware'
 ]
 
 ROOT_URLCONF = 'rpg_notes.urls'

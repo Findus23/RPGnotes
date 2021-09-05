@@ -265,7 +265,7 @@ color_string = """#B88183
 def get_all_colors():
     colors = []
     for c in color_string.split("\n"):
-        colors.append(c.strip()[1:])
+        colors.append(c.strip())
     return colors
 
 
@@ -297,5 +297,6 @@ def get_percieved_lightness(rgb: Tuple[int, ...]) -> float:
 
 
 def is_bright_color(bg_color: str) -> bool:
+    bg_color = bg_color[1:]
     rgb = tuple(int(bg_color[i:i + 2], 16) for i in (0, 2, 4))
     return get_percieved_lightness(rgb) > 50

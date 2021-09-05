@@ -8,18 +8,18 @@
         <div class="col-4">
             <ul class="nav nav-pills flex-column">
                 {% for c in player_characters %}
-                    {% include "common/macros/character-pillar.html" with character=c %}
+                    {% include "macros/character-pillar.html" with character=c %}
                 {% endfor %}
             </ul>
             <ul class="nav nav-pills flex-column">
                 {% for c in npcs %}
-                    {% include "common/macros/character-pillar.html" with character=c %}
+                    {% include "macros/character-pillar.html" with character=c %}
                 {% endfor %}
             </ul>
             <a class="btn btn-primary" href="{% url "characteradd" %}">Add Character</a>
         </div>
         <div class="col-8">
-            <div class="character-heading" style="border-bottom-color: #{{ character.color }}">
+            <div class="character-heading" style="border-bottom-color: {{ character.color }}">
                 {% if character.image %}
                     {% thumbnail character.image "150x150" crop="center" as im %}
                         <a href="{{ character.image.url }}" target="_blank">
@@ -30,7 +30,7 @@
                     {% endthumbnail %}
                 {% else %}
                     <div class="avatar avatar-text avatar-large"
-                         style="background: #{{ character.color }};color:{{ character.text_color }}">{{ character.initials }}</div>
+                         style="background: {{ character.color }};color:{{ character.text_color }}">{{ character.initials }}</div>
                 {% endif %}
 
                 <h1>
