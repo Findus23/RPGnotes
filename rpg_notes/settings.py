@@ -175,3 +175,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 THUMBNAIL_ALTERNATIVE_RESOLUTIONS = [2, 3]
+
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

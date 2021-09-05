@@ -1,3 +1,4 @@
+{% load django_bootstrap5 %}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -18,6 +19,7 @@
 </head>
 <body>
 <div class="container">
+    {% bootstrap_messages %}
     {% block mainpage %}{% endblock %}
 </div>
 <script src="{% static "libs/bootstrap.min.js" %}"></script>

@@ -18,7 +18,7 @@ class CampaignListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         current_user: TenantUser = self.request.user
-        return current_user.tenants.all()
+        return current_user.tenants.exclude(id=1)
 
 
 class CampaignCreateView(LoginRequiredMixin, generic.FormView):
