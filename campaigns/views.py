@@ -8,7 +8,6 @@ from tenant_users.tenants.tasks import provision_tenant
 from campaigns.forms import CampaignForm
 from campaigns.models import Campaign
 from users.models import TenantUser
-from utils.mixin import PartOfTenantRequiredMixin
 
 
 class CampaignListView(LoginRequiredMixin, generic.ListView):
@@ -34,7 +33,7 @@ class CampaignCreateView(LoginRequiredMixin, generic.FormView):
         return redirect("http://" + fqdn)
 
 
-class CampaignDetailView(PartOfTenantRequiredMixin, LoginRequiredMixin, generic.DetailView):
+class CampaignDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = "campaigns/campaign_detail.html"
     model = Campaign
     slug_url_kwarg = "campslug"

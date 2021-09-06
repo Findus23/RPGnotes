@@ -94,7 +94,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'common.middlewares.AuthMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
+    'csp.middleware.CSPMiddleware',
     'axes.middleware.AxesMiddleware'
 ]
 
@@ -180,3 +182,7 @@ THUMBNAIL_ALTERNATIVE_RESOLUTIONS = [2, 3]
 ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CSP_DEFAULT_SRC = ["'self'", 'data:']
+CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
+CSP_FRAME_ANCESTORS = ["'none'"]
