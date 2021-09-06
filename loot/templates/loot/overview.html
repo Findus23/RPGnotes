@@ -1,4 +1,4 @@
-{% extends "navbarbase.html" %}
+{% extends "tenantbase.html" %}
 {% load formatters %}
 
 {% block heading %}
@@ -12,6 +12,7 @@
             <td>Quantity</td>
             <td>Total Value</td>
             <td>Owner</td>
+            <td>Location</td>
             <td></td>
         </tr>
         </thead>
@@ -25,6 +26,7 @@
                 <td>{{ l.quantity }}</td>
                 <td>{{ l.value_gold|format_money_html }}</td>
                 <td>{{ l.owner }}</td>
+                <td>{{ l.location }}</td>
                 <td>
                     <svg class="chev" viewBox="0 0 640 1024" xmlns="http://www.w3.org/2000/svg">
                         <path d="M512 320L320 512 128 320 0 448l320 320 320-320L512 320z"/>

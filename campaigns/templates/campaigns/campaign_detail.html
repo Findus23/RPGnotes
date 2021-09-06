@@ -1,5 +1,10 @@
-{% extends "navbarbase.html" %}
+{% extends "tenantbase.html" %}
 
 {% block content %}
-  {{ object }}
+    <h1>{{ object }}</h1>
+    <ul>
+    {% for user in users %}
+        <li>{{ user }}</li>
+    {% endfor %}
+    </ul>
 {% endblock %}

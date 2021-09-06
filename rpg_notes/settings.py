@@ -56,6 +56,7 @@ TENANT_APPS = (
     'tenant_users.permissions',  # Defined in both shared apps and tenant apps
     'django.contrib.admin',
 
+    'locations',
     'characters',
     'loot',
     'days',
@@ -176,6 +177,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 THUMBNAIL_ALTERNATIVE_RESOLUTIONS = [2, 3]
 
-ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
+ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

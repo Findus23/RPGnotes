@@ -6,6 +6,7 @@ from simple_history.models import HistoricalRecords
 from sorl.thumbnail import ImageField
 
 from common.models import BaseModel, DescriptionModel
+from locations.models import Location
 from rpg_notes.settings import AUTH_USER_MODEL
 from utils.colors import get_random_color, is_bright_color
 
@@ -19,7 +20,7 @@ class Character(BaseModel, DescriptionModel):
     subtitle = models.CharField(max_length=100, blank=True)
     player = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True)
     # faction = models.ForeignKey(Faction, on_delete=models.PROTECT, blank=True, null=True)
-    # location = models.ForeignKey(Location, on_delete=models.PROTECT, blank=True, null=True)
+    location = models.ForeignKey(Location, on_delete=models.PROTECT, blank=True, null=True)
     color = models.CharField(max_length=7, default=get_random_color, validators=[
         MinLengthValidator(7),
         validate_color_hex

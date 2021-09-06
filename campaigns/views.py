@@ -34,13 +34,18 @@ class CampaignCreateView(LoginRequiredMixin, generic.FormView):
         return redirect("http://" + fqdn)
 
 
-class CampaignDetailView(PartOfTenantRequiredMixin,LoginRequiredMixin, generic.DetailView):
+class CampaignDetailView(PartOfTenantRequiredMixin, LoginRequiredMixin, generic.DetailView):
     template_name = "campaigns/campaign_detail.html"
     model = Campaign
     slug_url_kwarg = "campslug"
 
-    def get_object(self, queryset=None):
+    def get_object(self, queryset=None) -> Campaign:
         return self.request.tenant
+
+    def get_context_data(self, **kwargs):
+        context = super(CampaignDetailView, self).get_context_data(**kwargs)
+        context["users"] = self.get_object().user_set.all()
+        return context
 
 
 class CampaignEditView(LoginRequiredMixin, generic.UpdateView):
