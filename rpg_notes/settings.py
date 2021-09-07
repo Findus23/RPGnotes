@@ -47,7 +47,8 @@ SHARED_APPS = (
     'django_bootstrap5',
     'sorl.thumbnail',
     'debug_toolbar',
-    'axes'
+    'axes',
+    'django_extensions'
 )
 
 TENANT_APPS = (
@@ -175,6 +176,8 @@ MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+SHELL_PLUS = "bpython"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

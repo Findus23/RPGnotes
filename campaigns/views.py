@@ -45,7 +45,7 @@ class CampaignDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CampaignDetailView, self).get_context_data(**kwargs)
-        context["users"] = self.get_object().user_set.all()
+        context["users"] = self.get_obdject().user_set.all()
         return context
 
 
