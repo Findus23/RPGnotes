@@ -1,1 +1,2 @@
-{{ protocol }}://{{ domain }}{% url "django_registration_activate" activation_key %}
+{% load urls %}
+{% main_url %}{% url "django_registration_activate" activation_key %}
