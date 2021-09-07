@@ -1,3 +1,21 @@
+
+html {
+  height: 100%;
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  > .container {
+    flex: 1 0 auto;
+  }
+}
+
+
+
 .collapse-cell {
   padding: 0 !important;
   border: none !important;
@@ -70,3 +88,17 @@ tr.collapse-button:not(.collapsed) {
     margin: 0 5px;
   }
 }
+
+footer {
+  margin-top: 1rem;
+
+  .navbar-nav {
+    justify-content: space-between;
+    width: 100%;
+    @include media-breakpoint-down(sm) {
+      flex-direction: column !important;
+      text-align: center;
+    }
+  }
+}
+
