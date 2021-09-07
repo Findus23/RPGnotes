@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load urls %}
+
+
+
+{% block mainpage %}
+    <h1>{{ exception }}</h1>
+    <p>You might want to go back to the <a href="{% main_url %}{% url "campaignlist" %}">list of campaigns</a>.</p>
+{% endblock %}
