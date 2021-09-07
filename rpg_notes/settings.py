@@ -22,8 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
+DOMAIN_WITH_DOT = "." + DOMAIN
 
-ALLOWED_HOSTS = [".rpgnotes.lw1.at"]
+ALLOWED_HOSTS = [DOMAIN_WITH_DOT]
 
 # Application definition
 
@@ -71,7 +72,7 @@ TENANT_MODEL = "campaigns.Campaign"
 
 TENANT_DOMAIN_MODEL = "campaigns.Domain"
 
-TENANT_USERS_DOMAIN = "test.localhost"
+TENANT_USERS_DOMAIN = DOMAIN
 
 AUTH_USER_MODEL = 'users.TenantUser'
 
@@ -80,7 +81,7 @@ AUTHENTICATION_BACKENDS = (
     'tenant_users.permissions.backend.UserBackend',
 )
 
-SESSION_COOKIE_DOMAIN = '.test.localhost'
+SESSION_COOKIE_DOMAIN = DOMAIN_WITH_DOT
 
 DEFAULT_FILE_STORAGE = "django_tenants.files.storage.TenantFileSystemStorage"
 
