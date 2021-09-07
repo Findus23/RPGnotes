@@ -23,6 +23,7 @@ django-axes = "^5.23.0"
 django-registration = "^3.2"
 django-csp = "^3.7"
 django-redis = "^5.0.0"
+gunicorn = "^20.1.0"
 
 [tool.poetry.dev-dependencies]
 
