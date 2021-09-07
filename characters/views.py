@@ -1,7 +1,6 @@
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
-from rules.contrib.views import LoginRequiredMixin
 
 from characters.forms import CharacterForm
 from characters.models import Character
@@ -37,7 +36,7 @@ class CharacterCreateView(generic.CreateView):
     context_object_name = "object"
 
 
-class CharacterEditView(LoginRequiredMixin,generic.UpdateView):
+class CharacterEditView(generic.UpdateView):
     template_name = "loot/edit.html"
     model = Character
     form_class = CharacterForm
