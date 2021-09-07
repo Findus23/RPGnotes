@@ -186,3 +186,46 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 CSP_DEFAULT_SRC = ["'self'", 'data:']
 CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
 CSP_FRAME_ANCESTORS = ["'none'"]
+
+THUMBNAIL_KVSTORE = "sorl.thumbnail.kvstores.redis_kvstore.KVStore"
+THUMBNAIL_REDIS_URL = "unix:///var/run/redis-rpgnotes/redis-server.sock?db=1"
+
+redis_url = "redis://127.0.0.1:6379/9" if DEBUG else "unix:///var/run/redis-rpgnotes/redis-server.sock?db=2"
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": redis_url,
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+SESSION_CACHE_ALIAS = "default"
+
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 60 * 60 * 24 * 365
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'file': {
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': '/srv/server/rpgnotes/app.log',
+            },
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['file'],
+                'level': 'INFO',
+                'propagate': True,
+            },
+        },
+    }

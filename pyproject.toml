@@ -22,6 +22,7 @@ django-tenant-users = {git = "https://github.com/Corvia/django-tenant-users.git"
 django-axes = "^5.23.0"
 django-registration = "^3.2"
 django-csp = "^3.7"
+django-redis = "^5.0.0"
 
 [tool.poetry.dev-dependencies]
 
