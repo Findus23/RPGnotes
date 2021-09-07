@@ -77,7 +77,7 @@ TENANT_USERS_DOMAIN = DOMAIN
 AUTH_USER_MODEL = 'users.TenantUser'
 
 AUTHENTICATION_BACKENDS = (
-    # 'axes.backends.AxesBackend',
+    'axes.backends.AxesBackend',
     'tenant_users.permissions.backend.UserBackend',
 )
 
