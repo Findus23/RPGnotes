@@ -7,8 +7,7 @@ from rpg_notes.secrets import DEBUG
 
 
 class Campaign(TenantBase):
-    name = models.CharField(max_length=1000)
-
+    name = models.CharField(max_length=1000, unique=True)
     auto_create_schema = True
 
     def __str__(self):

@@ -5,4 +5,4 @@ from django.contrib.auth.admin import UserAdmin
 
 from users.models import TenantUser
 
-admin.site.register(TenantUser)
+# admin.site.register(TenantUser)

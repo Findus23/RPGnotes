@@ -27,8 +27,11 @@ class CampaignCreateView(generic.FormView):
         name = form.cleaned_data.get("name")
         slug = slugify(name).replace("-", "")
         print(slug)
-        user = self.request.user
-        fqdn = provision_tenant(name, slug, user.email, is_staff=True)
+        user: TenantUser = self.request.user
+        super_user = TenantUser.objects.get(id=1)
+        fqdn = provision_tenant(name, slug, super_user.email, is_staff=True)
+        campaign = Campaign.objects.get(name=name)
+        campaign.add_user(user)
         return redirect("http://" + fqdn)
 
 
