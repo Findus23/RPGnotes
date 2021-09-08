@@ -18,13 +18,8 @@ class DayDetailView(generic.DetailView):
     model = IngameDay
     context_object_name = "day"
 
-    def get_context_data(self, **kwargs):
-        data = super().get_context_data(**kwargs)
-        data["days"] = IngameDay.objects.filter(campaign__slug=self.kwargs['campslug'])
-        return data
-
     def get_object(self, queryset=None):
-        return IngameDay.objects.get(campaign__slug=self.kwargs['campslug'], day=self.kwargs['day'])
+        return IngameDay.objects.get(day=self.kwargs['day'])
 
 
 class DayCreateView(generic.CreateView):
@@ -44,14 +39,11 @@ class DayEditView(generic.UpdateView):
         data['edit'] = True
         return data
 
-    # def get_object(self, queryset=None):
-    #     return IngameDay.objects.get(campaign__slug=self.kwargs['campslug'], day=self.kwargs['day'])
+    def get_object(self, queryset=None):
+        return IngameDay.objects.get(day=self.kwargs['day'])
 
 
 class DayDeleteView(generic.DeleteView):
     template_name = "common/campaign_confirm_delete.html"
     model = IngameDay
     success_url = reverse_lazy('daylist')
-
-    # def get_object(self, queryset=None):
-    #     return IngameDay.objects.get(campaign__slug=self.kwargs['campslug'], day=self.kwargs['day'])

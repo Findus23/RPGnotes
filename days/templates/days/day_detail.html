@@ -16,13 +16,13 @@
                     </li>
                 {% endfor %}
             </ul>
-            <a class="btn btn-primary add-button" href="{% url "dayadd" day.campaign.slug %}">Add Day</a>
+            <a class="btn btn-primary add-button" href="{% url "dayadd" %}">Add Day</a>
         </div>
         <div class="col-8">
             <div class="day-heading">
                 <h1>
                     {{ day.prettyname }}
-                    <a href="{% url "dayedit" day.campaign.slug day.day %}">
+                    <a href="{% url "dayedit" day.day %}">
                         edit
                     </a>
                 </h1>

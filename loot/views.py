@@ -2,17 +2,14 @@ from django.db.models import Sum
 from django.urls import reverse_lazy
 from django.views import generic
 
-from loot.models import Loot
 from loot.forms import LootForm
+from loot.models import Loot
 
 
 class LootListView(generic.ListView):
     template_name = "loot/overview.html"
     model = Loot
     context_object_name = "loot"
-
-    # def get_queryset(self):
-    #     return Loot.objects.filter(campaign__slug=self.kwargs['campslug'])
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
