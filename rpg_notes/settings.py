@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from subprocess import run
 
 import sentry_sdk
 from django_tenants.files.storage import TenantFileSystemStorage
@@ -240,9 +241,13 @@ if not DEBUG:
         },
     }
     if SENTRY_DSN:
+        sp = run(["git", "rev-parse", "--verify", "HEAD"], capture_output=True)
+        commit = sp.stdout.decode().strip()
+
         sentry_sdk.init(
             dsn=SENTRY_DSN,
             integrations=[DjangoIntegration()],
             auto_session_tracking=False,
-            traces_sample_rate=0.01
+            traces_sample_rate=0.01,
+            release=commit
         )
