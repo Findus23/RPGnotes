@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+import sentry_sdk
 from django_tenants.files.storage import TenantFileSystemStorage
+from sentry_sdk.integrations.django import DjangoIntegration
 
 from .secrets import *
 
@@ -235,3 +237,8 @@ if not DEBUG:
             },
         },
     }
+    if SENTRY_DSN:
+        sentry_sdk.init(
+            dsn=SENTRY_DSN,
+            integrations=[DjangoIntegration()]
+        )
