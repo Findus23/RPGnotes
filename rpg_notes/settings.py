@@ -191,6 +191,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CSP_DEFAULT_SRC = ["'self'", 'data:']
 CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
+if SENTRY_CSP_REPORT_URI:
+    CSP_REPORT_URL = SENTRY_CSP_REPORT_URI
 CSP_FRAME_ANCESTORS = ["'none'"]
 
 THUMBNAIL_KVSTORE = "sorl.thumbnail.kvstores.redis_kvstore.KVStore"
@@ -240,5 +242,7 @@ if not DEBUG:
     if SENTRY_DSN:
         sentry_sdk.init(
             dsn=SENTRY_DSN,
-            integrations=[DjangoIntegration()]
+            integrations=[DjangoIntegration()],
+            auto_session_tracking=False,
+            traces_sample_rate=0.01
         )
