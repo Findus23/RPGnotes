@@ -195,6 +195,7 @@ CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
 if SENTRY_CSP_REPORT_URI:
     CSP_REPORT_URL = SENTRY_CSP_REPORT_URI
 CSP_FRAME_ANCESTORS = ["'none'"]
+CSP_INCLUDE_NONCE_IN=['script-src']
 
 THUMBNAIL_KVSTORE = "sorl.thumbnail.kvstores.redis_kvstore.KVStore"
 THUMBNAIL_REDIS_URL = "unix:///var/run/redis-rpgnotes/redis-server.sock?db=1"

@@ -49,7 +49,7 @@
 
 {% if sentry_event_id %}
     <script src="{% static "libs/bundle.min.js" %}"></script>
-    <script>
+    <script nonce="{{request.csp_nonce}}">
         Sentry.init({dsn: "{{ sentry_dsn }}"});
         Sentry.showReportDialog({eventId: "{{ sentry_event_id }}"});
     </script>
