@@ -191,12 +191,12 @@ ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CSP_DEFAULT_SRC = ["'self'", 'data:']
-CSP_SCRIPT_SRC = ["'self'"]
+CSP_SCRIPT_SRC = ["'self'", "https://bugs.lw1.at"]
 CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
 if SENTRY_CSP_REPORT_URI:
     CSP_REPORT_URL = SENTRY_CSP_REPORT_URI
 CSP_FRAME_ANCESTORS = ["'none'"]
-CSP_INCLUDE_NONCE_IN=['script-src']
+CSP_INCLUDE_NONCE_IN = ['script-src']
 
 THUMBNAIL_KVSTORE = "sorl.thumbnail.kvstores.redis_kvstore.KVStore"
 THUMBNAIL_REDIS_URL = "unix:///var/run/redis-rpgnotes/redis-server.sock?db=1"
