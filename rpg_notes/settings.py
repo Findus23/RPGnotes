@@ -191,6 +191,7 @@ ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CSP_DEFAULT_SRC = ["'self'", 'data:']
+CSP_SCRIPT_SRC = ["'self'"]
 CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
 if SENTRY_CSP_REPORT_URI:
     CSP_REPORT_URL = SENTRY_CSP_REPORT_URI
