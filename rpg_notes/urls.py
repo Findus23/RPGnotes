@@ -20,3 +20,5 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns.append(path("css", views.debug_css, name="css"))
     urlpatterns.append(path("css_sourcemap", views.debug_css_sourcemap, name="css_sourcemap"))
+
+handler500 = "common.views.handler500"
