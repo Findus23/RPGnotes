@@ -1,9 +1,14 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.generic import TemplateView
 from sentry_sdk import last_event_id
 
 from rpg_notes.secrets import SENTRY_DSN
 from utils.assets import get_css
+
+
+class PublicHomepageView(TemplateView):
+    template_name = "common/homepage.html"
 
 
 # @cache_page(60 * 15)

@@ -9,6 +9,7 @@ from rpg_notes import settings
 urlpatterns = [
     path('', include('users.urls')),
     path('', include('django.contrib.auth.urls')),
+    path('', views.PublicHomepageView.as_view()),
     path('admin/', admin.site.urls),
     path('', include("campaigns.urls_public"))
 ]
