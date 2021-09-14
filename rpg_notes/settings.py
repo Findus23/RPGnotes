@@ -199,9 +199,8 @@ CSP_FRAME_ANCESTORS = ["'none'"]
 CSP_INCLUDE_NONCE_IN = ['script-src']
 
 THUMBNAIL_KVSTORE = "sorl.thumbnail.kvstores.redis_kvstore.KVStore"
-THUMBNAIL_REDIS_URL = "unix:///var/run/redis-rpgnotes/redis-server.sock?db=1"
-
 redis_url = "redis://127.0.0.1:6379/9" if DEBUG else "unix:///var/run/redis-rpgnotes/redis-server.sock?db=2"
+THUMBNAIL_REDIS_URL = redis_url.replace("?db=2", "?db=1")
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -214,6 +213,8 @@ CACHES = {
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 SESSION_CACHE_ALIAS = "default"
+
+THUMBNAIL_DEBUG = DEBUG
 
 if not DEBUG:
     SECURE_SSL_REDIRECT = True

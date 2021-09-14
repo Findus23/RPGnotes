@@ -20,9 +20,9 @@
         </div>
         <div class="col-8">
             <div class="character-heading" style="border-bottom-color: {{ character.color }}">
-                {% if character.image %}
-                    {% thumbnail character.image "150x150" crop="center" as im %}
-                        <a href="{{ character.image.url }}" target="_blank">
+                {% if character.larger_image %}
+                    {% thumbnail character.larger_image "150x150" crop="center" as im %}
+                        <a href="{{ character.larger_image.url }}" target="_blank">
                             <img class="avatar avatar-image avatar-large rounded-circle" src="{{ im.url }}" width="{{ im.width }}"
                              height="{{ im.height }}"
                              srcset="{{ im.url|srcset }}">

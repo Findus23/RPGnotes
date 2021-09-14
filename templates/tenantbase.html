@@ -9,20 +9,26 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url "campaigndetail" %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url "characterlist" %}">Characters</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url "daylist" %}">Timeline</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url "lootlist" %}">Loot</a>
-                    </li>
-                </ul>
+                {% with url_name=request.resolver_match.url_name %}
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'campaigndetail' %}active{% endif %}"
+                               href="{% url "campaigndetail" %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'characterdetail' %}active{% endif %}"
+                               href="{% url "characterlist" %}">Characters</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'daydetail' %}active{% endif %}"
+                               href="{% url "daylist" %}">Timeline</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'lootlist' %}active{% endif %}"
+                               href="{% url "lootlist" %}">Loot</a>
+                        </li>
+                    </ul>
+                {% endwith %}
                 <span class="navbar-text">
         {{ user }}
       </span>

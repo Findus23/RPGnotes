@@ -45,7 +45,12 @@ class CampaignDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CampaignDetailView, self).get_context_data(**kwargs)
-        context["users"] = self.get_object().user_set.all()
+        players = self.get_object().user_set.exclude(pk__in=[1, 2])
+
+        context["players"] = {}
+        player: TenantUser
+        for player in players:
+            context["players"][player] = player.characters.all()
         return context
 
 

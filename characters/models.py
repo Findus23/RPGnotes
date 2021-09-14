@@ -9,6 +9,7 @@ from common.models import BaseModel, DescriptionModel
 from locations.models import Location
 from rpg_notes.settings import AUTH_USER_MODEL
 from utils.colors import get_random_color, is_bright_color
+from utils.random_filename import get_file_path
 
 
 def validate_color_hex(value: str):
@@ -18,14 +19,16 @@ def validate_color_hex(value: str):
 
 class Character(BaseModel, DescriptionModel):
     subtitle = models.CharField(max_length=100, blank=True)
-    player = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True)
+    player = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True,
+                               related_name="characters")
     # faction = models.ForeignKey(Faction, on_delete=models.PROTECT, blank=True, null=True)
     location = models.ForeignKey(Location, on_delete=models.PROTECT, blank=True, null=True)
     color = models.CharField(max_length=7, default=get_random_color, validators=[
         MinLengthValidator(7),
         validate_color_hex
     ])
-    image = ImageField(upload_to="character_images", blank=True, null=True)
+    token_image = ImageField(upload_to=get_file_path, blank=True, null=True)
+    large_image = ImageField(upload_to=get_file_path, blank=True, null=True)
 
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
@@ -42,3 +45,13 @@ class Character(BaseModel, DescriptionModel):
 
     def text_color(self):
         return "black" if is_bright_color(self.color) else "white"
+
+    def larger_image(self):
+        if self.large_image:
+            return self.large_image
+        return self.token_image
+
+    def smaller_image(self):
+        if self.token_image:
+            return self.token_image
+        return self.larger_image
