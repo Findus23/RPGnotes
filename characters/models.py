@@ -41,11 +41,13 @@ class Character(NameSlugModel, DescriptionModel, HistoryModel):
     def text_color(self):
         return "black" if is_bright_color(self.color) else "white"
 
+    @property
     def larger_image(self):
         if self.large_image:
             return self.large_image
         return self.token_image
 
+    @property
     def smaller_image(self):
         if self.token_image:
             return self.token_image
