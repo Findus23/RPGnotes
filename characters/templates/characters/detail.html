@@ -20,12 +20,13 @@
         </div>
         <div class="col-8">
             <div class="character-heading" style="border-bottom-color: {{ character.color }}">
-                {% if character.larger_image %}
-                    {% thumbnail character.larger_image "150x150" crop="center" as im %}
-                        <a href="{{ character.larger_image.url }}" target="_blank">
-                            <img class="avatar avatar-image avatar-large rounded-circle" src="{{ im.url }}" width="{{ im.width }}"
-                             height="{{ im.height }}"
-                             srcset="{{ im.url|srcset }}">
+                {% if character.smaller_image %}
+                    {% thumbnail character.smaller_image "150x150" crop="center" as im %}
+                        <a href="{{ character.smaller_image.url }}" target="_blank">
+                            <img class="avatar avatar-image avatar-large rounded-circle" src="{{ im.url }}"
+                                 width="{{ im.width }}"
+                                 height="{{ im.height }}"
+                                 srcset="{{ im.url|srcset }}">
                         </a>
                     {% endthumbnail %}
                 {% else %}
@@ -49,8 +50,20 @@
             </dl>
             {{ character.description_html|safe }}
 
+            {% if character.larger_image %}
+                {% thumbnail character.larger_image "860" crop="center" as im %}
+                    <a href="{{ character.larger_image.url }}" target="_blank">
+                        <img class="img-fluid" src="{{ im.url }}"
+                             width="{{ im.width }}"
+                             height="{{ im.height }}"
+                             srcset="{{ im.url|srcset }}">
+                    </a>
+                {% endthumbnail %}
+            {% endif %}
+
             <div>
-                <small>Last updated: {{ character.last_modified|naturaltime }} by {{ character.history.first.history_user }} </small>
+                <small>Last updated: {{ character.last_modified|naturaltime }}
+                    by {{ character.history.first.history_user }} </small>
             </div>
         </div>
     </div>

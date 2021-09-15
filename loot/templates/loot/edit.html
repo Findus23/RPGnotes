@@ -18,9 +18,9 @@
     <form method="post"
           {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
         {% csrf_token %}
-        <input type="submit" class="btn btn-primary" value="Update">
+        <input type="submit" class="btn btn-primary" value="{% if edit %}Update{% else %}Add{% endif %}">
         {% bootstrap_form form %}
-        <input type="submit" class="btn btn-primary" value="Update">
+        <input type="submit" class="btn btn-primary" value="{% if edit %}Update{% else %}Add{% endif %}">
     </form>
 {% endblock %}
 

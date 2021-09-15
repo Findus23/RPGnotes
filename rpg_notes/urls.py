@@ -11,6 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('character/', include("characters.urls")),
     path('day/', include("days.urls")),
+    path('location/', include("locations.urls")),
     path('loot/', include("loot.urls")),
     path('', include("campaigns.urls"))
 ]

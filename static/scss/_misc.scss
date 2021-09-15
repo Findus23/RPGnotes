@@ -15,6 +15,10 @@ body {
 }
 
 
+blockquote{
+  @extend .blockquote
+}
+
 
 .collapse-cell {
   padding: 0 !important;
@@ -102,3 +106,9 @@ footer {
   }
 }
 
+@for $i from 1 through 10 {
+  .tree-#{$i} {
+    margin-left: $i*1rem;
+    width: calc(100% - #{$i*1rem});
+  }
+}

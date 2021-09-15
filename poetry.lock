@@ -301,6 +301,17 @@ python-versions = "*"
 Django = ">=2.1,<4.0"
 
 [[package]]
+name = "django-tree-queries"
+version = "0.6.0"
+description = "Tree queries with explicit opt-in, without configurability"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+tests = ["coverage"]
+
+[[package]]
 name = "greenlet"
 version = "1.1.1"
 description = "Lightweight in-process concurrent programming"
@@ -569,7 +580,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "e0cbd5e2098e1c1f4308d9d9acc9827ef68dd4f28d222147ffa23adf23e039f6"
+content-hash = "d72809478da8c00f4c8dd808869031cdb36b502884eb53513ed8086dacd9fab8"
 
 [metadata.files]
 argon2-cffi = [
@@ -746,6 +757,10 @@ django-simple-history = [
 django-tenant-users = []
 django-tenants = [
     {file = "django-tenants-3.3.2.tar.gz", hash = "sha256:e3897662bb88007216ef6e3dde4467db394d4f1a4430b10aebc3ec9e58e8e20f"},
+]
+django-tree-queries = [
+    {file = "django_tree_queries-0.6.0-py3-none-any.whl", hash = "sha256:40e3efb9f3b8a534f99a853c1e8c85e0b7661db40b57a3335758841095e62831"},
+    {file = "django_tree_queries-0.6.0.tar.gz", hash = "sha256:e009b7e673043e82fcd8d32db106a9f2cc5b801028785d110146461592c3b8cd"},
 ]
 greenlet = [
     {file = "greenlet-1.1.1-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:476ba9435afaead4382fbab8f1882f75e3fb2285c35c9285abb3dd30237f9142"},

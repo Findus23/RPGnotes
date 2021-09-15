@@ -5,14 +5,11 @@ from django.db import models
 from django.urls import reverse
 from simple_history.models import HistoricalRecords
 
-from common.models import DescriptionModel
+from common.models import DescriptionModel, HistoryModel
 
 
-class Session(models.Model):
+class Session(HistoryModel, models.Model):
     day = models.DateField(default=date.today)
-    created = models.DateTimeField(auto_now_add=True)
-    last_modified = models.DateTimeField(auto_now=True)
-    history = HistoricalRecords()
 
     class Meta:
         ordering = ["-day"]
@@ -24,13 +21,9 @@ class Session(models.Model):
         return str(self.day)
 
 
-class IngameDay(DescriptionModel):
+class IngameDay(DescriptionModel, HistoryModel):
     day = models.PositiveIntegerField()
     sessions = models.ManyToManyField(Session, related_name="ingame_days")
-
-    created = models.DateTimeField(auto_now_add=True)
-    last_modified = models.DateTimeField(auto_now=True)
-    history = HistoricalRecords()
 
     class Meta:
         ordering = ["-day"]

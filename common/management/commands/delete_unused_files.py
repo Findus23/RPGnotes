@@ -17,6 +17,8 @@ from django_tenants.utils import tenant_context
 from campaigns.models import Campaign
 from rpg_notes.settings import MEDIA_ROOT
 
+media_root = Path(MEDIA_ROOT)
+
 
 def get_file_fields():
     all_models = apps.get_models()
@@ -54,9 +56,9 @@ def get_used_media() -> Set[Path]:
 
 def get_all_media(schema: str) -> Set[Path]:
     media = set()
-    media_root = Path(MEDIA_ROOT) / schema
-    cache_dir = media_root / "cache"
-    for file in media_root.glob("**/*"):
+    schema_media_root = media_root / schema
+    cache_dir = schema_media_root / "cache"
+    for file in schema_media_root.glob("**/*"):
         if not file.is_file():
             continue
         if cache_dir in file.parents:
@@ -65,12 +67,35 @@ def get_all_media(schema: str) -> Set[Path]:
     return media
 
 
+def remove_empty_directories():
+    for path in media_root.glob("**/*"):
+        if not path.is_dir():
+            continue
+        has_next = next(path.iterdir(), None)
+        if not has_next:
+            print("deleting", path.relative_to(media_root))
+            path.rmdir()
+
+
 class Command(BaseCommand):
-    def handle(self, *args, **kwargs):
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--delete',
+            action='store_true',
+            help='Delete duplicate files instead of listing them',
+        )
+
+    def handle(self, *args, **options):
         for campaign in Campaign.objects.exclude(pk=1):
             print(campaign, campaign.schema_name)
             with tenant_context(campaign):
                 used = get_used_media()
                 all = get_all_media(campaign.schema_name)
                 unused = all - used
-                print(all - used)
+                for file in unused:
+                    print("deleting", file.relative_to(media_root))
+                    if options['delete']:
+                        file.unlink()
+        if options['delete']:
+            remove_empty_directories()

@@ -1,2 +1,3 @@
 from .descriptionmodel import DescriptionModel
-from .basemodel import BaseModel
+from .nameslugmodel import NameSlugModel
+from .historymodel import HistoryModel

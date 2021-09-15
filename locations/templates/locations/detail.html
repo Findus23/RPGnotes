@@ -6,51 +6,49 @@
 {% block content %}
     <div class="row">
         <div class="col-4">
-            <ul class="nav nav-pills flex-column">
-                {% for c in player_characters %}
-                    {% include "macros/character-pillar.html" with character=c %}
+            <div class="list-group">
+                {% for p in roots %}
+                    <a class="tree-{{ p.tree_depth }} list-group-item list-group-item-action {% if location.id == p.id %}active{% endif %}"
+                       href="{{ p.get_absolute_url }}">
+                        {{ p }}
+                    </a>
                 {% endfor %}
-            </ul>
-            <ul class="nav nav-pills flex-column">
-                {% for c in npcs %}
-                    {% include "macros/character-pillar.html" with character=c %}
-                {% endfor %}
-            </ul>
-            <a class="btn btn-primary" href="{% url "characteradd" %}">Add Character</a>
+            </div>
+            <a class="btn btn-primary" href="{% url "locationadd" %}">Add Location</a>
         </div>
         <div class="col-8">
-            <div class="character-heading" style="border-bottom-color: {{ character.color }}">
-                {% if character.image %}
-                    {% thumbnail character.image "150x150" crop="center" as im %}
-                        <a href="{{ character.image.url }}" target="_blank">
-                            <img class="avatar avatar-image avatar-large rounded-circle" src="{{ im.url }}" width="{{ im.width }}"
-                             height="{{ im.height }}"
-                             srcset="{{ im.url|srcset }}">
-                        </a>
-                    {% endthumbnail %}
-                {% else %}
-                    <div class="avatar avatar-text avatar-large"
-                         style="background: {{ character.color }};color:{{ character.text_color }}">{{ character.initials }}</div>
-                {% endif %}
-
+            <div class="character-heading">
                 <h1>
-                    {{ character.name }}
-                    <a href="{% url "characteredit" character.slug %}">
+                    {{ location.name }}
+                    <a href="{% url "locationedit" location.slug %}">
                         edit
                     </a>
                 </h1>
-                <p>{{ character.subtitle }}</p>
+                <nav aria-label="breadcrumb" class="breadcrumbs">
+                    <ol class="breadcrumb">
+                        {% for ancestor in location.ancestors %}
+                            <li class="breadcrumb-item">
+                                <a href="{{ ancestor.get_absolute_url }}">{{ ancestor }}</a>
+                            </li>
+                        {% endfor %}
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {{ location }}
+                        </li>
+                    </ol>
+                </nav>
             </div>
+
             <dl>
-                {% if character.player %}
-                    <dt>Player:</dt>
-                    <dd>{{ character.player }}</dd>
+                {% if location.part_of %}
+                    <dt>Part of:</dt>
+                    <dd><a href="{{ location.part_of.get_absolute_url }}">{{ location.part_of }}</a></dd>
                 {% endif %}
             </dl>
-            {{ character.description_html|safe }}
+            {{ location.description_html|safe }}
 
             <div>
-                <small>Last updated: {{ character.last_modified|naturaltime }} by {{ character.history.first.history_user }} </small>
+                <small>Last updated: {{ location.last_modified|naturaltime }}
+                    by {{ location.history.first.history_user }} </small>
             </div>
         </div>
     </div>

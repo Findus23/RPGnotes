@@ -2,10 +2,9 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.urls import reverse
-from simple_history.models import HistoricalRecords
 from sorl.thumbnail import ImageField
 
-from common.models import BaseModel, DescriptionModel
+from common.models import NameSlugModel, DescriptionModel, HistoryModel
 from locations.models import Location
 from rpg_notes.settings import AUTH_USER_MODEL
 from utils.colors import get_random_color, is_bright_color
@@ -17,7 +16,7 @@ def validate_color_hex(value: str):
         raise ValidationError("color hex has to start with a #")
 
 
-class Character(BaseModel, DescriptionModel):
+class Character(NameSlugModel, DescriptionModel, HistoryModel):
     subtitle = models.CharField(max_length=100, blank=True)
     player = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True,
                                related_name="characters")
@@ -29,10 +28,6 @@ class Character(BaseModel, DescriptionModel):
     ])
     token_image = ImageField(upload_to=get_file_path, blank=True, null=True)
     large_image = ImageField(upload_to=get_file_path, blank=True, null=True)
-
-    created = models.DateTimeField(auto_now_add=True)
-    last_modified = models.DateTimeField(auto_now=True)
-    history = HistoricalRecords()
 
     class Meta:
         ordering = ["name"]
