@@ -50,9 +50,9 @@
             </dl>
             {{ character.description_html|safe }}
 
-            {% if character.larger_image %}
-                {% thumbnail character.larger_image "860" crop="center" as im %}
-                    <a href="{{ character.larger_image.url }}" target="_blank">
+            {% if character.large_image %}
+                {% thumbnail character.large_image "860" crop="center" as im %}
+                    <a href="{{ character.large_image.url }}" target="_blank">
                         <img class="img-fluid" src="{{ im.url }}"
                              width="{{ im.width }}"
                              height="{{ im.height }}"
