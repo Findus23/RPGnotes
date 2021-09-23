@@ -9,7 +9,7 @@
             <ul class="nav nav-pills flex-column">
                 {% for d in days %}
                     <li class="nav-item">
-                        <a href="{% url "daydetail" day.campaign.slug d.day %}"
+                        <a href="{% url "daydetail" d.day %}"
                            class="nav-link {% if d.id == day.id %}active{% endif %}">
                             {{ d.prettyname }}
                         </a>

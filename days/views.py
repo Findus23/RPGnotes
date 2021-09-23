@@ -21,6 +21,11 @@ class DayDetailView(generic.DetailView):
     def get_object(self, queryset=None):
         return IngameDay.objects.get(day=self.kwargs['day'])
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data["days"] = IngameDay.objects.all().select_related()
+        return data
+
 
 class DayCreateView(generic.CreateView):
     template_name = "loot/edit.html"
