@@ -277,6 +277,7 @@ def get_random_color() -> str:
 ## https://stackoverflow.com/a/56678483/4398037
 
 def gamma_correction(value: float) -> float:
+    value /= 255
     if value < 0.04045:
         return value / 12.92
     else:
@@ -299,4 +300,6 @@ def get_percieved_lightness(rgb: Tuple[int, ...]) -> float:
 def is_bright_color(bg_color: str) -> bool:
     bg_color = bg_color[1:]
     rgb = tuple(int(bg_color[i:i + 2], 16) for i in (0, 2, 4))
+    print(rgb)
+    print(get_percieved_lightness(rgb))
     return get_percieved_lightness(rgb) > 50
