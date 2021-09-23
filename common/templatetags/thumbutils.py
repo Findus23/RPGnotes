@@ -15,4 +15,4 @@ def srcset(filename):
     for res in settings.THUMBNAIL_ALTERNATIVE_RESOLUTIONS:
         res_string = "{}x".format(res)
         lines.append("{} {}".format(resolution(filename, res_string), res_string))
-    return ','.join(lines)
+    return ', '.join(lines)
