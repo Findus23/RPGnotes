@@ -4,8 +4,8 @@ from utils.markdown import md_to_html
 
 
 class DescriptionModel(models.Model):
-    description_md = models.TextField(blank=True)
-    description_html = models.TextField(blank=True, editable=False)
+    description_md = models.TextField("Description", blank=True)
+    description_html = models.TextField("Description (HTML)", blank=True, editable=False)
 
     class Meta:
         abstract = True
