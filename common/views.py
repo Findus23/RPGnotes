@@ -14,7 +14,8 @@ class PublicHomepageView(TemplateView):
 
 def print_ip(request):
     client_ip, is_routable = get_client_ip(request)
-    return HttpResponse(client_ip, content="text/plain")
+    print(repr(client_ip))
+    return HttpResponse(repr(client_ip), content_type="text/plain")
 
 
 # @cache_page(60 * 15)
