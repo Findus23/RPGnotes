@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from ipware import get_client_ip
 from sentry_sdk import last_event_id
 
 from rpg_notes.secrets import SENTRY_DSN
@@ -9,6 +10,11 @@ from utils.assets import get_css
 
 class PublicHomepageView(TemplateView):
     template_name = "common/homepage.html"
+
+
+def print_ip(request):
+    client_ip, is_routable = get_client_ip(request)
+    return HttpResponse(client_ip, content="text/plain")
 
 
 # @cache_page(60 * 15)
