@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.core.mail import mail_admins
 from django.urls import reverse_lazy
 from django_registration.backends.activation.views import RegistrationView, ActivationView
 
@@ -26,6 +27,7 @@ class CustomRegistrationView(RegistrationView):
             name=data.get("name"),
             is_active=False
         )
+        mail_admins(f"New User created: {new_user}", "", fail_silently=True)
 
         self.send_activation_email(new_user)
         messages.success(self.request,

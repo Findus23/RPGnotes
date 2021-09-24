@@ -1,3 +1,4 @@
+from django.core.mail import mail_admins
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.text import slugify
@@ -30,6 +31,7 @@ class CampaignCreateView(generic.FormView):
         user: TenantUser = self.request.user
         super_user = TenantUser.objects.get(id=1)
         fqdn = provision_tenant(name, slug, super_user.email, is_staff=True)
+        mail_admins(f"New Campaign created: {name}", "", fail_silently=True)
         campaign = Campaign.objects.get(name=name)
         campaign.add_user(user)
         return redirect("http://" + fqdn)

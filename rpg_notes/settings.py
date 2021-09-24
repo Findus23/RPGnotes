@@ -189,6 +189,7 @@ THUMBNAIL_ALTERNATIVE_RESOLUTIONS = [2, 3]
 ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_SUBJECT_PREFIX = "[RPGnotes]"
 
 CSP_DEFAULT_SRC = ["'self'", 'data:', "https://bugs.lw1.at"]
 CSP_SCRIPT_SRC = ["'self'", "https://bugs.lw1.at"]
