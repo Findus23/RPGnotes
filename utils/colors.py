@@ -300,6 +300,4 @@ def get_percieved_lightness(rgb: Tuple[int, ...]) -> float:
 def is_bright_color(bg_color: str) -> bool:
     bg_color = bg_color[1:]
     rgb = tuple(int(bg_color[i:i + 2], 16) for i in (0, 2, 4))
-    print(rgb)
-    print(get_percieved_lightness(rgb))
     return get_percieved_lightness(rgb) > 50

@@ -17,13 +17,11 @@ use_platinum = False
 
 
 def digitize(n):
-    print("n", n)
     digits = []
     i = 0
     if n == 0:
         return [0]
     while n:
-        print(digits)
         i += 1
         if i > (3 if use_platinum else 2):
             digits.append(n)
