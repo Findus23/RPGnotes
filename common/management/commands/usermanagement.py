@@ -26,5 +26,7 @@ class Command(BaseCommand):
         else:
             campaign.remove_user(user)
             print(f"removed {user} from {campaign}")
-        print(f"current users: {', '.join(campaign.user_set.all())}")
+        print("current users:")
+        for cu in campaign.user_set.all():
+            print(cu)
 
