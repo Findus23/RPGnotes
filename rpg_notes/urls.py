@@ -8,7 +8,7 @@ from rpg_notes import settings
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
-    path("ip", views.print_ip, name="ip"),
+    # path("ip", views.print_ip, name="ip"),
     path('admin/', admin.site.urls),
     path('character/', include("characters.urls")),
     path('day/', include("days.urls")),
