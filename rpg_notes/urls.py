@@ -9,7 +9,7 @@ from rpg_notes import settings
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
-    path("language/",views.LanguageSelectView.as_view()),
+    path("language/", views.LanguageSelectView.as_view(), name="change_language"),
     # path("ip", views.print_ip, name="ip"),
     path('admin/', admin.site.urls),
     path('character/', include("characters.urls")),

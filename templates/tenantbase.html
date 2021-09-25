@@ -10,8 +10,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                {% with url_name=request.resolver_match.url_name %}
-                    <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav me-auto">
+                    {% with url_name=request.resolver_match.url_name %}
                         <li class="nav-item">
                             <a class="nav-link {% if url_name == 'campaigndetail' %}active{% endif %}"
                                href="{% url "campaigndetail" %}">{% translate "Home" %}</a>
@@ -32,11 +32,24 @@
                             <a class="nav-link {% if url_name == 'lootlist' %}active{% endif %}"
                                href="{% url "lootlist" %}">{% translate "Loot" %}</a>
                         </li>
-                    </ul>
-                {% endwith %}
-                <span class="navbar-text">
-        {{ user }}
-      </span>
+                    {% endwith %}
+                </ul>
+            <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="navbar-text nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">{{ user }}</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item"
+                                   href="{% url "change_language" %}">{% translate "Change Language" %}</a></li>
+                            {# <li><a class="dropdown-item" href="#">Another action</a></li>#}
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url "logout" %}">{% translate "Log out" %}</a></li>
+                        </ul>
+                    </li>
+            </ul>
             </div>
         </div>
     </nav>
