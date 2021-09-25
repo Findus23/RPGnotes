@@ -48,6 +48,6 @@ class CharacterEditView(generic.UpdateView):
 
 
 class CharacterDeleteView(generic.DeleteView):
-    template_name = "common/campaign_confirm_delete.html"
+    template_name = "common/confirm_delete.html"
     model = Character
     success_url = reverse_lazy('characterlist')

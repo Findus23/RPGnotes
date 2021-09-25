@@ -12,6 +12,10 @@ class PublicHomepageView(TemplateView):
     template_name = "common/homepage.html"
 
 
+class LanguageSelectView(TemplateView):
+    template_name = "common/languageselect.html"
+
+
 def print_ip(request):
     client_ip, is_routable = get_client_ip(request)
     return HttpResponse(repr(client_ip), content_type="text/plain")

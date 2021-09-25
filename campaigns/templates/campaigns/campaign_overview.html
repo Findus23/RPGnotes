@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block mainpage %}
     {% if user %}
         <h1>{{ user }}</h1>
-        <a href="{% url "logout" %}">log out</a>
+        <a href="{% url "logout" %}">{% translate "Log out" %}</a>
     {% endif %}
     {% for campaign in campaigns %}
         <h2><a href="{{ campaign.get_absolute_url }}">{{ campaign.name }}</a></h2>
     {% endfor %}
-    <a href="{% url "campaigncreate" %}" class="btn btn-secondary">create Campaign</a>
+    <a href="{% url "campaigncreate" %}" class="btn btn-secondary">{% translate "create Campaign" %}</a>
 {% endblock %}

@@ -1,4 +1,5 @@
 {% extends "tenantbase.html" %}
+{% load i18n %}
 {% load thumbutils %}
 {% load thumbnail %}
 {% load humanize %}
@@ -16,26 +17,26 @@
                     </li>
                 {% endfor %}
             </ul>
-            <a class="btn btn-primary add-button" href="{% url "dayadd" %}">Add Day</a>
+            <a class="btn btn-primary add-button" href="{% url "dayadd" %}">{% translate "Add Day" %}</a>
         </div>
         <div class="col-8">
             <div class="day-heading">
                 <h1>
                     {{ day.prettyname }}
                     <a href="{% url "dayedit" day.day %}">
-                        edit
+                        {% translate "Edit" %}
                     </a>
                 </h1>
             </div>
             {{ day.description_html|safe }}
             <dl>
-                <dt>Sessions:</dt>
+                <dt>{% translate "Sessions" %}:</dt>
                 <dd>{{ day.sessions.all|join:", " }}</dd>
             </dl>
 
             <div>
-                <small>Last updated: {{ day.last_modified|naturaltime }}
-                    by {{ day.history.first.history_user }} </small>
+                <small>{% translate "Last updated" %}: {{ day.last_modified|naturaltime }}
+                    {% translate "by" %} {{ day.history.first.history_user }} </small>
             </div>
         </div>
     </div>

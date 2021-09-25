@@ -1,4 +1,5 @@
 {% extends "tenantbase.html" %}
+{% load i18n %}
 {% load thumbutils %}
 {% load thumbnail %}
 {% load humanize %}
@@ -14,7 +15,7 @@
                     </a>
                 {% endfor %}
             </div>
-            <a class="btn btn-primary" href="{% url "locationadd" %}">Add Location</a>
+            <a class="btn btn-primary" href="{% url "locationadd" %}">{% translate "Add Location" %}</a>
         </div>
         <div class="col-8">
             <div class="character-heading">
@@ -40,15 +41,15 @@
 
             <dl>
                 {% if location.part_of %}
-                    <dt>Part of:</dt>
+                    <dt>{% translate "Part of" %}:</dt>
                     <dd><a href="{{ location.part_of.get_absolute_url }}">{{ location.part_of }}</a></dd>
                 {% endif %}
             </dl>
             {{ location.description_html|safe }}
 
             <div>
-                <small>Last updated: {{ location.last_modified|naturaltime }}
-                    by {{ location.history.first.history_user }} </small>
+                <small>{% translate "Last updated" %}: {{ location.last_modified|naturaltime }}
+                    {% translate "by" %} {{ location.history.first.history_user }} </small>
             </div>
         </div>
     </div>

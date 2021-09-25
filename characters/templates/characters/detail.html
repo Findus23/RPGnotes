@@ -1,4 +1,5 @@
 {% extends "tenantbase.html" %}
+{% load i18n %}
 {% load thumbutils %}
 {% load thumbnail %}
 {% load humanize %}
@@ -16,7 +17,7 @@
                     {% include "macros/character-pillar.html" with character=c %}
                 {% endfor %}
             </ul>
-            <a class="btn btn-primary" href="{% url "characteradd" %}">Add Character</a>
+            <a class="btn btn-primary" href="{% url "characteradd" %}">{% translate "Add Character" %}</a>
         </div>
         <div class="col-8">
             <div class="character-heading" style="border-bottom-color: {{ character.color }}">
@@ -37,7 +38,7 @@
                 <h1>
                     {{ character.name }}
                     <a href="{% url "characteredit" character.slug %}">
-                        edit
+                        {% translate "Edit" %}
                     </a>
                 </h1>
                 <p>{{ character.subtitle }}</p>
@@ -62,8 +63,8 @@
             {% endif %}
 
             <div>
-                <small>Last updated: {{ character.last_modified|naturaltime }}
-                    by {{ character.history.first.history_user }} </small>
+                <small>{% translate "Last updated" %}: {{ character.last_modified|naturaltime }}
+                    {% translate "by" %} {{ character.history.first.history_user }} </small>
             </div>
         </div>
     </div>

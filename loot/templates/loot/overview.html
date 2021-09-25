@@ -1,18 +1,19 @@
 {% extends "tenantbase.html" %}
+{% load i18n %}
 {% load formatters %}
 
 {% block heading %}
-    <h1>Loot</h1>
+    <h1>{% translate "Loot" %}</h1>
 {% endblock %}
 {% block content %}
     <table class="table">
         <thead>
         <tr>
-            <td>Item</td>
-            <td>Quantity</td>
-            <td>Total Value</td>
-            <td>Claimant</td>
-            <td>Location</td>
+            <td>{% translate "Item" %}</td>
+            <td>{% translate "Quantity" %}</td>
+            <td>{% translate "Total Value" %}</td>
+            <td>{% translate "Claimant" %}</td>
+            <td>{% translate "Location" %}</td>
             <td></td>
         </tr>
         </thead>
@@ -36,9 +37,9 @@
             <tr>
                 <td colspan="5" class="collapse-cell">
                     <div class="collapse" id="row-{{ l.id }}">
-                        <h3>{{ l.name }} <a href="{% url "lootedit" l.id %}">edit</a></h3>
+                        <h3>{{ l.name }} <a href="{% url "lootedit" l.id %}">{% translate "Edit" %}</a></h3>
                         {{ l.description_html|safe }}
-                        <p>Value each: {{ l.value_per_unit|format_money_html }}</p>
+                        <p>{% translate "Value each" %}: {{ l.value_per_unit|format_money_html }}</p>
                     </div>
                 </td>
             </tr>
@@ -46,10 +47,10 @@
         </tbody>
     </table>
     <dl>
-        <dd>Total value:</dd>
+        <dd>{% translate "Total Value" %}:</dd>
         <dt>{{ total_value|format_money_html }}</dt>
     </dl>
-    <a href="{% url "lootadd" %}" class="btn btn-primary">Add Loot</a>
+    <a href="{% url "lootadd" %}" class="btn btn-primary">{% translate "Add Loot" %}</a>
 
 {% endblock %}
 

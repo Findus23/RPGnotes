@@ -2,6 +2,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 from sorl.thumbnail import ImageField
 
 from common.models import NameSlugModel, DescriptionModel, HistoryModel
@@ -17,20 +18,25 @@ def validate_color_hex(value: str):
 
 
 class Character(NameSlugModel, DescriptionModel, HistoryModel):
-    subtitle = models.CharField(max_length=100, blank=True)
+    subtitle = models.CharField(_("Subtitle"), max_length=100, blank=True)
     player = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True,
-                               related_name="characters")
+                               related_name="characters", verbose_name=_("Player"))
     # faction = models.ForeignKey(Faction, on_delete=models.PROTECT, blank=True, null=True)
-    location = models.ForeignKey(Location, on_delete=models.PROTECT, blank=True, null=True)
-    color = models.CharField(max_length=7, default=get_random_color, validators=[
+    location = models.ForeignKey(Location, on_delete=models.PROTECT, blank=True, null=True,
+                                 verbose_name=_("Location"),
+                                 help_text=_("If no player is selected, this character is considered an NPC.")
+                                 )
+    color = models.CharField(_("Color"), max_length=7, default=get_random_color, validators=[
         MinLengthValidator(7),
         validate_color_hex
     ])
-    token_image = ImageField(upload_to=get_file_path, blank=True, null=True)
-    large_image = ImageField(upload_to=get_file_path, blank=True, null=True)
+    token_image = ImageField(_("Token Image"), upload_to=get_file_path, blank=True, null=True, help_text=_("round"))
+    large_image = ImageField(_("Large Image"), upload_to=get_file_path, blank=True, null=True)
 
     class Meta:
         ordering = ["name"]
+        verbose_name = _("Character")
+        verbose_name_plural = _("Characters")
 
     def get_absolute_url(self):
         return reverse('characterdetail', args=[self.slug])

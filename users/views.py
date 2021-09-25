@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.core.mail import mail_admins
 from django.urls import reverse_lazy
+from django.utils.translation import gettext as _
 from django_registration.backends.activation.views import RegistrationView, ActivationView
 
 from users.forms import CustomRegistrationForm
@@ -31,7 +32,7 @@ class CustomRegistrationView(RegistrationView):
 
         self.send_activation_email(new_user)
         messages.success(self.request,
-                         "You account was created. Please click the confirmation link in the E-Mail to activate it.")
+                         _("You account was created. Please click the confirmation link in the E-Mail to activate it."))
         return new_user
 
 
@@ -44,6 +45,6 @@ class CustomActivationView(ActivationView):
         user.is_active = True
         user.is_verified = True
         user.save()
-        messages.success(self.request, "Account was successfully activated. You can log in now.")
+        messages.success(self.request, _("Account was successfully activated. You can log in now."))
 
         return user

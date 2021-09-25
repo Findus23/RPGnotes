@@ -46,7 +46,7 @@ class LootEditView(generic.UpdateView):
 
 
 class LootDeleteView(generic.DeleteView):
-    template_name = "common/campaign_confirm_delete.html"
+    template_name = "common/confirm_delete.html"
     model = Loot
 
     success_url = reverse_lazy("lootlist")

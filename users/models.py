@@ -1,14 +1,21 @@
 from django.core.mail import send_mail
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from tenant_users.tenants.models import UserProfile
 
 
 class TenantUser(UserProfile):
     name = models.CharField(
-        "Name",
+        _("Name"),
         max_length=100,
         # blank=True,
+    )
+
+    email = models.EmailField(
+        _('Email Address'),
+        unique=True,
+        db_index=True,
     )
 
     def __str__(self):

@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
 
 
 class NameSlugModel(models.Model):
-    name = models.CharField(max_length=1000)
+    name = models.CharField(_("Name"), max_length=1000)
     slug = models.SlugField(editable=False, unique=True)
 
     class Meta:

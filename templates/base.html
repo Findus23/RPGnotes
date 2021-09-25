@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load version %}
 {% load django_bootstrap5 %}
 {% load static %}
@@ -35,9 +36,9 @@
                 </li>
                 <li class="nav-item">
                     {% if user.is_authenticated %}
-                        <a class="nav-link" href="{% url "logout" %}">Logout</a>
+                        <a class="nav-link" href="{% url "logout" %}">{% translate "Log out" %}</a>
                     {% else %}
-                        <a class="nav-link" href="{% url "login" %}">Login</a>
+                        <a class="nav-link" href="{% url "login" %}">{% translate "Log in" %}</a>
                     {% endif %}
             </ul>
         </div>
@@ -51,7 +52,8 @@
     <script src="{% static "libs/bundle.min.js" %}"></script>
     <script nonce="{{request.csp_nonce}}">
         Sentry.init({dsn: "{{ sentry_dsn }}"});
-        Sentry.showReportDialog({eventId: "{{ sentry_event_id }}"});
+        {% get_current_language as LANGUAGE_CODE %}
+        Sentry.showReportDialog({eventId: "{{ sentry_event_id }}",lang:"{{ LANGUAGE_CODE }}"});
     </script>
 {% endif %}
 {% block extra_js %}{% endblock %}

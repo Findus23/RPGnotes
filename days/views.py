@@ -49,6 +49,6 @@ class DayEditView(generic.UpdateView):
 
 
 class DayDeleteView(generic.DeleteView):
-    template_name = "common/campaign_confirm_delete.html"
+    template_name = "common/confirm_delete.html"
     model = IngameDay
     success_url = reverse_lazy('daylist')

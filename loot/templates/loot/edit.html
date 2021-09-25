@@ -1,15 +1,16 @@
 {% extends 'tenantbase.html' %}
+{% load i18n %}
 {% load django_bootstrap5 %}
 {% load static %}
 
 {% block heading %}
     {% if edit %}
-        <h1>Edit "{{ object.name }}"</h1>
+        <h1>{% blocktrans with name=object.name %}Edit "{{ name }}"{% endblocktrans %}</h1>
         {% if request.resolver_match.view_name %}
             <a class="btn btn-danger" href="{% url "lootdelete" object.id %}">Delete</a>
         {% endif %}
     {% else %}
-        <h1>Add new</h1>
+        <h1>{% translate "Add new" %}</h1>
     {% endif %}
 {% endblock %}
 
@@ -18,9 +19,11 @@
     <form method="post"
           {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
         {% csrf_token %}
-        <input type="submit" class="btn btn-primary" value="{% if edit %}Update{% else %}Add{% endif %}">
+        <input type="submit" class="btn btn-primary"
+               value="{% if edit %}{% translate "Save" %}{% else %}{% translate "Add" %}{% endif %}">
         {% bootstrap_form form %}
-        <input type="submit" class="btn btn-primary" value="{% if edit %}Update{% else %}Add{% endif %}">
+        <input type="submit" class="btn btn-primary"
+               value="{% if edit %}{% translate "Save" %}{% else %}{% translate "Add" %}{% endif %}">
     </form>
 {% endblock %}
 

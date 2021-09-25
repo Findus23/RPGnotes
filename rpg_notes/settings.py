@@ -14,6 +14,7 @@ from pathlib import Path
 from subprocess import run
 
 import sentry_sdk
+from django.utils.translation import gettext_lazy as _
 from django_tenants.files.storage import TenantFileSystemStorage
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -94,6 +95,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -160,7 +162,16 @@ LOGOUT_REDIRECT_URL = "/"
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = [
+    ('de', _('German')),
+    ('en', _('English')),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / "locale"
+]
 
 TIME_ZONE = 'Europe/Vienna'
 

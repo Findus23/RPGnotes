@@ -1,8 +1,9 @@
 {% extends "tenantbase.html" %}
+{% load i18n %}
 
 {% block content %}
     <h1>{{ object }}</h1>
-    <h2>Players</h2>
+    <h2>{% translate "Players" %}</h2>
     <ul>
         {% for user,characters in players.items %}
             <li>{{ user }}{% if characters %} ({{ characters|join:", " }}){% endif %}</li>

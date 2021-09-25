@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load version %}
 
 {% block mainpage %}
@@ -13,23 +14,23 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link {% if url_name == 'campaigndetail' %}active{% endif %}"
-                               href="{% url "campaigndetail" %}">Home</a>
+                               href="{% url "campaigndetail" %}">{% translate "Home" %}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if url_name == 'characterdetail' %}active{% endif %}"
-                               href="{% url "characterlist" %}">Characters</a>
+                               href="{% url "characterlist" %}">{% translate "Characters" %}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if url_name == 'locationdetail' %}active{% endif %}"
-                               href="{% url "locationlist" %}">Locations</a>
+                               href="{% url "locationlist" %}">{% translate "Locations" %}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if url_name == 'daydetail' %}active{% endif %}"
-                               href="{% url "daylist" %}">Timeline</a>
+                               href="{% url "daylist" %}">{% translate "Timeline" %}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if url_name == 'lootlist' %}active{% endif %}"
-                               href="{% url "lootlist" %}">Loot</a>
+                               href="{% url "lootlist" %}">{% translate "Loot" %}</a>
                         </li>
                     </ul>
                 {% endwith %}

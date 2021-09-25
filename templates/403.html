@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load urls %}
 
 
 
 {% block mainpage %}
-    <h1>Permission Denied</h1>
-    <p>You might want to go back to the <a href="{% main_url %}">homepage</a>.</p>
+    <h1>{% translate "Permission Denied" %}</h1>
+    {% main_url as url %}
+    <p>{% blocktrans %}You might want to go back to the <a href="{{ url }}">homepage</a>.{% endblocktrans %}</p>
 {% endblock %}

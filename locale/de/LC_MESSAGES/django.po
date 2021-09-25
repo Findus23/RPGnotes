@@ -1,0 +1,309 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-25 20:27+0200\n"
+"PO-Revision-Date: 2021-09-25 20:28+0200\n"
+"Last-Translator: Lukas Winkler <translations@lw1.at>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: campaigns/models.py:11 common/models/nameslugmodel.py:7 loot/models.py:10
+#: users/models.py:10
+msgid "Name"
+msgstr "Name"
+
+#: campaigns/templates/campaigns/campaign_detail.html:6
+msgid "Players"
+msgstr "Spieler"
+
+#: campaigns/templates/campaigns/campaign_edit.html:8
+msgid "Add new campaign"
+msgstr "Neue Campagne erstellen"
+
+#: campaigns/templates/campaigns/campaign_edit.html:13
+#: loot/templates/loot/edit.html:23 loot/templates/loot/edit.html:26
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: campaigns/templates/campaigns/campaign_overview.html:7
+#: templates/base.html:39
+msgid "Log out"
+msgstr "Abmelden"
+
+#: campaigns/templates/campaigns/campaign_overview.html:12
+msgid "create Campaign"
+msgstr "Campaign erstellen"
+
+#: characters/models.py:21
+msgid "Subtitle"
+msgstr "Untertitel"
+
+#: characters/models.py:23
+msgid "Player"
+msgstr "Spieler"
+
+#: characters/models.py:26 locations/models.py:22 loot/models.py:15
+#: loot/templates/loot/overview.html:16
+msgid "Location"
+msgstr "Ort"
+
+#: characters/models.py:27
+msgid "If no player is selected, this character is considered an NPC."
+msgstr "Wenn kein Spieler ausgewählt ist, ist dies ein NPC."
+
+#: characters/models.py:29
+msgid "Color"
+msgstr "Farbe"
+
+#: characters/models.py:33
+msgid "Token Image"
+msgstr "Token Bild"
+
+#: characters/models.py:33
+msgid "round"
+msgstr "rund"
+
+#: characters/models.py:34
+msgid "Large Image"
+msgstr "Großes Bild"
+
+#: characters/models.py:38
+msgid "Character"
+msgstr "Charakter"
+
+#: characters/models.py:39 templates/tenantbase.html:21
+msgid "Characters"
+msgstr "Charaktere"
+
+#: characters/templates/characters/detail.html:20
+msgid "Add Character"
+msgstr "Charakter hinzufügen"
+
+#: characters/templates/characters/detail.html:41
+#: days/templates/days/day_detail.html:27 loot/templates/loot/overview.html:40
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: characters/templates/characters/detail.html:66
+#: days/templates/days/day_detail.html:38
+#: locations/templates/locations/detail.html:51
+msgid "Last updated"
+msgstr "Zuletzt geändert"
+
+#: characters/templates/characters/detail.html:67
+#: days/templates/days/day_detail.html:39
+#: locations/templates/locations/detail.html:52
+msgid "by"
+msgstr "von"
+
+#: common/models/descriptionmodel.py:8
+msgid "Description"
+msgstr "Beschreibung"
+
+#: common/models/descriptionmodel.py:9
+msgid "Description (HTML)"
+msgstr "Beschreibung (HTML)"
+
+#: days/models.py:12
+msgid "Date"
+msgstr "Datum"
+
+#: days/models.py:16 days/models.py:28
+msgid "Session"
+msgstr "Session"
+
+#: days/models.py:17 days/templates/days/day_detail.html:33
+msgid "Sessions"
+msgstr "Sessions"
+
+#: days/models.py:27 days/models.py:32
+msgid "Day"
+msgstr "Tag"
+
+#: days/models.py:33
+msgid "Days"
+msgstr "Tage"
+
+#: days/models.py:40
+msgid "day"
+msgstr "Tag"
+
+#: days/templates/days/day_detail.html:20
+msgid "Add Day"
+msgstr "Tag hinzufügen"
+
+#: locations/models.py:16 locations/templates/locations/detail.html:44
+msgid "Part of"
+msgstr "Teil von"
+
+#: locations/models.py:23 templates/tenantbase.html:25
+msgid "Locations"
+msgstr "Orte"
+
+#: locations/templates/locations/detail.html:18
+msgid "Add Location"
+msgstr "Ort hinzufügen"
+
+#: loot/models.py:11 loot/templates/loot/overview.html:13
+msgid "Quantity"
+msgstr "Anzahl"
+
+#: loot/models.py:12
+msgid "Value (Gold)"
+msgstr "Wert (Gold)"
+
+#: loot/models.py:13
+msgid "Weight (lb)"
+msgstr "Gewicht (lb)"
+
+#: loot/models.py:14 loot/templates/loot/overview.html:15
+msgid "Claimant"
+msgstr "beansprucht von"
+
+#: loot/models.py:16
+msgid "Magic Item"
+msgstr "Magisches Item"
+
+#: loot/models.py:20 loot/models.py:21 loot/templates/loot/overview.html:6
+#: templates/tenantbase.html:33
+msgid "Loot"
+msgstr "Loot"
+
+#: loot/templates/loot/edit.html:8
+#, python-format
+msgid "Edit \"%(name)s\""
+msgstr "\"%(name)s\" bearbeiten"
+
+#: loot/templates/loot/edit.html:13
+msgid "Add new"
+msgstr "Neu erstellen"
+
+#: loot/templates/loot/edit.html:23 loot/templates/loot/edit.html:26
+#: templates/common/languageselect.html:19
+#: users/templates/users/registration_form.html:13
+msgid "Save"
+msgstr "Speichern"
+
+#: loot/templates/loot/overview.html:12
+msgid "Item"
+msgstr "Objekt"
+
+#: loot/templates/loot/overview.html:14 loot/templates/loot/overview.html:50
+msgid "Total Value"
+msgstr "Gesamtwert"
+
+#: loot/templates/loot/overview.html:42
+msgid "Value each"
+msgstr "Wert pro Stück"
+
+#: loot/templates/loot/overview.html:53
+msgid "Add Loot"
+msgstr "Loot hinzufügen"
+
+#: rpg_notes/settings.py:168
+msgid "German"
+msgstr "Deutsch"
+
+#: rpg_notes/settings.py:169
+msgid "English"
+msgstr "Englisch"
+
+#: templates/403.html:8
+msgid "Permission Denied"
+msgstr "Zugriff verweigert"
+
+#: templates/403.html:10
+#, python-format
+msgid "You might want to go back to the <a href=\"%(url)s\">homepage</a>."
+msgstr ""
+"Du möchtest vielleicht zurück zur <a href=\"%(url)s\">Startseite</a> gehen."
+
+#: templates/base.html:41 templates/common/homepage.html:18
+#: templates/registration/login.html:25
+msgid "Log in"
+msgstr "Anmelden"
+
+#: templates/common/homepage.html:10
+msgid ""
+"An experimental, collaborative note taking app and wiki optimized for RPG "
+"games."
+msgstr ""
+
+#: templates/common/homepage.html:15
+msgid "List of Campaigns"
+msgstr "Liste der Campaigns"
+
+#: templates/common/homepage.html:21
+msgid "Sign up"
+msgstr "Registrieren"
+
+#: templates/common/languageselect.html:6
+msgid "Change Language"
+msgstr "Sprache ändern"
+
+#: templates/registration/login.html:9
+msgid "Login"
+msgstr "Anmeldung"
+
+#: templates/registration/login.html:13
+#, python-format
+msgid "You need to log in before you can access <code>%(next)s</code>."
+msgstr "Du musst dich anmelden bevor du <code>%(next)s</code> aufrufen kannst."
+
+#: templates/registration/login.html:22
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/tenantbase.html:17
+msgid "Home"
+msgstr "Home"
+
+#: templates/tenantbase.html:29
+msgid "Timeline"
+msgstr "Timeline"
+
+#: users/models.py:16
+msgid "Email Address"
+msgstr "E-Mail-Adresse"
+
+#: users/templates/users/activation_email_subject.html:2
+#, python-format
+msgid "Please activate your user account, %(user)s"
+msgstr "Bitte aktiviere deinen Account, %(user)s"
+
+#: users/templates/users/registration_closed.html:5
+msgid "Registration closed"
+msgstr "Registrierung ist geschlossen"
+
+#: users/templates/users/registration_complete.html:5
+msgid "Registration complete"
+msgstr "Registrierung erfolgreich"
+
+#: users/templates/users/registration_form.html:8
+msgid "Registration"
+msgstr "Registrierung"
+
+#: users/views.py:35
+msgid ""
+"You account was created. Please click the confirmation link in the E-Mail to "
+"activate it."
+msgstr ""
+"Dein Account wurde erstellt. Bitte klicke auf den Bestätigungslink in der E-"
+"Mail um ihn zu aktivieren."
+
+#: users/views.py:48
+msgid "Account was successfully activated. You can log in now."
+msgstr ""
+"Der Account wurde erfolgreich aktiviert. Du kannst dich jetzt damit anmelden."
+

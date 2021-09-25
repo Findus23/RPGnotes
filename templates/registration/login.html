@@ -1,28 +1,28 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load django_bootstrap5 %}
 {% load static %}
 
 
 
 {% block mainpage %}
-    <h1>Login</h1>
+    <h1>{% translate "Login" %}</h1>
 
     {% if next %}
-    <div class="alert alert-info">
-      You need to log in before you can access
-      <code>{{ next }}</code>.
-    </div>
-  {% endif %}
+        <div class="alert alert-info">
+            {% blocktranslate %}You need to log in before you can access <code>{{ next }}</code>.{% endblocktranslate %}
+        </div>
+    {% endif %}
 
-  <form method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% url 'admin_password_reset' as password_reset_url %}
-    <div class="password-reset-link">
-      <a href="{% url 'password_reset' %}">Forgotten your password or username?</a>
-    </div>
-    <button type="submit" class="btn btn-lg btn-primary btn-block">
-      Sign in
-    </button>
-  </form>
+    <form method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% url 'admin_password_reset' as password_reset_url %}
+        <div class="password-reset-link">
+            <a href="{% url 'password_reset' %}">{% translate "Forgotten your password or username?" %}</a>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block">
+            {% translate "Log in" %}
+        </button>
+    </form>
 {% endblock %}
