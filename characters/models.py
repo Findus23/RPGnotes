@@ -41,9 +41,15 @@ class Character(NameSlugModel, DescriptionModel, HistoryModel):
     def get_absolute_url(self):
         return reverse('characterdetail', args=[self.slug])
 
+    @property
     def initials(self):
         return "".join([word[0] for word in self.name.split()][:2]).upper()
 
+    @property
+    def firstname(self):
+        return self.name.split()[0]
+
+    @property
     def text_color(self):
         return "black" if is_bright_color(self.color) else "white"
 
