@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load urls %}
 {% load i18n %}
 {% load version %}
 
@@ -46,6 +47,8 @@
                             {% if user.is_staff %}
                                 <li><a class="dropdown-item" href="/admin/">Admin</a></li>
                             {% endif %}
+                            <li><a class="dropdown-item"
+                                   href="{% main_url %}/profile/">{% translate "Edit User Account" %}</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

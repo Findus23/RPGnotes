@@ -2,9 +2,10 @@ from django.contrib import messages
 from django.core.mail import mail_admins
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
+from django.views.generic import UpdateView
 from django_registration.backends.activation.views import RegistrationView, ActivationView
 
-from users.forms import CustomRegistrationForm
+from users.forms import CustomRegistrationForm, CustomUserChangeForm
 from users.models import TenantUser
 
 
@@ -48,3 +49,12 @@ class CustomActivationView(ActivationView):
         messages.success(self.request, _("Account was successfully activated. You can log in now."))
 
         return user
+
+
+class UserEditView(UpdateView):
+    template_name = "users/edit.html"
+    model = TenantUser
+    form_class = CustomUserChangeForm
+
+    def get_object(self, queryset=None):
+        return self.request.user

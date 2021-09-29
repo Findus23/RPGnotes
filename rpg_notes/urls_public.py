@@ -5,11 +5,13 @@ from django.urls import path, include
 
 from common import views
 from rpg_notes import settings
+from users import views as user_views
 
 urlpatterns = [
     path('', include('users.urls')),
     path('', include('django.contrib.auth.urls')),
     path('', views.PublicHomepageView.as_view()),
+    path("profile/", user_views.UserEditView.as_view(), name="edit_profile"),
     path('admin/', admin.site.urls),
     path('', include("campaigns.urls_public"))
 ]
