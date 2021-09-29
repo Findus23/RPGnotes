@@ -22,7 +22,7 @@ class Command(BaseCommand):
         user = TenantUser.objects.get(name=options.get("user"))
         campaign = Campaign.objects.get(slug=options.get("campaign_slug"))
         if options.get("add"):
-            campaign.add_user(user, is_superuser=options.get("superuser"))
+            campaign.add_user(user, is_superuser=options.get("superuser"), is_staff=options.get("superuser"))
             print(f"added {user} to {campaign}")
         else:
             campaign.remove_user(user)
