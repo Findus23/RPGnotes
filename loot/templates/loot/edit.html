@@ -6,8 +6,14 @@
 {% block heading %}
     {% if edit %}
         <h1>{% blocktrans with name=object.name %}Edit "{{ name }}"{% endblocktrans %}</h1>
-        {% if request.resolver_match.view_name %}
-            <a class="btn btn-danger" href="{% url "lootdelete" object.id %}">Delete</a>
+        {% if request.resolver_match.view_name == "lootedit" %}
+            <a class="btn btn-danger" href="{% url "lootdelete" object.id %}">{% translate "Delete" %}</a>
+        {% elif request.resolver_match.view_name == "dayedit" %}
+            <a class="btn btn-danger" href="{% url "daydelete" object.id %}">{% translate "Delete" %}</a>
+        {% elif request.resolver_match.view_name == "locationedit" %}
+            <a class="btn btn-danger" href="{% url "locationdelete" object.slug %}">{% translate "Delete" %}</a>
+        {% elif request.resolver_match.view_name == "characteredit" %}
+            <a class="btn btn-danger" href="{% url "characterdelete" object.slug %}">{% translate "Delete" %}</a>
         {% endif %}
     {% else %}
         <h1>{% translate "Add new" %}</h1>

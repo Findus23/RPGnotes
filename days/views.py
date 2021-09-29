@@ -52,3 +52,6 @@ class DayDeleteView(generic.DeleteView):
     template_name = "common/confirm_delete.html"
     model = IngameDay
     success_url = reverse_lazy('daylist')
+
+    def get_object(self, queryset=None):
+        return IngameDay.objects.get(day=self.kwargs['day'])

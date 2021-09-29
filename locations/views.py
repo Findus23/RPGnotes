@@ -1,5 +1,6 @@
 # Create your views here.
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.views import generic
 
 from locations.forms import LocationForm
@@ -40,3 +41,9 @@ class LocationEditView(generic.UpdateView):
         data = super().get_context_data(**kwargs)
         data['edit'] = True
         return data
+
+
+class LocationDeleteView(generic.DeleteView):
+    template_name = "common/confirm_delete.html"
+    model = Location
+    success_url = reverse_lazy('locationlist')
