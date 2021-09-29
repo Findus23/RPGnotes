@@ -19,13 +19,16 @@ def validate_color_hex(value: str):
 
 class Character(NameSlugModel, DescriptionModel, HistoryModel):
     subtitle = models.CharField(_("Subtitle"), max_length=100, blank=True)
-    player = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True,
-                               related_name="characters", verbose_name=_("Player"))
+    player = models.ForeignKey(
+        AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True,
+        related_name="characters", verbose_name=_("Player"),
+        help_text=_("If no player is selected, this character is considered an NPC.")
+    )
     # faction = models.ForeignKey(Faction, on_delete=models.PROTECT, blank=True, null=True)
-    location = models.ForeignKey(Location, on_delete=models.PROTECT, blank=True, null=True,
-                                 verbose_name=_("Location"),
-                                 help_text=_("If no player is selected, this character is considered an NPC.")
-                                 )
+    location = models.ForeignKey(
+        Location, on_delete=models.PROTECT, blank=True, null=True,
+        verbose_name=_("Location")
+    )
     color = models.CharField(_("Color"), max_length=7, default=get_random_color, validators=[
         MinLengthValidator(7),
         validate_color_hex
