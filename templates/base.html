@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %} - RPGnotes</title>
 
     <!-- Bootstrap -->
     {% if debug %}
@@ -50,10 +50,10 @@
 
 {% if sentry_event_id %}
     <script src="{% static "libs/bundle.min.js" %}"></script>
-    <script nonce="{{request.csp_nonce}}">
+    <script nonce="{{ request.csp_nonce }}">
         Sentry.init({dsn: "{{ sentry_dsn }}"});
         {% get_current_language as LANGUAGE_CODE %}
-        Sentry.showReportDialog({eventId: "{{ sentry_event_id }}",lang:"{{ LANGUAGE_CODE }}"});
+        Sentry.showReportDialog({eventId: "{{ sentry_event_id }}", lang: "{{ LANGUAGE_CODE }}"});
     </script>
 {% endif %}
 {% block extra_js %}{% endblock %}

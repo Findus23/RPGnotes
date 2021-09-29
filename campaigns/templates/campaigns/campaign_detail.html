@@ -1,6 +1,8 @@
 {% extends "tenantbase.html" %}
 {% load i18n %}
 
+{% block title %}{{ object }}{% endblock %}
+
 {% block content %}
     <h1>{{ object }}</h1>
     <h2>{% translate "Players" %}</h2>
