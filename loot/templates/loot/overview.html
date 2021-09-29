@@ -26,8 +26,9 @@
                 <td>{{ l.name }}</td>
                 <td>{{ l.quantity }}</td>
                 <td>{{ l.value_gold|format_money_html }}</td>
-                <td>{{ l.owner }}</td>
-                <td>{{ l.location }}</td>
+                {% trans 'Nobody' as nobody %}
+                <td>{{ l.owner|default:nobody }}</td>
+                <td>{{ l.location|default:"" }}</td>
                 <td>
                     <svg class="chev" viewBox="0 0 640 1024" xmlns="http://www.w3.org/2000/svg">
                         <path d="M512 320L320 512 128 320 0 448l320 320 320-320L512 320z"/>
