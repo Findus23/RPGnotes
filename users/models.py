@@ -18,6 +18,9 @@ class TenantUser(UserProfile):
         db_index=True,
     )
 
+    class Meta:
+        ordering = ["name"]
+
     def __str__(self):
         return self.name
 
