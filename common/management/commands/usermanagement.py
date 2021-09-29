@@ -13,6 +13,7 @@ class Command(BaseCommand):
     def add_arguments(self, parser: CommandParser):
         parser.add_argument("campaign_slug", type=str)
         parser.add_argument("user", type=str)
+        parser.add_argument("--superuser", action="store_true")
         group = parser.add_mutually_exclusive_group(required=True)
         group.add_argument("--add", action="store_true")
         group.add_argument("--remove", action="store_true")
@@ -21,7 +22,7 @@ class Command(BaseCommand):
         user = TenantUser.objects.get(name=options.get("user"))
         campaign = Campaign.objects.get(slug=options.get("campaign_slug"))
         if options.get("add"):
-            campaign.add_user(user)
+            campaign.add_user(user, is_superuser=options.get("superuser"))
             print(f"added {user} to {campaign}")
         else:
             campaign.remove_user(user)
@@ -29,4 +30,3 @@ class Command(BaseCommand):
         print("current users:")
         for cu in campaign.user_set.all():
             print(cu)
-
