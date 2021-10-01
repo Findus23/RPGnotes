@@ -17,7 +17,7 @@ urlpatterns = [
     path(
         "register/closed/",
         TemplateView.as_view(
-            template_name="users/registration_closed.html"
+            template_name="registration/registration_closed.html"
         ),
         name="django_registration_disallowed",
     ),

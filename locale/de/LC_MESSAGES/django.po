@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 22:11+0200\n"
+"POT-Creation-Date: 2021-10-01 11:55+0200\n"
 "PO-Revision-Date: 2021-09-29 22:12+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -23,25 +23,25 @@ msgstr ""
 msgid "Name"
 msgstr "Name"
 
-#: campaigns/templates/campaigns/campaign_detail.html:6
+#: campaigns/templates/campaigns/campaign_detail.html:8
 msgid "Players"
 msgstr "Spieler"
 
-#: campaigns/templates/campaigns/campaign_edit.html:8
+#: campaigns/templates/campaigns/campaign_edit.html:9
 msgid "Add new campaign"
 msgstr "Neue Campagne erstellen"
 
-#: campaigns/templates/campaigns/campaign_edit.html:13
+#: campaigns/templates/campaigns/campaign_edit.html:14
 #: loot/templates/loot/edit.html:29 loot/templates/loot/edit.html:32
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: campaigns/templates/campaigns/campaign_overview.html:7
-#: templates/base.html:39 templates/tenantbase.html:55
-msgid "Log out"
-msgstr "Abmelden"
+#: campaigns/templates/campaigns/campaign_overview.html:4
+#: campaigns/templates/campaigns/campaign_overview.html:9
+msgid "Campaign Overview"
+msgstr ""
 
-#: campaigns/templates/campaigns/campaign_overview.html:12
+#: campaigns/templates/campaigns/campaign_overview.html:14
 msgid "create Campaign"
 msgstr "Campaign erstellen"
 
@@ -58,7 +58,7 @@ msgid "If no player is selected, this character is considered an NPC."
 msgstr "Wenn kein Spieler ausgewählt ist, ist dies ein NPC."
 
 #: characters/models.py:30 locations/models.py:22 loot/models.py:16
-#: loot/templates/loot/overview.html:16
+#: loot/templates/loot/overview.html:18
 msgid "Location"
 msgstr "Ort"
 
@@ -82,7 +82,7 @@ msgstr "Großes Bild"
 msgid "Character"
 msgstr "Charakter"
 
-#: characters/models.py:42 templates/tenantbase.html:22
+#: characters/models.py:42 templates/tenantbase.html:25
 msgid "Characters"
 msgstr "Charaktere"
 
@@ -91,7 +91,7 @@ msgid "Add Character"
 msgstr "Charakter hinzufügen"
 
 #: characters/templates/characters/detail.html:41
-#: days/templates/days/day_detail.html:27 loot/templates/loot/overview.html:41
+#: days/templates/days/day_detail.html:27 loot/templates/loot/overview.html:43
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -147,7 +147,7 @@ msgstr "Tag hinzufügen"
 msgid "Part of"
 msgstr "Teil von"
 
-#: locations/models.py:23 templates/tenantbase.html:26
+#: locations/models.py:23 templates/tenantbase.html:29
 msgid "Locations"
 msgstr "Orte"
 
@@ -155,7 +155,7 @@ msgstr "Orte"
 msgid "Add Location"
 msgstr "Ort hinzufügen"
 
-#: loot/models.py:12 loot/templates/loot/overview.html:13
+#: loot/models.py:12 loot/templates/loot/overview.html:15
 msgid "Quantity"
 msgstr "Anzahl"
 
@@ -167,7 +167,7 @@ msgstr "Wert (Gold)"
 msgid "Weight (lb)"
 msgstr "Gewicht (lb)"
 
-#: loot/models.py:15 loot/templates/loot/overview.html:15
+#: loot/models.py:15 loot/templates/loot/overview.html:17
 msgid "Claimant"
 msgstr "beansprucht von"
 
@@ -175,8 +175,8 @@ msgstr "beansprucht von"
 msgid "Magic Item"
 msgstr "Magisches Item"
 
-#: loot/models.py:21 loot/models.py:22 loot/templates/loot/overview.html:6
-#: templates/tenantbase.html:34
+#: loot/models.py:21 loot/models.py:22 loot/templates/loot/overview.html:5
+#: loot/templates/loot/overview.html:8 templates/tenantbase.html:37
 msgid "Loot"
 msgstr "Loot"
 
@@ -195,28 +195,29 @@ msgid "Add new"
 msgstr "Neu erstellen"
 
 #: loot/templates/loot/edit.html:29 loot/templates/loot/edit.html:32
-#: templates/common/languageselect.html:19 users/templates/users/edit.html:13
-#: users/templates/users/registration_form.html:13
+#: templates/common/languageselect.html:19
+#: templates/registration/registration_form.html:13
+#: users/templates/users/edit.html:13
 msgid "Save"
 msgstr "Speichern"
 
-#: loot/templates/loot/overview.html:12
+#: loot/templates/loot/overview.html:14
 msgid "Item"
 msgstr "Objekt"
 
-#: loot/templates/loot/overview.html:14 loot/templates/loot/overview.html:51
+#: loot/templates/loot/overview.html:16 loot/templates/loot/overview.html:53
 msgid "Total Value"
 msgstr "Gesamtwert"
 
-#: loot/templates/loot/overview.html:29
+#: loot/templates/loot/overview.html:31
 msgid "Nobody"
 msgstr "Niemand"
 
-#: loot/templates/loot/overview.html:43
+#: loot/templates/loot/overview.html:45
 msgid "Value each"
 msgstr "Wert pro Stück"
 
-#: loot/templates/loot/overview.html:54
+#: loot/templates/loot/overview.html:56
 msgid "Add Loot"
 msgstr "Loot hinzufügen"
 
@@ -238,6 +239,10 @@ msgid "You might want to go back to the <a href=\"%(url)s\">homepage</a>."
 msgstr ""
 "Du möchtest vielleicht zurück zur <a href=\"%(url)s\">Startseite</a> gehen."
 
+#: templates/base.html:39 templates/tenantbase.html:58
+msgid "Log out"
+msgstr "Abmelden"
+
 #: templates/base.html:41 templates/common/homepage.html:18
 #: templates/registration/login.html:25
 msgid "Log in"
@@ -257,9 +262,14 @@ msgstr "Liste der Campaigns"
 msgid "Sign up"
 msgstr "Registrieren"
 
-#: templates/common/languageselect.html:6 templates/tenantbase.html:45
+#: templates/common/languageselect.html:6 templates/tenantbase.html:48
 msgid "Change Language"
 msgstr "Sprache ändern"
+
+#: templates/registration/activation_email_subject.html:2
+#, python-format
+msgid "Please activate your user account, %(user)s"
+msgstr "Bitte aktiviere deinen Account, %(user)s"
 
 #: templates/registration/login.html:9
 msgid "Login"
@@ -274,38 +284,33 @@ msgstr "Du musst dich anmelden bevor du <code>%(next)s</code> aufrufen kannst."
 msgid "Forgotten your password or username?"
 msgstr ""
 
-#: templates/tenantbase.html:18
+#: templates/registration/registration_closed.html:5
+msgid "Registration closed"
+msgstr "Registrierung ist geschlossen"
+
+#: templates/registration/registration_complete.html:5
+msgid "Registration complete"
+msgstr "Registrierung erfolgreich"
+
+#: templates/registration/registration_form.html:8
+msgid "Registration"
+msgstr "Registrierung"
+
+#: templates/tenantbase.html:21
 msgid "Home"
 msgstr "Home"
 
-#: templates/tenantbase.html:30
+#: templates/tenantbase.html:33
 msgid "Timeline"
 msgstr "Timeline"
 
-#: templates/tenantbase.html:51 users/templates/users/edit.html:8
+#: templates/tenantbase.html:54 users/templates/users/edit.html:8
 msgid "Edit User Account"
 msgstr "Benutzerkonto bearbeiten"
 
 #: users/models.py:16
 msgid "Email Address"
 msgstr "E-Mail-Adresse"
-
-#: users/templates/users/activation_email_subject.html:2
-#, python-format
-msgid "Please activate your user account, %(user)s"
-msgstr "Bitte aktiviere deinen Account, %(user)s"
-
-#: users/templates/users/registration_closed.html:5
-msgid "Registration closed"
-msgstr "Registrierung ist geschlossen"
-
-#: users/templates/users/registration_complete.html:5
-msgid "Registration complete"
-msgstr "Registrierung erfolgreich"
-
-#: users/templates/users/registration_form.html:8
-msgid "Registration"
-msgstr "Registrierung"
 
 #: users/views.py:36
 msgid ""
@@ -315,7 +320,7 @@ msgstr ""
 "Dein Account wurde erstellt. Bitte klicke auf den Bestätigungslink in der E-"
 "Mail um ihn zu aktivieren."
 
-#: users/views.py:49
+#: users/views.py:51
 msgid "Account was successfully activated. You can log in now."
 msgstr ""
 "Der Account wurde erfolgreich aktiviert. Du kannst dich jetzt damit anmelden."
