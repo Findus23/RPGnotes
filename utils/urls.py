@@ -1,8 +1,10 @@
 from typing import Dict
 
 from characters.models import Character
+from factions.models import Faction
 from locations.models import Location
 from loot.models import Loot
+from notes.models import Note
 
 
 def name2url() -> Dict[str, str]:
@@ -14,4 +16,8 @@ def name2url() -> Dict[str, str]:
         data[location.name] = location.get_absolute_url()
     for loot in Loot.objects.all():
         data[loot.name] = loot.get_absolute_url()
+    for faction in Faction.objects.all():
+        data[faction.name] = faction.get_absolute_url()
+    for note in Note.objects.all():
+        data[note.name] = note.get_absolute_url()
     return data

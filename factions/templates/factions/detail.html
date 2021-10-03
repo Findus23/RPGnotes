@@ -26,7 +26,6 @@
                     </a>
                 </h1>
             </div>
-            {{ faction.description_html|safe }}
             <dl>
                 <dt>{% translate "Members" %}:</dt>
                 <dd>
@@ -35,7 +34,7 @@
                     {% endfor %}
                 </dd>
             </dl>
-
+            {{ faction.description_html|safe }}
             <div>
                 <small>{% translate "Last updated" %}: {{ faction.last_modified|naturaltime }}
                     {% translate "by" %} {{ faction.history.first.history_user }} </small>
