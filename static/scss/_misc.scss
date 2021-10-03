@@ -15,8 +15,13 @@ body {
 }
 
 
-blockquote{
-  @extend .blockquote
+blockquote {
+  @extend .blockquote;
+  font-size: 1rem;
+  color: $gray-600;
+  border-left: solid $gray-400 .25rem;
+  padding-left: 1rem;
+  font-style: italic;
 }
 
 
