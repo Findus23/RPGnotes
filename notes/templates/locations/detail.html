@@ -1,0 +1,56 @@
+{% extends "tenantbase.html" %}
+{% load i18n %}
+{% load thumbutils %}
+{% load thumbnail %}
+{% load humanize %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group">
+                {% for p in roots %}
+                    <a class="tree-{{ p.tree_depth }} list-group-item list-group-item-action {% if location.id == p.id %}active{% endif %}"
+                       href="{{ p.get_absolute_url }}">
+                        {{ p }}
+                    </a>
+                {% endfor %}
+            </div>
+            <a class="btn btn-primary" href="{% url "locationadd" %}">{% translate "Add Location" %}</a>
+        </div>
+        <div class="col-8">
+            <div class="character-heading">
+                <h1>
+                    {{ location.name }}
+                    <a href="{% url "locationedit" location.slug %}">
+                        edit
+                    </a>
+                </h1>
+                <nav aria-label="breadcrumb" class="breadcrumbs">
+                    <ol class="breadcrumb">
+                        {% for ancestor in location.ancestors %}
+                            <li class="breadcrumb-item">
+                                <a href="{{ ancestor.get_absolute_url }}">{{ ancestor }}</a>
+                            </li>
+                        {% endfor %}
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {{ location }}
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <dl>
+                {% if location.part_of %}
+                    <dt>{% translate "Part of" %}:</dt>
+                    <dd><a href="{{ location.part_of.get_absolute_url }}">{{ location.part_of }}</a></dd>
+                {% endif %}
+            </dl>
+            {{ location.description_html|safe }}
+
+            <div>
+                <small>{% translate "Last updated" %}: {{ location.last_modified|naturaltime }}
+                    {% translate "by" %} {{ location.history.first.history_user }} </small>
+            </div>
+        </div>
+    </div>
+{% endblock %}

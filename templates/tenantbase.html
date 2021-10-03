@@ -29,6 +29,10 @@
                                href="{% url "locationlist" %}">{% translate "Locations" %}</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'notedetail' %}active{% endif %}"
+                               href="{% url "notelist" %}">{% translate "Notes" %}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {% if url_name == 'daydetail' %}active{% endif %}"
                                href="{% url "daylist" %}">{% translate "Timeline" %}</a>
                         </li>

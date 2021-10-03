@@ -66,6 +66,7 @@ TENANT_APPS = (
     'characters',
     'loot',
     'days',
+    'notes',
     'common',
     'simple_history',
 
