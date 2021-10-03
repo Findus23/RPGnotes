@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.mail import mail_admins
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
@@ -41,7 +42,6 @@ class CustomActivationView(ActivationView):
     success_url = reverse_lazy("login")
     template_name = "registration/activation_failed.html"
 
-
     def activate(self, *args, **kwargs):
         username = self.validate_key(kwargs.get("activation_key"))
         user: TenantUser = self.get_user(username)
@@ -53,10 +53,12 @@ class CustomActivationView(ActivationView):
         return user
 
 
-class UserEditView(UpdateView):
+class UserEditView(SuccessMessageMixin, UpdateView):
     template_name = "users/edit.html"
     model = TenantUser
     form_class = CustomUserChangeForm
+    success_url = "/"
+    success_message = _("User account was updated successfully")
 
     def get_object(self, queryset=None):
         return self.request.user
