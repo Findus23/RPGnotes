@@ -15,6 +15,7 @@ urlpatterns = [
     path('character/', include("characters.urls")),
     path('day/', include("days.urls")),
     path('location/', include("locations.urls")),
+    path('faction/', include("factions.urls")),
     path('note/', include("notes.urls")),
     path('loot/', include("loot.urls")),
     path('', include("campaigns.urls"))

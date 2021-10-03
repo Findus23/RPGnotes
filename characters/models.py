@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from sorl.thumbnail import ImageField
 
 from common.models import NameSlugModel, DescriptionModel, HistoryModel
+from factions.models import Faction
 from locations.models import Location
 from rpg_notes.settings import AUTH_USER_MODEL
 from utils.colors import get_random_color, is_bright_color
@@ -25,7 +26,11 @@ class Character(NameSlugModel, DescriptionModel, HistoryModel):
         related_name="characters", verbose_name=_("Player"),
         help_text=_("If no player is selected, this character is considered an NPC.")
     )
-    # faction = models.ForeignKey(Faction, on_delete=models.PROTECT, blank=True, null=True)
+    faction = models.ForeignKey(
+        Faction, on_delete=models.PROTECT, blank=True, null=True,
+        related_name="characters",
+        verbose_name=_("Faction")
+    )
     location = models.ForeignKey(
         Location, on_delete=models.PROTECT, blank=True, null=True,
         verbose_name=_("Location")
