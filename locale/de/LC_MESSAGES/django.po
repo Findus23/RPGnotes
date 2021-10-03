@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-01 11:55+0200\n"
-"PO-Revision-Date: 2021-09-29 22:12+0200\n"
+"POT-Creation-Date: 2021-10-03 16:11+0200\n"
+"PO-Revision-Date: 2021-10-03 16:12+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -39,50 +39,54 @@ msgstr "Hinzufügen"
 #: campaigns/templates/campaigns/campaign_overview.html:4
 #: campaigns/templates/campaigns/campaign_overview.html:9
 msgid "Campaign Overview"
-msgstr ""
+msgstr "Kampagnenübersicht"
 
 #: campaigns/templates/campaigns/campaign_overview.html:14
 msgid "create Campaign"
 msgstr "Campaign erstellen"
 
 #: characters/models.py:21
+msgid "Nickname"
+msgstr "Spitzname"
+
+#: characters/models.py:22
 msgid "Subtitle"
 msgstr "Untertitel"
 
-#: characters/models.py:24
+#: characters/models.py:25
 msgid "Player"
 msgstr "Spieler"
 
-#: characters/models.py:25
+#: characters/models.py:26
 msgid "If no player is selected, this character is considered an NPC."
 msgstr "Wenn kein Spieler ausgewählt ist, ist dies ein NPC."
 
-#: characters/models.py:30 locations/models.py:22 loot/models.py:16
+#: characters/models.py:31 locations/models.py:22 loot/models.py:16
 #: loot/templates/loot/overview.html:18
 msgid "Location"
 msgstr "Ort"
 
-#: characters/models.py:32
+#: characters/models.py:33
 msgid "Color"
 msgstr "Farbe"
 
-#: characters/models.py:36
+#: characters/models.py:37
 msgid "Token Image"
 msgstr "Token Bild"
 
-#: characters/models.py:36
+#: characters/models.py:37
 msgid "round"
 msgstr "rund"
 
-#: characters/models.py:37
+#: characters/models.py:38
 msgid "Large Image"
 msgstr "Großes Bild"
 
-#: characters/models.py:41
+#: characters/models.py:42
 msgid "Character"
 msgstr "Charakter"
 
-#: characters/models.py:42 templates/tenantbase.html:25
+#: characters/models.py:43 templates/tenantbase.html:25
 msgid "Characters"
 msgstr "Charaktere"
 
@@ -98,12 +102,14 @@ msgstr "Bearbeiten"
 #: characters/templates/characters/detail.html:66
 #: days/templates/days/day_detail.html:38
 #: locations/templates/locations/detail.html:51
+#: notes/templates/locations/detail.html:51
 msgid "Last updated"
 msgstr "Zuletzt geändert"
 
 #: characters/templates/characters/detail.html:67
 #: days/templates/days/day_detail.html:39
 #: locations/templates/locations/detail.html:52
+#: notes/templates/locations/detail.html:52
 msgid "by"
 msgstr "von"
 
@@ -144,6 +150,7 @@ msgid "Add Day"
 msgstr "Tag hinzufügen"
 
 #: locations/models.py:16 locations/templates/locations/detail.html:44
+#: notes/models.py:16 notes/templates/locations/detail.html:44
 msgid "Part of"
 msgstr "Teil von"
 
@@ -152,6 +159,7 @@ msgid "Locations"
 msgstr "Orte"
 
 #: locations/templates/locations/detail.html:18
+#: notes/templates/locations/detail.html:18
 msgid "Add Location"
 msgstr "Ort hinzufügen"
 
@@ -176,7 +184,7 @@ msgid "Magic Item"
 msgstr "Magisches Item"
 
 #: loot/models.py:21 loot/models.py:22 loot/templates/loot/overview.html:5
-#: loot/templates/loot/overview.html:8 templates/tenantbase.html:37
+#: loot/templates/loot/overview.html:8 templates/tenantbase.html:41
 msgid "Loot"
 msgstr "Loot"
 
@@ -221,11 +229,19 @@ msgstr "Wert pro Stück"
 msgid "Add Loot"
 msgstr "Loot hinzufügen"
 
-#: rpg_notes/settings.py:168
+#: notes/models.py:22
+msgid "Note"
+msgstr "Notiz"
+
+#: notes/models.py:23 templates/tenantbase.html:33
+msgid "Notes"
+msgstr "Notizen"
+
+#: rpg_notes/settings.py:169
 msgid "German"
 msgstr "Deutsch"
 
-#: rpg_notes/settings.py:169
+#: rpg_notes/settings.py:170
 msgid "English"
 msgstr "Englisch"
 
@@ -239,7 +255,7 @@ msgid "You might want to go back to the <a href=\"%(url)s\">homepage</a>."
 msgstr ""
 "Du möchtest vielleicht zurück zur <a href=\"%(url)s\">Startseite</a> gehen."
 
-#: templates/base.html:39 templates/tenantbase.html:58
+#: templates/base.html:39 templates/tenantbase.html:62
 msgid "Log out"
 msgstr "Abmelden"
 
@@ -262,7 +278,7 @@ msgstr "Liste der Campaigns"
 msgid "Sign up"
 msgstr "Registrieren"
 
-#: templates/common/languageselect.html:6 templates/tenantbase.html:48
+#: templates/common/languageselect.html:6 templates/tenantbase.html:52
 msgid "Change Language"
 msgstr "Sprache ändern"
 
@@ -270,6 +286,10 @@ msgstr "Sprache ändern"
 #, python-format
 msgid "Please activate your user account, %(user)s"
 msgstr "Bitte aktiviere deinen Account, %(user)s"
+
+#: templates/registration/activation_failed.html:5
+msgid "Activation failed"
+msgstr "Aktivierung fehlgeschlagen"
 
 #: templates/registration/login.html:9
 msgid "Login"
@@ -300,11 +320,11 @@ msgstr "Registrierung"
 msgid "Home"
 msgstr "Home"
 
-#: templates/tenantbase.html:33
+#: templates/tenantbase.html:37
 msgid "Timeline"
 msgstr "Timeline"
 
-#: templates/tenantbase.html:54 users/templates/users/edit.html:8
+#: templates/tenantbase.html:58 users/templates/users/edit.html:8
 msgid "Edit User Account"
 msgstr "Benutzerkonto bearbeiten"
 
