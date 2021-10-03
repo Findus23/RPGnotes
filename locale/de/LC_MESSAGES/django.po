@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-03 16:11+0200\n"
-"PO-Revision-Date: 2021-10-03 16:12+0200\n"
+"POT-Creation-Date: 2021-10-03 17:18+0200\n"
+"PO-Revision-Date: 2021-10-03 17:19+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -45,48 +45,52 @@ msgstr "Kampagnenübersicht"
 msgid "create Campaign"
 msgstr "Campaign erstellen"
 
-#: characters/models.py:21
+#: characters/models.py:22
 msgid "Nickname"
 msgstr "Spitzname"
 
-#: characters/models.py:22
+#: characters/models.py:23
 msgid "Subtitle"
 msgstr "Untertitel"
 
-#: characters/models.py:25
+#: characters/models.py:26
 msgid "Player"
 msgstr "Spieler"
 
-#: characters/models.py:26
+#: characters/models.py:27
 msgid "If no player is selected, this character is considered an NPC."
 msgstr "Wenn kein Spieler ausgewählt ist, ist dies ein NPC."
 
-#: characters/models.py:31 locations/models.py:22 loot/models.py:16
+#: characters/models.py:32 factions/models.py:15
+msgid "Faction"
+msgstr "Fraktion"
+
+#: characters/models.py:36 locations/models.py:22 loot/models.py:16
 #: loot/templates/loot/overview.html:18
 msgid "Location"
 msgstr "Ort"
 
-#: characters/models.py:33
+#: characters/models.py:38
 msgid "Color"
 msgstr "Farbe"
 
-#: characters/models.py:37
+#: characters/models.py:42
 msgid "Token Image"
 msgstr "Token Bild"
 
-#: characters/models.py:37
+#: characters/models.py:42
 msgid "round"
 msgstr "rund"
 
-#: characters/models.py:38
+#: characters/models.py:43
 msgid "Large Image"
 msgstr "Großes Bild"
 
-#: characters/models.py:42
+#: characters/models.py:47
 msgid "Character"
 msgstr "Charakter"
 
-#: characters/models.py:43 templates/tenantbase.html:25
+#: characters/models.py:48 templates/tenantbase.html:25
 msgid "Characters"
 msgstr "Charaktere"
 
@@ -95,21 +99,25 @@ msgid "Add Character"
 msgstr "Charakter hinzufügen"
 
 #: characters/templates/characters/detail.html:41
-#: days/templates/days/day_detail.html:27 loot/templates/loot/overview.html:43
+#: days/templates/days/day_detail.html:27
+#: factions/templates/factions/detail.html:25
+#: loot/templates/loot/overview.html:43
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: characters/templates/characters/detail.html:66
+#: characters/templates/characters/detail.html:70
 #: days/templates/days/day_detail.html:38
+#: factions/templates/factions/detail.html:39
 #: locations/templates/locations/detail.html:51
-#: notes/templates/locations/detail.html:51
+#: notes/templates/notes/detail.html:51
 msgid "Last updated"
 msgstr "Zuletzt geändert"
 
-#: characters/templates/characters/detail.html:67
+#: characters/templates/characters/detail.html:71
 #: days/templates/days/day_detail.html:39
+#: factions/templates/factions/detail.html:40
 #: locations/templates/locations/detail.html:52
-#: notes/templates/locations/detail.html:52
+#: notes/templates/notes/detail.html:52
 msgid "by"
 msgstr "von"
 
@@ -149,8 +157,20 @@ msgstr "Tag"
 msgid "Add Day"
 msgstr "Tag hinzufügen"
 
+#: factions/models.py:16 templates/tenantbase.html:37
+msgid "Factions"
+msgstr "Fraktionen"
+
+#: factions/templates/factions/detail.html:18
+msgid "Add Faction"
+msgstr "Fraktion hinzufügen"
+
+#: factions/templates/factions/detail.html:30
+msgid "Members"
+msgstr "Mitglieder"
+
 #: locations/models.py:16 locations/templates/locations/detail.html:44
-#: notes/models.py:16 notes/templates/locations/detail.html:44
+#: notes/models.py:16 notes/templates/notes/detail.html:44
 msgid "Part of"
 msgstr "Teil von"
 
@@ -159,7 +179,6 @@ msgid "Locations"
 msgstr "Orte"
 
 #: locations/templates/locations/detail.html:18
-#: notes/templates/locations/detail.html:18
 msgid "Add Location"
 msgstr "Ort hinzufügen"
 
@@ -177,14 +196,14 @@ msgstr "Gewicht (lb)"
 
 #: loot/models.py:15 loot/templates/loot/overview.html:17
 msgid "Claimant"
-msgstr "beansprucht von"
+msgstr "Beansprucht von"
 
 #: loot/models.py:17
 msgid "Magic Item"
 msgstr "Magisches Item"
 
 #: loot/models.py:21 loot/models.py:22 loot/templates/loot/overview.html:5
-#: loot/templates/loot/overview.html:8 templates/tenantbase.html:41
+#: loot/templates/loot/overview.html:8 templates/tenantbase.html:45
 msgid "Loot"
 msgstr "Loot"
 
@@ -237,11 +256,15 @@ msgstr "Notiz"
 msgid "Notes"
 msgstr "Notizen"
 
-#: rpg_notes/settings.py:169
+#: notes/templates/notes/detail.html:18
+msgid "Add Note"
+msgstr "Notiz hinzufügen"
+
+#: rpg_notes/settings.py:170
 msgid "German"
 msgstr "Deutsch"
 
-#: rpg_notes/settings.py:170
+#: rpg_notes/settings.py:171
 msgid "English"
 msgstr "Englisch"
 
@@ -255,7 +278,7 @@ msgid "You might want to go back to the <a href=\"%(url)s\">homepage</a>."
 msgstr ""
 "Du möchtest vielleicht zurück zur <a href=\"%(url)s\">Startseite</a> gehen."
 
-#: templates/base.html:39 templates/tenantbase.html:62
+#: templates/base.html:39 templates/tenantbase.html:66
 msgid "Log out"
 msgstr "Abmelden"
 
@@ -278,7 +301,7 @@ msgstr "Liste der Campaigns"
 msgid "Sign up"
 msgstr "Registrieren"
 
-#: templates/common/languageselect.html:6 templates/tenantbase.html:52
+#: templates/common/languageselect.html:6 templates/tenantbase.html:56
 msgid "Change Language"
 msgstr "Sprache ändern"
 
@@ -320,11 +343,11 @@ msgstr "Registrierung"
 msgid "Home"
 msgstr "Home"
 
-#: templates/tenantbase.html:37
+#: templates/tenantbase.html:41
 msgid "Timeline"
 msgstr "Timeline"
 
-#: templates/tenantbase.html:58 users/templates/users/edit.html:8
+#: templates/tenantbase.html:62 users/templates/users/edit.html:8
 msgid "Edit User Account"
 msgstr "Benutzerkonto bearbeiten"
 
