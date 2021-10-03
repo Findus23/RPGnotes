@@ -45,11 +45,11 @@
             </div>
             <dl>
                 {% if character.player %}
-                    <dt>Player:</dt>
+                    <dt>{% translate "Player" %}:</dt>
                     <dd>{{ character.player }}</dd>
                 {% endif %}
                 {% if character.faction %}
-                    <dt>Faction:</dt>
+                    <dt>{% translate "Faction" %}:</dt>
                     <dd><a href="{{ character.faction.get_absolute_url }}">{{ character.faction.name }}</a>                    </dd>
                 {% endif %}
             </dl>
