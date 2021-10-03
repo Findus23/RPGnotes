@@ -11,7 +11,7 @@ class NameSlugModel(models.Model):
         abstract = True
 
     def save(self, *args, **kwargs):
-        if not self.id:
+        if not self.id or True:
             # Newly created object, so set slug
             self.slug = slugify(self.name)
 
