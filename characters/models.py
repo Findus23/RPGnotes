@@ -18,6 +18,7 @@ def validate_color_hex(value: str):
 
 
 class Character(NameSlugModel, DescriptionModel, HistoryModel):
+    nickname = models.CharField(_("Nickname"), max_length=100, blank=True)
     subtitle = models.CharField(_("Subtitle"), max_length=100, blank=True)
     player = models.ForeignKey(
         AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True,
@@ -50,6 +51,8 @@ class Character(NameSlugModel, DescriptionModel, HistoryModel):
 
     @property
     def firstname(self):
+        if self.nickname:
+            return self.nickname
         return self.name.split()[0]
 
     @property
