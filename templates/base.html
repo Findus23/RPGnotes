@@ -47,7 +47,14 @@
 </footer>
 
 <script src="{% static "libs/bootstrap.min.js" %}"></script>
-
+<script src="{% static "libs/luminous.min.js" %}"></script>
+<script nonce="{{ request.csp_nonce }}">
+    document.addEventListener('DOMContentLoaded', function () {
+        const galleries = document.querySelectorAll("a.image-viewer");
+        console.info(galleries)
+        new LuminousGallery(galleries)
+    });
+</script>
 {% if sentry_event_id %}
     <script src="{% static "libs/bundle.min.js" %}"></script>
     <script nonce="{{ request.csp_nonce }}">

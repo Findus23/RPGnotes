@@ -23,7 +23,7 @@
             <div class="character-heading" style="border-bottom-color: {{ character.color }}">
                 {% if character.smaller_image %}
                     {% thumbnail character.smaller_image "150x150" crop="center" as im %}
-                        <a href="{{ character.smaller_image.url }}" target="_blank">
+                        <a href="{{ character.smaller_image.url }}" class="image-viewer">
                             <img class="avatar avatar-image avatar-large rounded-circle" src="{{ im.url }}"
                                  width="{{ im.width }}"
                                  height="{{ im.height }}"
@@ -50,14 +50,14 @@
                 {% endif %}
                 {% if character.faction %}
                     <dt>{% translate "Faction" %}:</dt>
-                    <dd><a href="{{ character.faction.get_absolute_url }}">{{ character.faction.name }}</a>                    </dd>
+                    <dd><a href="{{ character.faction.get_absolute_url }}">{{ character.faction.name }}</a></dd>
                 {% endif %}
             </dl>
             {{ character.description_html|safe }}
 
             {% if character.large_image %}
                 {% thumbnail character.large_image "860" crop="center" as im %}
-                    <a href="{{ character.large_image.url }}" target="_blank">
+                    <a href="{{ character.large_image.url }}" class="image-viewer">
                         <img class="img-fluid" src="{{ im.url }}"
                              width="{{ im.width }}"
                              height="{{ im.height }}"
