@@ -12,8 +12,18 @@ class Loot(DescriptionModel, HistoryModel):
     quantity = models.PositiveSmallIntegerField(_("Quantity"))
     value_gold = models.DecimalField(_("Value (Gold)"), max_digits=7, decimal_places=2)
     weight = models.FloatField(_("Weight (lb)"), null=True, blank=True)
-    owner = models.ForeignKey(Character, on_delete=models.PROTECT, blank=True, null=True, verbose_name=_("Claimant"))
-    location = models.ForeignKey(Location, on_delete=models.PROTECT, blank=True, null=True, verbose_name=_("Location"))
+    owner = models.ForeignKey(
+        Character, on_delete=models.PROTECT,
+        blank=True, null=True,
+        verbose_name=_("Claimant"),
+        related_name="loot"
+    )
+    location = models.ForeignKey(
+        Location, on_delete=models.PROTECT,
+        blank=True, null=True,
+        verbose_name=_("Location"),
+        related_name="loot"
+    )
     magic_item = models.BooleanField(_("Magic Item"), default=False)
 
     class Meta:

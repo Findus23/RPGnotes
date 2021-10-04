@@ -44,6 +44,14 @@
                     <dt>{% translate "Part of" %}:</dt>
                     <dd><a href="{{ location.part_of.get_absolute_url }}">{{ location.part_of }}</a></dd>
                 {% endif %}
+                {% if location.loot %}
+                    <dt>{% translate "Contains" %}:</dt>
+                    <dd>
+                        {% for l in location.loot.all %}
+                            <a href="{{ l.get_absolute_url }}">{{ l.name }}</a>
+                        {% endfor %}
+                    </dd>
+                {% endif %}
             </dl>
             {{ location.description_html|safe }}
 
