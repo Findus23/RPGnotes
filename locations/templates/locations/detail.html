@@ -47,9 +47,11 @@
                 {% if location.loot %}
                     <dt>{% translate "Contains" %}:</dt>
                     <dd>
-                        {% for l in location.loot.all %}
-                            <a href="{{ l.get_absolute_url }}">{{ l.name }}</a>
-                        {% endfor %}
+                        <ul>
+                            {% for l in location.loot.all %}
+                                <li><a href="{{ l.get_absolute_url }}">{{ l.name }}</a></li>
+                            {% endfor %}
+                        </ul>
                     </dd>
                 {% endif %}
             </dl>
