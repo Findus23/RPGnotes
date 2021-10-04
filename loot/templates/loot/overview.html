@@ -53,9 +53,16 @@
                         <div class="cell-box">
                             <h3>{{ l.name }} <a href="{% url "lootedit" l.id %}">{% translate "Edit" %}</a></h3>
                             {{ l.description_html|safe }}
-                            {% if l.value_per_unit and l.quantity > 1 %}
-                                <p>{% translate "Value each" %}: {{ l.value_per_unit|format_money_html }}</p>
-                            {% endif %}
+                            <dl>
+                                {% if l.value_per_unit and l.quantity > 1 %}
+                                    <dt>{% translate "Value each" %}</dt>
+                                    <dd>{{ l.value_per_unit|format_money_html }}</dd>
+                                {% endif %}
+                                {% if l.weight %}
+                                    <dt>{% translate "Weight" %}</dt>
+                                    <dd>{{ l.weight }} lb</dd>
+                                {% endif %}
+                            </dl>
                         </div>
                     </div>
                 </td>
