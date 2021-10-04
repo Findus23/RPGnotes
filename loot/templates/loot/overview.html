@@ -11,6 +11,7 @@
     <table class="table">
         <thead>
         <tr>
+            <td></td>
             <td>{% translate "Item" %}</td>
             <td>{% translate "Quantity" %}</td>
             <td>{% translate "Total Value" %}</td>
@@ -25,6 +26,15 @@
                 data-bs-target="#row-{{ l.id }}"
                 aria-expanded="false"
                 aria-controls="row-{{ l.id }}">
+                <td>{% if l.magic_item %}
+                    <!-- Font Awesome Creative Commons Attribution 4.0 -->
+                    <!-- https://fontawesome.com/license -->
+                    <svg aria-hidden="true" focusable="false" class="icon"
+                         role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="currentColor"
+                              d="M496 448H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h480c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zm-304-64l-64-32 64-32 32-64 32 64 64 32-64 32-16 32h208l-86.41-201.63a63.955 63.955 0 0 1-1.89-45.45L416 0 228.42 107.19a127.989 127.989 0 0 0-53.46 59.15L64 416h144l-16-32zm64-224l16-32 16 32 32 16-32 16-16 32-16-32-32-16 32-16z"></path>
+                    </svg>
+                {% endif %}</td>
                 <td>{{ l.name }}</td>
                 <td>{{ l.quantity }}</td>
                 <td>{{ l.value_gold|format_money_html }}</td>
@@ -42,7 +52,9 @@
                     <div class="collapse" id="row-{{ l.id }}">
                         <h3>{{ l.name }} <a href="{% url "lootedit" l.id %}">{% translate "Edit" %}</a></h3>
                         {{ l.description_html|safe }}
-                        <p>{% translate "Value each" %}: {{ l.value_per_unit|format_money_html }}</p>
+                        {% if l.value_per_unit %}
+                            <p>{% translate "Value each" %}: {{ l.value_per_unit|format_money_html }}</p>
+                        {% endif %}
                     </div>
                 </td>
             </tr>

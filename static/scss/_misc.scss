@@ -117,3 +117,12 @@ footer {
     width: calc(100% - #{$i*1rem});
   }
 }
+
+tr td:first-child {
+  width: 20px;
+}
+
+svg.icon {
+  width: 16px;
+  height: auto;
+}
