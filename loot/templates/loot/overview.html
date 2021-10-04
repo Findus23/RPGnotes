@@ -50,11 +50,13 @@
             <tr>
                 <td colspan="5" class="collapse-cell">
                     <div class="collapse" id="row-{{ l.id }}">
-                        <h3>{{ l.name }} <a href="{% url "lootedit" l.id %}">{% translate "Edit" %}</a></h3>
-                        {{ l.description_html|safe }}
-                        {% if l.value_per_unit %}
-                            <p>{% translate "Value each" %}: {{ l.value_per_unit|format_money_html }}</p>
-                        {% endif %}
+                        <div class="cell-box">
+                            <h3>{{ l.name }} <a href="{% url "lootedit" l.id %}">{% translate "Edit" %}</a></h3>
+                            {{ l.description_html|safe }}
+                            {% if l.value_per_unit %}
+                                <p>{% translate "Value each" %}: {{ l.value_per_unit|format_money_html }}</p>
+                            {% endif %}
+                        </div>
                     </div>
                 </td>
             </tr>

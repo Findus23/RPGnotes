@@ -25,24 +25,6 @@ blockquote {
 }
 
 
-.collapse-cell {
-  padding: 0 !important;
-  border: none !important;
-}
-
-.chev {
-  transition: transform .2s;
-  width: 13px;
-  height: auto;
-}
-
-tr.collapsed .chev {
-  transform: rotate(90deg);
-}
-
-tr.collapse-button:not(.collapsed) {
-  background: darkgray;
-}
 
 
 .side-card {
@@ -118,11 +100,3 @@ footer {
   }
 }
 
-tr td:first-child {
-  width: 20px;
-}
-
-svg.icon {
-  width: 16px;
-  height: auto;
-}
