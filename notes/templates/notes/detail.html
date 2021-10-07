@@ -44,6 +44,16 @@
                     <dt>{% translate "Part of" %}:</dt>
                     <dd><a href="{{ note.part_of.get_absolute_url }}">{{ note.part_of }}</a></dd>
                 {% endif %}
+                {% if note.image %}
+                    {% thumbnail note.image "860" crop="center" as im %}
+                        <a href="{{ note.image.url }}" class="image-viewer">
+                            <img class="img-fluid" src="{{ im.url }}"
+                                 width="{{ im.width }}"
+                                 height="{{ im.height }}"
+                                 srcset="{{ im.url|srcset }}">
+                        </a>
+                    {% endthumbnail %}
+                {% endif %}
             </dl>
             {{ note.description_html|safe }}
 

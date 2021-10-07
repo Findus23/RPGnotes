@@ -54,6 +54,16 @@
                         </ul>
                     </dd>
                 {% endif %}
+                {% if location.image %}
+                    {% thumbnail location.image "860" crop="center" as im %}
+                        <a href="{{ location.image.url }}" class="image-viewer">
+                            <img class="img-fluid" src="{{ im.url }}"
+                                 width="{{ im.width }}"
+                                 height="{{ im.height }}"
+                                 srcset="{{ im.url|srcset }}">
+                        </a>
+                    {% endthumbnail %}
+                {% endif %}
             </dl>
             {{ location.description_html|safe }}
 

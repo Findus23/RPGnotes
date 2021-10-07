@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-03 17:18+0200\n"
+"POT-Creation-Date: 2021-10-07 22:57+0200\n"
 "PO-Revision-Date: 2021-10-03 17:19+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -53,7 +53,7 @@ msgstr "Spitzname"
 msgid "Subtitle"
 msgstr "Untertitel"
 
-#: characters/models.py:26
+#: characters/models.py:26 characters/templates/characters/detail.html:48
 msgid "Player"
 msgstr "Spieler"
 
@@ -61,12 +61,13 @@ msgstr "Spieler"
 msgid "If no player is selected, this character is considered an NPC."
 msgstr "Wenn kein Spieler ausgewählt ist, ist dies ein NPC."
 
-#: characters/models.py:32 factions/models.py:15
+#: characters/models.py:32 characters/templates/characters/detail.html:52
+#: factions/models.py:15
 msgid "Faction"
 msgstr "Fraktion"
 
-#: characters/models.py:36 locations/models.py:22 loot/models.py:16
-#: loot/templates/loot/overview.html:18
+#: characters/models.py:36 locations/models.py:25 loot/models.py:24
+#: loot/templates/loot/overview.html:19
 msgid "Location"
 msgstr "Ort"
 
@@ -99,24 +100,24 @@ msgid "Add Character"
 msgstr "Charakter hinzufügen"
 
 #: characters/templates/characters/detail.html:41
-#: days/templates/days/day_detail.html:27
+#: days/templates/days/day_detail.html:25
 #: factions/templates/factions/detail.html:25
-#: loot/templates/loot/overview.html:43
+#: loot/templates/loot/overview.html:54
 msgid "Edit"
 msgstr "Bearbeiten"
 
 #: characters/templates/characters/detail.html:70
-#: days/templates/days/day_detail.html:38
+#: days/templates/days/day_detail.html:36
 #: factions/templates/factions/detail.html:39
-#: locations/templates/locations/detail.html:51
+#: locations/templates/locations/detail.html:72
 #: notes/templates/notes/detail.html:51
 msgid "Last updated"
 msgstr "Zuletzt geändert"
 
 #: characters/templates/characters/detail.html:71
-#: days/templates/days/day_detail.html:39
+#: days/templates/days/day_detail.html:37
 #: factions/templates/factions/detail.html:40
-#: locations/templates/locations/detail.html:52
+#: locations/templates/locations/detail.html:73
 #: notes/templates/notes/detail.html:52
 msgid "by"
 msgstr "von"
@@ -137,7 +138,7 @@ msgstr "Datum"
 msgid "Session"
 msgstr "Session"
 
-#: days/models.py:17 days/templates/days/day_detail.html:33
+#: days/models.py:17 days/templates/days/day_detail.html:31
 msgid "Sessions"
 msgstr "Sessions"
 
@@ -153,7 +154,7 @@ msgstr "Tage"
 msgid "day"
 msgstr "Tag"
 
-#: days/templates/days/day_detail.html:20
+#: days/templates/days/day_detail.html:18
 msgid "Add Day"
 msgstr "Tag hinzufügen"
 
@@ -169,12 +170,18 @@ msgstr "Fraktion hinzufügen"
 msgid "Members"
 msgstr "Mitglieder"
 
-#: locations/models.py:16 locations/templates/locations/detail.html:44
-#: notes/models.py:16 notes/templates/notes/detail.html:44
+#: locations/models.py:18 locations/templates/locations/detail.html:44
+#: notes/models.py:18 notes/templates/notes/detail.html:44
 msgid "Part of"
 msgstr "Teil von"
 
-#: locations/models.py:23 templates/tenantbase.html:29
+#: locations/models.py:21 notes/models.py:21
+#, fuzzy
+#| msgid "Token Image"
+msgid "Image"
+msgstr "Token Bild"
+
+#: locations/models.py:26 templates/tenantbase.html:29
 msgid "Locations"
 msgstr "Orte"
 
@@ -182,7 +189,11 @@ msgstr "Orte"
 msgid "Add Location"
 msgstr "Ort hinzufügen"
 
-#: loot/models.py:12 loot/templates/loot/overview.html:15
+#: locations/templates/locations/detail.html:48
+msgid "Contains"
+msgstr ""
+
+#: loot/models.py:12 loot/templates/loot/overview.html:16
 msgid "Quantity"
 msgstr "Anzahl"
 
@@ -194,15 +205,15 @@ msgstr "Wert (Gold)"
 msgid "Weight (lb)"
 msgstr "Gewicht (lb)"
 
-#: loot/models.py:15 loot/templates/loot/overview.html:17
+#: loot/models.py:18 loot/templates/loot/overview.html:18
 msgid "Claimant"
 msgstr "Beansprucht von"
 
-#: loot/models.py:17
+#: loot/models.py:27
 msgid "Magic Item"
 msgstr "Magisches Item"
 
-#: loot/models.py:21 loot/models.py:22 loot/templates/loot/overview.html:5
+#: loot/models.py:31 loot/models.py:32 loot/templates/loot/overview.html:5
 #: loot/templates/loot/overview.html:8 templates/tenantbase.html:45
 msgid "Loot"
 msgstr "Loot"
@@ -228,31 +239,37 @@ msgstr "Neu erstellen"
 msgid "Save"
 msgstr "Speichern"
 
-#: loot/templates/loot/overview.html:14
+#: loot/templates/loot/overview.html:15
 msgid "Item"
 msgstr "Objekt"
 
-#: loot/templates/loot/overview.html:16 loot/templates/loot/overview.html:53
+#: loot/templates/loot/overview.html:17 loot/templates/loot/overview.html:74
 msgid "Total Value"
 msgstr "Gesamtwert"
 
-#: loot/templates/loot/overview.html:31
+#: loot/templates/loot/overview.html:41
 msgid "Nobody"
 msgstr "Niemand"
 
-#: loot/templates/loot/overview.html:45
+#: loot/templates/loot/overview.html:58
 msgid "Value each"
 msgstr "Wert pro Stück"
 
-#: loot/templates/loot/overview.html:56
+#: loot/templates/loot/overview.html:62
+#, fuzzy
+#| msgid "Weight (lb)"
+msgid "Weight"
+msgstr "Gewicht (lb)"
+
+#: loot/templates/loot/overview.html:77
 msgid "Add Loot"
 msgstr "Loot hinzufügen"
 
-#: notes/models.py:22
+#: notes/models.py:25
 msgid "Note"
 msgstr "Notiz"
 
-#: notes/models.py:23 templates/tenantbase.html:33
+#: notes/models.py:26 templates/tenantbase.html:33
 msgid "Notes"
 msgstr "Notizen"
 
@@ -355,7 +372,7 @@ msgstr "Benutzerkonto bearbeiten"
 msgid "Email Address"
 msgstr "E-Mail-Adresse"
 
-#: users/views.py:36
+#: users/views.py:37
 msgid ""
 "You account was created. Please click the confirmation link in the E-Mail to "
 "activate it."
@@ -367,3 +384,7 @@ msgstr ""
 msgid "Account was successfully activated. You can log in now."
 msgstr ""
 "Der Account wurde erfolgreich aktiviert. Du kannst dich jetzt damit anmelden."
+
+#: users/views.py:61
+msgid "User account was updated successfully"
+msgstr ""
