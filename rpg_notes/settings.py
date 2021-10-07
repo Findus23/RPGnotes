@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from datetime import timedelta
 from pathlib import Path
 from subprocess import run
 
@@ -237,6 +237,11 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+
+    AXES_META_PRECEDENCE_ORDER = ['HTTP_X_REAL_IP']
+    AXES_COOLOFF_TIME = timedelta(hours=1)
+    AXES_FAILURE_LIMIT = 6
+
     STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     LOGGING = {
