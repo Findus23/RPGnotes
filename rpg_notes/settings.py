@@ -229,6 +229,7 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 SESSION_CACHE_ALIAS = "default"
 
 THUMBNAIL_DEBUG = DEBUG
+THUMBNAIL_PRESERVE_FORMAT = True
 
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
