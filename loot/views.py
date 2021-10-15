@@ -7,7 +7,7 @@ from loot.models import Loot
 
 
 class LootListView(generic.ListView):
-    template_name = "loot/overview.html"
+    template_name = "loot/overview.jinja"
     model = Loot
     context_object_name = "loot"
 
@@ -24,7 +24,7 @@ class LootListView(generic.ListView):
 
 
 class LootCreateView(generic.CreateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = Loot
     form_class = LootForm
 
@@ -32,7 +32,7 @@ class LootCreateView(generic.CreateView):
 
 
 class LootEditView(generic.UpdateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = Loot
     form_class = LootForm
     context_object_name = "object"
@@ -46,7 +46,7 @@ class LootEditView(generic.UpdateView):
 
 
 class LootDeleteView(generic.DeleteView):
-    template_name = "common/confirm_delete.html"
+    template_name = "common/confirm_delete.jinja"
     model = Loot
 
     success_url = reverse_lazy("lootlist")

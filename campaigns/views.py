@@ -70,7 +70,7 @@ class CampaignDeleteView(generic.DeleteView):
     """
     broken at the moment
     """
-    template_name = "common/confirm_delete.html"
+    template_name = "common/confirm_delete.jinja"
     model = Campaign
     slug_url_kwarg = "campslug"
     success_url = reverse_lazy('campaigndetail')

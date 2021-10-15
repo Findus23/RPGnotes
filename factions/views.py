@@ -15,7 +15,7 @@ def list_faction_redirect(request, *args, **kwargs):
 
 
 class FactionDetailView(generic.DetailView):
-    template_name = "factions/detail.html"
+    template_name = "factions/detail.jinja"
     model = Faction
     context_object_name = "faction"
 
@@ -26,14 +26,14 @@ class FactionDetailView(generic.DetailView):
 
 
 class FactionCreateView(generic.CreateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = Faction
     form_class = FactionForm
     context_object_name = "object"
 
 
 class FactionEditView(generic.UpdateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = Faction
     form_class = FactionForm
 
@@ -44,6 +44,6 @@ class FactionEditView(generic.UpdateView):
 
 
 class FactionDeleteView(generic.DeleteView):
-    template_name = "common/confirm_delete.html"
+    template_name = "common/confirm_delete.jinja"
     model = Faction
     success_url = reverse_lazy('factionlist')

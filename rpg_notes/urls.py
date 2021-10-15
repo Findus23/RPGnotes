@@ -7,7 +7,7 @@ from common import views
 from rpg_notes import settings
 
 urlpatterns = [
-    path('', include('django.contrib.auth.urls')),
+    path('', include('rpg_notes.urls_auth')),
     path('i18n/', include('django.conf.urls.i18n')),
     path("language/", views.LanguageSelectView.as_view(), name="change_language"),
     # path("ip", views.print_ip, name="ip"),

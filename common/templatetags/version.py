@@ -1,12 +1,12 @@
+from functools import lru_cache
 from subprocess import run
 
-from django import template
 from django.core.cache import cache
+from django_jinja import library
 
-register = template.Library()
 
-
-@register.simple_tag
+@library.global_function
+@lru_cache(maxsize=None)
 def commit_id():
     commit = cache.get("commit")
     if not commit:

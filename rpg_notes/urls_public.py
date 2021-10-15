@@ -2,6 +2,7 @@ import debug_toolbar
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django_jinja.views import PermissionDenied
 
 from common import views
 from rpg_notes import settings
@@ -9,7 +10,7 @@ from users import views as user_views
 
 urlpatterns = [
     path('', include('users.urls')),
-    path('', include('django.contrib.auth.urls')),
+    path('', include('rpg_notes.urls_auth')),
     path('', views.PublicHomepageView.as_view()),
     path("profile/", user_views.UserEditView.as_view(), name="edit_profile"),
     path('admin/', admin.site.urls),

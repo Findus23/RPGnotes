@@ -1,11 +1,9 @@
-from django import template
-from sorl.thumbnail.templatetags.thumbnail import resolution
 from django_jinja import library
 from sorl.thumbnail import get_thumbnail
+from sorl.thumbnail.templatetags.thumbnail import resolution
 
 from rpg_notes import settings
 
-register = template.Library()
 
 @library.global_function
 def thumbnail(*args, **kwargs):

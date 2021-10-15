@@ -13,7 +13,7 @@ from users.models import TenantUser
 class CustomRegistrationView(RegistrationView):
     email_body_template = "registration/activation_email_body.html"
     email_subject_template = "registration/activation_email_subject.html"
-    template_name = "registration/registration_form.html"
+    template_name = "registration/registration_form.jinja"
     form_class = CustomRegistrationForm
     success_url = reverse_lazy("login")
 
@@ -40,7 +40,7 @@ class CustomRegistrationView(RegistrationView):
 
 class CustomActivationView(ActivationView):
     success_url = reverse_lazy("login")
-    template_name = "registration/activation_failed.html"
+    template_name = "registration/activation_failed.jinja"
 
     def activate(self, *args, **kwargs):
         username = self.validate_key(kwargs.get("activation_key"))
@@ -54,7 +54,7 @@ class CustomActivationView(ActivationView):
 
 
 class UserEditView(SuccessMessageMixin, UpdateView):
-    template_name = "users/edit.html"
+    template_name = "users/edit.jinja"
     model = TenantUser
     form_class = CustomUserChangeForm
     success_url = "/"

@@ -1,0 +1,59 @@
+{% extends "tenantbase.jinja" %}
+{% import "macros.jinja" as macros %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group">
+                {% for p in roots %}
+                    <a class="tree-{{ p.tree_depth }} list-group-item list-group-item-action {% if note.id == p.id %}active{% endif %}"
+                       href="{{ p.get_absolute_url() }}">
+                        {{ p }}
+                    </a>
+                {% endfor %}
+            </div>
+            <a class="btn btn-primary" href="{{ url("noteadd") }} ">{{ _("Add Note") }}</a>
+        </div>
+        <div class="col-8">
+            <div class="character-heading">
+                <h1>
+                    {{ note.name }}
+                    <a href="{{ url("noteedit", note.slug) }}">
+                        {{ _("Edit") }}
+                    </a>
+                </h1>
+                <nav aria-label="breadcrumb" class="breadcrumbs">
+                    <ol class="breadcrumb">
+                        {% for ancestor in note.ancestors() %}
+                            <li class="breadcrumb-item">
+                                <a href="{{ ancestor.get_absolute_url() }}">{{ ancestor }}</a>
+                            </li>
+                        {% endfor %}
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {{ note }}
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <dl>
+                {% if note.part_of %}
+                    <dt>{{ _("Part of") }}:</dt>
+                    <dd><a href="{{ note.part_of.get_absolute_url() }}">{{ note.part_of }}</a></dd>
+                {% endif %}
+                {% if note.image %}
+                    {% set im=thumbnail(note.image, "860", crop="center") %}
+                    <a href="{{ note.image.url }}" class="image-viewer">
+                        <img class="img-fluid" src="{{ im.url }}"
+                             width="{{ im.width }}"
+                             height="{{ im.height }}"
+                             srcset="{{ im.url|srcset }}">
+                    </a>
+                {% endif %}
+            </dl>
+            {{ note.description_html|safe }}
+
+            {{ macros.last_edited(note) }}
+        </div>
+    </div>
+{% endblock %}

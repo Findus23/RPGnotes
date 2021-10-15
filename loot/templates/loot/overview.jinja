@@ -1,22 +1,20 @@
-{% extends "tenantbase.html" %}
-{% load i18n %}
-{% load formatters %}
+{% extends "tenantbase.jinja" %}
 
-{% block title %}{% translate "Loot" %}{% endblock %}
+{% block title %}{% trans %}Loot{% endtrans %} {% endblock %}
 
 {% block heading %}
-    <h1>{% translate "Loot" %}</h1>
+    <h1>{% trans %}Loot{% endtrans %}</h1>
 {% endblock %}
 {% block content %}
     <table class="table">
         <thead>
         <tr>
             <td></td>
-            <td>{% translate "Item" %}</td>
-            <td>{% translate "Quantity" %}</td>
-            <td>{% translate "Total Value" %}</td>
-            <td>{% translate "Claimant" %}</td>
-            <td>{% translate "Location" %}</td>
+            <td>{{ _("Item") }}</td>
+            <td>{{ _("Quantity") }}</td>
+            <td>{{ _("Total Value") }}</td>
+            <td>{{ _("Claimant") }}</td>
+            <td>{{ _("Location") }}</td>
             <td></td>
         </tr>
         </thead>
@@ -38,9 +36,8 @@
                 <td>{{ l.name }}</td>
                 <td>{{ l.quantity }}</td>
                 <td>{{ l.value_gold|format_money_html }}</td>
-                {% trans 'Nobody' as nobody %}
-                <td>{{ l.owner|default:nobody }}</td>
-                <td>{{ l.location|default:"" }}</td>
+                <td>{{ l.owner|default(_('Nobody')) }}</td>
+                <td>{{ l.location|default("") }}</td>
                 <td>
                     <svg class="chev" viewBox="0 0 640 1024" xmlns="http://www.w3.org/2000/svg">
                         <path d="M512 320L320 512 128 320 0 448l320 320 320-320L512 320z"/>
@@ -51,15 +48,16 @@
                 <td colspan="7" class="collapse-cell">
                     <div class="collapse" id="row-{{ l.id }}">
                         <div class="cell-box">
-                            <h3>{{ l.name }} <a href="{% url "lootedit" l.id %}">{% translate "Edit" %}</a></h3>
+                            <h3>{{ l.name }} <a href="{{ url("lootedit", l.id) }}">{{ _("Edit") }}</a>
+                            </h3>
                             {{ l.description_html|safe }}
                             <dl>
                                 {% if l.value_per_unit and l.quantity > 1 %}
-                                    <dt>{% translate "Value each" %}</dt>
+                                    <dt>{{ _("Value each") }}</dt>
                                     <dd>{{ l.value_per_unit|format_money_html }}</dd>
                                 {% endif %}
                                 {% if l.weight %}
-                                    <dt>{% translate "Weight" %}</dt>
+                                    <dt>{{ _("Weight") }}</dt>
                                     <dd>{{ l.weight }} lb</dd>
                                 {% endif %}
                             </dl>
@@ -71,10 +69,10 @@
         </tbody>
     </table>
     <dl>
-        <dd>{% translate "Total Value" %}:</dd>
+        <dd>{{ _("Total Value") }}:</dd>
         <dt>{{ total_value|format_money_html }}</dt>
     </dl>
-    <a href="{% url "lootadd" %}" class="btn btn-primary">{% translate "Add Loot" %}</a>
+    <a href="{{ url("lootadd") }} " class="btn btn-primary">{{ _("Add Loot") }}</a>
 
 {% endblock %}
 

@@ -1,6 +1,5 @@
-{% extends "tenantbase.html" %}
-{% load i18n %}
-{% load humanize %}
+{% extends "tenantbase.jinja" %}
+{% import "macros.jinja" as macros %}
 
 {% block content %}
     <div class="row">
@@ -8,37 +7,34 @@
             <ul class="nav nav-pills flex-column">
                 {% for f in factions %}
                     <li class="nav-item">
-                        <a href="{% url "factiondetail" f.slug %}"
+                        <a href="{{ url("factiondetail", f.slug) }}"
                            class="nav-link {% if f.id == faction.id %}active{% endif %}">
                             {{ f.name }}
                         </a>
                     </li>
                 {% endfor %}
             </ul>
-            <a class="btn btn-primary add-button" href="{% url "factionadd" %}">{% translate "Add Faction" %}</a>
+            <a class="btn btn-primary add-button" href="{{ url("factionadd") }}">{{ _("Add Faction") }}</a>
         </div>
         <div class="col-8">
             <div class="faction-heading">
                 <h1>
                     {{ faction.name }}
-                    <a href="{% url "factionedit" faction.slug %}">
-                        {% translate "Edit" %}
+                    <a href="{{ url("factionedit", faction.slug) }}">
+                        {{ _("Edit") }}
                     </a>
                 </h1>
             </div>
             <dl>
-                <dt>{% translate "Members" %}:</dt>
+                <dt>{{ _("Members") }}:</dt>
                 <dd>
-                    {% for char in faction.characters.all %}
-                        <a href="{{ char.get_absolute_url }}">{{ char.name }}</a>
+                    {% for char in faction.characters.all() %}
+                        <a href="{{ char.get_absolute_url() }}">{{ char.name }}</a>
                     {% endfor %}
                 </dd>
             </dl>
             {{ faction.description_html|safe }}
-            <div>
-                <small>{% translate "Last updated" %}: {{ faction.last_modified|naturaltime }}
-                    {% translate "by" %} {{ faction.history.first.history_user }} </small>
-            </div>
+            {{ macros.last_edited(faction) }}
         </div>
     </div>
 {% endblock %}

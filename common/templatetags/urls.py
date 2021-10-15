@@ -1,11 +1,9 @@
-from django import template
+from django_jinja import library
 
 from rpg_notes.settings import DEBUG, DOMAIN
 
-register = template.Library()
 
-
-@register.simple_tag
+@library.global_function
 def main_url():
     protocol = "http" if DEBUG else "https"
     return f"{protocol}://{DOMAIN}"

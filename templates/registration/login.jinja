@@ -1,0 +1,24 @@
+{% extends "base.jinja" %}
+
+
+
+{% block mainpage %}
+    <h1>{{ _("Login") }}</h1>
+
+    {% if next %}
+        <div class="alert alert-info">
+            {% trans %}You need to log in before you can access <code>{{ next }}</code>.{% endtrans %}
+        </div>
+    {% endif %}
+
+    <form method="post" class="form">
+        {% csrf_token %}
+        {{ bootstrap_form(form) }}
+        <div class="password-reset-link">
+            <a href="{{ url("password_reset") }}">{% trans %}Forgotten your password or username?{% endtrans %} </a>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block">
+            {{ _("Log in") }}
+        </button>
+    </form>
+{% endblock %}

@@ -15,7 +15,7 @@ def list_location_redirect(request, *args, **kwargs):
 
 
 class LocationDetailView(generic.DetailView):
-    template_name = "locations/detail.html"
+    template_name = "locations/detail.jinja"
     model = Location
     context_object_name = "location"
 
@@ -26,14 +26,14 @@ class LocationDetailView(generic.DetailView):
 
 
 class LocationCreateView(generic.CreateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = Location
     form_class = LocationForm
     context_object_name = "object"
 
 
 class LocationEditView(generic.UpdateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = Location
     form_class = LocationForm
 
@@ -44,6 +44,6 @@ class LocationEditView(generic.UpdateView):
 
 
 class LocationDeleteView(generic.DeleteView):
-    template_name = "common/confirm_delete.html"
+    template_name = "common/confirm_delete.jinja"
     model = Location
     success_url = reverse_lazy('locationlist')

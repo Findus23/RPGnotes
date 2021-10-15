@@ -1,0 +1,8 @@
+{% extends 'base.jinja' %}
+{% load i18n %}
+
+{% block mainpage %}
+    <h1>{% trans %}Activation failed{% endtrans %} </h1>
+    <p>{% trans %}Maybe this activation link has already been clicked before.{% endtrans %} </p>
+{% endblock %}
+

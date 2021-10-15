@@ -1,6 +1,4 @@
-{% extends 'tenantbase.html' %}
-{% load django_bootstrap5 %}
-{% load static %}
+{% extends 'tenantbase.jinja' %}
 
 {% block heading %}
     <h1>Delete Object</h1>
@@ -11,4 +9,5 @@
     <form method="post">{% csrf_token %}
         <p>Are you sure you want to delete "{{ object }}"?</p>
         <input class="btn btn-primary" type="submit" value="Confirm">
-    </form>{% endblock %}
+    </form>
+{% endblock %}

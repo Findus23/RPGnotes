@@ -54,8 +54,7 @@
     <script src="{{ static("libs/bundle.min.js") }}"></script>
     <script nonce="{{ request.csp_nonce }}">
         Sentry.init({dsn: "{{ sentry_dsn }}"});
-        {#        {% get_current_language as LANGUAGE_CODE %}#}
-        Sentry.showReportDialog({eventId: "{{ sentry_event_id }}"});
+        Sentry.showReportDialog({eventId: "{{ sentry_event_id }}", lang: "{{ language_code() }}"});
     </script>
 {% endif %}
 {% block extra_js %}{% endblock %}

@@ -30,14 +30,14 @@ class CharacterDetailView(generic.DetailView):
 
 
 class CharacterCreateView(generic.CreateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = Character
     form_class = CharacterForm
     context_object_name = "object"
 
 
 class CharacterEditView(generic.UpdateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = Character
     form_class = CharacterForm
 
@@ -48,6 +48,6 @@ class CharacterEditView(generic.UpdateView):
 
 
 class CharacterDeleteView(generic.DeleteView):
-    template_name = "common/confirm_delete.html"
+    template_name = "common/confirm_delete.jinja"
     model = Character
     success_url = reverse_lazy('characterlist')

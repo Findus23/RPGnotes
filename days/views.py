@@ -14,7 +14,7 @@ def list_day_redirect(request, *args, **kwargs):
 
 
 class DayDetailView(generic.DetailView):
-    template_name = "days/day_detail.html"
+    template_name = "days/day_detail.jinja"
     model = IngameDay
     context_object_name = "day"
 
@@ -28,14 +28,14 @@ class DayDetailView(generic.DetailView):
 
 
 class DayCreateView(generic.CreateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = IngameDay
     form_class = DayForm
     context_object_name = "object"
 
 
 class DayEditView(generic.UpdateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = IngameDay
     form_class = DayForm
 
@@ -49,7 +49,7 @@ class DayEditView(generic.UpdateView):
 
 
 class DayDeleteView(generic.DeleteView):
-    template_name = "common/confirm_delete.html"
+    template_name = "common/confirm_delete.jinja"
     model = IngameDay
     success_url = reverse_lazy('daylist')
 

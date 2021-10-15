@@ -1,0 +1,20 @@
+{% extends "tenantbase.jinja" %}
+
+{% block title %}{{ _("Change Language") }} - RPGnotes{% endblock %}
+
+{% block content %}
+    <h1>{{ _("Change Language") }}</h1>
+    <form action="{{ url("set_language") }}" method="post">{% csrf_token %}
+        <div class="input-group">
+            <select name="language" class="form-select">
+                {% set current_langcode=language_code() %}
+                {% for code,language in all_languages() %}
+                    <option value="{{ code }}"{% if code == current_langcode %} selected{% endif %}>
+                        {{ language }} ({{ code }})
+                    </option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-outline-secondary">{{ _("Save") }}</button>
+        </div>
+    </form>
+{% endblock %}

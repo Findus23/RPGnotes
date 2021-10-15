@@ -1,16 +1,17 @@
 {% extends "tenantbase.jinja" %}
+{% import "macros.jinja" as macros %}
 
 {% block content %}
     <div class="row">
         <div class="col-4">
             <ul class="nav nav-pills flex-column">
                 {% for c in player_characters %}
-                    {#                    {% include "macros/character-pillar.html" with character=c %}#}
+                    {{ macros.character_pillar(c) }}
                 {% endfor %}
             </ul>
             <ul class="nav nav-pills flex-column">
                 {% for c in npcs %}
-                    {#                    {% include "macros/character-pillar.html" with character=c %}#}
+                    {{ macros.character_pillar(c) }}
                 {% endfor %}
             </ul>
             <a class="btn btn-primary" href="{{ url("characteradd") }}">{% trans %}Add Character{% endtrans %}</a>
@@ -18,14 +19,13 @@
         <div class="col-8">
             <div class="character-heading" style="border-bottom-color: {{ character.color }}">
                 {% if character.smaller_image %}
-                    {#                    {% thumbnail character.smaller_image "150x150" crop="center" as im %}#}
-                    {#                        <a href="{{ character.smaller_image.url }}" class="image-viewer">#}
-                    {#                            <img class="avatar avatar-image avatar-large rounded-circle" src="{{ im.url }}"#}
-                    {#                                 width="{{ im.width }}"#}
-                    {#                                 height="{{ im.height }}"#}
-                    {#                                 srcset="{{ im.url|srcset }}">#}
-                    {#                        </a>#}
-                    {#                    {% endthumbnail %}#}
+                    {% set im=thumbnail(character.smaller_image, "150x150", crop="center") %}
+                    <a href="{{ character.smaller_image.url }}" class="image-viewer">
+                        <img class="avatar avatar-image avatar-large rounded-circle" src="{{ im.url }}"
+                             width="{{ im.width }}"
+                             height="{{ im.height }}"
+                             srcset="{{ im.url|srcset }}">
+                    </a>
                 {% else %}
                     <div class="avatar avatar-text avatar-large"
                          style="background: {{ character.color }};color:{{ character.text_color }}">{{ character.initials }}</div>
@@ -47,7 +47,7 @@
                 {% endif %}
                 {% if character.faction %}
                     <dt>{{ _("Faction") }}:</dt>
-                    <dd><a href="{{ character.faction.get_absolute_url }}">{{ character.faction.name }}</a></dd>
+                    <dd><a href="{{ character.faction.get_absolute_url() }}">{{ character.faction.name }}</a></dd>
                 {% endif %}
             </dl>
             {{ character.description_html|safe }}

@@ -15,7 +15,7 @@ def list_note_redirect(request, *args, **kwargs):
 
 
 class NoteDetailView(generic.DetailView):
-    template_name = "notes/detail.html"
+    template_name = "notes/detail.jinja"
     model = Note
     context_object_name = "note"
 
@@ -26,14 +26,14 @@ class NoteDetailView(generic.DetailView):
 
 
 class NoteCreateView(generic.CreateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = Note
     form_class = NoteForm
     context_object_name = "object"
 
 
 class NoteEditView(generic.UpdateView):
-    template_name = "loot/edit.html"
+    template_name = "loot/edit.jinja"
     model = Note
     form_class = NoteForm
 
@@ -44,6 +44,6 @@ class NoteEditView(generic.UpdateView):
 
 
 class NoteDeleteView(generic.DeleteView):
-    template_name = "common/confirm_delete.html"
+    template_name = "common/confirm_delete.jinja"
     model = Note
     success_url = reverse_lazy('notelist')

@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django_jinja.views import ServerError
 from ipware import get_client_ip
 from sentry_sdk import last_event_id
 
@@ -13,7 +14,7 @@ class PublicHomepageView(TemplateView):
 
 
 class LanguageSelectView(TemplateView):
-    template_name = "common/languageselect.html"
+    template_name = "common/languageselect.jinja"
 
 
 def print_ip(request):
@@ -32,9 +33,8 @@ def debug_css_sourcemap(request):
     css, source_map = get_css(debug=True)
     return HttpResponse(source_map, content_type="application/json")
 
-
 def handler500(request, *args, **argv):
-    return render(request, "500.html", {
+    return render(request, "500.jinja", {
         "sentry_event_id": last_event_id(),
         "sentry_dsn": SENTRY_DSN
     }, status=500)
