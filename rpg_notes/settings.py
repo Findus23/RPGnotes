@@ -247,9 +247,6 @@ CACHES = {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     },
-    "inmemory": {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    }
 }
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
