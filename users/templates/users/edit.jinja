@@ -5,7 +5,7 @@
     <h1>{{ _("Edit User Account") }}</h1>
 
     <form method="post">
-        {{ csrf_token }}
+        {% csrf_token %}
         {{ bootstrap_form(form) }}
         <input type="submit" class="btn btn-primary" value="{{ _("Save") }}">
     </form>
