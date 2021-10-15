@@ -15,6 +15,7 @@ from subprocess import run
 
 import sentry_sdk
 from django.utils.translation import gettext_lazy as _
+from django_jinja.builtins import DEFAULT_EXTENSIONS
 from django_tenants.files.storage import TenantFileSystemStorage
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -49,6 +50,8 @@ SHARED_APPS = (
     'django.contrib.humanize',
     'django.contrib.staticfiles',
     'django_bootstrap5',
+    'django_jinja',
+    'django_jinja.contrib._humanize',
     'sorl.thumbnail',
     'debug_toolbar',
     'axes',
@@ -114,6 +117,28 @@ PUBLIC_SCHEMA_URLCONF = 'rpg_notes.urls_public'
 
 TEMPLATES_DIR = BASE_DIR / 'templates'
 TEMPLATES = [
+    {
+        "BACKEND": "django_jinja.backend.Jinja2",
+        "DIRS": [TEMPLATES_DIR],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            # "extensions": DEFAULT_EXTENSIONS + [
+            # 'jdj_tags.extensions.DjangoCompat',
+            # ]
+            'context_processors': [
+                'django.template.context_processors.request',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+            "bytecode_cache": {
+                "name": "default",
+                "backend": "django_jinja.cache.BytecodeCache",
+                "enabled": True,
+            },
+        }
+    },
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [TEMPLATES_DIR],
@@ -222,6 +247,9 @@ CACHES = {
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
+    },
+    "inmemory": {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
 

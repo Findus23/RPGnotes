@@ -11,7 +11,7 @@ from users.models import TenantUser
 
 
 class CampaignListView(generic.ListView):
-    template_name = "campaigns/campaign_overview.html"
+    template_name = "campaigns/campaign_overview.jinja"
     model = Campaign
     context_object_name = "campaigns"
 
@@ -21,7 +21,7 @@ class CampaignListView(generic.ListView):
 
 
 class CampaignCreateView(generic.FormView):
-    template_name = "campaigns/campaign_edit.html"
+    template_name = "campaigns/campaign_edit.jinja"
     form_class = CampaignForm
 
     def form_valid(self, form):
@@ -38,7 +38,7 @@ class CampaignCreateView(generic.FormView):
 
 
 class CampaignDetailView(generic.DetailView):
-    template_name = "campaigns/campaign_detail.html"
+    template_name = "campaigns/campaign_detail.jinja"
     model = Campaign
     slug_url_kwarg = "campslug"
 
@@ -57,7 +57,7 @@ class CampaignDetailView(generic.DetailView):
 
 
 class CampaignEditView(generic.UpdateView):
-    template_name = "campaigns/campaign_edit.html"
+    template_name = "campaigns/campaign_edit.jinja"
     model = Campaign
     fields = ["name"]
     slug_url_kwarg = "campslug"

@@ -1,0 +1,71 @@
+{% extends "tenantbase.jinja" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-4">
+            <ul class="nav nav-pills flex-column">
+                {% for c in player_characters %}
+                    {#                    {% include "macros/character-pillar.html" with character=c %}#}
+                {% endfor %}
+            </ul>
+            <ul class="nav nav-pills flex-column">
+                {% for c in npcs %}
+                    {#                    {% include "macros/character-pillar.html" with character=c %}#}
+                {% endfor %}
+            </ul>
+            <a class="btn btn-primary" href="{{ url("characteradd") }}">{% trans %}Add Character{% endtrans %}</a>
+        </div>
+        <div class="col-8">
+            <div class="character-heading" style="border-bottom-color: {{ character.color }}">
+                {% if character.smaller_image %}
+                    {#                    {% thumbnail character.smaller_image "150x150" crop="center" as im %}#}
+                    {#                        <a href="{{ character.smaller_image.url }}" class="image-viewer">#}
+                    {#                            <img class="avatar avatar-image avatar-large rounded-circle" src="{{ im.url }}"#}
+                    {#                                 width="{{ im.width }}"#}
+                    {#                                 height="{{ im.height }}"#}
+                    {#                                 srcset="{{ im.url|srcset }}">#}
+                    {#                        </a>#}
+                    {#                    {% endthumbnail %}#}
+                {% else %}
+                    <div class="avatar avatar-text avatar-large"
+                         style="background: {{ character.color }};color:{{ character.text_color }}">{{ character.initials }}</div>
+                {% endif %}
+
+                <h1>
+                    {{ character.name }}
+
+                    <a href="{{ url("characteredit",character.slug) }}">
+                        {% trans %}Edit{% endtrans %}
+                    </a>
+                </h1>
+                <p>{{ character.subtitle }}</p>
+            </div>
+            <dl>
+                {% if character.player %}
+                    <dt>{{ _("Player") }}:</dt>
+                    <dd>{{ character.player }}</dd>
+                {% endif %}
+                {% if character.faction %}
+                    <dt>{{ _("Faction") }}:</dt>
+                    <dd><a href="{{ character.faction.get_absolute_url }}">{{ character.faction.name }}</a></dd>
+                {% endif %}
+            </dl>
+            {{ character.description_html|safe }}
+
+            {% if character.large_image %}
+                {% set im=thumbnail(character.large_image, "860", crop="center") %}
+                <a href="{{ character.large_image.url }}" class="image-viewer">
+                    <img class="img-fluid" src="{{ im.url }}"
+                         width="{{ im.width }}"
+                         height="{{ im.height }}"
+                         srcset="{{ im.url|srcset }}">
+                </a>
+            {% endif %}
+
+            <div>
+                <small>{{ _("Last updated") }}: {{ character.last_modified|naturaltime }}
+                    {{ _("by") }} {{ character.history.first.history_user }} </small>
+            </div>
+        </div>
+    </div>
+{% endblock %}

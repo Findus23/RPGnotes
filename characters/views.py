@@ -14,7 +14,7 @@ def list_character_redirect(request, *args, **kwargs):
 
 
 class CharacterDetailView(generic.DetailView):
-    template_name = "characters/detail.html"
+    template_name = "characters/detail.jinja"
     model = Character
     context_object_name = "character"
 

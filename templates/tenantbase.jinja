@@ -1,0 +1,75 @@
+{% extends "base.jinja" %}
+
+{% block title %}{{ object }}{% endblock %}
+
+
+{% block mainpage %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    {% with url_name=request.resolver_match.url_name %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'campaigndetail' %}active{% endif %}"
+                               href="{{ url("campaigndetail") }}">{% trans %}Home{% endtrans %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'characterdetail' %}active{% endif %}"
+                               href="{{ url("characterlist") }}">{% trans %}Characters{% endtrans %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'locationdetail' %}active{% endif %}"
+                               href="{{ url("locationlist") }}">{% trans %}Locations{% endtrans %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'notedetail' %}active{% endif %}"
+                               href="{{ url("notelist") }}">{% trans %}Notes{% endtrans %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'factiondetail' %}active{% endif %}"
+                               href="{{ url("factionlist") }}">{% trans %}Factions{% endtrans %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'daydetail' %}active{% endif %}"
+                               href="{{ url("daylist") }}">{% trans %}Timeline{% endtrans %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'lootlist' %}active{% endif %}"
+                               href="{{ url("lootlist") }}">{% trans %}Loot{% endtrans %}</a>
+                        </li>
+                    {% endwith %}
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="navbar-text nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">{{ user }}</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item"
+                                   href="{{ url("change_language") }}">{% trans %}Change Language{% endtrans %}</a></li>
+
+                            {% if user.is_staff %}
+                                <li><a class="dropdown-item" href="/admin/">Admin</a></li>
+                            {% endif %}
+{#                            <li><a class="dropdown-item"#}
+{#                                   href="{% main_url %}/profile/">{% trans %}Edit User Account{% endtrans %}</a></li>#}
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{{ url("logout") }}">{% trans %}Log out{% endtrans %}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block heading %}{% endblock %}
+
+    {% block content %}
+    {% endblock %}
+{% endblock %}

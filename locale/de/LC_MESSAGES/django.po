@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 22:57+0200\n"
+"POT-Creation-Date: 2021-10-15 19:45+0200\n"
 "PO-Revision-Date: 2021-10-03 17:19+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -23,25 +23,25 @@ msgstr ""
 msgid "Name"
 msgstr "Name"
 
-#: campaigns/templates/campaigns/campaign_detail.html:8
+#: campaigns/templates/campaigns/campaign_detail.jinja:7
 msgid "Players"
 msgstr "Spieler"
 
-#: campaigns/templates/campaigns/campaign_edit.html:9
+#: campaigns/templates/campaigns/campaign_edit.jinja:5
 msgid "Add new campaign"
 msgstr "Neue Campagne erstellen"
 
-#: campaigns/templates/campaigns/campaign_edit.html:14
+#: campaigns/templates/campaigns/campaign_edit.jinja:9
 #: loot/templates/loot/edit.html:29 loot/templates/loot/edit.html:32
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: campaigns/templates/campaigns/campaign_overview.html:4
-#: campaigns/templates/campaigns/campaign_overview.html:9
+#: campaigns/templates/campaigns/campaign_overview.jinja:3
+#: campaigns/templates/campaigns/campaign_overview.jinja:8
 msgid "Campaign Overview"
 msgstr "Kampagnenübersicht"
 
-#: campaigns/templates/campaigns/campaign_overview.html:14
+#: campaigns/templates/campaigns/campaign_overview.jinja:13
 msgid "create Campaign"
 msgstr "Campaign erstellen"
 
@@ -92,6 +92,7 @@ msgid "Character"
 msgstr "Charakter"
 
 #: characters/models.py:48 templates/tenantbase.html:25
+#: templates/tenantbase.jinja:22
 msgid "Characters"
 msgstr "Charaktere"
 
@@ -109,16 +110,16 @@ msgstr "Bearbeiten"
 #: characters/templates/characters/detail.html:70
 #: days/templates/days/day_detail.html:36
 #: factions/templates/factions/detail.html:39
-#: locations/templates/locations/detail.html:72
-#: notes/templates/notes/detail.html:51
+#: locations/templates/locations/detail.html:71
+#: notes/templates/notes/detail.html:61
 msgid "Last updated"
 msgstr "Zuletzt geändert"
 
 #: characters/templates/characters/detail.html:71
 #: days/templates/days/day_detail.html:37
 #: factions/templates/factions/detail.html:40
-#: locations/templates/locations/detail.html:73
-#: notes/templates/notes/detail.html:52
+#: locations/templates/locations/detail.html:72
+#: notes/templates/notes/detail.html:62
 msgid "by"
 msgstr "von"
 
@@ -159,6 +160,7 @@ msgid "Add Day"
 msgstr "Tag hinzufügen"
 
 #: factions/models.py:16 templates/tenantbase.html:37
+#: templates/tenantbase.jinja:34
 msgid "Factions"
 msgstr "Fraktionen"
 
@@ -182,6 +184,7 @@ msgid "Image"
 msgstr "Token Bild"
 
 #: locations/models.py:26 templates/tenantbase.html:29
+#: templates/tenantbase.jinja:26
 msgid "Locations"
 msgstr "Orte"
 
@@ -215,6 +218,7 @@ msgstr "Magisches Item"
 
 #: loot/models.py:31 loot/models.py:32 loot/templates/loot/overview.html:5
 #: loot/templates/loot/overview.html:8 templates/tenantbase.html:45
+#: templates/tenantbase.jinja:42
 msgid "Loot"
 msgstr "Loot"
 
@@ -270,6 +274,7 @@ msgid "Note"
 msgstr "Notiz"
 
 #: notes/models.py:26 templates/tenantbase.html:33
+#: templates/tenantbase.jinja:30
 msgid "Notes"
 msgstr "Notizen"
 
@@ -277,11 +282,11 @@ msgstr "Notizen"
 msgid "Add Note"
 msgstr "Notiz hinzufügen"
 
-#: rpg_notes/settings.py:170
+#: rpg_notes/settings.py:194
 msgid "German"
 msgstr "Deutsch"
 
-#: rpg_notes/settings.py:171
+#: rpg_notes/settings.py:195
 msgid "English"
 msgstr "Englisch"
 
@@ -295,30 +300,36 @@ msgid "You might want to go back to the <a href=\"%(url)s\">homepage</a>."
 msgstr ""
 "Du möchtest vielleicht zurück zur <a href=\"%(url)s\">Startseite</a> gehen."
 
-#: templates/base.html:39 templates/tenantbase.html:66
+#: templates/base.html:39 templates/base.jinja:35 templates/tenantbase.html:66
+#: templates/tenantbase.jinja:63
 msgid "Log out"
 msgstr "Abmelden"
 
-#: templates/base.html:41 templates/common/homepage.html:18
-#: templates/registration/login.html:25
+#: templates/base.html:41 templates/base.jinja:37
+#: templates/common/homepage.jinja:18 templates/registration/login.html:25
 msgid "Log in"
 msgstr "Anmelden"
 
-#: templates/common/homepage.html:10
+#: templates/base.jinja:42
+msgid "test"
+msgstr ""
+
+#: templates/common/homepage.jinja:8
 msgid ""
 "An experimental, collaborative note taking app and wiki optimized for RPG "
 "games."
 msgstr ""
 
-#: templates/common/homepage.html:15
+#: templates/common/homepage.jinja:15
 msgid "List of Campaigns"
 msgstr "Liste der Campaigns"
 
-#: templates/common/homepage.html:21
+#: templates/common/homepage.jinja:21
 msgid "Sign up"
 msgstr "Registrieren"
 
 #: templates/common/languageselect.html:6 templates/tenantbase.html:56
+#: templates/tenantbase.jinja:53
 msgid "Change Language"
 msgstr "Sprache ändern"
 
@@ -356,11 +367,11 @@ msgstr "Registrierung erfolgreich"
 msgid "Registration"
 msgstr "Registrierung"
 
-#: templates/tenantbase.html:21
+#: templates/tenantbase.html:21 templates/tenantbase.jinja:18
 msgid "Home"
 msgstr "Home"
 
-#: templates/tenantbase.html:41
+#: templates/tenantbase.html:41 templates/tenantbase.jinja:38
 msgid "Timeline"
 msgstr "Timeline"
 

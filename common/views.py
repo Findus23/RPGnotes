@@ -9,7 +9,7 @@ from utils.assets import get_css
 
 
 class PublicHomepageView(TemplateView):
-    template_name = "common/homepage.html"
+    template_name = "common/homepage.jinja"
 
 
 class LanguageSelectView(TemplateView):

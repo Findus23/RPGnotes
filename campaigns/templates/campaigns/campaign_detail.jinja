@@ -1,0 +1,13 @@
+{% extends "tenantbase.jinja" %}
+
+{% block title %}{{ object }}{% endblock %}
+
+{% block content %}
+    <h1>{{ object }}</h1>
+    <h2>{% trans %}Players{% endtrans %}</h2>
+    <ul>
+        {% for user,characters in players.items() %}
+            <li>{{ user }}{% if characters %} ({{ characters|join(", ") }}){% endif %}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

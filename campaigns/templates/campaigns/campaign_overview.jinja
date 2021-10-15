@@ -1,0 +1,15 @@
+{% extends "base.jinja" %}
+
+{% block title %}{% trans %}Campaign Overview{% endtrans %}{% endblock %}
+
+
+{% block mainpage %}
+
+    {% if user %}
+        <h1>{% trans %}Campaign Overview{% endtrans %}</h1>
+    {% endif %}
+    {% for campaign in campaigns %}
+        <h2><a href="{{ campaign.get_absolute_url() }}">{{ campaign.name }}</a></h2>
+    {% endfor %}
+    <a href="{{ url("campaigncreate") }}" class="btn btn-secondary">{% trans %}create Campaign{% endtrans %}</a>
+{% endblock %}
