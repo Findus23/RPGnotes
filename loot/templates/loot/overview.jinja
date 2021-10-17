@@ -48,6 +48,15 @@
                 <td colspan="7" class="collapse-cell">
                     <div class="collapse" id="row-{{ l.id }}">
                         <div class="cell-box">
+                            {% if l.image %}
+                                {% set im=thumbnail(l.image, "100", crop="center") %}
+                                <a href="{{ l.image.url }}" class="image-viewer">
+                                    <img class="img-fluid item-image" src="{{ im.url }}"
+                                         width="{{ im.width }}"
+                                         height="{{ im.height }}"
+                                         srcset="{{ im.url|srcset }}">
+                                </a>
+                            {% endif %}
                             <h3>{{ l.name }} <a href="{{ url("lootedit", l.id) }}">{{ _("Edit") }}</a>
                             </h3>
                             {{ l.description_html|safe }}

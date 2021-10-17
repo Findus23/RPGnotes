@@ -1,10 +1,12 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from sorl.thumbnail import ImageField
 
 from characters.models import Character
 from common.models import DescriptionModel, HistoryModel
 from locations.models import Location
+from utils.random_filename import get_file_path
 
 
 class Loot(DescriptionModel, HistoryModel):
@@ -12,6 +14,7 @@ class Loot(DescriptionModel, HistoryModel):
     quantity = models.PositiveSmallIntegerField(_("Quantity"))
     value_gold = models.DecimalField(_("Value (Gold)"), max_digits=7, decimal_places=2)
     weight = models.FloatField(_("Weight (lb)"), null=True, blank=True)
+    image = ImageField(_("Image"), upload_to=get_file_path, blank=True, null=True)
     owner = models.ForeignKey(
         Character, on_delete=models.PROTECT,
         blank=True, null=True,
