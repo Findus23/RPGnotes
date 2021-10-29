@@ -2,7 +2,7 @@
 
 {% block heading %}
     {% if edit %}
-        <h1>{% trans name=object.name %}Edit "{{ name }}"{% endtrans %}</h1>
+        <h1>{% trans name=object.name %}Edit "{{ object }}"{% endtrans %}</h1>
         {% if request.resolver_match.view_name == "lootedit" %}
             <a class="btn btn-danger" href="{{ url("lootdelete", object.id) }}">{{ _("Delete") }}</a>
         {% elif request.resolver_match.view_name == "dayedit" %}
@@ -30,8 +30,10 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script src="{{ static("libs/easymde.min.js") }}"></script>
-    <script src="{{ static("libs/fontawesome-solid.min.js") }}"></script>
-    <script src="{{ static("libs/fontawesome.min.js") }}"></script>
-    <script src="{{ static("js/markdown.js") }}"></script>
+    {% if "Safari/" not in request.META.get('HTTP_USER_AGENT', '') %}
+        <script src="{{ static("libs/easymde.min.js") }}"></script>
+        <script src="{{ static("libs/fontawesome-solid.min.js") }}"></script>
+        <script src="{{ static("libs/fontawesome.min.js") }}"></script>
+        <script src="{{ static("js/markdown.js") }}"></script>
+    {% endif %}
 {% endblock %}
