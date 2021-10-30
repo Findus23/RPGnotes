@@ -7,6 +7,7 @@ from rpg_notes import settings
 
 @library.global_function
 def thumbnail(*args, **kwargs):
+    kwargs["upscale"] = False
     return get_thumbnail(*args, **kwargs)
 
 
