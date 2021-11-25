@@ -1,3 +1,5 @@
+import re
+
 import bleach
 import markdown
 from bleach_allowlist import markdown_tags, markdown_attrs
@@ -23,5 +25,6 @@ def md_to_html(md: str) -> str:
 def autolink(md: str) -> str:
     from utils.urls import name2url
     for name, url in name2url().items():
-        md = md.replace(name, f"[{name}]({url})")
+        regex = r"\bWORD\b".replace("WORD", name)
+        md = re.sub(regex, f"[{name}]({url})", md)
     return md
