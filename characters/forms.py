@@ -8,8 +8,8 @@ from users.models import TenantUser
 class CharacterForm(ModelForm):
     class Meta:
         model = Character
-        fields = ["name", "description_md", "nickname", "subtitle", "player", "faction", "location", "color",
-                  "token_image", "large_image"]
+        fields = ["name", "description_md", "nickname", "subtitle", "player", "faction", "location", "archived",
+                  "color", "token_image", "large_image"]
 
     def __init__(self, *args, **kwargs):
         super(CharacterForm, self).__init__(*args, **kwargs)

@@ -35,6 +35,7 @@ class Character(NameSlugModel, DescriptionModel, HistoryModel):
         Location, on_delete=models.PROTECT, blank=True, null=True,
         verbose_name=_("Location")
     )
+    archived = models.BooleanField(_("Archived"), default=False)
     color = models.CharField(_("Color"), max_length=7, default=get_random_color, validators=[
         MinLengthValidator(7),
         validate_color_hex
@@ -43,7 +44,7 @@ class Character(NameSlugModel, DescriptionModel, HistoryModel):
     large_image = ImageField(_("Large Image"), upload_to=get_file_path, blank=True, null=True)
 
     class Meta:
-        ordering = ["name"]
+        ordering = ["archived", "name"]
         verbose_name = _("Character")
         verbose_name_plural = _("Characters")
 
