@@ -21,6 +21,7 @@ tr.collapsed .chev {
 
 tr.collapse-button {
   transition: all .2s;
+  cursor: pointer;
 
   &:not(.collapsed) {
     background: $gray-800;
