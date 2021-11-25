@@ -8,9 +8,9 @@
         {% elif request.resolver_match.view_name == "dayedit" %}
             <a class="btn btn-danger" href="{{ url("daydelete", object.id) }}">{{ _("Delete") }}</a>
         {% elif request.resolver_match.view_name == "locationedit" %}
-            <a class="btn btn-danger" href="{{ url("locationdelete", object.id) }}">{{ _("Delete") }}</a>
+            <a class="btn btn-danger" href="{{ url("locationdelete", object.slug) }}">{{ _("Delete") }}</a>
         {% elif request.resolver_match.view_name == "characteredit" %}
-            <a class="btn btn-danger" href="{{ url("characterdelete", object.id) }}">{{ _("Delete") }}</a>
+            <a class="btn btn-danger" href="{{ url("characterdelete", object.slug) }}">{{ _("Delete") }}</a>
         {% endif %}
     {% else %}
         <h1>{{ _("Add new") }}</h1>
