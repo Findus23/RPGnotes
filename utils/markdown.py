@@ -4,6 +4,8 @@ import bleach
 import markdown
 from bleach_allowlist import markdown_tags, markdown_attrs
 
+custom_allowed_tags = ["del", "ins"]
+
 
 def md_to_html(md: str) -> str:
     md = autolink(md)
@@ -16,7 +18,7 @@ def md_to_html(md: str) -> str:
     )
     html = bleach.clean(
         html,
-        tags=markdown_tags,
+        tags=markdown_tags + custom_allowed_tags,
         attributes=markdown_attrs
     )
     return html
