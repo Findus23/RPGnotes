@@ -64,7 +64,7 @@
 
             <div>
                 <small>{{ _("Last updated") }}: {{ character.last_modified|naturaltime }}
-                    {{ _("by") }} {{ character.history.first.history_user }} </small>
+                    {{ _("by") }} {{ character.history.first().history_user }} </small>
             </div>
         </div>
     </div>
