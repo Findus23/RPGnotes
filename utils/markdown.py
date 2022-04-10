@@ -26,7 +26,15 @@ def md_to_html(md: str) -> str:
 
 def autolink(md: str) -> str:
     from utils.urls import name2url
+    links = {}
+    i = 0
     for name, url in name2url().items():
         regex = r"\bWORD\b".replace("WORD", name)
-        md = re.sub(regex, f"[{name}]({url})", md)
+        placeholder = f"SOME{i}LINK"
+        md = re.sub(regex, placeholder, md)
+        links[placeholder] = f"[{name}]({url})"
+        i += 1
+
+    for placeholder, value in links.items():
+        md = md.replace(placeholder, value)
     return md

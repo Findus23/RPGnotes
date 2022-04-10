@@ -20,4 +20,7 @@ def name2url() -> Dict[str, str]:
         data[faction.name] = faction.get_absolute_url()
     for note in Note.objects.all():
         data[note.name] = note.get_absolute_url()
+
+    # longer replacements first
+    data = {k: v for k, v in sorted(data.items(), key=lambda item: -len(item[0]))}
     return data
