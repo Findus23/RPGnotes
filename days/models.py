@@ -39,5 +39,9 @@ class IngameDay(DescriptionModel, HistoryModel):
     def prettyname(self):
         return ordinal(self.day) + " " + _("day")
 
+    @property
+    def name(self):
+        return self.prettyname
+
     def __str__(self):
         return self.prettyname
