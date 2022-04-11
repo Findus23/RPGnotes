@@ -48,7 +48,6 @@
 <script nonce="{{ request.csp_nonce }}">
     document.addEventListener('DOMContentLoaded', function () {
         const galleries = document.querySelectorAll("a.image-viewer");
-        console.info(galleries)
         new LuminousGallery(galleries)
     });
 </script>

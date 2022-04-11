@@ -45,9 +45,12 @@
                 </ul>
                 <form class="d-flex" action="{{ url("search") }}">
                     <div class="input-group">
-                        <input class="form-control" name="q" type="search"
-                               placeholder="{% trans %}Search{% endtrans %}"
-                               aria-label="{% trans %}Search{% endtrans %}">
+                        <div id="autocomplete" class="autocomplete">
+                            <input class="form-control autocomplete-input" name="q" type="search"
+                                   placeholder="{% trans %}Search{% endtrans %}"
+                                   aria-label="{% trans %}Search{% endtrans %}">
+                            <ul class="autocomplete-result-list"></ul>
+                        </div>
                         <button class="btn btn-outline-secondary" type="submit">
                             {% trans %}Go!{% endtrans %}
                         </button>
@@ -82,4 +85,9 @@
 
     {% block content %}
     {% endblock %}
+{% endblock %}
+
+{% block extra_js %}
+    <script src="/static/libs/autocomplete.min.js"></script>
+    <script src="/static/js/autocomplete.js"></script>
 {% endblock %}

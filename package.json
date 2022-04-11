@@ -2,6 +2,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@sentry/browser": "^6.12.0",
+    "@trevoreyre/autocomplete-js": "^2.2.0",
     "bootstrap": "^5.1.0",
     "easymde": "^2.15.0",
     "luminous-lightbox": "^2.3.5"
