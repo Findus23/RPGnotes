@@ -55,7 +55,8 @@ SHARED_APPS = (
     'sorl.thumbnail',
     'debug_toolbar',
     'axes',
-    'django_extensions'
+    'django_extensions',
+    'django.contrib.postgres'
 )
 
 TENANT_APPS = (
@@ -71,6 +72,7 @@ TENANT_APPS = (
     'days',
     'factions',
     'notes',
+    'search',
     'common',
     'simple_history',
 

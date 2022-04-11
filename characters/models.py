@@ -9,6 +9,7 @@ from common.models import NameSlugModel, DescriptionModel, HistoryModel
 from factions.models import Faction
 from locations.models import Location
 from rpg_notes.settings import AUTH_USER_MODEL
+from search.utils import NameSearchIndex
 from utils.colors import get_random_color, is_bright_color
 from utils.random_filename import get_file_path
 
@@ -47,6 +48,9 @@ class Character(NameSlugModel, DescriptionModel, HistoryModel):
         ordering = ["archived", "name"]
         verbose_name = _("Character")
         verbose_name_plural = _("Characters")
+        indexes = [
+            NameSearchIndex
+        ]
 
     def get_absolute_url(self):
         return reverse('characterdetail', args=[self.slug])

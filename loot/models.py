@@ -6,6 +6,7 @@ from sorl.thumbnail import ImageField
 from characters.models import Character
 from common.models import DescriptionModel, HistoryModel
 from locations.models import Location
+from search.utils import NameSearchIndex
 from utils.random_filename import get_file_path
 
 
@@ -33,7 +34,9 @@ class Loot(DescriptionModel, HistoryModel):
         ordering = ["name"]
         verbose_name = _("Loot")
         verbose_name_plural = _("Loot")
-
+        indexes = [
+            NameSearchIndex
+        ]
     @property
     def value_per_unit(self):
         return self.value_gold / self.quantity

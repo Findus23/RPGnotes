@@ -1,12 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.decorators.http import condition
 from django.views.generic import TemplateView
-from django_jinja.views import ServerError
 from ipware import get_client_ip
 from sentry_sdk import last_event_id
 
 from rpg_notes.secrets import SENTRY_DSN
-from utils.assets import get_css
+from utils.assets import get_css, get_file_hash
 
 
 class PublicHomepageView(TemplateView):
@@ -22,16 +22,21 @@ def print_ip(request):
     return HttpResponse(repr(client_ip), content_type="text/plain")
 
 
-# @cache_page(60 * 15)
+def calc_etag(*args, **kwargs):
+    return get_file_hash()[:6]
+
+
+@condition(etag_func=calc_etag)
 def debug_css(request):
     css, source_map = get_css(debug=True)
     return HttpResponse(css, content_type="text/css")
 
 
-# @cache_page(60 * 15)
+@condition(etag_func=calc_etag)
 def debug_css_sourcemap(request):
     css, source_map = get_css(debug=True)
     return HttpResponse(source_map, content_type="application/json")
+
 
 def handler500(request, *args, **argv):
     return render(request, "500.jinja", {

@@ -1,0 +1,24 @@
+{% extends "tenantbase.jinja" %}
+
+{% block title %}{% trans %}Search Results{% endtrans %} {% endblock %}
+
+{% block heading %}
+    <h1>{% trans %}Search Results for {{ query }}{% endtrans %}</h1>
+{% endblock %}
+{% block content %}
+    {% if similars %}
+        <p>
+            {% trans %}See also{% endtrans %}
+            {% for s in similars %}
+                <a data-distance="{{ s.distance }}" href="{{ url('search') }}?q={{ s }}"> {{ s }}</a>
+                {%- if not loop.last %},{% endif %}
+            {% endfor %}
+        </p>
+    {% endif %}
+    {% for r in results %}
+        <h2 data-rank-value="{{ r.rank }}"><a href="{{ r.get_absolute_url() }}">{{ r.name }}</a></h2>
+        <small class="text-muted">{{ r._meta.verbose_name }}</small>
+        <p>{{ r.headline|safe }}</p>
+    {% endfor %}
+{% endblock %}
+

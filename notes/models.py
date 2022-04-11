@@ -1,3 +1,4 @@
+from django.contrib.postgres.indexes import GinIndex
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -6,6 +7,7 @@ from tree_queries.fields import TreeNodeForeignKey
 from tree_queries.models import TreeNode
 
 from common.models import NameSlugModel, DescriptionModel, HistoryModel
+from search.utils import NameSearchIndex
 from utils.random_filename import get_file_path
 
 
@@ -24,6 +26,9 @@ class Note(TreeNode, NameSlugModel, DescriptionModel, HistoryModel):
         ordering = ["name"]
         verbose_name = _("Note")
         verbose_name_plural = _("Notes")
+        indexes = [
+            NameSearchIndex
+        ]
 
     def get_absolute_url(self):
         return reverse('notedetail', args=[self.slug])

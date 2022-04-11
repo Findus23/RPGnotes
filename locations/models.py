@@ -6,6 +6,7 @@ from tree_queries.fields import TreeNodeForeignKey
 from tree_queries.models import TreeNode
 
 from common.models import NameSlugModel, DescriptionModel, HistoryModel
+from search.utils import NameSearchIndex
 from utils.random_filename import get_file_path
 
 
@@ -24,6 +25,9 @@ class Location(TreeNode, NameSlugModel, DescriptionModel, HistoryModel):
         ordering = ["name"]
         verbose_name = _("Location")
         verbose_name_plural = _("Locations")
+        indexes = [
+            NameSearchIndex
+        ]
 
     def get_absolute_url(self):
         return reverse('locationdetail', args=[self.slug])

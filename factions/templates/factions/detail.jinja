@@ -30,6 +30,7 @@
                 <dd>
                     {% for char in faction.characters.all() %}
                         <a href="{{ char.get_absolute_url() }}">{{ char.name }}</a>
+                        {%- if not loop.last %},{% endif %}
                     {% endfor %}
                 </dd>
             </dl>

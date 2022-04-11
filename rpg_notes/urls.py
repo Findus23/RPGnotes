@@ -18,6 +18,7 @@ urlpatterns = [
     path('faction/', include("factions.urls")),
     path('note/', include("notes.urls")),
     path('loot/', include("loot.urls")),
+    path('search/', include("search.urls")),
     path('', include("campaigns.urls"))
 ]
 

@@ -43,6 +43,16 @@
                         </li>
                     {% endwith %}
                 </ul>
+                <form class="d-flex" action="{{ url("search") }}">
+                    <div class="input-group">
+                        <input class="form-control" name="q" type="search"
+                               placeholder="{% trans %}Search{% endtrans %}"
+                               aria-label="{% trans %}Search{% endtrans %}">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            {% trans %}Go!{% endtrans %}
+                        </button>
+                    </div>
+                </form>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a href="#" class="navbar-text nav-link dropdown-toggle" id="navbarDropdown" role="button"

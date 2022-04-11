@@ -1,3 +1,4 @@
+from django.contrib.postgres.indexes import GinIndex
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
