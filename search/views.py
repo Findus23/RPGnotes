@@ -75,7 +75,7 @@ def autocomplete(request):
             distance=TrigramWordDistance(query_string, "name")
             # distance=TrigramDistance("name", query_string)
         ).order_by('distance')
-        similar = [s for s in similar if s.distance < 0.5]
+        similar = [s for s in similar if s.distance <= 0.5]
         all_similar.extend(list(similar))
     all_similar.sort(key=lambda s: s.distance)
     data = []
