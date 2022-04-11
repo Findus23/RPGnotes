@@ -41,7 +41,7 @@
                     <dt>{{ _("Part of") }}:</dt>
                     <dd><a href="{{ location.part_of.get_absolute_url() }}">{{ location.part_of }}</a></dd>
                 {% endif %}
-                {% if location.loot %}
+                {% if location.loot.all() %}
                     <dt>{{ _("Contains") }}:</dt>
                     <dd>
                         <ul>

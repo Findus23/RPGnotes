@@ -194,7 +194,7 @@ msgstr "Ort hinzufügen"
 
 #: locations/templates/locations/detail.jinja:45
 msgid "Contains"
-msgstr ""
+msgstr "Enthält"
 
 #: loot/models.py:15 loot/templates/loot/overview.jinja:14
 msgid "Quantity"
