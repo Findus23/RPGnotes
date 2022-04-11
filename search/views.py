@@ -1,7 +1,7 @@
 # Create your views here.
 from itertools import chain
 
-from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, SearchHeadline, TrigramDistance
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, SearchHeadline, TrigramWordSimilarity
 from django.views.generic import TemplateView
 
 from campaigns.models import Campaign
@@ -36,9 +36,9 @@ class SearchResultsView(TemplateView):
             else:
                 vector = description_vector + name_vector
                 similar = m.objects.annotate(
-                    # similarity=TrigramWordSimilarity(query_string, "name")
-                    distance=TrigramDistance("name", query_string)
-                ).filter(name__trigram_similar=query_string).order_by('distance')
+                    distance=TrigramWordSimilarity(query_string, "name")
+                    # distance=TrigramDistance("name", query_string)
+                ).filter(name__trigram_word_similar=query_string).order_by('distance')
                 all_similar.extend(list(similar))
             results = m.objects.annotate(
                 search=vector,
