@@ -43,7 +43,7 @@
                         </li>
                     {% endwith %}
                 </ul>
-                <form class="d-flex" action="{{ url("search") }}">
+                <form class="d-flex" action="{{ url("search") }}" id="autocomplete-form">
                     <div class="input-group">
                         <div id="autocomplete" class="autocomplete">
                             <input class="form-control autocomplete-input" name="q" type="search"
