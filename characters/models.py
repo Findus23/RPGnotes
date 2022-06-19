@@ -21,7 +21,6 @@ def validate_color_hex(value: str):
 
 
 class Character(NameSlugModel, DescriptionModel, HistoryModel):
-    nickname = models.CharField(_("Nickname"), max_length=100, blank=True)
     aliases = ArrayField(
         models.CharField(_("Nickname"), max_length=100),
         verbose_name=_("Aliases"), blank=True, null=True

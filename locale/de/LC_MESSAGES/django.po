@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-19 14:14+0200\n"
+"POT-Creation-Date: 2022-06-19 14:37+0200\n"
 "PO-Revision-Date: 2022-06-19 14:13+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -36,7 +36,7 @@ msgid "Add new campaign"
 msgstr "Neue Campagne erstellen"
 
 #: campaigns/templates/campaigns/campaign_edit.jinja:9
-#: loot/templates/loot/edit.jinja:25 loot/templates/loot/edit.jinja:28
+#: loot/templates/loot/edit.jinja:27 loot/templates/loot/edit.jinja:30
 msgid "Add"
 msgstr "Hinzufügen"
 
@@ -49,61 +49,61 @@ msgstr "Kampagnenübersicht"
 msgid "create Campaign"
 msgstr "Campaign erstellen"
 
-#: characters/models.py:24 characters/models.py:26
+#: characters/models.py:25
 msgid "Nickname"
 msgstr "Spitzname"
 
-#: characters/models.py:27
+#: characters/models.py:26
 msgid "Aliases"
 msgstr "Aliase"
 
-#: characters/models.py:29
+#: characters/models.py:28
 msgid "Subtitle"
 msgstr "Untertitel"
 
-#: characters/models.py:32 characters/templates/characters/detail.jinja:53
+#: characters/models.py:31 characters/templates/characters/detail.jinja:53
 msgid "Player"
 msgstr "Spieler"
 
-#: characters/models.py:33
+#: characters/models.py:32
 msgid "If no player is selected, this character is considered an NPC."
 msgstr "Wenn kein Spieler ausgewählt ist, ist dies ein NPC."
 
-#: characters/models.py:38 characters/templates/characters/detail.jinja:57
+#: characters/models.py:37 characters/templates/characters/detail.jinja:57
 #: factions/models.py:17
 msgid "Faction"
 msgstr "Fraktion"
 
-#: characters/models.py:42 locations/models.py:26 loot/models.py:28
+#: characters/models.py:41 locations/models.py:26 loot/models.py:28
 #: loot/templates/loot/overview.jinja:17
 msgid "Location"
 msgstr "Ort"
 
-#: characters/models.py:44
+#: characters/models.py:43
 msgid "Archived"
 msgstr "Archiviert"
 
-#: characters/models.py:45
+#: characters/models.py:44
 msgid "Color"
 msgstr "Farbe"
 
-#: characters/models.py:49
+#: characters/models.py:48
 msgid "Token Image"
 msgstr "Token Bild"
 
-#: characters/models.py:49
+#: characters/models.py:48
 msgid "round"
 msgstr "rund"
 
-#: characters/models.py:50
+#: characters/models.py:49
 msgid "Large Image"
 msgstr "Großes Bild"
 
-#: characters/models.py:54
+#: characters/models.py:53
 msgid "Character"
 msgstr "Charakter"
 
-#: characters/models.py:55 templates/tenantbase.jinja:22
+#: characters/models.py:54 templates/tenantbase.jinja:22
 msgid "Characters"
 msgstr "Charaktere"
 
@@ -239,7 +239,13 @@ msgstr "Löschen"
 msgid "Add new"
 msgstr "Neu erstellen"
 
-#: loot/templates/loot/edit.jinja:25 loot/templates/loot/edit.jinja:28
+#: loot/templates/loot/edit.jinja:22
+#, fuzzy
+#| msgid "Session"
+msgid "Add Session"
+msgstr "Session"
+
+#: loot/templates/loot/edit.jinja:27 loot/templates/loot/edit.jinja:30
 #: templates/common/languageselect.jinja:17
 #: templates/registration/registration_form.jinja:9
 #: users/templates/users/edit.jinja:10
