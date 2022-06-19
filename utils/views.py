@@ -33,7 +33,7 @@ class JSONResponseMixin:
                 description_list.append(object.subtitle)
         elif isinstance(object, Loot):
             if object.owner:
-                description_list.append(object.owner)
+                description_list.append(object.owner.name)
             if object.location:
                 description_list.append(object.location.name)
             if object.value_gold:
