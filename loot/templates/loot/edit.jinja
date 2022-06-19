@@ -18,7 +18,9 @@
 {% endblock %}
 
 {% block content %}
-
+    {% if request.resolver_match.view_name == "dayedit" %}
+        <a href="{{ url("sessionadd") }}" class="btn btn-secondary">{% trans %}Add Session{% endtrans %}</a>
+    {% endif %}
     <form method="post" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
         {% csrf_token %}
         <input type="submit" class="btn btn-primary"

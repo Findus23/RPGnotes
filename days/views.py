@@ -2,8 +2,8 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from days.forms import DayForm
-from days.models import IngameDay
+from days.forms import DayForm, SessionForm
+from days.models import IngameDay, Session
 
 
 def list_day_redirect(request, *args, **kwargs):
@@ -34,6 +34,14 @@ class DayCreateView(generic.CreateView):
     context_object_name = "object"
 
 
+class SessionCreateView(generic.CreateView):
+    template_name = "loot/edit.jinja"
+    model = Session
+    form_class = SessionForm
+    context_object_name = "object"
+    success_url = reverse_lazy("daylist")
+
+
 class DayEditView(generic.UpdateView):
     template_name = "loot/edit.jinja"
     model = IngameDay
@@ -46,6 +54,7 @@ class DayEditView(generic.UpdateView):
 
     def get_object(self, queryset=None):
         return IngameDay.objects.get(day=self.kwargs['day'])
+
 
 
 class DayDeleteView(generic.DeleteView):

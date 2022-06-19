@@ -9,7 +9,7 @@ from common.models import DescriptionModel, HistoryModel
 
 
 class Session(HistoryModel, models.Model):
-    date = models.DateField(_("Date"), default=date.today)
+    date = models.DateField(_("Date"), default=date.today, unique=True)
 
     class Meta:
         ordering = ["-date"]
