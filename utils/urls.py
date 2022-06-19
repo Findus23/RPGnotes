@@ -11,7 +11,10 @@ def name2url() -> Dict[str, str]:
     data = {}
 
     for character in Character.objects.all():
-        data[character.firstname] = character.get_absolute_url()
+        data[character.name] = character.get_absolute_url()
+        if character.aliases:
+            for alias in character.aliases:
+                data[alias] = character.get_absolute_url()
     for location in Location.objects.all():
         data[location.name] = location.get_absolute_url()
     for loot in Loot.objects.all():

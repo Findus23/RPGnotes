@@ -39,6 +39,14 @@
                     </a>
                 </h1>
                 <p>{{ character.subtitle }}</p>
+                {% if character.aliases %}
+                    <p>{% trans %}Also known as:{% endtrans %}</p>
+                    <ul>
+                        {% for alias in character.aliases %}
+                            <li>{{ alias }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
             <dl>
                 {% if character.player %}

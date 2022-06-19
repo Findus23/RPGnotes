@@ -1,3 +1,4 @@
+from django.contrib.postgres.fields import ArrayField
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.db import models
@@ -21,6 +22,10 @@ def validate_color_hex(value: str):
 
 class Character(NameSlugModel, DescriptionModel, HistoryModel):
     nickname = models.CharField(_("Nickname"), max_length=100, blank=True)
+    aliases = ArrayField(
+        models.CharField(_("Nickname"), max_length=100),
+        verbose_name=_("Aliases"), blank=True, null=True
+    )
     subtitle = models.CharField(_("Subtitle"), max_length=100, blank=True)
     player = models.ForeignKey(
         AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True,
@@ -59,11 +64,6 @@ class Character(NameSlugModel, DescriptionModel, HistoryModel):
     def initials(self):
         return "".join([word[0] for word in self.name.split()][:2]).upper()
 
-    @property
-    def firstname(self):
-        if self.nickname:
-            return self.nickname
-        return self.name.split()[0]
 
     @property
     def text_color(self):
