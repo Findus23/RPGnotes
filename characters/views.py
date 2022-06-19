@@ -4,6 +4,7 @@ from django.views import generic
 
 from characters.forms import CharacterForm
 from characters.models import Character
+from utils.views import JSONResponseMixin
 
 
 def list_character_redirect(request, *args, **kwargs):
@@ -13,7 +14,7 @@ def list_character_redirect(request, *args, **kwargs):
     return redirect(first_character)
 
 
-class CharacterDetailView(generic.DetailView):
+class CharacterDetailView(JSONResponseMixin, generic.DetailView):
     template_name = "characters/detail.jinja"
     model = Character
     context_object_name = "character"
@@ -27,6 +28,7 @@ class CharacterDetailView(generic.DetailView):
             player__isnull=True
         ).select_related()
         return data
+
 
 
 class CharacterCreateView(generic.CreateView):

@@ -5,6 +5,7 @@ from django.views import generic
 
 from factions.forms import FactionForm
 from factions.models import Faction
+from utils.views import JSONResponseMixin
 
 
 def list_faction_redirect(request, *args, **kwargs):
@@ -14,7 +15,7 @@ def list_faction_redirect(request, *args, **kwargs):
     return redirect(first_faction)
 
 
-class FactionDetailView(generic.DetailView):
+class FactionDetailView(JSONResponseMixin, generic.DetailView):
     template_name = "factions/detail.jinja"
     model = Faction
     context_object_name = "faction"

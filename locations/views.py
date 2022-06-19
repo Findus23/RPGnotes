@@ -5,6 +5,7 @@ from django.views import generic
 
 from locations.forms import LocationForm
 from locations.models import Location
+from utils.views import JSONResponseMixin
 
 
 def list_location_redirect(request, *args, **kwargs):
@@ -14,7 +15,7 @@ def list_location_redirect(request, *args, **kwargs):
     return redirect(first_location)
 
 
-class LocationDetailView(generic.DetailView):
+class LocationDetailView(JSONResponseMixin, generic.DetailView):
     template_name = "locations/detail.jinja"
     model = Location
     context_object_name = "location"

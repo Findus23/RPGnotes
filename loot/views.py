@@ -4,6 +4,7 @@ from django.views import generic
 
 from loot.forms import LootForm
 from loot.models import Loot
+from utils.views import JSONResponseMixin
 
 
 class LootListView(generic.ListView):
@@ -31,7 +32,7 @@ class LootCreateView(generic.CreateView):
     success_url = reverse_lazy("lootlist")
 
 
-class LootEditView(generic.UpdateView):
+class LootEditView(JSONResponseMixin,generic.UpdateView):
     template_name = "loot/edit.jinja"
     model = Loot
     form_class = LootForm

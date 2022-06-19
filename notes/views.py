@@ -5,6 +5,7 @@ from django.views import generic
 
 from notes.forms import NoteForm
 from notes.models import Note
+from utils.views import JSONResponseMixin
 
 
 def list_note_redirect(request, *args, **kwargs):
@@ -14,7 +15,7 @@ def list_note_redirect(request, *args, **kwargs):
     return redirect(first_note)
 
 
-class NoteDetailView(generic.DetailView):
+class NoteDetailView(JSONResponseMixin, generic.DetailView):
     template_name = "notes/detail.jinja"
     model = Note
     context_object_name = "note"

@@ -51,8 +51,9 @@
                     </a>
                 {% endif %}
             </dl>
-            {{ note.description_html|safe }}
-
+            <div class="content">
+                {{ note.description_html|safe }}
+            </div>
             {{ macros.last_edited(note) }}
         </div>
     </div>

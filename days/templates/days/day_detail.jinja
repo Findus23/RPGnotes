@@ -25,7 +25,9 @@
                     </a>
                 </h1>
             </div>
-            {{ day.description_html|safe }}
+            <div class="content">
+                {{ day.description_html|safe }}
+            </div>
             <dl>
                 <dt>{{ _("Sessions") }}:</dt>
                 <dd>{{ day.sessions.all()|join(", ") }}</dd>

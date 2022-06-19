@@ -34,7 +34,9 @@
                     {% endfor %}
                 </dd>
             </dl>
-            {{ faction.description_html|safe }}
+            <div class="content">
+                {{ faction.description_html|safe }}
+            </div>
             {{ macros.last_edited(faction) }}
         </div>
     </div>

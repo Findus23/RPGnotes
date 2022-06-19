@@ -58,8 +58,9 @@
                     <dd><a href="{{ character.faction.get_absolute_url() }}">{{ character.faction.name }}</a></dd>
                 {% endif %}
             </dl>
-            {{ character.description_html|safe }}
-
+            <div class="content">
+                {{ character.description_html|safe }}
+            </div>
             {% if character.large_image %}
                 {% set im=thumbnail(character.large_image, "860", crop="center") %}
                 <a href="{{ character.large_image.url }}" class="image-viewer">

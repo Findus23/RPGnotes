@@ -1,4 +1,5 @@
 import re
+from html.parser import HTMLParser
 
 import bleach
 import markdown
@@ -38,3 +39,16 @@ def autolink(md: str) -> str:
     for placeholder, value in links.items():
         md = md.replace(placeholder, value)
     return md
+
+
+class HTMLFilter(HTMLParser):
+    text = ""
+
+    def handle_data(self, data):
+        self.text += data
+
+
+def html_to_text(html: str) -> str:
+    f = HTMLFilter()
+    f.feed(html)
+    return f.text
