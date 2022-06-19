@@ -14,10 +14,13 @@ class JSONResponseMixin:
             return super().render_to_response(context, **kwargs)
 
     def render_to_json_response(self, context, **response_kwargs):
-        return JsonResponse(
+        response = JsonResponse(
             self.get_data(context),
             **response_kwargs
         )
+
+        response['Cache-Control'] = f'max-age={24 * 60 * 60}'
+        return response
 
     def get_data(self, context):
         object: Character = context["object"]
