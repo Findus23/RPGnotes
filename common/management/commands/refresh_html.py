@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+from django.db import transaction
 from django_tenants.utils import tenant_context
 
 from campaigns.models import Campaign
@@ -26,17 +27,18 @@ class Command(BaseCommand):
         store = options["store"]
         for campaign in Campaign.objects.exclude(pk=1):
             with tenant_context(campaign):
-                replacements = name2url()
-                objects = list(Character.objects.all())
-                objects.extend(list(Location.objects.all()))
-                objects.extend(list(Loot.objects.all()))
-                objects.extend(list(Faction.objects.all()))
-                objects.extend(list(Note.objects.all()))
-                objects.extend(list(IngameDay.objects.all()))
-                for object in objects:
-                    fresh_html = md_to_html(object.description_md, replacements=replacements)
-                    if object.description_html != fresh_html:
-                        print_diff_call(object.description_html, fresh_html, str(object))
-                        if store:
-                            object.description_html = fresh_html
-                            object.save()
+                with transaction.atomic():
+                    replacements = name2url()
+                    objects = list(Character.objects.all())
+                    objects.extend(list(Location.objects.all()))
+                    objects.extend(list(Loot.objects.all()))
+                    objects.extend(list(Faction.objects.all()))
+                    objects.extend(list(Note.objects.all()))
+                    objects.extend(list(IngameDay.objects.all()))
+                    for object in objects:
+                        fresh_html = md_to_html(object.description_md, replacements=replacements)
+                        if object.description_html != fresh_html:
+                            print_diff_call(object.description_html, fresh_html, str(object))
+                            if store:
+                                object.description_html = fresh_html
+                                object.save()
