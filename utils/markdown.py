@@ -8,8 +8,8 @@ from bleach_allowlist import markdown_tags, markdown_attrs
 custom_allowed_tags = ["del", "ins"]
 
 
-def md_to_html(md: str) -> str:
-    md = autolink(md)
+def md_to_html(md: str, replacements=None) -> str:
+    md = autolink(md, replacements=replacements)
     html = markdown.markdown(
         md,
         output_format="html",
@@ -25,11 +25,13 @@ def md_to_html(md: str) -> str:
     return html
 
 
-def autolink(md: str) -> str:
-    from utils.urls import name2url
+def autolink(md: str, replacements=None) -> str:
+    if not replacements:
+        from utils.urls import name2url
+        replacements = name2url()
     links = {}
     i = 0
-    for name, url in name2url().items():
+    for name, url in replacements.items():
         regex = r"\bWORD\b".replace("WORD", name)
         placeholder = f"SOME{i}LINK"
         md = re.sub(regex, placeholder, md)
