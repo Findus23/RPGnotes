@@ -57,6 +57,10 @@
                     <dt>{{ _("Faction") }}:</dt>
                     <dd><a href="{{ character.faction.get_absolute_url() }}">{{ character.faction.name }}</a></dd>
                 {% endif %}
+                {% if character.location %}
+                    <dt>{{ _("Location") }}:</dt>
+                    <dd><a href="{{ character.location.get_absolute_url() }}">{{ character.location.name }}</a></dd>
+                {% endif %}
             </dl>
             <div class="content">
                 {{ character.description_html|safe }}
