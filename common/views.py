@@ -32,7 +32,7 @@ def calc_etag(*args, **kwargs):
 def save_draft(request: HttpRequest) -> HttpResponse:
     body = json.loads(request.body)
     draft_md = body.get("draft_md", None)
-    if not draft_md:
+    if draft_md is None:
         return HttpResponseBadRequest()
     try:
         last_draft = Draft.objects.filter(author=request.user).latest()
