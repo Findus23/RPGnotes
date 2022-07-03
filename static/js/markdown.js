@@ -6,7 +6,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
-
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     const ids = ["id_description_md"];
     ids.forEach(function (id) {
         const element = document.getElementById(id);
@@ -33,7 +33,28 @@ document.addEventListener('DOMContentLoaded', function () {
                         second: '2-digit',
                     },
                 },
-            }
+            },
+            inputStyle: "contenteditable",
+            status: ["lines", "words", "cursor", "saveStatus"],
         });
+        window.editor = easyMDE
+        setInterval(function () {
+            const content = easyMDE.value();
+            fetch("/api/draft/save", {
+                method: "POST",
+                body: JSON.stringify({
+                    "draft_md": content
+                }),
+                headers: {'X-CSRFToken': csrftoken},
+            })
+                .then(response => response.json())
+                .then(data => {
+                    easyMDE.updateStatusBar("saveStatus", data.message)
+                    setTimeout(e => easyMDE.updateStatusBar("saveStatus", ""), 5000)
+                }).catch(e => {
+                easyMDE.updateStatusBar("saveStatus", "error saving draft")
+            })
+
+        }, 1000 * 30)
     });
 });
