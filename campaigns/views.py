@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import mail_admins
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -10,7 +11,7 @@ from campaigns.models import Campaign
 from users.models import TenantUser
 
 
-class CampaignListView(generic.ListView):
+class CampaignListView(LoginRequiredMixin, generic.ListView):
     template_name = "campaigns/campaign_overview.jinja"
     model = Campaign
     context_object_name = "campaigns"
@@ -20,7 +21,7 @@ class CampaignListView(generic.ListView):
         return current_user.tenants.exclude(id=1)
 
 
-class CampaignCreateView(generic.FormView):
+class CampaignCreateView(LoginRequiredMixin, generic.FormView):
     template_name = "campaigns/campaign_edit.jinja"
     form_class = CampaignForm
 
@@ -37,7 +38,7 @@ class CampaignCreateView(generic.FormView):
         return redirect("http://" + fqdn)
 
 
-class CampaignDetailView(generic.DetailView):
+class CampaignDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = "campaigns/campaign_detail.jinja"
     model = Campaign
     slug_url_kwarg = "campslug"
@@ -56,7 +57,7 @@ class CampaignDetailView(generic.DetailView):
         return context
 
 
-class CampaignEditView(generic.UpdateView):
+class CampaignEditView(LoginRequiredMixin, generic.UpdateView):
     template_name = "campaigns/campaign_edit.jinja"
     model = Campaign
     fields = ["name"]
@@ -66,7 +67,7 @@ class CampaignEditView(generic.UpdateView):
         return self.request.tenant
 
 
-class CampaignDeleteView(generic.DeleteView):
+class CampaignDeleteView(LoginRequiredMixin, generic.DeleteView):
     """
     broken at the moment
     """
