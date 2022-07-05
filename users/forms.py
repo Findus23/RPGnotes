@@ -29,8 +29,6 @@ class CustomUserChangeForm(UserChangeForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         password = self.fields.get('password')
-        print(password.help_text)
         password.help_text = password.help_text.replace("../password/", reverse("password_change"))
-        print(password.help_text)
         self.fields['email'].disabled = True
         self.fields['last_login'].disabled = True

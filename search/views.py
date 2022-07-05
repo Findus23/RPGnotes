@@ -20,7 +20,6 @@ class SearchResultsView(TemplateView):
     template_name = "search/search_results.jinja"
 
     def get_context_data(self, **kwargs):
-        print(self.request.GET)
         if "q" not in self.request.GET:
             return ""
         query_string = self.request.GET['q']

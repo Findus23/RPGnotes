@@ -1,5 +1,7 @@
 {% extends "base.jinja" %}
 
+{% block title %}RPGnotes{% endblock %}
+
 {% block mainpage %}
     <div class="px-4 py-5 my-5 text-center">
         <h1 class="display-5 fw-bold">RPG notes</h1>
@@ -20,6 +22,10 @@
                     <a href="{{ url("django_registration_register") }} " class="btn btn-outline-secondary btn-lg px-4">
                         {% trans %}Sign up{% endtrans %}
                     </a>
+                    <a href="https://demo.rpgnotes.lw1.at/ " class="btn btn-primary btn-lg px-4 gap-3" target="_blank">
+                        {% trans %}Demo Campain{% endtrans %}
+                    </a>
+
                 {% endif %}
             </div>
         </div>

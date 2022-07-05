@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-19 14:37+0200\n"
+"POT-Creation-Date: 2022-07-05 20:20+0200\n"
 "PO-Revision-Date: 2022-06-19 14:13+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -18,18 +18,34 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.1\n"
 
-#: campaigns/models.py:11 common/models/nameslugmodel.py:8 loot/models.py:14
+#: campaigns/models.py:12 common/models/nameslugmodel.py:8 loot/models.py:14
 #: users/models.py:10
 msgid "Name"
 msgstr "Name"
 
-#: campaigns/models.py:12
+#: campaigns/models.py:13
 msgid "Language"
 msgstr "Sprache"
 
-#: campaigns/templates/campaigns/campaign_detail.jinja:7
+#: campaigns/templates/campaigns/campaign_detail.jinja:8
 msgid "Players"
 msgstr "Spieler"
+
+#: campaigns/templates/campaigns/campaign_detail.jinja:17
+msgid "This is a read-only demo of RPGnotes."
+msgstr "Dies ist eine nur lesbare Demo von RPGnotes."
+
+#: campaigns/templates/campaigns/campaign_detail.jinja:18
+msgid ""
+"If you would like to try it yourself, go back to the homepage and sign up."
+msgstr ""
+"Falls du es selbst ausprobieren willst, gehe zurück zur Startseite und "
+"registriere dich."
+
+#: campaigns/templates/campaigns/campaign_detail.jinja:21
+#: templates/common/demo_readonly.jinja:17
+msgid "Homepage"
+msgstr "Startseite"
 
 #: campaigns/templates/campaigns/campaign_edit.jinja:5
 msgid "Add new campaign"
@@ -53,7 +69,7 @@ msgstr "Campaign erstellen"
 msgid "Nickname"
 msgstr "Spitzname"
 
-#: characters/models.py:26
+#: characters/models.py:26 common/models/aliasmodel.py:9
 msgid "Aliases"
 msgstr "Aliase"
 
@@ -62,6 +78,7 @@ msgid "Subtitle"
 msgstr "Untertitel"
 
 #: characters/models.py:31 characters/templates/characters/detail.jinja:53
+#: common/models/draft.py:13
 msgid "Player"
 msgstr "Spieler"
 
@@ -70,11 +87,12 @@ msgid "If no player is selected, this character is considered an NPC."
 msgstr "Wenn kein Spieler ausgewählt ist, ist dies ein NPC."
 
 #: characters/models.py:37 characters/templates/characters/detail.jinja:57
-#: factions/models.py:17
+#: factions/models.py:11
 msgid "Faction"
 msgstr "Fraktion"
 
-#: characters/models.py:41 locations/models.py:26 loot/models.py:28
+#: characters/models.py:41 characters/templates/characters/detail.jinja:61
+#: locations/models.py:26 loot/models.py:28
 #: loot/templates/loot/overview.jinja:17
 msgid "Location"
 msgstr "Ort"
@@ -123,15 +141,19 @@ msgstr "Bearbeiten"
 msgid "Also known as:"
 msgstr "Auch bekannt als:"
 
-#: characters/templates/characters/detail.jinja:74 templates/macros.jinja:28
+#: characters/templates/characters/detail.jinja:79 templates/macros.jinja:28
 msgid "Last updated"
 msgstr "Zuletzt geändert"
 
-#: characters/templates/characters/detail.jinja:75 templates/macros.jinja:29
+#: characters/templates/characters/detail.jinja:80 templates/macros.jinja:29
 msgid "by"
 msgstr "von"
 
-#: common/models/descriptionmodel.py:8
+#: common/models/aliasmodel.py:8
+msgid "Alias"
+msgstr "Alias"
+
+#: common/models/descriptionmodel.py:8 common/models/draft.py:8
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -147,7 +169,7 @@ msgstr "Datum"
 msgid "Session"
 msgstr "Session"
 
-#: days/models.py:17 days/templates/days/day_detail.jinja:30
+#: days/models.py:17 days/templates/days/day_detail.jinja:32
 msgid "Sessions"
 msgstr "Sessions"
 
@@ -167,7 +189,7 @@ msgstr "Tag"
 msgid "Add Day"
 msgstr "Tag hinzufügen"
 
-#: factions/models.py:18 templates/tenantbase.jinja:34
+#: factions/models.py:12 templates/tenantbase.jinja:34
 msgid "Factions"
 msgstr "Fraktionen"
 
@@ -180,11 +202,11 @@ msgid "Members"
 msgstr "Mitglieder"
 
 #: locations/models.py:19 locations/templates/locations/detail.jinja:41
-#: notes/models.py:20 notes/templates/notes/detail.jinja:41
+#: notes/models.py:19 notes/templates/notes/detail.jinja:41
 msgid "Part of"
 msgstr "Teil von"
 
-#: locations/models.py:22 loot/models.py:18 notes/models.py:23
+#: locations/models.py:22 loot/models.py:18 notes/models.py:22
 msgid "Image"
 msgstr "Bild"
 
@@ -256,27 +278,27 @@ msgstr "Speichern"
 msgid "Item"
 msgstr "Objekt"
 
-#: loot/templates/loot/overview.jinja:15 loot/templates/loot/overview.jinja:81
+#: loot/templates/loot/overview.jinja:15 loot/templates/loot/overview.jinja:83
 msgid "Total Value"
 msgstr "Gesamtwert"
 
-#: loot/templates/loot/overview.jinja:65
+#: loot/templates/loot/overview.jinja:67
 msgid "Value each"
 msgstr "Wert pro Stück"
 
-#: loot/templates/loot/overview.jinja:69
+#: loot/templates/loot/overview.jinja:71
 msgid "Weight"
 msgstr "Gewicht"
 
-#: loot/templates/loot/overview.jinja:84
+#: loot/templates/loot/overview.jinja:86
 msgid "Add Loot"
 msgstr "Loot hinzufügen"
 
-#: notes/models.py:27
+#: notes/models.py:26
 msgid "Note"
 msgstr "Notiz"
 
-#: notes/models.py:28 templates/tenantbase.jinja:30
+#: notes/models.py:27 templates/tenantbase.jinja:30
 msgid "Notes"
 msgstr "Notizen"
 
@@ -315,28 +337,45 @@ msgid "You might want to go back to the <a href=\"%(url)s\">homepage</a>."
 msgstr ""
 "Du möchtest vielleicht zurück zur <a href=\"%(url)s\">Startseite</a> gehen."
 
-#: templates/base.jinja:37 templates/tenantbase.jinja:76
+#: templates/base.jinja:37 templates/tenantbase.jinja:82
 msgid "Log out"
 msgstr "Abmelden"
 
-#: templates/base.jinja:39 templates/common/homepage.jinja:18
+#: templates/base.jinja:39 templates/common/homepage.jinja:20
 #: templates/registration/login.jinja:21
 msgid "Log in"
 msgstr "Anmelden"
 
-#: templates/common/homepage.jinja:8
+#: templates/common/demo_readonly.jinja:8
+msgid ""
+"This campain is just intended to be a public demo of RPGnotes. Therefore, "
+"content can't be edited."
+msgstr ""
+"Diese Kampagne ist nur als öffentliche Demo von RPGnotes gedacht. Daher kann "
+"der Inhalt nicht bearbeitet werden."
+
+#: templates/common/demo_readonly.jinja:14
+msgid "Go back"
+msgstr "Zurück"
+
+#: templates/common/homepage.jinja:10
 msgid ""
 "An experimental, collaborative note taking app and wiki optimized for RPG "
 "games."
 msgstr ""
+"Eine experimentelle, kollaborative Notiz-App und Wiki optimiert für RPGs"
 
-#: templates/common/homepage.jinja:15
+#: templates/common/homepage.jinja:17
 msgid "List of Campaigns"
 msgstr "Liste der Campaigns"
 
-#: templates/common/homepage.jinja:21
+#: templates/common/homepage.jinja:23
 msgid "Sign up"
 msgstr "Registrieren"
+
+#: templates/common/homepage.jinja:26
+msgid "Demo Campain"
+msgstr "Demo Kampagne"
 
 #: templates/common/languageselect.jinja:3
 #: templates/common/languageselect.jinja:6 templates/tenantbase.jinja:66
@@ -354,7 +393,7 @@ msgstr "Aktivierung fehlgeschlagen"
 
 #: templates/registration/activation_failed.jinja:6
 msgid "Maybe this activation link has already been clicked before."
-msgstr ""
+msgstr "Vielleicht wurde dieser Aktivierungslink schon einmal geklickt"
 
 #: templates/registration/login.jinja:6
 msgid "Login"
@@ -397,7 +436,7 @@ msgstr "Suchen"
 msgid "Go!"
 msgstr "Los!"
 
-#: templates/tenantbase.jinja:72 users/templates/users/edit.jinja:5
+#: templates/tenantbase.jinja:74 users/templates/users/edit.jinja:5
 msgid "Edit User Account"
 msgstr "Benutzerkonto bearbeiten"
 
@@ -405,7 +444,7 @@ msgstr "Benutzerkonto bearbeiten"
 msgid "Email Address"
 msgstr "E-Mail-Adresse"
 
-#: users/views.py:37
+#: users/views.py:38
 msgid ""
 "You account was created. Please click the confirmation link in the E-Mail to "
 "activate it."
@@ -413,14 +452,11 @@ msgstr ""
 "Dein Account wurde erstellt. Bitte klicke auf den Bestätigungslink in der E-"
 "Mail um ihn zu aktivieren."
 
-#: users/views.py:51
+#: users/views.py:52
 msgid "Account was successfully activated. You can log in now."
 msgstr ""
 "Der Account wurde erfolgreich aktiviert. Du kannst dich jetzt damit anmelden."
 
-#: users/views.py:61
+#: users/views.py:62
 msgid "User account was updated successfully"
 msgstr "Benutzeraccount wurde erfolgreich bearbeitet"
-
-#~ msgid "Nobody"
-#~ msgstr "Niemand"

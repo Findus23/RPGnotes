@@ -1,0 +1,22 @@
+{% extends "base.jinja" %}
+
+{% block mainpage %}
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold">Can't edit demo instance</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+                {% trans trimmed %}
+                    This campain is just intended to be a public demo of RPGnotes. Therefore, content can't be edited.
+                {% endtrans %}
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="javascript:history.back()" class="btn btn-primary btn-lg px-4 gap-3">
+                    {% trans %}Go back{% endtrans %}
+                </a>
+                <a href="https://rpgnotes.lw1.at/" class="btn btn-outline-secondary btn-lg px-4">
+                    {% trans %}Homepage{% endtrans %}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

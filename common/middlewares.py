@@ -1,9 +1,13 @@
 from django.contrib.auth.views import redirect_to_login
 from django.core.exceptions import PermissionDenied
 from django.http import HttpRequest
+from django.template.response import TemplateResponse
 
 from campaigns.models import Campaign
+from rpg_notes.settings import DEBUG
 from users.models import TenantUser
+
+demo_campaign_id = 4 if DEBUG else 8
 
 
 class AuthMiddleware:
@@ -19,6 +23,13 @@ class AuthMiddleware:
                 or request.path.startswith("/login") \
                 or request.path.startswith("/css"):
             return self.get_response(request)
+        if tenant.pk == demo_campaign_id:
+            if request.method in {"GET", "HEAD"} or request.path.startswith("/i18n/setlang"):
+                return self.get_response(request)
+            elif not current_user.is_authenticated:
+                r = TemplateResponse(request, "common/demo_readonly.jinja")
+                r.render()
+                return r
         if not current_user.is_authenticated:
             return redirect_to_login(request.get_full_path())
         if not current_user.tenants.filter(pk=tenant.pk).exists():

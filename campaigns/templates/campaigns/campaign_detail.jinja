@@ -3,11 +3,23 @@
 {% block title %}{{ object }}{% endblock %}
 
 {% block content %}
-    <h1>{{ object }}</h1>
-    <h2>{% trans %}Players{% endtrans %}</h2>
-    <ul>
-        {% for user,characters in players.items() %}
-            <li>{{ user }}{% if characters %} ({{ characters|join(", ") }}){% endif %}</li>
-        {% endfor %}
-    </ul>
+    {% if not is_demo %}
+        <h1>{{ object }}</h1>
+        <h2>{% trans %}Players{% endtrans %}</h2>
+        <ul>
+            {% for user,characters in players.items() %}
+                <li>{{ user }}{% if characters %} ({{ characters|join(", ") }}){% endif %}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>RPGnotes Demo</h1>
+        <p>
+            {% trans %}This is a read-only demo of RPGnotes.{% endtrans %}
+            {% trans %}If you would like to try it yourself, go back to the homepage and sign up.{% endtrans %}
+        </p>
+        <a href="https://rpgnotes.lw1.at/ " class="btn btn-primary btn-lg px-4 gap-3" target="_blank">
+            {% trans %}Homepage{% endtrans %}
+        </a>
+
+    {% endif %}
 {% endblock %}

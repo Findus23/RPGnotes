@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.mail import mail_admins
 from django.urls import reverse_lazy
@@ -53,7 +54,7 @@ class CustomActivationView(ActivationView):
         return user
 
 
-class UserEditView(SuccessMessageMixin, UpdateView):
+class UserEditView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = "users/edit.jinja"
     model = TenantUser
     form_class = CustomUserChangeForm

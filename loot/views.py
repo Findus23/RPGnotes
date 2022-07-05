@@ -15,7 +15,6 @@ class LootListView(generic.ListView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data['total_value'] = self.get_queryset().aggregate(Sum("value_gold"))["value_gold__sum"]
-        print(data['total_value'])
         return data
 
 

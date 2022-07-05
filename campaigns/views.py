@@ -8,6 +8,7 @@ from tenant_users.tenants.tasks import provision_tenant
 
 from campaigns.forms import CampaignForm
 from campaigns.models import Campaign
+from common.middlewares import demo_campaign_id
 from users.models import TenantUser
 
 
@@ -38,7 +39,7 @@ class CampaignCreateView(LoginRequiredMixin, generic.FormView):
         return redirect("http://" + fqdn)
 
 
-class CampaignDetailView(LoginRequiredMixin, generic.DetailView):
+class CampaignDetailView(generic.DetailView):
     template_name = "campaigns/campaign_detail.jinja"
     model = Campaign
     slug_url_kwarg = "campslug"
@@ -48,19 +49,21 @@ class CampaignDetailView(LoginRequiredMixin, generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CampaignDetailView, self).get_context_data(**kwargs)
-        players = self.get_object().user_set.exclude(pk__in=[1, 2])
+        players = self.object.user_set.exclude(pk__in=[1, 2])
 
         context["players"] = {}
         player: TenantUser
         for player in players:
             context["players"][player] = player.characters.all()
+
+        context["is_demo"] = self.request.tenant.pk == demo_campaign_id
         return context
 
 
 class CampaignEditView(LoginRequiredMixin, generic.UpdateView):
     template_name = "campaigns/campaign_edit.jinja"
     model = Campaign
-    fields = ["name"]
+    form_class = CampaignForm
     slug_url_kwarg = "campslug"
 
     def get_object(self, queryset=None):

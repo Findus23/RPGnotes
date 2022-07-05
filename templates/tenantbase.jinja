@@ -68,13 +68,21 @@
                             {% if user.is_staff %}
                                 <li><a class="dropdown-item" href="/admin/">Admin</a></li>
                             {% endif %}
-                            <li><a class="dropdown-item"
-                                   href="{{ main_url() }}/profile/">{% trans %}Edit User Account{% endtrans %}</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="{{ url("logout") }}">{% trans %}Log out{% endtrans %}</a>
-                            </li>
+                            {% if user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ main_url() }}/profile/">
+                                        {% trans %}Edit User Account{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ url("logout") }}">
+                                        {% trans %}Log out{% endtrans %}
+                                    </a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </li>
                 </ul>
