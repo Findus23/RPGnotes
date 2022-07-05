@@ -6,4 +6,4 @@ from factions.models import Faction
 class FactionForm(ModelForm):
     class Meta:
         model = Faction
-        fields = ["name", "description_md"]
+        fields = ["name", "aliases","description_md"]

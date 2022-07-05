@@ -1,17 +1,11 @@
-from datetime import date
-
-from django.contrib.humanize.templatetags.humanize import ordinal
-from django.contrib.postgres.indexes import GinIndex
-from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
-from common.models import DescriptionModel, HistoryModel, NameSlugModel
+from common.models import DescriptionModel, HistoryModel, NameSlugModel, AliasModel
 from search.utils import NameSearchIndex
 
 
-class Faction(NameSlugModel, DescriptionModel, HistoryModel):
-
+class Faction(NameSlugModel, DescriptionModel, AliasModel, HistoryModel):
     class Meta:
         ordering = ["name"]
         verbose_name = _("Faction")
@@ -22,4 +16,3 @@ class Faction(NameSlugModel, DescriptionModel, HistoryModel):
 
     def get_absolute_url(self):
         return reverse('factiondetail', args=[self.slug])
-

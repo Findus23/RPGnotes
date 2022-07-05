@@ -5,12 +5,12 @@ from sorl.thumbnail import ImageField
 from tree_queries.fields import TreeNodeForeignKey
 from tree_queries.models import TreeNode
 
-from common.models import NameSlugModel, DescriptionModel, HistoryModel
+from common.models import NameSlugModel, DescriptionModel, HistoryModel, AliasModel
 from search.utils import NameSearchIndex
 from utils.random_filename import get_file_path
 
 
-class Location(TreeNode, NameSlugModel, DescriptionModel, HistoryModel):
+class Location(TreeNode, NameSlugModel, DescriptionModel, AliasModel, HistoryModel):
     parent = TreeNodeForeignKey(
         "self",
         blank=True,

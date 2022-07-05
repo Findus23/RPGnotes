@@ -4,13 +4,13 @@ from django.utils.translation import gettext_lazy as _
 from sorl.thumbnail import ImageField
 
 from characters.models import Character
-from common.models import DescriptionModel, HistoryModel
+from common.models import DescriptionModel, HistoryModel, AliasModel
 from locations.models import Location
 from search.utils import NameSearchIndex
 from utils.random_filename import get_file_path
 
 
-class Loot(DescriptionModel, HistoryModel):
+class Loot(DescriptionModel, AliasModel, HistoryModel):
     name = models.CharField(_("Name"), max_length=1000)
     quantity = models.PositiveSmallIntegerField(_("Quantity"))
     value_gold = models.DecimalField(_("Value (Gold)"), max_digits=7, decimal_places=2)
@@ -37,6 +37,7 @@ class Loot(DescriptionModel, HistoryModel):
         indexes = [
             NameSearchIndex
         ]
+
     @property
     def value_per_unit(self):
         return self.value_gold / self.quantity

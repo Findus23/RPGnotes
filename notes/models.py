@@ -1,4 +1,3 @@
-from django.contrib.postgres.indexes import GinIndex
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -6,12 +5,12 @@ from sorl.thumbnail import ImageField
 from tree_queries.fields import TreeNodeForeignKey
 from tree_queries.models import TreeNode
 
-from common.models import NameSlugModel, DescriptionModel, HistoryModel
+from common.models import NameSlugModel, DescriptionModel, HistoryModel, AliasModel
 from search.utils import NameSearchIndex
 from utils.random_filename import get_file_path
 
 
-class Note(TreeNode, NameSlugModel, DescriptionModel, HistoryModel):
+class Note(TreeNode, NameSlugModel, DescriptionModel, AliasModel, HistoryModel):
     parent = TreeNodeForeignKey(
         "self",
         blank=True,

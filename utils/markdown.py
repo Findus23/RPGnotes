@@ -26,7 +26,7 @@ def md_to_html(md: str, replacements=None) -> str:
 
 
 def autolink(md: str, replacements=None) -> str:
-    if not replacements:
+    if replacements is None:
         from utils.urls import name2url
         replacements = name2url()
     links = {}

@@ -9,20 +9,17 @@ from notes.models import Note
 
 def name2url() -> Dict[str, str]:
     data = {}
-
-    for character in Character.objects.all():
-        data[character.name] = character.get_absolute_url()
-        if character.aliases:
-            for alias in character.aliases:
-                data[alias] = character.get_absolute_url()
-    for location in Location.objects.all():
-        data[location.name] = location.get_absolute_url()
-    for loot in Loot.objects.all():
-        data[loot.name] = loot.get_absolute_url()
-    for faction in Faction.objects.all():
-        data[faction.name] = faction.get_absolute_url()
-    for note in Note.objects.all():
-        data[note.name] = note.get_absolute_url()
+    objects=[]
+    objects.extend(Character.objects.all())
+    objects.extend(Location.objects.all())
+    objects.extend(Loot.objects.all())
+    objects.extend(Faction.objects.all())
+    objects.extend(Note.objects.all())
+    for object in objects:
+        data[object.name] = object.get_absolute_url()
+        if object.aliases:
+            for alias in object.aliases:
+                data[alias] = object.get_absolute_url()
 
     # longer replacements first
     data = {k: v for k, v in sorted(data.items(), key=lambda item: -len(item[0]))}

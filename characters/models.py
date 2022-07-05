@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from sorl.thumbnail import ImageField
 
-from common.models import NameSlugModel, DescriptionModel, HistoryModel
+from common.models import NameSlugModel, DescriptionModel, HistoryModel, AliasModel
 from factions.models import Faction
 from locations.models import Location
 from rpg_notes.settings import AUTH_USER_MODEL
@@ -20,7 +20,7 @@ def validate_color_hex(value: str):
         raise ValidationError("color hex has to start with a #")
 
 
-class Character(NameSlugModel, DescriptionModel, HistoryModel):
+class Character(NameSlugModel, DescriptionModel, AliasModel, HistoryModel):
     aliases = ArrayField(
         models.CharField(_("Nickname"), max_length=100),
         verbose_name=_("Aliases"), blank=True, null=True
@@ -62,7 +62,6 @@ class Character(NameSlugModel, DescriptionModel, HistoryModel):
     @property
     def initials(self):
         return "".join([word[0] for word in self.name.split()][:2]).upper()
-
 
     @property
     def text_color(self):

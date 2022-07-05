@@ -28,20 +28,20 @@ class ColorsTests(SimpleTestCase):
 class MarkdownTests(SimpleTestCase):
     def test_basic_markdown(self):
         self.assertHTMLEqual(
-            md_to_html("**test** *it*"),
+            md_to_html("**test** *it*", replacements={}),
             "<p><strong>test</strong> <em>it</em></p>"
         )
 
     def test_nb_md(self):
         self.assertHTMLEqual(
-            md_to_html("This\nis\nTest"),
+            md_to_html("This\nis\nTest", replacements={}),
             "<p>This<br>is<br>Test</p>"
         )
 
     def test_bleach(self):
         self.assertEqual(
             md_to_html(
-                "<script>console.log()</script> <a onclick='console.log()'>Hi</button>"),
+                "<script>console.log()</script> <a onclick='console.log()'>Hi</button>", replacements={}),
             "&lt;script&gt;console.log()&lt;/script&gt;\n<p><a>Hi&lt;/button&gt;</a></p>"
         )
 
