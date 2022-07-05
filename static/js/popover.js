@@ -1,5 +1,10 @@
 const popoverTriggerList = document.querySelectorAll('.content a')
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
+    console.log(popoverTriggerEl.host)
+    console.log(popoverTriggerEl.href.startsWith("htt"))
+    if (popoverTriggerEl.host !== window.location.host) {
+        return
+    }
     const popover = new bootstrap.Popover(popoverTriggerEl, {
         content: "test",
         title: "title",
@@ -10,7 +15,6 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
     });
     popoverTriggerEl.addEventListener('inserted.bs.popover', (e) => {
         console.log("shown")
-        console.log(popoverTriggerEl.href)
         fetch(popoverTriggerEl.href + "?format=json").then(response => response.json())
             .then(data => {
                 popover.setContent({
