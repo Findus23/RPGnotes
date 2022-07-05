@@ -60,7 +60,13 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="navbar-text nav-link dropdown-toggle" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown"
-                           aria-expanded="false">{{ user }}</a>
+                           aria-expanded="false">
+                            {% if user.is_authenticated %}
+                                {{ user }}
+                            {% else %}
+                                Demo User
+                            {% endif %}
+                        </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item"
                                    href="{{ url("change_language") }}">{% trans %}Change Language{% endtrans %}</a></li>
