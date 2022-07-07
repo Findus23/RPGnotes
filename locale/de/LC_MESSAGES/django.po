@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-05 20:20+0200\n"
+"POT-Creation-Date: 2022-07-05 21:15+0200\n"
 "PO-Revision-Date: 2022-06-19 14:13+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -337,7 +337,7 @@ msgid "You might want to go back to the <a href=\"%(url)s\">homepage</a>."
 msgstr ""
 "Du möchtest vielleicht zurück zur <a href=\"%(url)s\">Startseite</a> gehen."
 
-#: templates/base.jinja:37 templates/tenantbase.jinja:82
+#: templates/base.jinja:37 templates/tenantbase.jinja:88
 msgid "Log out"
 msgstr "Abmelden"
 
@@ -378,7 +378,7 @@ msgid "Demo Campain"
 msgstr "Demo Kampagne"
 
 #: templates/common/languageselect.jinja:3
-#: templates/common/languageselect.jinja:6 templates/tenantbase.jinja:66
+#: templates/common/languageselect.jinja:6 templates/tenantbase.jinja:72
 msgid "Change Language"
 msgstr "Sprache ändern"
 
@@ -436,7 +436,7 @@ msgstr "Suchen"
 msgid "Go!"
 msgstr "Los!"
 
-#: templates/tenantbase.jinja:74 users/templates/users/edit.jinja:5
+#: templates/tenantbase.jinja:80 users/templates/users/edit.jinja:5
 msgid "Edit User Account"
 msgstr "Benutzerkonto bearbeiten"
 
