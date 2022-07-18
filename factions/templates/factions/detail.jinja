@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-4">
+        <div class="col-sm-4">
             <ul class="nav nav-pills flex-column">
                 {% for f in factions %}
                     <li class="nav-item">
@@ -16,7 +16,7 @@
             </ul>
             <a class="btn btn-primary add-button" href="{{ url("factionadd") }}">{{ _("Add Faction") }}</a>
         </div>
-        <div class="col-8">
+        <div class="col-sm-8">
             <div class="faction-heading">
                 <h1>
                     {{ faction.name }}

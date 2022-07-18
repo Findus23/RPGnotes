@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-4">
+        <div class="col-sm-4">
             <ul class="nav nav-pills flex-column">
                 {% for c in player_characters %}
                     {{ macros.character_pillar(c) }}
@@ -16,7 +16,7 @@
             </ul>
             <a class="btn btn-primary" href="{{ url("characteradd") }}">{% trans %}Add Character{% endtrans %}</a>
         </div>
-        <div class="col-8">
+        <div class="col-sm-8">
             <div class="character-heading" style="border-bottom-color: {{ character.color }}">
                 {% if character.smaller_image %}
                     {% set im=thumbnail(character.smaller_image, "150x150", crop="center") %}

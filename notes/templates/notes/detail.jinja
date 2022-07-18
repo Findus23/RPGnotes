@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-4">
+        <div class="col-sm-4">
             <div class="list-group">
                 {% for p in roots %}
                     <a class="tree-{{ p.tree_depth }} list-group-item list-group-item-action {% if note.id == p.id %}active{% endif %}"
@@ -14,7 +14,7 @@
             </div>
             <a class="btn btn-primary" href="{{ url("noteadd") }} ">{{ _("Add Note") }}</a>
         </div>
-        <div class="col-8">
+        <div class="col-sm-8">
             <div class="character-heading">
                 <h1>
                     {{ note.name }}
