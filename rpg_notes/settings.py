@@ -73,7 +73,7 @@ TENANT_APPS = (
     'factions',
     'notes',
     'search',
-    'graph',
+    # 'graph',
     'common',
     'simple_history',
 
