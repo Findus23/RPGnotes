@@ -1,6 +1,12 @@
 import Autocomplete from "@trevoreyre/autocomplete-js"
 
-const form = document.getElementById("autocomplete-form")
+interface AutocompleteResult {
+    url: string
+    name: string
+    distance: number
+}
+
+const form = document.getElementById("autocomplete-form")! as HTMLFormElement
 
 form.addEventListener("submit", function (e) {
     e.preventDefault()
@@ -17,13 +23,13 @@ new Autocomplete('#autocomplete', {
 
             fetch(url)
                 .then(response => response.json())
-                .then(data => {
+                .then((data: AutocompleteResult[]) => {
                     resolve(data)
                 })
         })
     },
-    getResultValue: result => result.name,
-    onSubmit: result => {
+    getResultValue: (result: AutocompleteResult) => result.name,
+    onSubmit: (result: AutocompleteResult) => {
         if (!result) {
             form.submit()
             return

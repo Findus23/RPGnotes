@@ -10,7 +10,7 @@
     {% if debug %}
         <link rel="stylesheet" href="{{ url("css") }}">
     {% else %}
-        {% for dep in get_dependencies("main.js") %}
+        {% for dep in get_dependencies("main.ts") %}
             <link rel="modulepreload" href="{{ dep }}"></link>
         {% endfor %}
         <link rel="stylesheet" href="{{ static("css/main.css") }}">
@@ -46,9 +46,9 @@
 </footer>
 {% if debug %}
     <script type="module" src="http://localhost:5173/@vite/client"></script>
-    <script type="module" src="http://localhost:5173/static/main.js"></script>
+    <script type="module" src="http://localhost:5173/static/main.ts"></script>
 {% else %}
-    <script type="module" src="{{ js_asset_url("main.js") }}"></script>
+    <script type="module" src="{{ js_asset_url("main.ts") }}"></script>
 
 {% endif %}
 {% if sentry_event_id %}

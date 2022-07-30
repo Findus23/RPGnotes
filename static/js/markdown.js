@@ -16,7 +16,6 @@ import {
     faQuoteLeft
 } from '@fortawesome/free-solid-svg-icons'
 
-console.log("in markdown.js")
 
 const api = register([InjectCSS, ReplaceElements])
 api.library.add(

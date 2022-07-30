@@ -1,34 +1,15 @@
-import {InjectCSS, register, ReplaceElements} from '@fortawesome/fontawesome-svg-core/plugins'
-import {
-    faArrowsAlt,
-    faBold,
-    faColumns,
-    faEye,
-    faHeading,
-    faImage,
-    faItalic,
-    faLink,
-    faListOl,
-    faListUl,
-    faQuestionCircle,
-    faQuoteLeft
-} from '@fortawesome/free-solid-svg-icons'
 import {EditorView, minimalSetup} from "codemirror"
 import {markdownLanguage} from "@codemirror/lang-markdown"
 import {foldGutter} from "@codemirror/language";
 
+interface DraftSaveResponse {
+    message: string
+}
 
-const api = register([InjectCSS, ReplaceElements])
-api.library.add(
-    faBold, faItalic, faHeading, faQuoteLeft, faListUl, faListOl, faLink, faImage,
-    faEye, faColumns, faArrowsAlt, faQuestionCircle,
-)
-
-
-const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+const csrftoken = (document.querySelector('[name=csrfmiddlewaretoken]')! as HTMLInputElement).value;
 const ids = ["id_description_md"];
 ids.forEach(function (id) {
-    const element = document.getElementById(id);
+    const element = document.getElementById(id) as HTMLTextAreaElement;
     if (!element) {
         return
     }
@@ -44,10 +25,10 @@ ids.forEach(function (id) {
     //     color: "red",
     //     colorLight: "lightred"
     // })
-
+    const labelEl = element.labels[0]
     const div = document.createElement("div")
     element.style.display = "none"
-    element.parentElement.insertBefore(div, element)
+    element.parentElement!.insertBefore(div, element)
     const view = new EditorView({
         extensions: [
             minimalSetup,
@@ -60,7 +41,7 @@ ids.forEach(function (id) {
         parent: div,
         doc: element.value,
     })
-    element.form.addEventListener("submit", () => {
+    element.form!.addEventListener("submit", () => {
         element.value = view.state.doc.toString()
     })
     // const easyMDE = new EasyMDE({
@@ -88,23 +69,23 @@ ids.forEach(function (id) {
     //     status: ["lines", "words", "cursor", "saveStatus"],
     // });
     // window.editor = easyMDE
-    // setInterval(function () {
-    //     const content = easyMDE.value();
-    //     fetch("/api/draft/save", {
-    //         method: "POST",
-    //         body: JSON.stringify({
-    //             "draft_md": content
-    //         }),
-    //         headers: {'X-CSRFToken': csrftoken},
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             easyMDE.updateStatusBar("saveStatus", data.message)
-    //             setTimeout(e => easyMDE.updateStatusBar("saveStatus", ""), 5000)
-    //         }).catch(e => {
-    //         easyMDE.updateStatusBar("saveStatus", "error saving draft")
-    //     })
-    //
-    // }, 1000 * 30)
+    const originalLabel = labelEl.innerText
+    setInterval(function () {
+        const content = view.state.doc.toString();
+        fetch("/api/draft/save", {
+            method: "POST",
+            body: JSON.stringify({
+                "draft_md": content
+            }),
+            headers: {'X-CSRFToken': csrftoken},
+        })
+            .then(response => response.json())
+            .then((data: DraftSaveResponse) => {
+                labelEl.innerText += ": " + data.message
+                setTimeout(() => labelEl.innerText = originalLabel, 5000)
+            }).catch(e => {
+            labelEl.innerText += ": " + "error saving draft"
+        })
+
+    }, 1000 * 30)
 });
-api.dom.i2svg()

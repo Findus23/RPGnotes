@@ -8,3 +8,4 @@ if (sentryMetaEl) {
     })
 }
 
+export const test = 1

@@ -1,6 +1,8 @@
+// @ts-ignore
 import {default as Popover} from "bootstrap/js/src/popover";
+// import type {Popover as PopoverType} from "bootstrap";
 
-const popoverTriggerList = document.querySelectorAll('.content a')
+const popoverTriggerList: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('.content a')
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
     console.log(popoverTriggerEl.host)
     console.log(popoverTriggerEl.href.startsWith("htt"))
@@ -13,7 +15,7 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
         trigger: 'hover focus',
         placement: "bottom",
         sanitize: false,
-        sanitizeFn: a => a
+        sanitizeFn: (a: string) => a
     });
     popoverTriggerEl.addEventListener('inserted.bs.popover', (e) => {
         console.log("shown")

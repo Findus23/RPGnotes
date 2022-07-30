@@ -13,7 +13,7 @@ export default defineConfig({
         rollupOptions: {
             // overwrite default .html entry
             input: {
-                "main": 'static/main.js',
+                "main": 'static/main.ts',
                 // "tenantbase": 'static/tenantbase.js',
                 // "editor": 'static/editor.js'
             },
