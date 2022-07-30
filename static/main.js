@@ -14,7 +14,6 @@ const bootstrapModules = [Collapse, Dropdown]
 
 document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById("id_description_md")) {
-        console.log("load markdown")
-        import ("./js/markdown").then(value => console.log("loaded"))
+        import ("./js/codemirror").then(value => console.log("loaded"))
     }
 })
