@@ -14,8 +14,8 @@ export default defineConfig({
             // overwrite default .html entry
             input: {
                 "main": 'static/main.js',
-                "tenantbase": 'static/tenantbase.js',
-                "editor": 'static/editor.js'
+                // "tenantbase": 'static/tenantbase.js',
+                // "editor": 'static/editor.js'
             },
         }
     }

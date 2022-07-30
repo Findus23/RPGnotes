@@ -46,7 +46,7 @@
 </footer>
 {% if debug %}
     <script type="module" src="http://localhost:5173/@vite/client"></script>
-    <script type="module" src="http://localhost:5173/static/{% block module %}main{% endblock %}.js"></script>
+    <script type="module" src="http://localhost:5173/static/main.js"></script>
 {% else %}
     <script type="module" src="{{ js_asset_url("main.js") }}"></script>
 
