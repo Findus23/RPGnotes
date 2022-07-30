@@ -6,7 +6,7 @@ export default defineConfig({
         // visualizer(),
     ],
     build: {
-        outDir: "build_static/build",
+        outDir: "static/build",
         assetsDir: ".",
         // generate manifest.json in outDir
         manifest: true,
