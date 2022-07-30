@@ -73,6 +73,7 @@ TENANT_APPS = (
     'factions',
     'notes',
     'search',
+    'graph',
     'common',
     'simple_history',
 
@@ -233,6 +234,9 @@ EMAIL_SUBJECT_PREFIX = "[RPGnotes]"
 CSP_DEFAULT_SRC = ["'self'", 'data:', "https://bugs.lw1.at"]
 CSP_SCRIPT_SRC = ["'self'", "https://bugs.lw1.at"]
 CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
+CSP_REPORT_ONLY = DEBUG
+if DEBUG:
+    CSP_EXCLUDE_URL_PREFIXES = ("/")
 if SENTRY_CSP_REPORT_URI:
     CSP_REPORT_URL = SENTRY_CSP_REPORT_URI
 CSP_FRAME_ANCESTORS = ["'none'"]

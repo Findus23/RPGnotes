@@ -1,10 +1,22 @@
 {
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@sentry/browser": "^6.19.7",
     "@trevoreyre/autocomplete-js": "^2.2.0",
     "bootstrap": "^5.2.0-beta1",
     "easymde": "^2.15.0",
-    "luminous-lightbox": "^2.3.5"
+    "luminous-lightbox": "^2.3.5",
+    "vite": "^3.0.2"
+  },
+  "devDependencies": {
+    "rollup-plugin-visualizer": "^5.7.1",
+    "sass": "^1.54.0"
   }
 }

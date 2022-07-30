@@ -1,3 +1,5 @@
+import {default as Popover} from "bootstrap/js/src/popover";
+
 const popoverTriggerList = document.querySelectorAll('.content a')
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
     console.log(popoverTriggerEl.host)
@@ -5,7 +7,7 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
     if (popoverTriggerEl.host !== window.location.host) {
         return
     }
-    const popover = new bootstrap.Popover(popoverTriggerEl, {
+    const popover = new Popover(popoverTriggerEl, {
         content: "test",
         title: "title",
         trigger: 'hover focus',

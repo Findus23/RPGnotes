@@ -1,11 +1,30 @@
-/**
- * Copyright (C) 2020 Lukas Winkler
- *
- * @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
- *
- */
+import EasyMDE from "easymde";
+
+import {InjectCSS, register, ReplaceElements} from '@fortawesome/fontawesome-svg-core/plugins'
+import {
+    faArrowsAlt,
+    faBold,
+    faColumns,
+    faEye,
+    faHeading,
+    faImage,
+    faItalic,
+    faLink,
+    faListOl,
+    faListUl,
+    faQuestionCircle,
+    faQuoteLeft
+} from '@fortawesome/free-solid-svg-icons'
+
+
+const api = register([InjectCSS, ReplaceElements])
+api.library.add(
+    faBold, faItalic, faHeading, faQuoteLeft, faListUl, faListOl, faLink, faImage,
+    faEye, faColumns, faArrowsAlt, faQuestionCircle,
+)
 
 document.addEventListener('DOMContentLoaded', function () {
+
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     const ids = ["id_description_md"];
     ids.forEach(function (id) {
@@ -57,4 +76,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }, 1000 * 30)
     });
+    api.dom.i2svg()
 });

@@ -1,3 +1,5 @@
+import Autocomplete from "@trevoreyre/autocomplete-js"
+
 const form = document.getElementById("autocomplete-form")
 
 form.addEventListener("submit", function (e) {

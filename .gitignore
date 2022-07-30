@@ -4,3 +4,5 @@ media/
 __pycache__/
 static/css
 node_modules
+graph
+build_static/

@@ -7,10 +7,12 @@
 
     <title>{% block title %}{% endblock %} - RPGnotes</title>
 
-    <!-- Bootstrap -->
     {% if debug %}
         <link rel="stylesheet" href="{{ url("css") }}">
     {% else %}
+        {% for dep in get_dependencies("main.js") %}
+            <link rel="modulepreload" href="{{ dep }}"></link>
+        {% endfor %}
         <link rel="stylesheet" href="{{ static("css/main.css") }}">
     {% endif %}
 
@@ -42,21 +44,21 @@
         </div>
     </nav>
 </footer>
+{% if debug %}
+    <script type="module" src="http://localhost:5173/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/static/{% block module %}main{% endblock %}.js"></script>
+{% else %}
+    <script type="module" src="{{ js_asset_url("main.js") }}"></script>
 
-<script src="{{ static("libs/bootstrap.bundle.min.js") }}"></script>
-<script src="{{ static("libs/luminous.min.js") }}"></script>
-<script nonce="{{ request.csp_nonce }}">
-    document.addEventListener('DOMContentLoaded', function () {
-        const galleries = document.querySelectorAll("a.image-viewer");
-        new LuminousGallery(galleries)
-    });
-</script>
+{% endif %}
 {% if sentry_event_id %}
-    <script src="{{ static("libs/bundle.min.js") }}"></script>
-    <script nonce="{{ request.csp_nonce }}">
-        Sentry.init({dsn: "{{ sentry_dsn }}"});
-        Sentry.showReportDialog({eventId: "{{ sentry_event_id }}", lang: "{{ language_code() }}"});
-    </script>
+    <div id="sentry" data-dsn="{{ sentry_dsn }}" data-event-id="{{ sentry_event_id }}"
+         data-lang="{{ language_code() }}"></div>
+    {#    <script src="{{ static("libs/bundle.min.js") }}"></script>#}
+    {#    <script nonce="{{ request.csp_nonce }}">#}
+    {#        Sentry.init({dsn: "{{ sentry_dsn }}"});#}
+    {#        Sentry.showReportDialog({eventId: "{{ sentry_event_id }}", lang: "{{ language_code() }}"});#}
+    {#    </script>#}
 {% endif %}
 {% block extra_js %}{% endblock %}
 </body>
