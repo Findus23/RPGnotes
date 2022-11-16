@@ -38,3 +38,17 @@ new Autocomplete('#autocomplete', {
     }
 
 })
+
+document.addEventListener("keydown", (event) => {
+    const keyName = event.key;
+    if (event.ctrlKey && keyName == "k") {
+        console.log(keyName)
+        const inputEl = form.querySelector("input")
+        if (!inputEl) {
+            return
+        }
+        inputEl.focus()
+        event.preventDefault()
+        return false
+    }
+})
