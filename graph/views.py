@@ -35,6 +35,20 @@ class Graph:
             "target": target.graphkey
         })
 
+    def prune(self) -> None:
+        connected_nodes = set()
+        for e in self.edges:
+            connected_nodes.add(e["source"])
+            connected_nodes.add(e["target"])
+        self.nodes = [n for n in self.nodes if n["key"] in connected_nodes]
+
+    def export(self):
+        return {
+            "attributes": {},
+            "nodes": self.nodes,
+            "edges": self.edges
+        }
+
 
 #
 #
@@ -67,9 +81,6 @@ def get_graph(request: HttpRequest) -> HttpResponse:
             g.add_edge(char, char.faction)
         if char.player:
             g.add_edge(char, char.player)
+    g.prune()
 
-    return JsonResponse({
-        "attributes": {},
-        "nodes": g.nodes,
-        "edges": g.edges
-    })
+    return JsonResponse(g.export())
