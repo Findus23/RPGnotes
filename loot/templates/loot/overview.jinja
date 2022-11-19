@@ -73,6 +73,10 @@
                                     <dt>{{ _("Weight") }}</dt>
                                     <dd>{{ l.weight }} lb</dd>
                                 {% endif %}
+                                {% if l.type %}
+                                    <dt>{{ _("Type") }}</dt>
+                                    <dd><a href="?type={{ l.type.slug }}">{{ l.type }}</a></dd>
+                                {% endif %}
                             </dl>
                         </div>
                     </div>

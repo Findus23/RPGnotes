@@ -14,7 +14,11 @@ class LootListView(generic.ListView):
 
     def get_queryset(self):
         show_former = self.request.GET.get('show_former', False) == "true"
-        return Loot.objects.filter(former=show_former)
+        type = self.request.GET.get('type', None)
+        qs = Loot.objects.filter(former=show_former)
+        if type:
+            qs = qs.filter(type__slug=type)
+        return qs
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
