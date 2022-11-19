@@ -4,14 +4,13 @@ from django.utils.translation import gettext_lazy as _
 from sorl.thumbnail import ImageField
 
 from characters.models import Character
-from common.models import DescriptionModel, HistoryModel, AliasModel
+from common.models import DescriptionModel, HistoryModel, AliasModel, NameSlugModel
 from locations.models import Location
 from search.utils import NameSearchIndex
 from utils.random_filename import get_file_path
 
 
-class LootType(models.Model):
-    name = models.CharField(_("Name"), max_length=1000)
+class LootType(NameSlugModel, models.Model):
 
     def __str__(self):
         return self.name
