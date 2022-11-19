@@ -38,8 +38,8 @@ if (container) {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const renderer = new Sigma(graph, container, {
-        labelSize:20,
-        edgeLabelSize:200
+        labelSize: 20,
+        edgeLabelSize: 200,
     });
 }
 

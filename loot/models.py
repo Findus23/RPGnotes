@@ -15,6 +15,10 @@ class LootType(NameSlugModel, models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def graphkey(self):
+        return f"lty{self.pk}"
+
 
 class Loot(DescriptionModel, AliasModel, HistoryModel):
     name = models.CharField(_("Name"), max_length=1000)
@@ -59,3 +63,7 @@ class Loot(DescriptionModel, AliasModel, HistoryModel):
 
     def get_absolute_url(self):
         return reverse('lootedit', args=[self.id])
+
+    @property
+    def graphkey(self):
+        return f"loo{self.pk}"

@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 from characters.models import Character
 from factions.models import Faction
 from locations.models import Location
+from loot.models import Loot, LootType
 from notes.models import Note
 from users.models import TenantUser
 
@@ -72,7 +73,6 @@ def get_graph(request: HttpRequest) -> HttpResponse:
             .filter(tenants=connection.get_tenant()) \
             .exclude(pk__in=[1, 2]):
         g.add_node(user, user.name)
-
     for char in Character.objects.all():
         g.add_node(char)
         if char.location:
@@ -81,6 +81,18 @@ def get_graph(request: HttpRequest) -> HttpResponse:
             g.add_edge(char, char.faction)
         if char.player:
             g.add_edge(char, char.player)
+
+    for loottype in LootType.objects.all():
+        g.add_node(loottype)
+
+    for loot in Loot.objects.all():
+        g.add_node(loot)
+        if loot.location:
+            g.add_edge(loot, loot.location)
+        if loot.owner:
+            g.add_edge(loot, loot.owner)
+        if loot.type:
+            g.add_edge(loot, loot.type)
     g.prune()
 
     return JsonResponse(g.export())
