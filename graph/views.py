@@ -26,7 +26,8 @@ class Graph:
             "key": el.graphkey,
             "attributes": {
                 "label": label,
-                "size": 10
+                "size": 10,
+                "url": el.get_absolute_url() if hasattr(el, "get_absolute_url") else "/"
             }
         })
 

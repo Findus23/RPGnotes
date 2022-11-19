@@ -41,6 +41,13 @@ if (container) {
         labelSize: 20,
         edgeLabelSize: 200,
     });
+
+
+    renderer.on("clickNode", (e) => {
+        const url = graph.getNodeAttribute(e.node, "url")
+        window.open(url, 'graphURL')
+
+    })
 }
 
 
