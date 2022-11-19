@@ -78,3 +78,7 @@ class Character(NameSlugModel, DescriptionModel, AliasModel, HistoryModel):
         if self.token_image:
             return self.token_image
         return self.larger_image
+
+    @property
+    def graphkey(self):
+        return f"cha{self.pk}"

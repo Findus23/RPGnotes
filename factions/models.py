@@ -16,3 +16,7 @@ class Faction(NameSlugModel, DescriptionModel, AliasModel, HistoryModel):
 
     def get_absolute_url(self):
         return reverse('factiondetail', args=[self.slug])
+
+    @property
+    def graphkey(self):
+        return f"fac{self.pk}"

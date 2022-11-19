@@ -34,3 +34,7 @@ class TenantUser(UserProfile):
     @property
     def username(self):
         return self.name
+
+    @property
+    def graphkey(self):
+        return f"use{self.pk}"
