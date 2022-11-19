@@ -13,6 +13,9 @@ from utils.random_filename import get_file_path
 class LootType(models.Model):
     name = models.CharField(_("Name"), max_length=1000)
 
+    def __str__(self):
+        return self.name
+
 
 class Loot(DescriptionModel, AliasModel, HistoryModel):
     name = models.CharField(_("Name"), max_length=1000)
