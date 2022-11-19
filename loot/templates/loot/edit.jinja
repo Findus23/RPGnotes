@@ -3,31 +3,34 @@
 {% block heading %}
     {% if edit %}
         <h1>{% trans name=object.name %}Edit "{{ object }}"{% endtrans %}</h1>
-        {% if request.resolver_match.view_name == "lootedit" %}
-            <a class="btn btn-danger" href="{{ url("lootdelete", object.id) }}">{{ _("Delete") }}</a>
-        {% elif request.resolver_match.view_name == "dayedit" %}
-            <a class="btn btn-danger" href="{{ url("daydelete", object.id) }}">{{ _("Delete") }}</a>
-        {% elif request.resolver_match.view_name == "locationedit" %}
-            <a class="btn btn-danger" href="{{ url("locationdelete", object.slug) }}">{{ _("Delete") }}</a>
-        {% elif request.resolver_match.view_name == "characteredit" %}
-            <a class="btn btn-danger" href="{{ url("characterdelete", object.slug) }}">{{ _("Delete") }}</a>
-        {% endif %}
     {% else %}
         <h1>{{ _("Add new") }}</h1>
     {% endif %}
 {% endblock %}
 
 {% block content %}
-    {% if request.resolver_match.view_name == "dayedit" %}
-        <a href="{{ url("sessionadd") }}" class="btn btn-secondary">{% trans %}Add Session{% endtrans %}</a>
-    {% endif %}
     <form method="post" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
         {% csrf_token %}
+        {% if request.resolver_match.view_name == "dayedit" %}
+            <a href="{{ url("sessionadd") }}" class="btn btn-secondary">{% trans %}Add Session{% endtrans %}</a>
+        {% endif %}
         <input type="submit" class="btn btn-primary"
                value="{% if edit %}{{ _("Save") }}{% else %}{{ _("Add") }}{% endif %}">
         {{ bootstrap_form(form) }}
         <input type="submit" class="btn btn-primary"
                value="{% if edit %}{{ _("Save") }}{% else %}{{ _("Add") }}{% endif %}">
+        {% if edit %}
+            {% if request.resolver_match.view_name == "lootedit" %}
+                <a class="btn btn-danger" href="{{ url("lootdelete", object.id) }}">{{ _("Delete") }}</a>
+            {% elif request.resolver_match.view_name == "dayedit" %}
+                <a class="btn btn-danger" href="{{ url("daydelete", object.id) }}">{{ _("Delete") }}</a>
+            {% elif request.resolver_match.view_name == "locationedit" %}
+                <a class="btn btn-danger" href="{{ url("locationdelete", object.slug) }}">{{ _("Delete") }}</a>
+            {% elif request.resolver_match.view_name == "characteredit" %}
+                <a class="btn btn-danger" href="{{ url("characterdelete", object.slug) }}">{{ _("Delete") }}</a>
+            {% endif %}
+        {% endif %}
+
     </form>
 {% endblock %}
 
