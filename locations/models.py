@@ -31,3 +31,7 @@ class Location(TreeNode, NameSlugModel, DescriptionModel, AliasModel, HistoryMod
 
     def get_absolute_url(self):
         return reverse('locationdetail', args=[self.slug])
+
+    @property
+    def graphkey(self):
+        return f"loc{self.pk}"

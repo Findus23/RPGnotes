@@ -10,6 +10,7 @@ import {default as Collapse} from 'bootstrap/js/src/collapse'
 import "./js/autocomplete"
 import "./js/popover"
 import "./js/gallery"
+import "./js/graph"
 
 
 const bootstrapModules = [Collapse, Dropdown]

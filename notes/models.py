@@ -31,3 +31,7 @@ class Note(TreeNode, NameSlugModel, DescriptionModel, AliasModel, HistoryModel):
 
     def get_absolute_url(self):
         return reverse('notedetail', args=[self.slug])
+
+    @property
+    def graphkey(self):
+        return f"not{self.pk}"

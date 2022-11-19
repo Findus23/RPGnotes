@@ -5,5 +5,4 @@ __pycache__/
 static/css
 static/build
 node_modules
-graph
 build_static/

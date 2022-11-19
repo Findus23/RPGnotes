@@ -19,7 +19,7 @@ urlpatterns = [
     path('note/', include("notes.urls")),
     path('loot/', include("loot.urls")),
     path('search/', include("search.urls")),
-    # path('graph/', include("graph.urls")),
+    path('graph/', include("graph.urls")),
     path('', include("common.urls")),
     path('', include("campaigns.urls"))
 ]
