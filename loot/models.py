@@ -10,6 +10,10 @@ from search.utils import NameSearchIndex
 from utils.random_filename import get_file_path
 
 
+class LootType(models.Model):
+    name = models.CharField(_("Name"), max_length=1000)
+
+
 class Loot(DescriptionModel, AliasModel, HistoryModel):
     name = models.CharField(_("Name"), max_length=1000)
     quantity = models.PositiveSmallIntegerField(_("Quantity"))
@@ -29,6 +33,12 @@ class Loot(DescriptionModel, AliasModel, HistoryModel):
         related_name="loot"
     )
     magic_item = models.BooleanField(_("Magic Item"), default=False)
+    former = models.BooleanField(_("Former"), default=False)
+    type = models.ForeignKey(
+        LootType, on_delete=models.PROTECT,
+        blank=True, null=True,
+        verbose_name=_("Type"), related_name="loot"
+    )
 
     class Meta:
         ordering = ["name"]

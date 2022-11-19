@@ -12,6 +12,10 @@ class LootListView(generic.ListView):
     model = Loot
     context_object_name = "loot"
 
+    def get_queryset(self):
+        show_former = self.request.GET.get('show_former', False) == "true"
+        return Loot.objects.filter(former=show_former)
+
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data['total_value'] = self.get_queryset().aggregate(Sum("value_gold"))["value_gold__sum"]
@@ -31,7 +35,7 @@ class LootCreateView(generic.CreateView):
     success_url = reverse_lazy("lootlist")
 
 
-class LootEditView(JSONResponseMixin,generic.UpdateView):
+class LootEditView(JSONResponseMixin, generic.UpdateView):
     template_name = "loot/edit.jinja"
     model = Loot
     form_class = LootForm
