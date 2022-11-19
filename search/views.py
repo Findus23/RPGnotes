@@ -2,6 +2,7 @@
 from itertools import chain
 
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, SearchHeadline, TrigramWordDistance
+from django.db.models import Func, F
 from django.http import JsonResponse
 from django.views.generic import TemplateView
 
@@ -76,12 +77,25 @@ def autocomplete(request):
         ).order_by('distance')
         similar = [s for s in similar if s.distance <= 0.5]
         all_similar.extend(list(similar))
+        similar_aliases = m.objects.annotate(
+            alias=Func(F("aliases"), function="unnest")
+        ).annotate(
+            distance=TrigramWordDistance(query_string, "alias")
+            # distance=TrigramDistance("name", query_string)
+        ).order_by('distance')
+        print("sim", similar_aliases)
+        similar_aliases = [s for s in similar_aliases if s.distance <= 0.5]
+        all_similar.extend(list(similar_aliases))
     all_similar.sort(key=lambda s: s.distance)
     data = []
     for s in all_similar:
+        if hasattr(s, "alias"):
+            name = f"{s.alias} ({s.name})"
+        else:
+            name = s.name
         data.append({
             "url": s.get_absolute_url(),
-            "name": s.name,
+            "name": name,
             "distance": s.distance
         })
     return JsonResponse(data, safe=False)
