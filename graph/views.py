@@ -25,7 +25,7 @@ class Graph:
             "key": el.graphkey,
             "attributes": {
                 "label": label,
-                "size": 20
+                "size": 10
             }
         })
 
