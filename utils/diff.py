@@ -5,6 +5,7 @@ from tempfile import NamedTemporaryFile
 
 
 def print_diff_call(str1: str, str2: str, title: str) -> None:
+    title = title.replace("/", "")
     with NamedTemporaryFile(delete=True, mode="w", suffix=title) as tmp1:
         with NamedTemporaryFile(delete=True, mode="w", suffix=title) as tmp2:
             tmp1.write(str1)
