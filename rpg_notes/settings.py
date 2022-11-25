@@ -233,6 +233,7 @@ EMAIL_SUBJECT_PREFIX = "[RPGnotes]"
 
 CSP_DEFAULT_SRC = ["'self'", 'data:', "https://bugs.lw1.at"]
 CSP_SCRIPT_SRC = ["'self'", "https://bugs.lw1.at"]
+CSP_WORKER_SRC = ["'self'", "blob:"]
 CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
 CSP_REPORT_ONLY = DEBUG
 if DEBUG:
