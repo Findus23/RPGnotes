@@ -1,5 +1,6 @@
 import re
 from html.parser import HTMLParser
+from typing import Tuple, Set
 
 import bleach
 import markdown
@@ -8,8 +9,8 @@ from bleach_allowlist import markdown_tags, markdown_attrs
 custom_allowed_tags = ["del", "ins"]
 
 
-def md_to_html(md: str, replacements=None) -> str:
-    md = autolink(md, replacements=replacements)
+def md_to_html(md: str, replacements=None) -> Tuple[str, Set[str]]:
+    md, linked_objects = autolink(md, replacements=replacements)
     html = markdown.markdown(
         md,
         output_format="html",
@@ -22,25 +23,28 @@ def md_to_html(md: str, replacements=None) -> str:
         tags=markdown_tags + custom_allowed_tags,
         attributes=markdown_attrs
     )
-    return html
+    return html, linked_objects
 
 
-def autolink(md: str, replacements=None) -> str:
+def autolink(md: str, replacements=None) -> Tuple[str, Set[str]]:
     if replacements is None:
         from utils.urls import name2url
         replacements = name2url()
     links = {}
+    linked_objects = set()
     i = 0
-    for name, url in replacements.items():
+    for name, (url, obj) in replacements.items():
         regex = r"\bWORD\b".replace("WORD", name)
         placeholder = f"SOME{i}LINK"
-        md = re.sub(regex, placeholder, md)
+        md, n_replacements = re.subn(regex, placeholder, md)
+        if n_replacements > 0:
+            linked_objects.add(obj.graphkey)
         links[placeholder] = f"[{name}]({url})"
         i += 1
 
     for placeholder, value in links.items():
         md = md.replace(placeholder, value)
-    return md
+    return md, linked_objects
 
 
 class HTMLFilter(HTMLParser):

@@ -9,17 +9,17 @@ from notes.models import Note
 
 def name2url() -> Dict[str, str]:
     data = {}
-    objects=[]
+    objects = []
     objects.extend(Character.objects.all())
     objects.extend(Location.objects.all())
     objects.extend(Loot.objects.all())
     objects.extend(Faction.objects.all())
     objects.extend(Note.objects.all())
     for object in objects:
-        data[object.name] = object.get_absolute_url()
+        data[object.name] = (object.get_absolute_url(), object)
         if object.aliases:
             for alias in object.aliases:
-                data[alias] = object.get_absolute_url()
+                data[alias] = (object.get_absolute_url(), object)
 
     # longer replacements first
     data = {k: v for k, v in sorted(data.items(), key=lambda item: -len(item[0]))}

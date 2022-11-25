@@ -37,6 +37,12 @@ class Graph:
             "target": target.graphkey
         })
 
+    def add_edge_str(self, source: str, target: str):
+        self.edges.append({
+            "source": source,
+            "target": target
+        })
+
     def prune(self) -> None:
         connected_nodes = set()
         for e in self.edges:
@@ -62,14 +68,22 @@ class GraphView(TemplateView):
     template_name = "graph/graph.jinja"
 
 
+def get_description_links(el: GraphModelEl, g: Graph):
+    if el.linked_objects:
+        for lo in el.linked_objects.split(","):
+            g.add_edge_str(el.graphkey, lo)
+
+
 def get_graph(request: HttpRequest) -> HttpResponse:
     g = Graph()
     for loc in list(Location.objects.all()) + list(Note.objects.all()):
         g.add_node(loc)
         if loc.parent:
             g.add_edge(loc, loc.parent)
+        get_description_links(loc, g)
     for faction in Faction.objects.all():
         g.add_node(faction, faction.name)
+        get_description_links(faction, g)
     for user in TenantUser.objects \
             .filter(tenants=connection.get_tenant()) \
             .exclude(pk__in=[1, 2]):
@@ -82,6 +96,7 @@ def get_graph(request: HttpRequest) -> HttpResponse:
             g.add_edge(char, char.faction)
         if char.player:
             g.add_edge(char, char.player)
+        get_description_links(char, g)
 
     for loottype in LootType.objects.all():
         g.add_node(loottype)
@@ -94,6 +109,8 @@ def get_graph(request: HttpRequest) -> HttpResponse:
             g.add_edge(loot, loot.owner)
         if loot.type:
             g.add_edge(loot, loot.type)
+        get_description_links(loot, g)
+
     g.prune()
 
     return JsonResponse(g.export())

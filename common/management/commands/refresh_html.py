@@ -36,9 +36,10 @@ class Command(BaseCommand):
                     objects.extend(list(Note.objects.all()))
                     objects.extend(list(IngameDay.objects.all()))
                     for object in objects:
-                        fresh_html = md_to_html(object.description_md, replacements=replacements)
+                        fresh_html, linked_objects = md_to_html(object.description_md, replacements=replacements)
                         if object.description_html != fresh_html:
                             print_diff_call(object.description_html, fresh_html, str(object))
                             if store:
                                 object.description_html = fresh_html
+                                object.linked_objects = ",".join(linked_objects)
                                 object.save()
