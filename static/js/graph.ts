@@ -10,17 +10,13 @@ const graph = new Graph({
 });
 
 
-fetch('http://localhost:8080')
+fetch('/graph/graph')
     .then((response) => response.json())
-    .then((a) => new Promise(resolve => setTimeout(resolve, 1000, a)))
     .then((data) => {
         console.log(data)
         graph.import(data)
         random.assign(graph);
         layout.start();
-        window.setInterval(function(){
-        console.info(layout.isRunning())
-}, 500);
     });
 
 
