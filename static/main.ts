@@ -10,7 +10,6 @@ import {default as Collapse} from 'bootstrap/js/src/collapse'
 import "./js/autocomplete"
 import "./js/popover"
 import "./js/gallery"
-import "./js/graph"
 
 
 const bootstrapModules = [Collapse, Dropdown]
@@ -18,5 +17,8 @@ const bootstrapModules = [Collapse, Dropdown]
 document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById("id_description_md")) {
         import ("./js/codemirror").then(value => console.log("loaded"))
+    }
+    if (document.getElementById("graph")) {
+        import ("./js/graph").then(value => console.log("graph loaded"))
     }
 })
