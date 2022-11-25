@@ -17,6 +17,7 @@ fetch('/graph/graph')
         console.log(data)
         graph.import(data)
         random.assign(graph);
+        layout.start();
     });
 
 
@@ -25,8 +26,6 @@ const layout = new FA2Layout(graph, {
         gravity: 0.2
     }
 });
-layout.start();
-
 
 
 const renderer = new Sigma(graph, container, {
