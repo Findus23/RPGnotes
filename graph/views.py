@@ -32,9 +32,13 @@ class Graph:
         })
 
     def add_edge(self, source: GraphModelEl, target: GraphModelEl):
+        if source == target:
+            return
         self.edges.add((source.graphkey, target.graphkey))
 
     def add_edge_str(self, source: str, target: str):
+        if source == target:
+            return
         self.edges.add((source, target))
 
     def prune(self) -> None:
