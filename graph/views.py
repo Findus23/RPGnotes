@@ -16,13 +16,13 @@ GraphModelEl = Union[Location, Note, Character, Faction]
 
 class Graph:
     def __init__(self):
-        self.nodes = []
-        self.edges = []
+        self.nodes = set()
+        self.edges = set()
 
     def add_node(self, el: GraphModelEl, label: str = None):
         if label is None:
             label = el.name
-        self.nodes.append({
+        self.nodes.add({
             "key": el.graphkey,
             "attributes": {
                 "label": label,
@@ -32,13 +32,13 @@ class Graph:
         })
 
     def add_edge(self, source: GraphModelEl, target: GraphModelEl):
-        self.edges.append({
+        self.edges.add({
             "source": source.graphkey,
             "target": target.graphkey
         })
 
     def add_edge_str(self, source: str, target: str):
-        self.edges.append({
+        self.edges.add({
             "source": source,
             "target": target
         })
@@ -53,8 +53,8 @@ class Graph:
     def export(self):
         return {
             "attributes": {},
-            "nodes": self.nodes,
-            "edges": self.edges
+            "nodes": list(self.nodes),
+            "edges": list(self.edges)
         }
 
 
