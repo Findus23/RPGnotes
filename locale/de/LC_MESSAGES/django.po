@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-05 21:15+0200\n"
+"POT-Creation-Date: 2022-11-30 14:01+0100\n"
 "PO-Revision-Date: 2022-06-19 14:13+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.1\n"
 
-#: campaigns/models.py:12 common/models/nameslugmodel.py:8 loot/models.py:14
+#: campaigns/models.py:12 common/models/nameslugmodel.py:8 loot/models.py:24
 #: users/models.py:10
 msgid "Name"
 msgstr "Name"
@@ -47,14 +47,28 @@ msgstr ""
 msgid "Homepage"
 msgstr "Startseite"
 
+#: campaigns/templates/campaigns/campaign_detail.jinja:24
+#: campaigns/templates/campaigns/campaign_export.jinja:3
+#: campaigns/templates/campaigns/campaign_export.jinja:6
+#: campaigns/templates/campaigns/campaign_export.jinja:12
+msgid "Export"
+msgstr "Export"
+
 #: campaigns/templates/campaigns/campaign_edit.jinja:5
 msgid "Add new campaign"
 msgstr "Neue Campagne erstellen"
 
 #: campaigns/templates/campaigns/campaign_edit.jinja:9
-#: loot/templates/loot/edit.jinja:27 loot/templates/loot/edit.jinja:30
+#: loot/templates/loot/edit.jinja:18 loot/templates/loot/edit.jinja:21
 msgid "Add"
 msgstr "Hinzufügen"
+
+#: campaigns/templates/campaigns/campaign_export.jinja:8
+msgid ""
+"RPGnotes is an experimental website. To avoid lock-in of campaign data, you "
+"can always export all of your data here:"
+msgstr "RPGnotes ist eine experimentelle Webseite. Damit Campaign-Daten weiterverwendet werden können, "
+"können hier immer alle Daten exportiert werden:"
 
 #: campaigns/templates/campaigns/campaign_overview.jinja:3
 #: campaigns/templates/campaigns/campaign_overview.jinja:9
@@ -92,7 +106,7 @@ msgid "Faction"
 msgstr "Fraktion"
 
 #: characters/models.py:41 characters/templates/characters/detail.jinja:61
-#: locations/models.py:26 loot/models.py:28
+#: locations/models.py:26 loot/models.py:38
 #: loot/templates/loot/overview.jinja:17
 msgid "Location"
 msgstr "Ort"
@@ -133,7 +147,7 @@ msgstr "Charakter hinzufügen"
 #: days/templates/days/day_detail.jinja:24
 #: factions/templates/factions/detail.jinja:24
 #: locations/templates/locations/detail.jinja:22
-#: loot/templates/loot/overview.jinja:60 notes/templates/notes/detail.jinja:22
+#: loot/templates/loot/overview.jinja:62 notes/templates/notes/detail.jinja:22
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -206,7 +220,7 @@ msgstr "Mitglieder"
 msgid "Part of"
 msgstr "Teil von"
 
-#: locations/models.py:22 loot/models.py:18 notes/models.py:22
+#: locations/models.py:22 loot/models.py:28 notes/models.py:22
 msgid "Image"
 msgstr "Bild"
 
@@ -222,27 +236,36 @@ msgstr "Ort hinzufügen"
 msgid "Contains"
 msgstr "Enthält"
 
-#: loot/models.py:15 loot/templates/loot/overview.jinja:14
+#: loot/models.py:25 loot/templates/loot/overview.jinja:14
 msgid "Quantity"
 msgstr "Anzahl"
 
-#: loot/models.py:16
+#: loot/models.py:26
 msgid "Value (Gold)"
 msgstr "Wert (Gold)"
 
-#: loot/models.py:17
+#: loot/models.py:27
 msgid "Weight (lb)"
 msgstr "Gewicht (lb)"
 
-#: loot/models.py:22 loot/templates/loot/overview.jinja:16
+#: loot/models.py:32 loot/templates/loot/overview.jinja:16
 msgid "Claimant"
 msgstr "Beansprucht von"
 
-#: loot/models.py:31
+#: loot/models.py:41
 msgid "Magic Item"
 msgstr "Magisches Item"
 
-#: loot/models.py:35 loot/models.py:36 loot/templates/loot/overview.jinja:3
+#: loot/models.py:42
+msgid "Former"
+msgstr "Ehemalig"
+
+#: loot/models.py:46 loot/templates/loot/overview.jinja:18
+#: loot/templates/loot/overview.jinja:77
+msgid "Type"
+msgstr "Typ"
+
+#: loot/models.py:51 loot/models.py:52 loot/templates/loot/overview.jinja:3
 #: loot/templates/loot/overview.jinja:6 templates/tenantbase.jinja:42
 msgid "Loot"
 msgstr "Loot"
@@ -252,45 +275,43 @@ msgstr "Loot"
 msgid "Edit \"%(object)s\""
 msgstr "\"%(object)s\" bearbeiten"
 
-#: loot/templates/loot/edit.jinja:7 loot/templates/loot/edit.jinja:9
-#: loot/templates/loot/edit.jinja:11 loot/templates/loot/edit.jinja:13
-msgid "Delete"
-msgstr "Löschen"
-
-#: loot/templates/loot/edit.jinja:16
+#: loot/templates/loot/edit.jinja:7
 msgid "Add new"
 msgstr "Neu erstellen"
 
-#: loot/templates/loot/edit.jinja:22
-#, fuzzy
-#| msgid "Session"
+#: loot/templates/loot/edit.jinja:15
 msgid "Add Session"
-msgstr "Session"
+msgstr "Session hinzufügen"
 
-#: loot/templates/loot/edit.jinja:27 loot/templates/loot/edit.jinja:30
+#: loot/templates/loot/edit.jinja:18 loot/templates/loot/edit.jinja:21
 #: templates/common/languageselect.jinja:17
 #: templates/registration/registration_form.jinja:9
 #: users/templates/users/edit.jinja:10
 msgid "Save"
 msgstr "Speichern"
 
+#: loot/templates/loot/edit.jinja:24 loot/templates/loot/edit.jinja:26
+#: loot/templates/loot/edit.jinja:28 loot/templates/loot/edit.jinja:30
+msgid "Delete"
+msgstr "Löschen"
+
 #: loot/templates/loot/overview.jinja:13
 msgid "Item"
 msgstr "Objekt"
 
-#: loot/templates/loot/overview.jinja:15 loot/templates/loot/overview.jinja:83
+#: loot/templates/loot/overview.jinja:15 loot/templates/loot/overview.jinja:89
 msgid "Total Value"
 msgstr "Gesamtwert"
 
-#: loot/templates/loot/overview.jinja:67
+#: loot/templates/loot/overview.jinja:69
 msgid "Value each"
 msgstr "Wert pro Stück"
 
-#: loot/templates/loot/overview.jinja:71
+#: loot/templates/loot/overview.jinja:73
 msgid "Weight"
 msgstr "Gewicht"
 
-#: loot/templates/loot/overview.jinja:86
+#: loot/templates/loot/overview.jinja:92
 msgid "Add Loot"
 msgstr "Loot hinzufügen"
 
@@ -306,11 +327,11 @@ msgstr "Notizen"
 msgid "Add Note"
 msgstr "Notiz hinzufügen"
 
-#: rpg_notes/settings.py:196
+#: rpg_notes/settings.py:197
 msgid "German"
 msgstr "Deutsch"
 
-#: rpg_notes/settings.py:197
+#: rpg_notes/settings.py:198
 msgid "English"
 msgstr "Englisch"
 
@@ -332,16 +353,17 @@ msgid "Permission Denied"
 msgstr "Zugriff verweigert"
 
 #: templates/403.jinja:10
-#, python-format
-msgid "You might want to go back to the <a href=\"%(url)s\">homepage</a>."
+msgid ""
+"You might want to go back to the <a href=\"https://rpgnotes.lw1.at/"
+"\">homepage</a>."
 msgstr ""
-"Du möchtest vielleicht zurück zur <a href=\"%(url)s\">Startseite</a> gehen."
+"Du möchtest vielleicht zurück zur <a href=\"https://rpgnotes.lw1.at/\">Startseite</a> gehen."
 
-#: templates/base.jinja:37 templates/tenantbase.jinja:88
+#: templates/base.jinja:39 templates/tenantbase.jinja:88
 msgid "Log out"
 msgstr "Abmelden"
 
-#: templates/base.jinja:39 templates/common/homepage.jinja:20
+#: templates/base.jinja:41 templates/common/homepage.jinja:20
 #: templates/registration/login.jinja:21
 msgid "Log in"
 msgstr "Anmelden"
@@ -361,7 +383,7 @@ msgstr "Zurück"
 #: templates/common/homepage.jinja:10
 msgid ""
 "An experimental, collaborative note taking app and wiki optimized for RPG "
-"games."
+"games"
 msgstr ""
 "Eine experimentelle, kollaborative Notiz-App und Wiki optimiert für RPGs"
 

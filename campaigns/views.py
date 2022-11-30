@@ -1,14 +1,23 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core import serializers
 from django.core.mail import mail_admins
+from django.http import HttpResponse, HttpRequest, JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.views import generic
+from django.views.generic import TemplateView
 from tenant_users.tenants.tasks import provision_tenant
 
 from campaigns.forms import CampaignForm
 from campaigns.models import Campaign
+from characters.models import Character
 from common.middlewares import demo_campaign_id
+from days.models import Session, IngameDay
+from factions.models import Faction
+from locations.models import Location
+from loot.models import Loot, LootType
+from notes.models import Note
 from users.models import TenantUser
 
 
@@ -86,3 +95,28 @@ class CampaignDeleteView(LoginRequiredMixin, generic.DeleteView):
         self.object: Campaign = self.get_object()
         self.object.delete_tenant()
         return redirect("http://test.localhost:8000/")
+
+
+class ExportHelpView(TemplateView):
+    template_name = "campaigns/campaign_export.jinja"
+
+
+def export(request: HttpRequest) -> HttpResponse:
+    models = {
+        "characters": Character,
+        "sessions": Session,
+        "ingameday": IngameDay,
+        "factions": Faction,
+        "locations": Location,
+        "loottype": LootType,
+        "loot": Loot,
+        "notes": Note,
+
+    }
+    data = {}
+    for name, obj in models.items():
+        data[name] = serializers.serialize("python", obj.objects.all())
+
+    data["campaign"] = serializers.serialize("python", [request.tenant])[0]
+    # return JsonResponse({"c": list(Character.objects.all().values())})
+    return JsonResponse(data, safe=False)

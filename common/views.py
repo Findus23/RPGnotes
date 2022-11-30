@@ -52,13 +52,13 @@ def save_draft(request: HttpRequest) -> HttpResponse:
 
 
 @condition(etag_func=calc_etag)
-def debug_css(request):
+def debug_css(request: HttpRequest) -> HttpResponse:
     css, source_map = get_css(debug=True)
     return HttpResponse(css, content_type="text/css")
 
 
 @condition(etag_func=calc_etag)
-def debug_css_sourcemap(request):
+def debug_css_sourcemap(request: HttpRequest) -> HttpResponse:
     css, source_map = get_css(debug=True)
     return HttpResponse(source_map, content_type="application/json")
 

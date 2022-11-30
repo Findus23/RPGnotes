@@ -1,0 +1,13 @@
+{% extends "tenantbase.jinja" %}
+
+{% block title %}{% trans %}Export{% endtrans %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans %}Export{% endtrans %}</h1>
+
+    <p>{% trans trimmed %}
+        RPGnotes is an experimental website.
+        To avoid lock-in of campaign data, you can always export all of your data here:
+    {% endtrans %}</p>
+    <a href="{{ url("exportdata") }}" class="btn btn-lg btn-primary">{% trans %}Export{% endtrans %}</a>
+{% endblock %}
