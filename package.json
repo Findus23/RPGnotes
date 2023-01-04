@@ -26,7 +26,7 @@
     "luminous-lightbox": "^2.3.5",
     "sigma": "^2.4.0",
     "typescript": "^4.7.4",
-    "vite": "^3.0.2",
+    "vite": "^4.0.4",
     "y-codemirror.next": "^0.3.2",
     "y-webrtc": "^10.2.3",
     "yjs": "^13.5.41"
