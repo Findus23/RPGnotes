@@ -8,9 +8,9 @@ interface AutocompleteResult {
 
 const form = document.getElementById("autocomplete-form")! as HTMLFormElement
 
-form.addEventListener("submit", function (e) {
-    e.preventDefault()
-})
+// form.addEventListener("submit", function (e) {
+//     e.preventDefault()
+// })
 
 new Autocomplete('#autocomplete', {
     search: input => {
@@ -35,8 +35,8 @@ new Autocomplete('#autocomplete', {
             return
         }
         location.href = result.url
-    }
-
+    },
+    submitOnEnter: true
 })
 
 document.addEventListener("keydown", (event) => {

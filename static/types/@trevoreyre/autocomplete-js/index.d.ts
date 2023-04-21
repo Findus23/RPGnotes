@@ -91,6 +91,10 @@ declare module "@trevoreyre/autocomplete-js" {
          * Fired after asynchronous search function resolves
          */
         onLoaded?(): () => void;
+
+        resultListLabel?: string
+
+        submitOnEnter?: boolean
     }
 
     export interface EventHandlers {
