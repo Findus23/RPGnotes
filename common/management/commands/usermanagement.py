@@ -8,7 +8,7 @@ class Command(BaseCommand):
     help = 'adds and removes users to/from campaigns'
 
     def __init__(self, *args, **kwargs):
-        super(Command, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def add_arguments(self, parser: CommandParser):
         parser.add_argument("campaign_slug", type=str)

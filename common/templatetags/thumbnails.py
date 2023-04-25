@@ -18,6 +18,6 @@ def srcset(filename):
     """
     lines = [filename]
     for res in settings.THUMBNAIL_ALTERNATIVE_RESOLUTIONS:
-        res_string = "{}x".format(res)
-        lines.append("{} {}".format(resolution(filename, res_string), res_string))
+        res_string = f"{res}x"
+        lines.append(f"{resolution(filename, res_string)} {res_string}")
     return ', '.join(lines)

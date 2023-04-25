@@ -9,7 +9,7 @@ from bleach_allowlist import markdown_tags, markdown_attrs
 custom_allowed_tags = ["del", "ins"]
 
 
-def md_to_html(md: str, replacements=None) -> Tuple[str, Set[str]]:
+def md_to_html(md: str, replacements=None) -> tuple[str, set[str]]:
     md, linked_objects = autolink(md, replacements=replacements)
     html = markdown.markdown(
         md,
@@ -26,7 +26,7 @@ def md_to_html(md: str, replacements=None) -> Tuple[str, Set[str]]:
     return html, linked_objects
 
 
-def autolink(md: str, replacements=None) -> Tuple[str, Set[str]]:
+def autolink(md: str, replacements=None) -> tuple[str, set[str]]:
     if replacements is None:
         from utils.urls import name2url
         replacements = name2url()

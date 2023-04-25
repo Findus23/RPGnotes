@@ -6,7 +6,6 @@ by  Andrey Kolpakov
 but using pathlib and considering django-tenants
 """
 from pathlib import Path
-from typing import Set
 
 from django.apps import apps
 from django.core.management import BaseCommand
@@ -33,7 +32,7 @@ def get_file_fields():
     return fields
 
 
-def get_used_media() -> Set[Path]:
+def get_used_media() -> set[Path]:
     media = set()
     for field in get_file_fields():
         is_null = {
@@ -54,7 +53,7 @@ def get_used_media() -> Set[Path]:
         return media
 
 
-def get_all_media(schema: str) -> Set[Path]:
+def get_all_media(schema: str) -> set[Path]:
     media = set()
     schema_media_root = media_root / schema
     cache_dir = schema_media_root / "cache"

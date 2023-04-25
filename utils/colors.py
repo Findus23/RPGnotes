@@ -2,7 +2,6 @@
 colors from https://stackoverflow.com/a/33295456/4398037
 """
 import random
-from typing import Tuple
 
 color_string = """#B88183
 #922329
@@ -284,12 +283,12 @@ def gamma_correction(value: float) -> float:
         return ((value + 0.055) / 1.055) ** 2.4
 
 
-def get_luminance(rgb: Tuple[int, ...]) -> float:
+def get_luminance(rgb: tuple[int, ...]) -> float:
     r, g, b = list(map(gamma_correction, rgb))
     return 0.2126 * r + 0.7152 * g + 0.0722 * b
 
 
-def get_percieved_lightness(rgb: Tuple[int, ...]) -> float:
+def get_percieved_lightness(rgb: tuple[int, ...]) -> float:
     Y = get_luminance(rgb)
     if Y <= (216 / 24389):
         return Y * (24389 / 27)

@@ -12,7 +12,7 @@ class CharacterForm(ModelForm):
                   "archived", "color", "token_image", "large_image"]
 
     def __init__(self, *args, **kwargs):
-        super(CharacterForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['player'].queryset = TenantUser.objects \
             .filter(tenants=connection.get_tenant()) \
             .exclude(pk__in=[1, 2])

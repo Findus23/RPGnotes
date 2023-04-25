@@ -7,7 +7,7 @@ from loot.models import Loot
 from notes.models import Note
 
 
-def name2url() -> Dict[str, str]:
+def name2url() -> dict[str, str]:
     data = {}
     objects = []
     objects.extend(Character.objects.all())

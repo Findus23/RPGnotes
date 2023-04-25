@@ -24,7 +24,7 @@ class SearchResultsView(TemplateView):
         if "q" not in self.request.GET:
             return ""
         query_string = self.request.GET['q']
-        context = super(SearchResultsView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         campaign: Campaign = self.request.tenant
         config = campaign.language
         name_vector = SearchVector('name', weight="A", config=config)

@@ -8,7 +8,7 @@ class Command(BaseCommand):
     help = 'List all campaigns registered on instance'
 
     def __init__(self, *args, **kwargs):
-        super(Command, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def handle(self, *args, **options):
         campaigns = Campaign.objects.all()

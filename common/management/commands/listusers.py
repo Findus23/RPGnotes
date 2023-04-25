@@ -7,7 +7,7 @@ class Command(BaseCommand):
     help = 'List all users registered on instance'
 
     def __init__(self, *args, **kwargs):
-        super(Command, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def handle(self, *args, **options):
         users = TenantUser.objects.all()

@@ -16,4 +16,4 @@ class DescriptionModel(models.Model):
         self.description_html, linked_objects = md_to_html(self.description_md)
         self.linked_objects = ",".join(linked_objects)
 
-        super(DescriptionModel, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)

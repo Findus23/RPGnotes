@@ -16,7 +16,7 @@ class NameSlugModel(models.Model):
             # Newly created object, so set slug
             self.slug = slugify(self.name)
 
-        super(NameSlugModel, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

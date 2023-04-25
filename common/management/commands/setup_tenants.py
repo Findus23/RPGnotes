@@ -11,7 +11,7 @@ class Command(BaseCommand):
     help = 'sets up DTU'
 
     def __init__(self, *args, **kwargs):
-        super(Command, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def handle(self, *args, **options):
         create_public_tenant("test.localhost", "rpgnotes_admin@lw1.at")

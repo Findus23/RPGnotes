@@ -21,7 +21,7 @@ class Command(BaseCommand):
         parser.add_argument('--store', action='store_true')
 
     def __init__(self, *args, **kwargs):
-        super(Command, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def handle(self, *args, **options):
         store = options["store"]
