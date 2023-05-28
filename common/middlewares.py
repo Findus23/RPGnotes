@@ -27,7 +27,7 @@ class AuthMiddleware:
             if request.method in {"GET", "HEAD"} or request.path.startswith("/i18n/setlang"):
                 return self.get_response(request)
             elif not current_user.is_authenticated:
-                r = TemplateResponse(request, "common/demo_readonly.jinja")
+                r = TemplateResponse(request, "common/demo_readonly.jinja", status=405)
                 r.render()
                 return r
         if not current_user.is_authenticated:
