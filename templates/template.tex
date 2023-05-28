@@ -1,0 +1,50 @@
+\RequirePackage[l2tabu, orthodox]{nag} % complain about outdated options
+
+\documentclass[
+a4paper,
+% draft,       %% produce only a draft version (mark lines that need manual edition and don't show graphics)
+bibliography=totoc, % add bibilography to table of contents
+10pt,         %% set default font size to 10 point
+DIV=12, % replace this with a larger number to get less padding around all text (or use calc for the ideal border)
+parskip=half, % how much space between paragraphs. If you prefer indention instead of space between paragraphs remove it
+twoside, % replace with twoside before printing
+BCOR=5mm, %% amount of paper lost in the middle due to binding a book
+british, % language of the document
+%appendixprefix=true % in case you want Appendix A written in front of appendix headings
+listof=totoc
+]{scrbook}
+
+\usepackage[ngerman]{babel}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\pagestyle{headings}
+
+\usepackage[ %
+colorlinks=true,   %% turn on colored links (true is better for on-screen reading, false is better for printout versions)
+linkcolor = blue,
+allcolors=blue,
+bookmarks=true,          %% if true, generate PDF bookmarks (requires two passes of pdflatex)
+bookmarksopen=false,     %% if true, show all PDF bookmarks expanded
+bookmarksnumbered=false, %% if true, add the section numbers to the bookmarks
+%pdfstartpage={1},        %% determines, on which page the PDF file is opened
+%  pdfpagemode=None         %% None, UseOutlines (=show bookmarks), UseThumbs (show thumbnails), FullScreen
+draft=false
+]{hyperref}
+
+
+\begin{document}
+
+\chapter{Timeline}
+
+\BLOCK{for day in days}
+
+\section*{\VAR{day.__str__()|l}}
+
+\VAR{day.description_md|md}
+
+\BLOCK{endfor}
+
+
+\end{document}

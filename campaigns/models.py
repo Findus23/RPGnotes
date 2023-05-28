@@ -5,12 +5,14 @@ from django_tenants.models import DomainMixin
 from tenant_users.tenants.models import TenantBase
 
 from rpg_notes.secrets import DEBUG
-from utils.languages import full_text_languages, full_text_languages_choice
+from utils.languages import full_text_languages_choice
+from utils.random_filename import get_file_path
 
 
 class Campaign(TenantBase):
     name = models.CharField(_("Name"), max_length=1000, unique=True)
     language = models.CharField(_("Language"), max_length=100, choices=full_text_languages_choice)
+    document = models.FileField(_("Document"), upload_to=get_file_path, blank=True, null=True, editable=False)
 
     auto_create_schema = True
 

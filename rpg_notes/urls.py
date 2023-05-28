@@ -20,6 +20,7 @@ urlpatterns = [
     path('loot/', include("loot.urls")),
     path('search/', include("search.urls")),
     path('graph/', include("graph.urls")),
+    path('document/', include("pdf.urls")),
     path('', include("common.urls")),
     path('', include("campaigns.urls"))
 ]

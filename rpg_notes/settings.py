@@ -74,6 +74,7 @@ TENANT_APPS = (
     'notes',
     'search',
     'graph',
+    'pdf',
     'common',
     'simple_history',
 
