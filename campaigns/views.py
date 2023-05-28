@@ -110,8 +110,8 @@ class DraftView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         current_user: TenantUser = self.request.user
         if current_user.is_superuser:
-            return Draft.objects.all()
-        return Draft.objects.filter(author=current_user)
+            return Draft.objects.all().order_by("-created")
+        return Draft.objects.filter(author=current_user).order_by("-created")
 
 
 def export(request: HttpRequest) -> HttpResponse:
