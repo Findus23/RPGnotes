@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-30 14:01+0100\n"
+"POT-Creation-Date: 2023-05-28 12:49+0200\n"
 "PO-Revision-Date: 2022-06-19 14:13+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -54,6 +54,12 @@ msgstr "Startseite"
 msgid "Export"
 msgstr "Export"
 
+#: campaigns/templates/campaigns/campaign_detail.jinja:25
+#: campaigns/templates/campaigns/draftview.jinja:3
+#: campaigns/templates/campaigns/draftview.jinja:6
+msgid "Auto-Saves"
+msgstr "Autosaves"
+
 #: campaigns/templates/campaigns/campaign_edit.jinja:5
 msgid "Add new campaign"
 msgstr "Neue Campagne erstellen"
@@ -67,8 +73,10 @@ msgstr "Hinzufügen"
 msgid ""
 "RPGnotes is an experimental website. To avoid lock-in of campaign data, you "
 "can always export all of your data here:"
-msgstr "RPGnotes ist eine experimentelle Webseite. Damit Campaign-Daten weiterverwendet werden können, "
-"können hier immer alle Daten exportiert werden:"
+msgstr ""
+"RPGnotes ist eine experimentelle Webseite. Damit Campaign-Daten "
+"weiterverwendet werden können, können hier immer alle Daten exportiert "
+"werden:"
 
 #: campaigns/templates/campaigns/campaign_overview.jinja:3
 #: campaigns/templates/campaigns/campaign_overview.jinja:9
@@ -78,6 +86,13 @@ msgstr "Kampagnenübersicht"
 #: campaigns/templates/campaigns/campaign_overview.jinja:14
 msgid "create Campaign"
 msgstr "Campaign erstellen"
+
+#: campaigns/templates/campaigns/draftview.jinja:8
+msgid ""
+"Every 30s a backup of the current editor state is saved. In case text is "
+"lost due to an issue during submission, you can recover your auto-saves here:"
+msgstr "Alle 30s wird ein Backup des Texts im Editor gespeichert. Im Fall, dass der geschriebene Text "
+"aufgrund eines Problems beim Absenden verloren geht, kann man hier die gespeicherten Autosaves finden:"
 
 #: characters/models.py:25
 msgid "Nickname"
@@ -357,7 +372,8 @@ msgid ""
 "You might want to go back to the <a href=\"https://rpgnotes.lw1.at/"
 "\">homepage</a>."
 msgstr ""
-"Du möchtest vielleicht zurück zur <a href=\"https://rpgnotes.lw1.at/\">Startseite</a> gehen."
+"Du möchtest vielleicht zurück zur <a href=\"https://rpgnotes.lw1.at/"
+"\">Startseite</a> gehen."
 
 #: templates/base.jinja:39 templates/tenantbase.jinja:88
 msgid "Log out"

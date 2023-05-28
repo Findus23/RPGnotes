@@ -13,6 +13,7 @@ from campaigns.forms import CampaignForm
 from campaigns.models import Campaign
 from characters.models import Character
 from common.middlewares import demo_campaign_id
+from common.models import Draft
 from days.models import Session, IngameDay
 from factions.models import Faction
 from locations.models import Location
@@ -99,6 +100,18 @@ class CampaignDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class ExportHelpView(TemplateView):
     template_name = "campaigns/campaign_export.jinja"
+
+
+class DraftView(LoginRequiredMixin, generic.ListView):
+    template_name = "campaigns/draftview.jinja"
+    model = Draft
+    context_object_name = "drafts"
+
+    def get_queryset(self):
+        current_user: TenantUser = self.request.user
+        if current_user.is_superuser:
+            return Draft.objects.all()
+        return Draft.objects.filter(author=current_user)
 
 
 def export(request: HttpRequest) -> HttpResponse:

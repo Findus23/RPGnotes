@@ -1,0 +1,28 @@
+{% extends "tenantbase.jinja" %}
+
+{% block title %}{% trans %}Auto-Saves{% endtrans %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans %}Auto-Saves{% endtrans %}</h1>
+
+    <p>{% trans trimmed %}
+        Every 30s a backup of the current editor state is saved. In case text is lost due to an issue during submission,
+        you can recover your auto-saves here:
+    {% endtrans %}</p>
+
+    {% for draft in drafts %}
+        <div class="draft">
+            <label for="draft-{{ draft.id }}" class="form-label">
+                {% if user.is_superuser %}
+                    {{ draft.author }}:
+                {% endif %}
+                {{ draft.created|date("DATETIME_FORMAT") }}
+            </label>
+            <textarea readonly class="form-control"
+                      id="draft-{{ draft.id }}"
+                      rows="3"
+            >{{ draft.description_md }}</textarea>
+        </div>
+    {% endfor %}
+
+{% endblock %}
