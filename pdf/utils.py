@@ -64,8 +64,11 @@ def generate_pdf(data, tenant: Campaign):
         print(latex)
         (dir / "document.tex").write_text(latex)
         out = subprocess.run(["latexmk", "-pdf", "-interaction=batchmode", "document.tex"],
-                             cwd=dir, check=True, capture_output=True)
+                             cwd=dir, check=False, capture_output=True)
         print(out.stdout.decode())
+        if out.returncode != 0:
+            print((dir/"document.log").read_text())
+            raise RuntimeError("LaTeX failed")
         pdf_file = dir / "document.pdf"
         webbrowser.open(str(pdf_file))
         with pdf_file.open("rb") as f:
@@ -73,6 +76,6 @@ def generate_pdf(data, tenant: Campaign):
 
 
 def create_document(tenant: Campaign):
-    data = {"days": IngameDay.objects.all()}
+    data = {"days": IngameDay.objects.all().order_by("-day")}
 
     generate_pdf(data, tenant)
