@@ -89,6 +89,9 @@ footer {
       text-align: center;
     }
   }
+.navbar {
+  border-top: solid var(--bs-navbar-active-color) 2px;
+}
 }
 
 @for $i from 1 through 10 {

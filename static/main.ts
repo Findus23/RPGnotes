@@ -1,6 +1,7 @@
 import 'vite/modulepreload-polyfill'
 
 // import "./scss/main.scss"
+import "./js/colortheme"
 import "./js/sentry"
 // @ts-ignore
 import {default as Dropdown} from 'bootstrap/js/src/dropdown'
