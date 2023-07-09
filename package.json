@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "colortheme":"esbuild static/colortheme/colortheme.ts --bundle --minify --sourcemap --outdir=static/colortheme/"
   },
   "dependencies": {
     "@codemirror/autocomplete": "^6.1.0",

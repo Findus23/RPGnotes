@@ -14,7 +14,7 @@ export default defineConfig({
             // overwrite default .html entry
             input: {
                 "main": 'static/main.ts',
-                "colortheme": 'static/js/colortheme.ts',
+                // "colortheme": 'static/js/colortheme.ts',
                 // "tenantbase": 'static/tenantbase.js',
                 // "editor": 'static/editor.js'
             },
