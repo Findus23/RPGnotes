@@ -19,6 +19,7 @@ from factions.models import Faction
 from locations.models import Location
 from loot.models import Loot, LootType
 from notes.models import Note
+from rpg_notes.settings import HOME_DOMAIN_URL
 from users.models import TenantUser
 
 
@@ -95,7 +96,7 @@ class CampaignDeleteView(LoginRequiredMixin, generic.DeleteView):
     def delete(self, request, *args, **kwargs):
         self.object: Campaign = self.get_object()
         self.object.delete_tenant()
-        return redirect("http://test.localhost:8000/")
+        return redirect(HOME_DOMAIN_URL)
 
 
 class ExportHelpView(TemplateView):
