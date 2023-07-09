@@ -1,9 +1,10 @@
 from django.contrib.auth.views import redirect_to_login
 from django.core.exceptions import PermissionDenied
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponseRedirect
 from django.template.response import TemplateResponse
 
 from campaigns.models import Campaign
+from rpg_notes.secrets import HOME_DOMAIN_URL
 from rpg_notes.settings import DEBUG
 from users.models import TenantUser
 
@@ -30,6 +31,9 @@ class AuthMiddleware:
                 r = TemplateResponse(request, "common/demo_readonly.jinja", status=405)
                 r.render()
                 return r
+        if tenant.pk != 1 and request.path.startswith("/password_reset/"):
+            # password reset should always been done on the main domain
+            return HttpResponseRedirect(HOME_DOMAIN_URL + request.path)
         if not current_user.is_authenticated:
             return redirect_to_login(request.get_full_path())
         if not current_user.tenants.filter(pk=tenant.pk).exists():
