@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-28 12:49+0200\n"
+"POT-Creation-Date: 2023-07-09 20:22+0200\n"
 "PO-Revision-Date: 2022-06-19 14:13+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -18,14 +18,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.1\n"
 
-#: campaigns/models.py:12 common/models/nameslugmodel.py:8 loot/models.py:24
+#: campaigns/models.py:13 common/models/nameslugmodel.py:8 loot/models.py:24
 #: users/models.py:10
 msgid "Name"
 msgstr "Name"
 
-#: campaigns/models.py:13
+#: campaigns/models.py:15
 msgid "Language"
 msgstr "Sprache"
+
+#: campaigns/models.py:16
+msgid "This is needed for the full text search to work optimally."
+msgstr "Dies wird benötigt, damit die Volltextsuche optimal funktioniert."
+
+#: campaigns/models.py:18
+msgid "Document"
+msgstr "Dokument"
 
 #: campaigns/templates/campaigns/campaign_detail.jinja:8
 msgid "Players"
@@ -91,8 +99,10 @@ msgstr "Campaign erstellen"
 msgid ""
 "Every 30s a backup of the current editor state is saved. In case text is "
 "lost due to an issue during submission, you can recover your auto-saves here:"
-msgstr "Alle 30s wird ein Backup des Texts im Editor gespeichert. Im Fall, dass der geschriebene Text "
-"aufgrund eines Problems beim Absenden verloren geht, kann man hier die gespeicherten Autosaves finden:"
+msgstr ""
+"Alle 30s wird ein Backup des Texts im Editor gespeichert. Im Fall, dass der "
+"geschriebene Text aufgrund eines Problems beim Absenden verloren geht, kann "
+"man hier die gespeicherten Autosaves finden:"
 
 #: characters/models.py:25
 msgid "Nickname"
@@ -342,11 +352,11 @@ msgstr "Notizen"
 msgid "Add Note"
 msgstr "Notiz hinzufügen"
 
-#: rpg_notes/settings.py:197
+#: rpg_notes/settings.py:198
 msgid "German"
 msgstr "Deutsch"
 
-#: rpg_notes/settings.py:198
+#: rpg_notes/settings.py:199
 msgid "English"
 msgstr "Englisch"
 
@@ -375,11 +385,11 @@ msgstr ""
 "Du möchtest vielleicht zurück zur <a href=\"https://rpgnotes.lw1.at/"
 "\">Startseite</a> gehen."
 
-#: templates/base.jinja:39 templates/tenantbase.jinja:88
+#: templates/base.jinja:41 templates/tenantbase.jinja:113
 msgid "Log out"
 msgstr "Abmelden"
 
-#: templates/base.jinja:41 templates/common/homepage.jinja:20
+#: templates/base.jinja:43 templates/common/homepage.jinja:20
 #: templates/registration/login.jinja:21
 msgid "Log in"
 msgstr "Anmelden"
@@ -477,6 +487,18 @@ msgstr "Los!"
 #: templates/tenantbase.jinja:80 users/templates/users/edit.jinja:5
 msgid "Edit User Account"
 msgstr "Benutzerkonto bearbeiten"
+
+#: templates/tenantbase.jinja:90
+msgid "Light Theme"
+msgstr "Helles Theme"
+
+#: templates/tenantbase.jinja:96
+msgid "Dark Theme"
+msgstr "Dunkles Theme"
+
+#: templates/tenantbase.jinja:102
+msgid "System Theme"
+msgstr "System Theme"
 
 #: users/models.py:16
 msgid "Email Address"

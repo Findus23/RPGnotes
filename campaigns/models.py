@@ -11,7 +11,10 @@ from utils.random_filename import get_file_path
 
 class Campaign(TenantBase):
     name = models.CharField(_("Name"), max_length=1000, unique=True)
-    language = models.CharField(_("Language"), max_length=100, choices=full_text_languages_choice)
+    language = models.CharField(
+        _("Language"), max_length=100, choices=full_text_languages_choice,
+        help_text=_("This is needed for the full text search to work optimally.")
+    )
     document = models.FileField(_("Document"), upload_to=get_file_path, blank=True, null=True, editable=False)
 
     auto_create_schema = True
