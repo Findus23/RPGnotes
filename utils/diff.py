@@ -12,7 +12,11 @@ def print_diff_call(str1: str, str2: str, title: str) -> None:
             tmp1.flush()
             tmp2.write(str2)
             tmp2.flush()
-            subprocess.run(["git", "--no-pager", "diff", "--color-words=.", tmp1.name, tmp2.name])
+            out = subprocess.run(
+                ["git", "--no-pager", "diff", "--color-words=.", tmp1.name, tmp2.name],
+                capture_output=True
+            )
+            print(out.stdout.decode())
 
 
 def print_diff(str1: str, str2: str) -> None:

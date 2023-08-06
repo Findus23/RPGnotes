@@ -1,11 +1,36 @@
 from decimal import Decimal
 
 from django.test import SimpleTestCase
+from django_tenants.test.cases import FastTenantTestCase
 
+from loot.models import Loot
+from users.models import TenantUser
 from utils.assets import get_css
 from utils.colors import gamma_correction, get_percieved_lightness, is_bright_color
-from utils.markdown import md_to_html
+from utils.markdown import md_to_html, autolink
 from utils.money import format_money
+from utils.urls import name2url
+
+
+class BaseTest(FastTenantTestCase):
+    @classmethod
+    def setup_tenant(cls, tenant):
+        # Creates the tenant user needed to set up tenant.owner_id
+
+        tenant_user = TenantUser.objects.get_or_create(email="test@example.com")
+        tenant.name = "public"
+        tenant.email = "test2@example.com"
+
+        # For django-tenant-users
+
+        tenant.owner_id = 1
+        tenant.tenants = [1]
+        return tenant
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.setUpTestData()
 
 
 class ColorsTests(SimpleTestCase):
@@ -43,6 +68,30 @@ class MarkdownTests(SimpleTestCase):
             md_to_html(
                 "<script>console.log()</script> <a onclick='console.log()'>Hi</button>", replacements={})[0],
             "&lt;script&gt;console.log()&lt;/script&gt;\n<p><a>Hi&lt;/button&gt;</a></p>"
+        )
+
+
+class AutoLinkTests(BaseTest):
+    @classmethod
+    def setUpTestData(cls):
+        cls.some_loot = Loot.objects.create(name="Torches", quantity=2, value_gold=0.2)
+
+    def test_name2url(self):
+        self.assertEqual(
+            name2url(),
+            {'Torches': ('/loot/1/edit', self.some_loot)}
+        )
+
+    def test_autolink(self):
+        self.assertEqual(
+            autolink("these Torches"),
+            ("these [Torches](/loot/1/edit)", {"loo1"})
+        )
+
+    def test_basic_markdown(self):
+        self.assertHTMLEqual(
+            md_to_html("most Torches we found")[0],
+            '<p>most<a href="/loot/1/edit">Torches</a>we found</p>'
         )
 
 

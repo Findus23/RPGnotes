@@ -1,9 +1,11 @@
 from django_tenants.test.cases import TenantTestCase
+
+from common.tests import BaseTest
 # Create your tests here.
 from loot.models import Loot
 
 
-class LootTests(TenantTestCase):
+class LootTests(BaseTest):
 
     @classmethod
     def setUpTestData(cls):

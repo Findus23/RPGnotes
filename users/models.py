@@ -38,3 +38,11 @@ class TenantUser(UserProfile):
     @property
     def graphkey(self):
         return f"use{self.pk}"
+
+    @property
+    def groups(self):
+        return self.tenant_perms.groups
+
+    @property
+    def user_permissions(self):
+        return self.tenant_perms.user_permissions
