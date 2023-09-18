@@ -18,7 +18,7 @@ sorl-thumbnail = "^12.7.0"
 libsass = "^0.22.0"
 django-debug-toolbar = "^4.0.0"
 django-tenants = "^3.3.2"
-django-tenant-users = {git = "https://github.com/Corvia/django-tenant-users.git"}
+django-tenant-users = "^1.2.0"
 django-axes = {extras = ["ipware"], version = "^6.1.0"}
 django-registration = "^3.2"
 django-csp = "^3.7"
