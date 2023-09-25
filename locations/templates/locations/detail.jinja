@@ -34,6 +34,16 @@
                         </li>
                     </ol>
                 </nav>
+
+                {% if location.aliases %}
+                    <p>{% trans %}Also known as:{% endtrans %}</p>
+                    <ul>
+                        {% for alias in location.aliases %}
+                            <li>{{ alias }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
             </div>
 
             <dl>
