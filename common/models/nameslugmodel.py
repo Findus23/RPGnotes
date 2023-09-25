@@ -1,4 +1,3 @@
-from django.contrib.postgres.indexes import GinIndex
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
@@ -15,6 +14,7 @@ class NameSlugModel(models.Model):
         if not self.id or True:
             # Newly created object, so set slug
             self.slug = slugify(self.name)
+            assert len(self.slug) > 0
 
         super().save(*args, **kwargs)
 
