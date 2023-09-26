@@ -1,6 +1,6 @@
 from django_jinja import library
 from sorl.thumbnail import get_thumbnail
-from sorl.thumbnail.templatetags.thumbnail import resolution
+from sorl.thumbnail.templatetags.thumbnail import resolution, is_portrait as is_portrait_original
 
 from rpg_notes import settings
 
@@ -8,7 +8,20 @@ from rpg_notes import settings
 @library.global_function
 def thumbnail(*args, **kwargs):
     kwargs["upscale"] = False
+    size = args[1]
+    file = args[0]
+    if "x" not in size:
+        if is_portrait_original(file):
+            size = f"x{size}"
+            args = list(args)
+            args[1] = size
+            args = tuple(args)
     return get_thumbnail(*args, **kwargs)
+
+
+@library.filter
+def is_portrait(file):
+    return is_portrait_original(file)
 
 
 @library.filter

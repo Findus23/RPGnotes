@@ -42,7 +42,7 @@
                     <dd><a href="{{ note.part_of.get_absolute_url() }}">{{ note.part_of }}</a></dd>
                 {% endif %}
                 {% if note.image %}
-                    {% set im=thumbnail(note.image, "860", crop="center") %}
+                    {% set im=thumbnail(note.image, "500", crop="center") %}
                     <a href="{{ note.image.url }}" class="image-viewer">
                         <img class="img-fluid" src="{{ im.url }}"
                              width="{{ im.width }}"

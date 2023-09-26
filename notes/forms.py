@@ -6,4 +6,4 @@ from notes.models import Note
 class NoteForm(ModelForm):
     class Meta:
         model = Note
-        fields = ["name", "aliases", "description_md", "parent"]
+        fields = ["name", "aliases", "description_md", "parent", "image"]
