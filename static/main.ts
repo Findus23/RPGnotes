@@ -14,11 +14,17 @@ import "./js/gallery"
 
 const bootstrapModules = [Collapse, Dropdown]
 
-document.addEventListener('DOMContentLoaded', function () {
+function init(): void {
     if (document.getElementById("id_description_md")) {
         import ("./js/codemirror").then(value => console.log("loaded"))
     }
     if (document.getElementById("graph")) {
         import ("./js/graph").then(value => console.log("graph loaded"))
     }
-})
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init)
+} else {
+    init()
+}
