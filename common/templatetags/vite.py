@@ -23,7 +23,7 @@ Manifest = dict[str, Asset]
 
 @lru_cache
 def load_vite_manifest() -> Manifest:
-    with (Path(STATIC_ROOT) / "build" / "manifest.json").open() as f:
+    with (Path(STATIC_ROOT) / "build" / ".vite" / "manifest.json").open() as f:
         return json.load(f)
 
 
