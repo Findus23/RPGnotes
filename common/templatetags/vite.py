@@ -7,7 +7,7 @@ from typing import TypedDict
 from django.templatetags.static import static
 from django_jinja import library
 
-from rpg_notes.settings import STATIC_ROOT
+from rpg_notes.secrets import STATICFILES_DIRS
 
 
 class Asset(TypedDict):
@@ -23,7 +23,7 @@ Manifest = dict[str, Asset]
 
 @lru_cache
 def load_vite_manifest() -> Manifest:
-    with (Path(STATIC_ROOT) / "build" / ".vite" / "manifest.json").open() as f:
+    with (Path(STATICFILES_DIRS[0]) / "build" / ".vite" / "manifest.json").open() as f:
         return json.load(f)
 
 
