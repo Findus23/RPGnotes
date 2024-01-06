@@ -89,9 +89,10 @@ footer {
       text-align: center;
     }
   }
-.navbar {
-  border-top: solid var(--bs-navbar-active-color) 2px;
-}
+
+  .navbar {
+    border-top: solid var(--bs-navbar-active-color) 2px;
+  }
 }
 
 @for $i from 1 through 10 {
@@ -128,4 +129,9 @@ footer {
 
 .draft {
   margin-bottom: 2rem;
+}
+
+.popover-image img{
+  width: 100%;
+  height: auto;
 }

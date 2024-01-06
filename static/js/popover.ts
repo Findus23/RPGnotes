@@ -1,6 +1,7 @@
 // @ts-ignore
 import {default as Popover} from "bootstrap/js/src/popover";
-// import type {Popover as PopoverType} from "bootstrap";
+import type {Popover as PopoverType} from "bootstrap";
+
 
 const popoverTriggerList: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('.content a')
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
@@ -9,22 +10,35 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
     if (popoverTriggerEl.host !== window.location.host) {
         return
     }
-    const popover = new Popover(popoverTriggerEl, {
+    const popover: PopoverType = new Popover(popoverTriggerEl, {
         content: "test",
         title: "title",
         trigger: 'hover focus',
         placement: "bottom",
-        sanitize: false,
-        sanitizeFn: (a: string) => a
+        sanitize: true,
+        html: true,
+        template: '<div class="popover" role="tooltip">' +
+            '<div class="popover-arrow"></div>' +
+            '<h3 class="popover-header"></h3>' +
+            '<div class="popover-image"></div>' +
+            '<div class="popover-body"></div>' +
+            '</div>',
     });
     popoverTriggerEl.addEventListener('inserted.bs.popover', (e) => {
         console.log("shown")
         fetch(popoverTriggerEl.href + "?format=json").then(response => response.json())
-            .then(data => {
-                popover.setContent({
-                    '.popover-header': data["name"],
-                    '.popover-body': data["description"]
-                })
+            .then((data: PopoverResponse) => {
+                const content :{ [el: string]: string } ={
+                    '.popover-header': data.name,
+                    '.popover-body': data.description
+                }
+                if (data.image) {
+                    const img = document.createElement("img")
+                    img.src = data.image
+                    img.style.width="100%"
+                    content[".popover-image"] = img.outerHTML;
+                }
+                popover.setContent(content)
             });
     }, {once: true})
 
