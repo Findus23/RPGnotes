@@ -1,7 +1,7 @@
 // @ts-ignore
 import {default as Popover} from "bootstrap/js/src/popover";
 import type {Popover as PopoverType} from "bootstrap";
-
+import {PopoverResponse} from "../types/own";
 
 const popoverTriggerList: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('.content a')
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
