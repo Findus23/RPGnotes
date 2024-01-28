@@ -18,6 +18,8 @@ class TenantUser(UserProfile):
         db_index=True,
     )
 
+    is_known = models.BooleanField(default=False)
+
     class Meta:
         ordering = ["name"]
 

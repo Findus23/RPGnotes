@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-09 20:22+0200\n"
+"POT-Creation-Date: 2024-01-28 15:43+0100\n"
 "PO-Revision-Date: 2022-06-19 14:13+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.1\n"
 
-#: campaigns/models.py:13 common/models/nameslugmodel.py:8 loot/models.py:24
+#: campaigns/models.py:13 common/models/nameslugmodel.py:7 loot/models.py:24
 #: users/models.py:10
 msgid "Name"
 msgstr "Name"
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Campaign Overview"
 msgstr "Kampagnenübersicht"
 
-#: campaigns/templates/campaigns/campaign_overview.jinja:14
+#: campaigns/templates/campaigns/campaign_overview.jinja:29
 msgid "create Campaign"
 msgstr "Campaign erstellen"
 
@@ -177,6 +177,7 @@ msgid "Edit"
 msgstr "Bearbeiten"
 
 #: characters/templates/characters/detail.jinja:43
+#: locations/templates/locations/detail.jinja:39
 msgid "Also known as:"
 msgstr "Auch bekannt als:"
 
@@ -240,7 +241,7 @@ msgstr "Fraktion hinzufügen"
 msgid "Members"
 msgstr "Mitglieder"
 
-#: locations/models.py:19 locations/templates/locations/detail.jinja:41
+#: locations/models.py:19 locations/templates/locations/detail.jinja:51
 #: notes/models.py:19 notes/templates/notes/detail.jinja:41
 msgid "Part of"
 msgstr "Teil von"
@@ -257,7 +258,7 @@ msgstr "Orte"
 msgid "Add Location"
 msgstr "Ort hinzufügen"
 
-#: locations/templates/locations/detail.jinja:45
+#: locations/templates/locations/detail.jinja:55
 msgid "Contains"
 msgstr "Enthält"
 
@@ -393,6 +394,10 @@ msgstr "Abmelden"
 #: templates/registration/login.jinja:21
 msgid "Log in"
 msgstr "Anmelden"
+
+#: templates/common/demo_readonly.jinja:5
+msgid "Can't edit demo instance"
+msgstr "Demo-Kampagne kann nicht bearbeitet werden"
 
 #: templates/common/demo_readonly.jinja:8
 msgid ""

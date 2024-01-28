@@ -8,6 +8,21 @@
     {% if user %}
         <h1>{% trans %}Campaign Overview{% endtrans %}</h1>
     {% endif %}
+    {% if not user.is_known %}
+        <div class="alert alert-primary" role="alert">
+            <p>Thank you for checking out RPGnotes!</p>
+            <p>
+                This website is mostly used to manage the D&D campaign of my friend group.
+                But nevertheless everyone else is also welcome to use it to keep an overview over their RPG games.
+                Just keep in mind that many features are a bit experimental
+                and not everything is jet possible to change in the UI
+                (most importantly only I can add users to a campaign for now).
+                <br>Also, I really don't want someone else's notes to be locked into my website,
+                so you can always export everything with one click.
+            </p>
+            <p>When in doubt, feel free to e-mail me at <a href="mailto:rpgnotes@lw1.at">rpgnotes@lw1.at</a>.</p>
+        </div>
+    {% endif %}
     {% for campaign in campaigns %}
         <h2><a href="{{ campaign.get_absolute_url() }}">{{ campaign.name }}</a></h2>
     {% endfor %}
