@@ -3,6 +3,7 @@ name = "rpgnotes"
 version = "0.1.0"
 description = ""
 authors = ["Lukas Winkler <git@lw1.at>"]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
