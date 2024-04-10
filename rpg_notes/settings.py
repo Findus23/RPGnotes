@@ -304,6 +304,6 @@ if not DEBUG:
             dsn=SENTRY_DSN,
             integrations=[DjangoIntegration()],
             auto_session_tracking=False,
-            traces_sample_rate=0.01,
+            traces_sample_rate=0.05,
             release=commit
         )
