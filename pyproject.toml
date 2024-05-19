@@ -8,7 +8,7 @@ package-mode = false
 [tool.poetry.dependencies]
 python = "^3.11"
 Django = {extras = ["argon2"], version = "^5.0.0"}
-psycopg2 = "^2.9.1"
+psycopg = {extras = ["c", "pool"], version = "^3.1.19"}
 django-simple-history = "^3.0.0"
 django-bootstrap5 = "^24.2"
 Markdown = "^3.3.4"
