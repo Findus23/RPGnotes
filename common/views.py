@@ -7,7 +7,12 @@ from django.views.generic import TemplateView
 from ipware import get_client_ip
 from sentry_sdk import last_event_id
 
+from characters.models import Character
 from common.models import Draft
+from factions.models import Faction
+from locations.models import Location
+from loot.models import Loot
+from notes.models import Note
 from rpg_notes.secrets import SENTRY_DSN
 from utils.assets import get_css, get_file_hash
 
@@ -49,6 +54,42 @@ def save_draft(request: HttpRequest) -> HttpResponse:
     return JsonResponse({
         "message": "saved"
     })
+
+
+def name_completions(request: HttpRequest) -> HttpResponse:
+    response_data = []
+
+    for obj in (list(Location.objects.all()) +
+                list(Note.objects.all()) +
+                list(Faction.objects.all()) +
+                list(Loot.objects.all())):
+        response_data.append({
+            "name": obj.name
+        })
+        if obj.aliases:
+            for alias in obj.aliases:
+                response_data.append({
+                    "name": alias,
+                    "details":obj.name
+                })
+    for char in Character.objects.all():
+        response_data.append({
+            "name": char.name,
+            "details": char.subtitle
+        })
+        if char.aliases:
+            for alias in char.aliases:
+                response_data.append({
+                    "name": alias,
+                    "details":char.name
+                })
+
+
+    response = JsonResponse({
+        "suggestions": response_data
+    })
+    response['Cache-Control'] = f'max-age={24 * 60 * 60}'
+    return response
 
 
 @condition(etag_func=calc_etag)

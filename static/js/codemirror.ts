@@ -1,6 +1,12 @@
 import {EditorView, minimalSetup} from "codemirror"
-import {markdownLanguage} from "@codemirror/lang-markdown"
+import {markdown, markdownLanguage} from "@codemirror/lang-markdown"
 import {foldGutter} from "@codemirror/language";
+import {
+    autocompletion,
+    Completion,
+    CompletionContext,
+    CompletionResult
+} from "@codemirror/autocomplete"
 
 interface DraftSaveResponse {
     message: string
@@ -25,6 +31,53 @@ ids.forEach(function (id) {
     //     color: "red",
     //     colorLight: "lightred"
     // })
+
+    interface Element {
+        name: string,
+        details?: string
+    }
+
+    interface HTTPResponse {
+        suggestions: Element[]
+    }
+
+    let names: Element[] = []
+    fetch("/api/suggestions", {})
+        .then(response => response.json())
+        .then((data: HTTPResponse) => {
+            names = data.suggestions
+        })
+
+    function myCompletions(context: CompletionContext): CompletionResult | null {
+        if (names.length == 0) {
+            return null
+        }
+        let word
+        if (!context.explicit) {
+            word = context.matchBefore(/@\w*/)
+
+        } else {
+            word = context.matchBefore(/\w*/)
+        }
+        if (!word) {
+            return null
+        }
+        if (word.from == word.to)
+            return null
+
+        const options = names.map((s: Element): Completion => ({
+            label: "@" + s.name,
+            apply: s.name,
+            displayLabel: s.name,
+            detail: s.details
+        }))
+        return {
+            from: word.from,
+            options: options
+        }
+    }
+
+
     const labelEl = element.labels[0]
     const div = document.createElement("div")
     element.style.display = "none"
@@ -33,7 +86,11 @@ ids.forEach(function (id) {
         extensions: [
             minimalSetup,
             foldGutter(),
-            markdownLanguage,
+            markdown({base: markdownLanguage}),
+            autocompletion({
+                activateOnTyping: true,
+                override: [myCompletions],
+            }),
             EditorView.lineWrapping,
             EditorView.contentAttributes.of({spellcheck: "true"}),
             // yCollab(ytext, provider.awareness, {undoManager})
@@ -44,31 +101,31 @@ ids.forEach(function (id) {
     element.form!.addEventListener("submit", () => {
         element.value = view.state.doc.toString()
     })
-    // const easyMDE = new EasyMDE({
-    //     element: element,
-    //     forceSync: true, // for "required" to work
-    //     spellChecker: false,
-    //     nativeSpellcheck: true,
-    //     autoDownloadFontAwesome: false,
-    //     autosave: {
-    //         delay: 1000,
-    //         submit_delay: 5000,
-    //         timeFormat: {
-    //             locale: 'de-AT',
-    //             format: {
-    //                 year: 'numeric',
-    //                 month: 'long',
-    //                 day: '2-digit',
-    //                 hour: '2-digit',
-    //                 minute: '2-digit',
-    //                 second: '2-digit',
-    //             },
-    //         },
-    //     },
-    //     inputStyle: "contenteditable",
-    //     status: ["lines", "words", "cursor", "saveStatus"],
-    // });
-    // window.editor = easyMDE
+// const easyMDE = new EasyMDE({
+//     element: element,
+//     forceSync: true, // for "required" to work
+//     spellChecker: false,
+//     nativeSpellcheck: true,
+//     autoDownloadFontAwesome: false,
+//     autosave: {
+//         delay: 1000,
+//         submit_delay: 5000,
+//         timeFormat: {
+//             locale: 'de-AT',
+//             format: {
+//                 year: 'numeric',
+//                 month: 'long',
+//                 day: '2-digit',
+//                 hour: '2-digit',
+//                 minute: '2-digit',
+//                 second: '2-digit',
+//             },
+//         },
+//     },
+//     inputStyle: "contenteditable",
+//     status: ["lines", "words", "cursor", "saveStatus"],
+// });
+// window.editor = easyMDE
     const originalLabel = labelEl.innerText
     setInterval(function () {
         const content = view.state.doc.toString();
@@ -88,4 +145,5 @@ ids.forEach(function (id) {
         })
 
     }, 1000 * 30)
-});
+})
+;

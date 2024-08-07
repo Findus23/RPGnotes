@@ -3,9 +3,9 @@ import 'vite/modulepreload-polyfill'
 // import "./scss/main.scss"
 import "./js/sentry"
 // @ts-ignore
-import {default as Dropdown} from 'bootstrap/js/src/dropdown'
+import Dropdown from 'bootstrap/js/src/dropdown'
 // @ts-ignore
-import {default as Collapse} from 'bootstrap/js/src/collapse'
+import Collapse from 'bootstrap/js/src/collapse'
 
 import "./js/autocomplete"
 import "./js/popover"
