@@ -32,9 +32,9 @@
     "yjs": "^13.5.41"
   },
   "devDependencies": {
-    "@types/bootstrap": "^5.2.1",
+    "@types/bootstrap": "^5.2.10",
+    "dts-gen": "^0.10.1",
     "rollup-plugin-visualizer": "^5.7.1",
-    "sass": "^1.54.0",
-    "dts-gen": "^0.10.1"
+    "sass": "^1.54.0"
   }
 }
