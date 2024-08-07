@@ -30,9 +30,6 @@ class JSONResponseMixin:
         if isinstance(object, Location):
             if object.parent:
                 description_list.append(f"in {object.parent}")
-        elif isinstance(object, Character):
-            if object.subtitle:
-                description_list.append(object.subtitle)
         elif isinstance(object, Loot):
             if object.owner:
                 description_list.append(object.owner.name)

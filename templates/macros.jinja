@@ -17,7 +17,9 @@
                    href="{{ character.get_absolute_url() }}">
                     {{ character.name }}
                 </a>
-                <div>{{ character.subtitle }}</div>
+                {% if character.subtitle %}
+                    <div>{{ character.subtitle }}</div>
+                {% endif %}
             </div>
         </div>
     </li>

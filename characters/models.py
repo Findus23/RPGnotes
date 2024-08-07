@@ -25,7 +25,6 @@ class Character(NameSlugModel, DescriptionModel, AliasModel, HistoryModel):
         models.CharField(_("Nickname"), max_length=100),
         verbose_name=_("Aliases"), blank=True, null=True
     )
-    subtitle = models.CharField(_("Subtitle"), max_length=100, blank=True)
     player = models.ForeignKey(
         AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True,
         related_name="characters", verbose_name=_("Player"),
@@ -82,3 +81,13 @@ class Character(NameSlugModel, DescriptionModel, AliasModel, HistoryModel):
     @property
     def graphkey(self):
         return f"cha{self.pk}"
+
+    @property
+    def subtitle(self) -> str | None:
+        lines = self.description_md.splitlines()
+        if len(lines) == 0:
+            return None
+        first_line = lines[0]
+        if len(first_line) > 100:
+            return first_line[:100] + "…"
+        return first_line
