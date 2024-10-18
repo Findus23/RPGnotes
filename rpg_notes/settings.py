@@ -283,7 +283,7 @@ if not DEBUG:
     AXES_COOLOFF_TIME = timedelta(hours=1)
     AXES_FAILURE_LIMIT = 6
 
-    STORAGES["staticfile"]["BACKEND"] = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+    STORAGES["staticfiles"]["BACKEND"] = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     LOGGING = {
         'version': 1,
