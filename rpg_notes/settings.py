@@ -97,7 +97,14 @@ AUTHENTICATION_BACKENDS = (
 
 SESSION_COOKIE_DOMAIN = DOMAIN_WITH_DOT
 
-DEFAULT_FILE_STORAGE = "django_tenants.files.storage.TenantFileSystemStorage"
+STORAGES = {
+    "default": {
+        "BACKEND": "django_tenants.files.storage.TenantFileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    }
+}
 
 MIDDLEWARE = [
     'django_tenants.middleware.main.TenantMainMiddleware',
@@ -276,7 +283,7 @@ if not DEBUG:
     AXES_COOLOFF_TIME = timedelta(hours=1)
     AXES_FAILURE_LIMIT = 6
 
-    STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+    STORAGES["staticfile"]["BACKEND"] = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     LOGGING = {
         'version': 1,

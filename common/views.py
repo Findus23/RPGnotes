@@ -4,7 +4,6 @@ from django.http import HttpResponse, HttpRequest, HttpResponseBadRequest, JsonR
 from django.shortcuts import render
 from django.views.decorators.http import condition
 from django.views.generic import TemplateView
-from ipware import get_client_ip
 from sentry_sdk import last_event_id
 
 from characters.models import Character
@@ -23,11 +22,6 @@ class PublicHomepageView(TemplateView):
 
 class LanguageSelectView(TemplateView):
     template_name = "common/languageselect.jinja"
-
-
-def print_ip(request: HttpRequest) -> HttpResponse:
-    client_ip, is_routable = get_client_ip(request)
-    return HttpResponse(repr(client_ip), content_type="text/plain")
 
 
 def calc_etag(*args, **kwargs):
