@@ -9,8 +9,15 @@
                     {{ macros.character_pillar(c) }}
                 {% endfor %}
             </ul>
+            <hr style="margin:0">
             <ul class="nav nav-pills flex-column">
                 {% for c in npcs %}
+                    {{ macros.character_pillar(c) }}
+                {% endfor %}
+            </ul>
+            <hr style="margin:0">
+            <ul class="nav nav-pills flex-column">
+                {% for c in npcs_archived %}
                     {{ macros.character_pillar(c) }}
                 {% endfor %}
             </ul>

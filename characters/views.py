@@ -25,7 +25,12 @@ class CharacterDetailView(JSONResponseMixin, generic.DetailView):
             player__isnull=False
         ).select_related()
         data["npcs"] = Character.objects.filter(
-            player__isnull=True
+            player__isnull=True,
+            archived=False
+        ).select_related()
+        data["npcs_archived"] = Character.objects.filter(
+            player__isnull=True,
+            archived=True
         ).select_related()
         return data
 
