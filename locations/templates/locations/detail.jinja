@@ -44,6 +44,15 @@
                     </ul>
                 {% endif %}
 
+                {% if location.character_set.all() %}
+                    <p>{% trans %}See Also:{% endtrans %}</p>
+                    <ul class="see-also">
+                        {% for character in location.character_set.all() %}
+                            <li><a href="{{ character.get_absolute_url() }}">{{ character }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
             </div>
 
             <dl>

@@ -3,7 +3,7 @@ import {default as Popover} from "bootstrap/js/src/popover";
 import type {Popover as PopoverType} from "bootstrap";
 import {PopoverResponse} from "../types/own";
 
-const popoverTriggerList: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('.content a')
+const popoverTriggerList: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('.content a, .see-also a')
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
     console.log(popoverTriggerEl.host)
     console.log(popoverTriggerEl.href.startsWith("htt"))
