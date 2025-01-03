@@ -5,7 +5,7 @@ from days.models import Session, IngameDay
 
 class DayForm(ModelForm):
     sessions = ModelMultipleChoiceField(
-        queryset=Session.objects.all(),
+        queryset=Session.objects.all().order_by("-date"),
         widget=CheckboxSelectMultiple()
     )
 
