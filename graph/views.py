@@ -27,6 +27,8 @@ class Graph:
             "attributes": {
                 "label": label,
                 "size": 10,
+                "x": 0,
+                "y": 0,
                 "url": el.get_absolute_url() if hasattr(el, "get_absolute_url") else "/"
             }
         })
