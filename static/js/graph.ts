@@ -2,7 +2,7 @@ import Sigma from "sigma";
 import FA2Layout from 'graphology-layout-forceatlas2/worker';
 import Graph from "graphology";
 import random from 'graphology-layout/random';
-import forceAtlas2 from "graphology-layout-forceatlas2";
+import forceAtlas2, {ForceAtlas2Settings} from "graphology-layout-forceatlas2";
 
 const container = document.getElementById("graph")!
 
@@ -18,7 +18,7 @@ fetch('/graph/graph')
         graph.import(data)
         random.assign(graph);
         const sensibleSettings = forceAtlas2.inferSettings(graph);
-        console.log(sensibleSettings);
+        console.log("sensibleSettings", sensibleSettings);
         layout.start();
     });
 
@@ -29,14 +29,17 @@ function parseBool(value: string | null): boolean {
     return value?.toLowerCase() === "true";
 }
 
+const settings: ForceAtlas2Settings = {
+    gravity: parseFloat(urlParams.get("gravity") || "0.05"),
+    strongGravityMode: parseBool(urlParams.get("strongGravityMode") || "true"),
+    slowDown: parseFloat(urlParams.get("slowDown") || "5.4"),
+    scalingRatio: parseFloat(urlParams.get("scalingRatio") || "10")
+}
 const layout = new FA2Layout(graph, {
-    settings: {
-        gravity: parseFloat(urlParams.get("gravity") || "0.05"),
-        strongGravityMode: parseBool(urlParams.get("strongGravityMode") || "true"),
-        slowDown: parseFloat(urlParams.get("gravity") || "5.4"),
-        scalingRatio: parseFloat(urlParams.get("scalingRatio") || "10")
-    }
+    settings: settings
 });
+
+console.log("used settings", settings);
 
 
 const renderer = new Sigma(graph, container, {
