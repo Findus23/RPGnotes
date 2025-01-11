@@ -11,7 +11,7 @@ const graph = new Graph({
 });
 
 
-fetch('http://testcampaign.test.localhost:8080/graph.json')
+fetch('/graph/graph')
     .then((response) => response.json())
     .then((data) => {
         console.log(data)
