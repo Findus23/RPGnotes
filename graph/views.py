@@ -1,3 +1,4 @@
+import random
 from typing import Union
 
 from django.db import connection
@@ -11,7 +12,20 @@ from loot.models import Loot, LootType
 from notes.models import Note
 from users.models import TenantUser
 
-GraphModelEl = Union[Location, Note, Character, Faction]
+GraphModelEl = Union[Location, Note, Character, Faction, Loot, TenantUser, LootType]
+
+# colors from https://github.com/mpetroff/accessible-color-cycles
+color_cycle = ["#5790fc", "#f89c20", "#e42536", "#964a8b", "#9c9ca1", "#7a21dd"]
+color_cycle.append("black")
+object_types = [Location, Note, Character, Faction, Loot, TenantUser, LootType]
+
+
+def color_for_object(obj: GraphModelEl):
+    try:
+        index = object_types.index(type(obj))
+        return color_cycle[index]
+    except ValueError:
+        raise ValueError(f"No color defined for object of type {type(obj).__name__}")
 
 
 class Graph:
@@ -29,6 +43,8 @@ class Graph:
                 "size": 10,
                 "x": 0,
                 "y": 0,
+                "object_type": type(el).__name__,
+                "color": color_for_object(el),
                 "url": el.get_absolute_url() if hasattr(el, "get_absolute_url") else "/"
             }
         })
