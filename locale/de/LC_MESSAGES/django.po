@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-28 15:43+0100\n"
+"POT-Creation-Date: 2025-01-22 23:55+0100\n"
 "PO-Revision-Date: 2022-06-19 14:13+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -68,6 +68,10 @@ msgstr "Export"
 msgid "Auto-Saves"
 msgstr "Autosaves"
 
+#: campaigns/templates/campaigns/campaign_detail.jinja:26
+msgid "Graph"
+msgstr "Graph"
+
 #: campaigns/templates/campaigns/campaign_edit.jinja:5
 msgid "Add new campaign"
 msgstr "Neue Campagne erstellen"
@@ -112,63 +116,59 @@ msgstr "Spitzname"
 msgid "Aliases"
 msgstr "Aliase"
 
-#: characters/models.py:28
-msgid "Subtitle"
-msgstr "Untertitel"
-
-#: characters/models.py:31 characters/templates/characters/detail.jinja:53
+#: characters/models.py:30 characters/templates/characters/detail.jinja:59
 #: common/models/draft.py:13
 msgid "Player"
 msgstr "Spieler"
 
-#: characters/models.py:32
+#: characters/models.py:31
 msgid "If no player is selected, this character is considered an NPC."
 msgstr "Wenn kein Spieler ausgewählt ist, ist dies ein NPC."
 
-#: characters/models.py:37 characters/templates/characters/detail.jinja:57
+#: characters/models.py:36 characters/templates/characters/detail.jinja:63
 #: factions/models.py:11
 msgid "Faction"
 msgstr "Fraktion"
 
-#: characters/models.py:41 characters/templates/characters/detail.jinja:61
+#: characters/models.py:40 characters/templates/characters/detail.jinja:67
 #: locations/models.py:26 loot/models.py:38
 #: loot/templates/loot/overview.jinja:17
 msgid "Location"
 msgstr "Ort"
 
-#: characters/models.py:43
+#: characters/models.py:42
 msgid "Archived"
 msgstr "Archiviert"
 
-#: characters/models.py:44
+#: characters/models.py:43
 msgid "Color"
 msgstr "Farbe"
 
-#: characters/models.py:48
+#: characters/models.py:47
 msgid "Token Image"
 msgstr "Token Bild"
 
-#: characters/models.py:48
+#: characters/models.py:47
 msgid "round"
 msgstr "rund"
 
-#: characters/models.py:49
+#: characters/models.py:48
 msgid "Large Image"
 msgstr "Großes Bild"
 
-#: characters/models.py:53
+#: characters/models.py:52
 msgid "Character"
 msgstr "Charakter"
 
-#: characters/models.py:54 templates/tenantbase.jinja:22
+#: characters/models.py:53 templates/tenantbase.jinja:22
 msgid "Characters"
 msgstr "Charaktere"
 
-#: characters/templates/characters/detail.jinja:17
+#: characters/templates/characters/detail.jinja:24
 msgid "Add Character"
 msgstr "Charakter hinzufügen"
 
-#: characters/templates/characters/detail.jinja:38
+#: characters/templates/characters/detail.jinja:45
 #: days/templates/days/day_detail.jinja:24
 #: factions/templates/factions/detail.jinja:24
 #: locations/templates/locations/detail.jinja:22
@@ -176,16 +176,16 @@ msgstr "Charakter hinzufügen"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: characters/templates/characters/detail.jinja:43
+#: characters/templates/characters/detail.jinja:49
 #: locations/templates/locations/detail.jinja:39
 msgid "Also known as:"
 msgstr "Auch bekannt als:"
 
-#: characters/templates/characters/detail.jinja:79 templates/macros.jinja:28
+#: characters/templates/characters/detail.jinja:85 templates/macros.jinja:30
 msgid "Last updated"
 msgstr "Zuletzt geändert"
 
-#: characters/templates/characters/detail.jinja:80 templates/macros.jinja:29
+#: characters/templates/characters/detail.jinja:86 templates/macros.jinja:31
 msgid "by"
 msgstr "von"
 
@@ -241,7 +241,7 @@ msgstr "Fraktion hinzufügen"
 msgid "Members"
 msgstr "Mitglieder"
 
-#: locations/models.py:19 locations/templates/locations/detail.jinja:51
+#: locations/models.py:19 locations/templates/locations/detail.jinja:60
 #: notes/models.py:19 notes/templates/notes/detail.jinja:41
 msgid "Part of"
 msgstr "Teil von"
@@ -258,7 +258,12 @@ msgstr "Orte"
 msgid "Add Location"
 msgstr "Ort hinzufügen"
 
-#: locations/templates/locations/detail.jinja:55
+#: locations/templates/locations/detail.jinja:48
+#: search/templates/search/search_results.jinja:11
+msgid "See also:"
+msgstr "Siehe auch:"
+
+#: locations/templates/locations/detail.jinja:64
 msgid "Contains"
 msgstr "Enthält"
 
@@ -353,11 +358,11 @@ msgstr "Notizen"
 msgid "Add Note"
 msgstr "Notiz hinzufügen"
 
-#: rpg_notes/settings.py:198
+#: rpg_notes/settings.py:205
 msgid "German"
 msgstr "Deutsch"
 
-#: rpg_notes/settings.py:199
+#: rpg_notes/settings.py:206
 msgid "English"
 msgstr "Englisch"
 
@@ -369,10 +374,6 @@ msgstr "Suchergebnisse"
 #, python-format
 msgid "Search Results for %(query)s"
 msgstr "Suchergebnisse für %(query)s"
-
-#: search/templates/search/search_results.jinja:11
-msgid "See also"
-msgstr "Siehe auch"
 
 #: templates/403.jinja:8
 msgid "Permission Denied"

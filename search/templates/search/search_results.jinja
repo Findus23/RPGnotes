@@ -8,7 +8,7 @@
 {% block content %}
     {% if similars %}
         <p>
-            {% trans %}See also{% endtrans %}
+            {% trans %}See also:{% endtrans %}
             {% for s in similars %}
                 <a data-distance="{{ s.distance }}" href="{{ url('search') }}?q={{ s }}"> {{ s }}</a>
                 {%- if not loop.last %},{% endif %}
