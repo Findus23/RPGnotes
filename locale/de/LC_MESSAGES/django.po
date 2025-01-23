@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-22 23:55+0100\n"
+"POT-Creation-Date: 2025-01-23 00:59+0100\n"
 "PO-Revision-Date: 2022-06-19 14:13+0200\n"
 "Last-Translator: Lukas Winkler <translations@lw1.at>\n"
 "Language-Team: \n"
@@ -116,7 +116,7 @@ msgstr "Spitzname"
 msgid "Aliases"
 msgstr "Aliase"
 
-#: characters/models.py:30 characters/templates/characters/detail.jinja:59
+#: characters/models.py:30 characters/templates/characters/detail.jinja:61
 #: common/models/draft.py:13
 msgid "Player"
 msgstr "Spieler"
@@ -125,14 +125,14 @@ msgstr "Spieler"
 msgid "If no player is selected, this character is considered an NPC."
 msgstr "Wenn kein Spieler ausgewählt ist, ist dies ein NPC."
 
-#: characters/models.py:36 characters/templates/characters/detail.jinja:63
+#: characters/models.py:36 characters/templates/characters/detail.jinja:65
 #: factions/models.py:11
 msgid "Faction"
 msgstr "Fraktion"
 
-#: characters/models.py:40 characters/templates/characters/detail.jinja:67
+#: characters/models.py:40 characters/templates/characters/detail.jinja:69
 #: locations/models.py:26 loot/models.py:38
-#: loot/templates/loot/overview.jinja:17
+#: loot/templates/loot/overview.jinja:19
 msgid "Location"
 msgstr "Ort"
 
@@ -164,28 +164,28 @@ msgstr "Charakter"
 msgid "Characters"
 msgstr "Charaktere"
 
-#: characters/templates/characters/detail.jinja:24
+#: characters/templates/characters/detail.jinja:26
 msgid "Add Character"
 msgstr "Charakter hinzufügen"
 
-#: characters/templates/characters/detail.jinja:45
-#: days/templates/days/day_detail.jinja:24
-#: factions/templates/factions/detail.jinja:24
-#: locations/templates/locations/detail.jinja:22
-#: loot/templates/loot/overview.jinja:62 notes/templates/notes/detail.jinja:22
+#: characters/templates/characters/detail.jinja:47
+#: days/templates/days/day_detail.jinja:26
+#: factions/templates/factions/detail.jinja:26
+#: locations/templates/locations/detail.jinja:24
+#: loot/templates/loot/overview.jinja:64 notes/templates/notes/detail.jinja:24
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: characters/templates/characters/detail.jinja:49
-#: locations/templates/locations/detail.jinja:39
+#: characters/templates/characters/detail.jinja:51
+#: locations/templates/locations/detail.jinja:41
 msgid "Also known as:"
 msgstr "Auch bekannt als:"
 
-#: characters/templates/characters/detail.jinja:85 templates/macros.jinja:30
+#: characters/templates/characters/detail.jinja:87 templates/macros.jinja:30
 msgid "Last updated"
 msgstr "Zuletzt geändert"
 
-#: characters/templates/characters/detail.jinja:86 templates/macros.jinja:31
+#: characters/templates/characters/detail.jinja:88 templates/macros.jinja:31
 msgid "by"
 msgstr "von"
 
@@ -209,7 +209,7 @@ msgstr "Datum"
 msgid "Session"
 msgstr "Session"
 
-#: days/models.py:17 days/templates/days/day_detail.jinja:32
+#: days/models.py:17 days/templates/days/day_detail.jinja:34
 msgid "Sessions"
 msgstr "Sessions"
 
@@ -225,7 +225,7 @@ msgstr "Tage"
 msgid "day"
 msgstr "Tag"
 
-#: days/templates/days/day_detail.jinja:17
+#: days/templates/days/day_detail.jinja:19
 msgid "Add Day"
 msgstr "Tag hinzufügen"
 
@@ -233,16 +233,16 @@ msgstr "Tag hinzufügen"
 msgid "Factions"
 msgstr "Fraktionen"
 
-#: factions/templates/factions/detail.jinja:17
+#: factions/templates/factions/detail.jinja:19
 msgid "Add Faction"
 msgstr "Fraktion hinzufügen"
 
-#: factions/templates/factions/detail.jinja:29
+#: factions/templates/factions/detail.jinja:31
 msgid "Members"
 msgstr "Mitglieder"
 
-#: locations/models.py:19 locations/templates/locations/detail.jinja:60
-#: notes/models.py:19 notes/templates/notes/detail.jinja:41
+#: locations/models.py:19 locations/templates/locations/detail.jinja:62
+#: notes/models.py:19 notes/templates/notes/detail.jinja:43
 msgid "Part of"
 msgstr "Teil von"
 
@@ -254,20 +254,20 @@ msgstr "Bild"
 msgid "Locations"
 msgstr "Orte"
 
-#: locations/templates/locations/detail.jinja:15
+#: locations/templates/locations/detail.jinja:17
 msgid "Add Location"
 msgstr "Ort hinzufügen"
 
-#: locations/templates/locations/detail.jinja:48
+#: locations/templates/locations/detail.jinja:50
 #: search/templates/search/search_results.jinja:11
 msgid "See also:"
 msgstr "Siehe auch:"
 
-#: locations/templates/locations/detail.jinja:64
+#: locations/templates/locations/detail.jinja:66
 msgid "Contains"
 msgstr "Enthält"
 
-#: loot/models.py:25 loot/templates/loot/overview.jinja:14
+#: loot/models.py:25 loot/templates/loot/overview.jinja:16
 msgid "Quantity"
 msgstr "Anzahl"
 
@@ -279,7 +279,7 @@ msgstr "Wert (Gold)"
 msgid "Weight (lb)"
 msgstr "Gewicht (lb)"
 
-#: loot/models.py:32 loot/templates/loot/overview.jinja:16
+#: loot/models.py:32 loot/templates/loot/overview.jinja:18
 msgid "Claimant"
 msgstr "Beansprucht von"
 
@@ -291,13 +291,13 @@ msgstr "Magisches Item"
 msgid "Former"
 msgstr "Ehemalig"
 
-#: loot/models.py:46 loot/templates/loot/overview.jinja:18
-#: loot/templates/loot/overview.jinja:77
+#: loot/models.py:46 loot/templates/loot/overview.jinja:20
+#: loot/templates/loot/overview.jinja:79
 msgid "Type"
 msgstr "Typ"
 
 #: loot/models.py:51 loot/models.py:52 loot/templates/loot/overview.jinja:3
-#: loot/templates/loot/overview.jinja:6 templates/tenantbase.jinja:42
+#: loot/templates/loot/overview.jinja:8 templates/tenantbase.jinja:42
 msgid "Loot"
 msgstr "Loot"
 
@@ -326,23 +326,23 @@ msgstr "Speichern"
 msgid "Delete"
 msgstr "Löschen"
 
-#: loot/templates/loot/overview.jinja:13
+#: loot/templates/loot/overview.jinja:15
 msgid "Item"
 msgstr "Objekt"
 
-#: loot/templates/loot/overview.jinja:15 loot/templates/loot/overview.jinja:89
+#: loot/templates/loot/overview.jinja:17 loot/templates/loot/overview.jinja:91
 msgid "Total Value"
 msgstr "Gesamtwert"
 
-#: loot/templates/loot/overview.jinja:69
+#: loot/templates/loot/overview.jinja:71
 msgid "Value each"
 msgstr "Wert pro Stück"
 
-#: loot/templates/loot/overview.jinja:73
+#: loot/templates/loot/overview.jinja:75
 msgid "Weight"
 msgstr "Gewicht"
 
-#: loot/templates/loot/overview.jinja:92
+#: loot/templates/loot/overview.jinja:94
 msgid "Add Loot"
 msgstr "Loot hinzufügen"
 
@@ -354,7 +354,7 @@ msgstr "Notiz"
 msgid "Notes"
 msgstr "Notizen"
 
-#: notes/templates/notes/detail.jinja:15
+#: notes/templates/notes/detail.jinja:17
 msgid "Add Note"
 msgstr "Notiz hinzufügen"
 
@@ -387,7 +387,7 @@ msgstr ""
 "Du möchtest vielleicht zurück zur <a href=\"https://rpgnotes.lw1.at/"
 "\">Startseite</a> gehen."
 
-#: templates/base.jinja:41 templates/tenantbase.jinja:113
+#: templates/base.jinja:41 templates/tenantbase.jinja:116
 msgid "Log out"
 msgstr "Abmelden"
 
@@ -432,7 +432,7 @@ msgid "Demo Campain"
 msgstr "Demo Kampagne"
 
 #: templates/common/languageselect.jinja:3
-#: templates/common/languageselect.jinja:6 templates/tenantbase.jinja:72
+#: templates/common/languageselect.jinja:6 templates/tenantbase.jinja:75
 msgid "Change Language"
 msgstr "Sprache ändern"
 
@@ -482,27 +482,31 @@ msgstr "Home"
 msgid "Timeline"
 msgstr "Timeline"
 
-#: templates/tenantbase.jinja:50 templates/tenantbase.jinja:51
+#: templates/tenantbase.jinja:47
+msgid "Add Element"
+msgstr "Element hinzufügen"
+
+#: templates/tenantbase.jinja:53 templates/tenantbase.jinja:54
 msgid "Search"
 msgstr "Suchen"
 
-#: templates/tenantbase.jinja:55
+#: templates/tenantbase.jinja:58
 msgid "Go!"
 msgstr "Los!"
 
-#: templates/tenantbase.jinja:80 users/templates/users/edit.jinja:5
+#: templates/tenantbase.jinja:83 users/templates/users/edit.jinja:5
 msgid "Edit User Account"
 msgstr "Benutzerkonto bearbeiten"
 
-#: templates/tenantbase.jinja:90
+#: templates/tenantbase.jinja:93
 msgid "Light Theme"
 msgstr "Helles Theme"
 
-#: templates/tenantbase.jinja:96
+#: templates/tenantbase.jinja:99
 msgid "Dark Theme"
 msgstr "Dunkles Theme"
 
-#: templates/tenantbase.jinja:102
+#: templates/tenantbase.jinja:105
 msgid "System Theme"
 msgstr "System Theme"
 

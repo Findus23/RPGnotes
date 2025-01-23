@@ -43,6 +43,9 @@
                         </li>
                     {% endwith %}
                 </ul>
+                {% if self.addlink() %}
+                    <a class="btn btn-sm btn-outline-secondary" title="{{ _("Add Element") }}" href="{% block addlink %}{% endblock %}">+</a>
+                {% endif %}
                 <form class="d-flex" action="{{ url("search") }}" id="autocomplete-form">
                     <div class="input-group">
                         <div id="autocomplete" class="autocomplete">

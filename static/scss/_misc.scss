@@ -131,7 +131,17 @@ footer {
   margin-bottom: 2rem;
 }
 
-.popover-image img{
+.popover-image img {
   width: 100%;
   height: auto;
+}
+
+.navbar {
+  #autocomplete-form {
+    margin: 0 10px;
+
+    input {
+      max-width: 200px;
+    }
+  }
 }

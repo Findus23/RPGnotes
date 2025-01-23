@@ -1,6 +1,8 @@
 {% extends "tenantbase.jinja" %}
 {% import "macros.jinja" as macros %}
 
+{% block addlink %}{{ url("locationadd") }}{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-sm-4">
