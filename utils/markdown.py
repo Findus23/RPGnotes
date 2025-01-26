@@ -34,7 +34,7 @@ def autolink(md: str, replacements=None) -> tuple[str, set[str]]:
     linked_objects = set()
     i = 0
     for name, (url, obj) in replacements.items():
-        regex = r"\bWORD\b".replace("WORD", name)
+        regex = r"\bWORD\b".replace("WORD", re.escape(name))
         placeholder = f"SOME{i}LINK"
         md, n_replacements = re.subn(regex, placeholder, md)
         if n_replacements > 0:
