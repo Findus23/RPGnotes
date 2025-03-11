@@ -24,6 +24,7 @@ class CustomRegistrationView(RegistrationView):
         activation instructions.
 
         """
+        return
         data = form.cleaned_data
         new_user = TenantUser.objects.create_user(
             email=data.get("email"),

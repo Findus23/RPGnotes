@@ -6,6 +6,7 @@ from tenant_users.tenants.models import UserProfile
 
 
 class TenantUser(UserProfile):
+    EMAIL_FIELD = 'email'
     name = models.CharField(
         _("Name"),
         max_length=100,
@@ -48,3 +49,4 @@ class TenantUser(UserProfile):
     @property
     def user_permissions(self):
         return self.tenant_perms.user_permissions
+

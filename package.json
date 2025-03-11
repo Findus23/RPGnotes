@@ -19,7 +19,7 @@
     "@trevoreyre/autocomplete-js": "^3.0.2",
     "bootstrap": "^5.2.0-beta1",
     "codemirror": "^6.0.1",
-    "graphology": "^0.25.1",
+    "graphology": "^0.26.0",
     "graphology-layout": "^0.6.1",
     "graphology-layout-force": "^0.2.4",
     "graphology-layout-forceatlas2": "^0.10.1",
