@@ -7,34 +7,35 @@
     "colortheme": "esbuild static/colortheme/colortheme.ts --bundle --minify --sourcemap --outdir=static/colortheme/"
   },
   "dependencies": {
-    "@codemirror/autocomplete": "^6.1.0",
-    "@codemirror/lang-markdown": "^6.0.1",
-    "@codemirror/language": "^6.2.1",
-    "@codemirror/search": "^6.0.1",
-    "@codemirror/state": "^6.1.0",
-    "@codemirror/view": "^6.1.2",
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "@sentry/browser": "^8.2.1",
-    "@trevoreyre/autocomplete-js": "^3.0.2",
-    "bootstrap": "^5.2.0-beta1",
+    "@codemirror/autocomplete": "^6.18.6",
+    "@codemirror/lang-markdown": "^6.3.2",
+    "@codemirror/language": "^6.10.8",
+    "@codemirror/search": "^6.5.10",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.4",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@sentry/browser": "^9.5.0",
+    "@trevoreyre/autocomplete-js": "^3.0.3",
+    "bootstrap": "^5.3.3",
     "codemirror": "^6.0.1",
     "graphology": "^0.26.0",
     "graphology-layout": "^0.6.1",
     "graphology-layout-force": "^0.2.4",
     "graphology-layout-forceatlas2": "^0.10.1",
-    "luminous-lightbox": "^2.3.5",
-    "sigma": "^3.0.0-alpha3",
-    "typescript": "^5.0.4",
-    "vite": "^6.0.5",
-    "y-codemirror.next": "^0.3.2",
-    "y-webrtc": "^10.2.3",
-    "yjs": "^13.5.41"
+    "luminous-lightbox": "^2.4.0",
+    "sigma": "^3.0.1",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.1",
+    "y-codemirror.next": "^0.3.5",
+    "y-webrtc": "^10.3.0",
+    "yjs": "^13.6.24"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
-    "dts-gen": "^0.10.1",
-    "rollup-plugin-visualizer": "^5.7.1",
-    "sass": "^1.54.0"
-  }
+    "dts-gen": "^0.10.4",
+    "rollup-plugin-visualizer": "^5.14.0",
+    "sass": "^1.85.1"
+  },
+  "packageManager": "pnpm@10.6.2+sha1.7f417eb782bab712a1a9bd0206887dcee502d03e"
 }
