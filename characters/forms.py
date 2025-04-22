@@ -1,5 +1,8 @@
+from django.core.exceptions import ValidationError
 from django.db import connection
 from django.forms import ModelForm
+from django.utils.text import slugify
+from django.utils.translation import gettext as _
 
 from characters.models import Character
 from users.models import TenantUser
@@ -16,3 +19,10 @@ class CharacterForm(ModelForm):
         self.fields['player'].queryset = TenantUser.objects \
             .filter(tenants=connection.get_tenant()) \
             .exclude(pk__in=[1, 2])
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        slug = slugify(name)
+        if Character.objects.filter(slug=slug).exists():
+            raise ValidationError(_('A character with this name already exists.'))
+        return name
