@@ -24,7 +24,7 @@ class Session(HistoryModel, models.Model):
 
 
 class IngameDay(DescriptionModel, HistoryModel):
-    day = models.PositiveIntegerField(_("Day"))
+    day = models.PositiveIntegerField(_("Day"),unique=True)
     sessions = models.ManyToManyField(Session, related_name="ingame_days", verbose_name=_("Session"))
 
     class Meta:
