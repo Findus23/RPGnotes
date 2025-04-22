@@ -37,7 +37,7 @@
     "rollup-plugin-visualizer": "^5.14.0",
     "sass": "^1.87.0"
   },
-  "packageManager": "pnpm@10.6.2+sha1.7f417eb782bab712a1a9bd0206887dcee502d03e",
+  "packageManager": "pnpm@10.9.0+sha256.ea53ab747ac8b7921de63b42eab1adf021e1fe6ded05f62f00885cc33a46118d",
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
