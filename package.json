@@ -9,15 +9,15 @@
   "dependencies": {
     "@codemirror/autocomplete": "^6.18.6",
     "@codemirror/lang-markdown": "^6.3.2",
-    "@codemirror/language": "^6.10.8",
+    "@codemirror/language": "^6.11.0",
     "@codemirror/search": "^6.5.10",
     "@codemirror/state": "^6.5.2",
-    "@codemirror/view": "^6.36.4",
+    "@codemirror/view": "^6.36.5",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
-    "@sentry/browser": "^9.5.0",
+    "@sentry/browser": "^9.13.0",
     "@trevoreyre/autocomplete-js": "^3.0.3",
-    "bootstrap": "^5.3.3",
+    "bootstrap": "^5.3.5",
     "codemirror": "^6.0.1",
     "graphology": "^0.26.0",
     "graphology-layout": "^0.6.1",
@@ -25,17 +25,22 @@
     "graphology-layout-forceatlas2": "^0.10.1",
     "luminous-lightbox": "^2.4.0",
     "sigma": "^3.0.1",
-    "typescript": "^5.8.2",
-    "vite": "^6.2.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.2",
     "y-codemirror.next": "^0.3.5",
     "y-webrtc": "^10.3.0",
-    "yjs": "^13.6.24"
+    "yjs": "^13.6.26"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
     "dts-gen": "^0.10.4",
     "rollup-plugin-visualizer": "^5.14.0",
-    "sass": "^1.85.1"
+    "sass": "^1.87.0"
   },
-  "packageManager": "pnpm@10.6.2+sha1.7f417eb782bab712a1a9bd0206887dcee502d03e"
+  "packageManager": "pnpm@10.6.2+sha1.7f417eb782bab712a1a9bd0206887dcee502d03e",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
 }
