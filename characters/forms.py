@@ -22,7 +22,8 @@ class CharacterForm(ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data.get('name')
+        pk = self.instance.pk if self.instance is not None else None
         slug = slugify(name)
-        if Character.objects.filter(slug=slug).exists():
+        if Character.objects.filter(slug=slug).exclude(pk=pk).exists():
             raise ValidationError(_('A character with this name already exists.'))
         return name

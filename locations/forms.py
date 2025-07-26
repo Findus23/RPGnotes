@@ -13,7 +13,8 @@ class LocationForm(ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data.get('name')
+        pk = self.instance.pk if self.instance is not None else None
         slug = slugify(name)
-        if Location.objects.filter(slug=slug).exists():
+        if Location.objects.filter(slug=slug).exclude(pk=pk).exists():
             raise ValidationError(_('A location with this name already exists.'))
         return name

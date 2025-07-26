@@ -13,7 +13,8 @@ class NoteForm(ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data.get('name')
+        pk = self.instance.pk if self.instance is not None else None
         slug = slugify(name)
-        if Note.objects.filter(slug=slug).exists():
+        if Note.objects.filter(slug=slug).exclude(pk=pk).exists():
             raise ValidationError(_('A note with this name already exists.'))
         return name
