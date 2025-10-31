@@ -35,7 +35,7 @@
     "sass": "^1.93.3",
     "vite": "^7.1.12"
   },
-  "packageManager": "pnpm@10.13.1+sha256.0f9ed48d808996ae007835fb5c4641cf9a300def2eddc9e957d9bbe4768c5f28",
+  "packageManager": "pnpm@10.20.0+sha256.47a3352808501b8d1ef20112273b6a5dcfa53d28a55bcce36d268e878bd6bfe9",
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
