@@ -1,41 +1,38 @@
-[tool.poetry]
+[project]
 name = "rpgnotes"
-version = "0.1.0"
 description = ""
-authors = ["Lukas Winkler <git@lw1.at>"]
-package-mode = false
+version = "0.1.0"
+authors = [{name = "Lukas Winkler", email = "git@lw1.at"}]
+requires-python = '>=3.13,<4.0'
+dependencies = [
+    'Django[argon2] (>=5.1.0,<6.0.0)',
+    'psycopg[c,pool] (>=3.1.19,<4.0.0)',
+    'django-simple-history (>=3.0.0,<4.0.0)',
+    'django-bootstrap5 (>=25.1,<26.0)',
+    'Markdown (>=3.3.4,<4.0.0)',
+    'bleach (>=6.0.0,<7.0.0)',
+    'bleach-allowlist (>=1.0.3,<2.0.0)',
+    'Pillow (>=12.0.0)',
+    'sorl-thumbnail (>=12.7.0,<13.0.0)',
+    'libsass (>=0.23.0,<0.24.0)',
+    'django-debug-toolbar (>=6.0.0,<7.0.0)',
+    'django-tenants (>=3.3.2,<4.0.0)',
+    'django-tenant-users (>=2.0.0,<3.0.0)',
+    'django-axes (>=8.0.0,<9.0.0)',
+    'django-registration (>=5.1.0,<6.0.0)',
+    'django-csp (>=4.0,<5.0)',
+    'django-redis (>=6.0.0,<7.0.0)',
+    'gunicorn (>=23.0.0,<24.0.0)',
+    'setproctitle (>=1.2.2,<2.0.0)',
+    'django-extensions (>=4.1,<5.0)',
+    'sentry-sdk (>=2.2.0,<3.0.0)',
+    'django-jinja (>=2.9.1,<3.0.0)',
+    "django-tree-queries>=0.21.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-Django = {extras = ["argon2"], version = "^5.1.0"}
-psycopg = {extras = ["c", "pool"], version = "^3.1.19"}
-django-simple-history = "^3.0.0"
-django-bootstrap5 = "^25.1"
-Markdown = "^3.3.4"
-bleach = "^6.0.0"
-bleach-allowlist = "^1.0.3"
-Pillow = "^11.0.0"
-sorl-thumbnail = "^12.7.0"
-libsass = "^0.23.0"
-django-debug-toolbar = "^6.0.0"
-django-tenants = "^3.3.2"
-django-tenant-users = "^2.0.0"
-django-axes = "^8.0.0"
-django-registration = "^5.1.0"
-django-csp = "^4.0"
-django-redis = "^6.0.0"
-gunicorn = "^23.0.0"
-setproctitle = "^1.2.2"
-django-extensions = "^4.1"
-sentry-sdk = "^2.2.0"
-django-tree-queries = "^0.20.0"
-django-jinja = "^2.9.1"
-
-[tool.poetry.dev-dependencies]
-Werkzeug = "^3.0.3"
-watchdog = "^6.0.0"
-bpython = "^0.25.0"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "bpython>=0.26",
+    "watchdog>=6.0.0",
+    "werkzeug>=3.1.3",
+]
