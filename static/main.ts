@@ -1,4 +1,4 @@
-import 'vite/modulepreload-polyfill'
+// import 'vite/modulepreload-polyfill'
 
 // import "./scss/main.scss"
 import "./js/sentry"
