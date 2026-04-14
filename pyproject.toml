@@ -5,15 +5,15 @@ version = "0.1.0"
 authors = [{name = "Lukas Winkler", email = "git@lw1.at"}]
 requires-python = '>=3.13,<4.0'
 dependencies = [
-    'Django[argon2] (>=5.1.0,<6.0.0)',
+    'Django[argon2] (>=6.0.0,<6.1.0)',
     'psycopg[c,pool] (>=3.1.19,<4.0.0)',
     'django-simple-history (>=3.0.0,<4.0.0)',
-    'django-bootstrap5 (>=25.1,<26.0)',
+    'django-bootstrap5 (>=26.0,<27.0)',
     'Markdown (>=3.3.4,<4.0.0)',
     'bleach (>=6.0.0,<7.0.0)',
     'bleach-allowlist (>=1.0.3,<2.0.0)',
     'Pillow (>=12.0.0)',
-    'sorl-thumbnail (>=12.7.0,<13.0.0)',
+    'sorl-thumbnail (>=13.0.0,<14.0.0)',
     'libsass (>=0.23.0,<0.24.0)',
     'django-debug-toolbar (>=6.0.0,<7.0.0)',
     'django-tenants (>=3.3.2,<4.0.0)',
@@ -22,7 +22,7 @@ dependencies = [
     'django-registration (>=5.1.0,<6.0.0)',
     'django-csp (>=4.0,<5.0)',
     'django-redis (>=6.0.0,<7.0.0)',
-    'gunicorn (>=23.0.0,<24.0.0)',
+    'gunicorn (>=25.0.0,<26.0.0)',
     'setproctitle (>=1.2.2,<2.0.0)',
     'django-extensions (>=4.1,<5.0)',
     'sentry-sdk (>=2.2.0,<3.0.0)',
